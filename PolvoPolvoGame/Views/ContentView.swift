@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var removerNumeros = RemoverNumeros()
+    
+    var gerador = GeradorPesos()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            BotoesRemoverNumero(removerNumeros: removerNumeros,gerador: gerador)
         }
         .padding()
     }

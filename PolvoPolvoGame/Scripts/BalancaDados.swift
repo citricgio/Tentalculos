@@ -6,10 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 
 class BalancaDados {
-    
-    public var gerador: GeradorPesos = GeradorPesos()
     
     public var balanca_direita_travada: Bool = false
     
@@ -21,16 +20,20 @@ class BalancaDados {
     
     
     func adicionar_fruta_direita(fruta: FrutaEnum){
-        if !(peso_direita == gerador.valor_cada_lado){
+        if !(peso_direita == DataModel.shared.peso){
             peso_direita += fruta.rawValue
+        }
+        else{
             balanca_direita_travada = true
         }
         print(peso_direita)
     }
     
     func adicionar_fruta_esquerda(fruta: FrutaEnum){
-        if !(peso_esquerda == gerador.valor_cada_lado){
+        if !(peso_esquerda == DataModel.shared.peso){
             peso_esquerda += fruta.rawValue
+        }
+        else{
             balanca_esquerda_travada = true
         }
         print(peso_esquerda)
