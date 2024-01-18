@@ -20,6 +20,7 @@ class GeradorPesos {
         
         DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX //calcula o valor que soma a variável na equação
         DataModel.shared.c = DataModel.shared.peso //Fala qual é o valor que iguala na equação
+        DataModel.shared.valorMultiplicador = 1
         
         print(DataModel.shared.valorX)
         print(DataModel.shared.peso)
@@ -28,7 +29,7 @@ class GeradorPesos {
     //Gera uma equação um pouco mais complexa com um valor multiplicando a variável
     func Gerar_Numeros_Intermediario(){
         DataModel.shared.valorX = Int.random(in: 1..<valor_max) //randomizador do valor de X
-        DataModel.shared.valorMultiplicador = Int.random(in: 1..<2) //randomizador do valor que multiplica X
+        DataModel.shared.valorMultiplicador = Int.random(in: 1...2) //randomizador do valor que multiplica X
         DataModel.shared.peso = Int.random(in: (DataModel.shared.valorMultiplicador*DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação
         
         DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX //calcula o valor que soma a variável na equação
