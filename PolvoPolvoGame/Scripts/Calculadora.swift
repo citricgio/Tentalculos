@@ -9,18 +9,19 @@ import Foundation
 import SwiftUI
 
 class Calculadora {
-    var operacoesEnum: OperacoesEnum
-    
-    init(operacoesEnum: OperacoesEnum) {
-        self.operacoesEnum = operacoesEnum
-    }
     
     func Subtracao(){
-        
+        if (DataModel.shared.peso - DataModel.shared.contador >= 0){
+            DataModel.shared.peso -= DataModel.shared.contador
+        }
+        print(DataModel.shared.peso)
     }
     
     func Divisao(){
-        
+        if (DataModel.shared.peso / DataModel.shared.contador >= 0) {
+            DataModel.shared.peso = DataModel.shared.peso / DataModel.shared.contador
+        }
+        print(DataModel.shared.peso)
     }
     
 }
