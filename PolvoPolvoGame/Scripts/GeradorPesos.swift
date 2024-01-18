@@ -10,34 +10,42 @@ import SwiftUI
 
 class GeradorPesos {
 
+    //valor máximo em que se pode dar para o valor de X ou variável
     public var valor_max: Int = 5
     
+    //Gera uma equação mais simples, sem multiplicar a Variável
     func Gerar_Numeros_Basico(){
-        DataModel.shared.valorX = Int.random(in: 1..<valor_max)
-        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorX + 1)..<(2*valor_max))
+        DataModel.shared.valorX = Int.random(in: 1..<valor_max) //randomizador do valor de X
+        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação
         
-        DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX
-        DataModel.shared.c = DataModel.shared.peso
+        DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX //calcula o valor que soma a variável na equação
+        DataModel.shared.c = DataModel.shared.peso //Fala qual é o valor que iguala na equação
         
         print(DataModel.shared.valorX)
         print(DataModel.shared.peso)
     }
+    
+    //Gera uma equação um pouco mais complexa com um valor multiplicando a variável
     func Gerar_Numeros_Intermediario(){
-        DataModel.shared.valorX = Int.random(in: 1..<valor_max)
-        DataModel.shared.valorMultiplicador = Int.random(in: 1..<2)
-        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorMultiplicador*DataModel.shared.valorX + 1)..<(2*valor_max))
+        DataModel.shared.valorX = Int.random(in: 1..<valor_max) //randomizador do valor de X
+        DataModel.shared.valorMultiplicador = Int.random(in: 1..<2) //randomizador do valor que multiplica X
+        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorMultiplicador*DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação
         
-        DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX
-        DataModel.shared.c = DataModel.shared.peso
+        DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX //calcula o valor que soma a variável na equação
+        DataModel.shared.c = DataModel.shared.peso //Fala qual é o valor que iguala na equação
         
         print(DataModel.shared.valorX)
         print(DataModel.shared.valorMultiplicador)
         print(DataModel.shared.peso)
     }
+    
+    //monta o texto da equação Basica e Intermediária
     func Montar_Texto(){
-        //Text("\(coeficiente) + x = \(valor_cada_lado)")
+        
         let textoEquacao: String = "\(DataModel.shared.b) + \(DataModel.shared.valorMultiplicador)x = \(DataModel.shared.peso)"
+        
         print(textoEquacao)
+        
     }
     
     
