@@ -14,11 +14,11 @@ class BalancaDados {
     
     public var balanca_esquerda_travada: Bool = false
     
-
+//MARK: Corrigir a logica da balanca com o gerador novo
     
     
     func adicionar_fruta_direita(fruta: FrutaEnum){
-        if !(DataModel.shared.peso_direita == DataModel.shared.peso){
+        if !(DataModel.shared.peso_direita == DataModel.shared.peso-DataModel.shared.valorX){
             DataModel.shared.peso_direita += fruta.rawValue
         }
         else{
@@ -28,7 +28,7 @@ class BalancaDados {
     }
     
     func adicionar_fruta_esquerda(fruta: FrutaEnum){
-        if !(DataModel.shared.peso_esquerda == DataModel.shared.peso){
+        if !(DataModel.shared.c == DataModel.shared.peso){
             DataModel.shared.peso_esquerda += fruta.rawValue
         }
         else{
@@ -36,6 +36,5 @@ class BalancaDados {
         }
         print(DataModel.shared.peso_esquerda)
     }
-    
     
 }

@@ -12,18 +12,31 @@ class GeradorPesos {
 
     public var valor_max: Int = 5
     
-
     func Gerar_Numeros_Basico(){
-        DataModel.shared.valor_variavel = Int.random(in: 1..<valor_max)
-        DataModel.shared.peso = Int.random(in: (DataModel.shared.valor_variavel + 1)..<(2*valor_max))
+        DataModel.shared.valorX = Int.random(in: 1..<valor_max)
+        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorX + 1)..<(2*valor_max))
         
-        print(DataModel.shared.valor_variavel)
+        DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX
+        DataModel.shared.c = DataModel.shared.peso
+        
+        print(DataModel.shared.valorX)
         print(DataModel.shared.peso)
     }
-    
+    func Gerar_Numeros_Intermediario(){
+        DataModel.shared.valorX = Int.random(in: 1..<valor_max)
+        DataModel.shared.valorMultiplicador = Int.random(in: 1..<2)
+        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorMultiplicador*DataModel.shared.valorX + 1)..<(2*valor_max))
+        
+        DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX
+        DataModel.shared.c = DataModel.shared.peso
+        
+        print(DataModel.shared.valorX)
+        print(DataModel.shared.valorMultiplicador)
+        print(DataModel.shared.peso)
+    }
     func Montar_Texto(){
         //Text("\(coeficiente) + x = \(valor_cada_lado)")
-        let textoEquacao: String = "\(DataModel.shared.peso - DataModel.shared.valor_variavel) + \(DataModel.shared.valor_variavel)x = \(DataModel.shared.peso)"
+        let textoEquacao: String = "\(DataModel.shared.b) + \(DataModel.shared.valorMultiplicador)x = \(DataModel.shared.peso)"
         print(textoEquacao)
     }
     
