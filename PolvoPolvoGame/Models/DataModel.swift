@@ -14,7 +14,12 @@ import SwiftUI
     
     var contador: Int = 0
     
+    //Variáveis que fazem parte da 
     var valor_variavel: Int = 0
+    
+    //Variáveis que são criadas pela balancaDados e usadas na calculadora
+    var peso_direita: Int = 0
+    var peso_esquerda: Int = 0
 }
 
 

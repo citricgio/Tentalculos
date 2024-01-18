@@ -7,8 +7,7 @@
 
 import Foundation
 
-enum OperacoesEnum: CaseIterable {
+enum OperacoesEnum {
     case subtracao
-    case multiplicacao
     case divisao
 }

@@ -16,11 +16,13 @@ class Calculadora {
     }
     
     func Subtracao(){
-        
+        DataModel.shared.peso_direita = DataModel.shared.peso_direita-DataModel.shared.contador
+        DataModel.shared.peso_esquerda = DataModel.shared.peso_esquerda-DataModel.shared.contador
     }
     
     func Divisao(){
-        
+        DataModel.shared.peso_direita = DataModel.shared.peso_direita/DataModel.shared.contador
+        DataModel.shared.peso_esquerda = DataModel.shared.peso_esquerda/DataModel.shared.contador
     }
     
 }
