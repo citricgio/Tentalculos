@@ -13,6 +13,8 @@ struct BotoesRemoverNumero: View {
     
     var gerador = GeradorPesos()
     
+    var calculadora = Calculadora()
+    
     var body: some View {
         HStack{
             
@@ -38,19 +40,13 @@ struct BotoesRemoverNumero: View {
             }
             
             Button(action: {
-                
-            }, label: {
-                Text("soma")
-            })
-            
-            Button(action: {
-                
+                calculadora.Subtracao()
             }, label: {
                 Text("subtracao")
             })
             
             Button(action: {
-                
+                calculadora.Divisao()
             }, label: {
                 Text("divisao")
             })
