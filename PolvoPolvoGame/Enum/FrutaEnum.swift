@@ -7,6 +7,7 @@
 
 import Foundation
 
+//enum que vai falar qual o valor de cada fruta selecionada
 enum FrutaEnum: Int, CaseIterable {
     case fruta1 = 1
     case fruta2 = 2

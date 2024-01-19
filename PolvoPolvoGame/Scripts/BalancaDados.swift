@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+//Cuidar da logica quando o usuário estiver montando a balança e travar ela
 class BalancaDados {
     
     //variáveis contam as frutas de cada lado quando o usuário estiver montando a balança

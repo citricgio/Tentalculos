@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+//Gerar as equações para o usuário igualar
 class GeradorPesos {
 
     //valor máximo em que se pode dar para o valor de X ou variável
@@ -16,7 +17,7 @@ class GeradorPesos {
     //Gera uma equação mais simples, sem multiplicar a Variável
     func Gerar_Numeros_Basico(){
         DataModel.shared.valorX = Int.random(in: 1..<valor_max) //randomizador do valor de X
-        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação
+        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação a partir do valor de X
         
         DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX //calcula o valor que soma a variável na equação
         DataModel.shared.c = DataModel.shared.peso //Fala qual é o valor que iguala na equação
