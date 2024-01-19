@@ -33,8 +33,22 @@ class GeradorPesos {
         DataModel.shared.valorMultiplicador = Int.random(in: 1...2) //randomizador do valor que multiplica X
         DataModel.shared.peso = Int.random(in: (DataModel.shared.valorMultiplicador*DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação
         
-        DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX //calcula o valor que soma a variável na equação
+        DataModel.shared.b = DataModel.shared.peso-(DataModel.shared.valorX*DataModel.shared.valorMultiplicador) //calcula o valor que soma a variável na equação
         DataModel.shared.c = DataModel.shared.peso //Fala qual é o valor que iguala na equação
+        
+        print(DataModel.shared.valorX)
+        print(DataModel.shared.valorMultiplicador)
+        print(DataModel.shared.peso)
+    }
+    
+    //Gera uma equação avançada com variáveis dos dois lados
+    func Gerar_Numeros_Avancado(){
+        DataModel.shared.valorX = Int.random(in: 1..<valor_max) //randomizador do valor de X
+        DataModel.shared.valorMultiplicador = Int.random(in: 1...4) //randomizador do valor que multiplica X
+        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorMultiplicador*DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação
+        
+        DataModel.shared.b = DataModel.shared.peso-(DataModel.shared.valorX*DataModel.shared.valorMultiplicador) //calcula o valor que soma a variável na equação
+        DataModel.shared.c = DataModel.shared.peso-(DataModel.shared.valorX*(DataModel.shared.valorMultiplicador-1))//Fala qual é o valor que iguala na equação
         
         print(DataModel.shared.valorX)
         print(DataModel.shared.valorMultiplicador)
@@ -48,6 +62,14 @@ class GeradorPesos {
         
         print(textoEquacao)
         
+    }
+    
+    //monta o texto da equação avançada
+    func Montar_Texto_avançado() {
+        
+        let textoEquacao: String = "\(DataModel.shared.b) + \(DataModel.shared.valorMultiplicador)x = \(DataModel.shared.c) + \(DataModel.shared.valorMultiplicador-1)x"
+        
+        print(textoEquacao)
     }
     
     
