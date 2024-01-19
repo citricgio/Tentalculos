@@ -24,7 +24,8 @@ class GameScene: SKScene {
     var isInBin1: Bool = false
     var isInBin2: Bool = false
     
-    var spawnLocation = CGPoint(x:200, y: 30)
+    var spawnLocation1 = CGPoint(x:80, y: 100)
+    var spawnLocation2 = CGPoint(x:340, y: 100)
     
     override func didMove(to view: SKView) {
         
@@ -36,17 +37,20 @@ class GameScene: SKScene {
     }
     //Colocar o texto na tela
     func setupDragLabelFood() {
+        //MARK: arrumar esses bools depois, tao com problem quando uma comida esta caindo e voce segura outra na mao
         isInBin1 = false
         isInBin2 = false
         
         switch food {
         case .fruta1:
             foodNode = SKSpriteNode(imageNamed: food.nome)
+            foodNode.name = "food"
             foodNode.zPosition = 20
             foodNode.position = CGPoint(x: 80, y: 100)
             addChild(foodNode)
         case .fruta2:
             foodNode = SKSpriteNode(imageNamed: food.nome)
+            foodNode.name = "food"
             foodNode.zPosition = 20
             foodNode.position = CGPoint(x: 340, y: 100)
             addChild(foodNode)
@@ -128,8 +132,6 @@ class GameScene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         
-        
-        
         if foodNode.frame.contains(touch.previousLocation(in: self)){
             
             foodNode.position = touch.location(in: self)
@@ -138,7 +140,7 @@ class GameScene: SKScene {
         }
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if foodNode.name == "yellow"{
+        if foodNode.name == "food"{
             
             if foodBin.frame.contains(foodNode.position){
                 
@@ -151,8 +153,16 @@ class GameScene: SKScene {
                 isInBin2 = true
                 
             } else {
+                switch food {
+                case .fruta1:
+                    foodNode.position = spawnLocation1
+                case .fruta2:
+                    foodNode.position = spawnLocation2
+                default:
+                    foodNode.position = spawnLocation1
+                }
                 
-                foodNode.position = spawnLocation
+                
             }
         }
     }
