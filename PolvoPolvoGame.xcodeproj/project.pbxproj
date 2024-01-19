@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F040E352B584FB700AB8BBB /* FrutaEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E342B584FB700AB8BBB /* FrutaEnum.swift */; };
+		8F040E372B58501400AB8BBB /* GeradorPesos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E362B58501400AB8BBB /* GeradorPesos.swift */; };
+		8F040E3A2B58505900AB8BBB /* BalancaDados.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E392B58505900AB8BBB /* BalancaDados.swift */; };
+		8F040E3E2B58514700AB8BBB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E3D2B58514700AB8BBB /* GameScene.swift */; };
+		8F040E402B58518A00AB8BBB /* RemoverNumeros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E3F2B58518A00AB8BBB /* RemoverNumeros.swift */; };
+		8F040E422B5851AB00AB8BBB /* BotoesRemoverNumero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E412B5851AB00AB8BBB /* BotoesRemoverNumero.swift */; };
+		8F040E442B58691600AB8BBB /* Calculadora.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E432B58691600AB8BBB /* Calculadora.swift */; };
+		8F040E462B58692F00AB8BBB /* OperacoesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E452B58692F00AB8BBB /* OperacoesEnum.swift */; };
+		8F040E482B58718000AB8BBB /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E472B58718000AB8BBB /* DataModel.swift */; };
 		8FED6B4A2B55BAF100F92D4F /* PolvoPolvoGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FED6B492B55BAF100F92D4F /* PolvoPolvoGameApp.swift */; };
 		8FED6B4C2B55BAF100F92D4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FED6B4B2B55BAF100F92D4F /* ContentView.swift */; };
 		8FED6B4E2B55BAF200F92D4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FED6B4D2B55BAF200F92D4F /* Assets.xcassets */; };
@@ -14,6 +23,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8F040E342B584FB700AB8BBB /* FrutaEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutaEnum.swift; sourceTree = "<group>"; };
+		8F040E362B58501400AB8BBB /* GeradorPesos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeradorPesos.swift; sourceTree = "<group>"; };
+		8F040E392B58505900AB8BBB /* BalancaDados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancaDados.swift; sourceTree = "<group>"; };
+		8F040E3D2B58514700AB8BBB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		8F040E3F2B58518A00AB8BBB /* RemoverNumeros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoverNumeros.swift; sourceTree = "<group>"; };
+		8F040E412B5851AB00AB8BBB /* BotoesRemoverNumero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotoesRemoverNumero.swift; sourceTree = "<group>"; };
+		8F040E432B58691600AB8BBB /* Calculadora.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculadora.swift; sourceTree = "<group>"; };
+		8F040E452B58692F00AB8BBB /* OperacoesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperacoesEnum.swift; sourceTree = "<group>"; };
+		8F040E472B58718000AB8BBB /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		8FED6B462B55BAF100F92D4F /* PolvoPolvoGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolvoPolvoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FED6B492B55BAF100F92D4F /* PolvoPolvoGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolvoPolvoGameApp.swift; sourceTree = "<group>"; };
 		8FED6B4B2B55BAF100F92D4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,8 +53,21 @@
 		8F040E332B584F8F00AB8BBB /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				8F040E342B584FB700AB8BBB /* FrutaEnum.swift */,
+				8F040E452B58692F00AB8BBB /* OperacoesEnum.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		8F040E382B58504700AB8BBB /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				8F040E362B58501400AB8BBB /* GeradorPesos.swift */,
+				8F040E392B58505900AB8BBB /* BalancaDados.swift */,
+				8F040E3F2B58518A00AB8BBB /* RemoverNumeros.swift */,
+				8F040E432B58691600AB8BBB /* Calculadora.swift */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		8FED6B3D2B55BAF100F92D4F = {
@@ -58,8 +89,9 @@
 		8FED6B482B55BAF100F92D4F /* PolvoPolvoGame */ = {
 			isa = PBXGroup;
 			children = (
-				8F040E332B584F8F00AB8BBB /* Enum */,
 				8FED6B492B55BAF100F92D4F /* PolvoPolvoGameApp.swift */,
+				8F040E382B58504700AB8BBB /* Scripts */,
+				8F040E332B584F8F00AB8BBB /* Enum */,
 				8FED6B592B55BB8500F92D4F /* Models */,
 				8FED6B582B55BB7F00F92D4F /* Views */,
 				8FED6B572B55BB7800F92D4F /* Scenes */,
@@ -80,6 +112,7 @@
 		8FED6B572B55BB7800F92D4F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8F040E3D2B58514700AB8BBB /* GameScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -88,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				8FED6B4B2B55BAF100F92D4F /* ContentView.swift */,
+				8F040E412B5851AB00AB8BBB /* BotoesRemoverNumero.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -95,6 +129,7 @@
 		8FED6B592B55BB8500F92D4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8F040E472B58718000AB8BBB /* DataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,8 +204,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F040E402B58518A00AB8BBB /* RemoverNumeros.swift in Sources */,
+				8F040E462B58692F00AB8BBB /* OperacoesEnum.swift in Sources */,
+				8F040E442B58691600AB8BBB /* Calculadora.swift in Sources */,
 				8FED6B4C2B55BAF100F92D4F /* ContentView.swift in Sources */,
+				8F040E352B584FB700AB8BBB /* FrutaEnum.swift in Sources */,
+				8F040E482B58718000AB8BBB /* DataModel.swift in Sources */,
 				8FED6B4A2B55BAF100F92D4F /* PolvoPolvoGameApp.swift in Sources */,
+				8F040E3A2B58505900AB8BBB /* BalancaDados.swift in Sources */,
+				8F040E422B5851AB00AB8BBB /* BotoesRemoverNumero.swift in Sources */,
+				8F040E372B58501400AB8BBB /* GeradorPesos.swift in Sources */,
+				8F040E3E2B58514700AB8BBB /* GameScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
