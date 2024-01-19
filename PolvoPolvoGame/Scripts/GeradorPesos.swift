@@ -21,7 +21,7 @@ class GeradorPesos {
         DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX //calcula o valor que soma a variável na equação
         DataModel.shared.c = DataModel.shared.peso //Fala qual é o valor que iguala na equação
         DataModel.shared.valorMultiplicador = 1
-        
+         
         print(DataModel.shared.valorX)
         print(DataModel.shared.peso)
     }

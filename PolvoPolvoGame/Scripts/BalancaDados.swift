@@ -10,31 +10,30 @@ import SwiftUI
 
 class BalancaDados {
     
-    public var balanca_direita_travada: Bool = false
+    //variáveis contam as frutas de cada lado quando o usuário estiver montando a balança
+    var peso_direita: Int = 0
+    var peso_esquerda: Int = 0
     
-    public var balanca_esquerda_travada: Bool = false
-    
-//MARK: Corrigir a logica da balanca com o gerador novo
-    
-    
+    //função que adiciona as frutas no lado direito da balança e trava quando o valor do lado direito for o peso necessário para a balança
     func adicionar_fruta_direita(fruta: FrutaEnum){
-        if !(DataModel.shared.peso_direita == DataModel.shared.peso-DataModel.shared.valorX){
-            DataModel.shared.peso_direita += fruta.rawValue
+        if !(peso_direita == DataModel.shared.b){
+            peso_direita += fruta.rawValue
         }
         else{
-            balanca_direita_travada = true
+            DataModel.shared.balanca_direita_travada = true
         }
-        print(DataModel.shared.peso_direita)
+        print(peso_direita)
     }
     
+    //função que adiciona as frutas no lado esquerdo da balança e trava quando o valor do lado direito for igual o do peso
     func adicionar_fruta_esquerda(fruta: FrutaEnum){
-        if !(DataModel.shared.c == DataModel.shared.peso){
-            DataModel.shared.peso_esquerda += fruta.rawValue
+        if !(peso_esquerda == DataModel.shared.peso){
+            peso_esquerda += fruta.rawValue
         }
         else{
-            balanca_esquerda_travada = true
+            DataModel.shared.balanca_esquerda_travada = true
         }
-        print(DataModel.shared.peso_esquerda)
+        print(peso_esquerda)
     }
     
 }

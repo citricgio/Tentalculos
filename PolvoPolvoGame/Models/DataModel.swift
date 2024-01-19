@@ -18,9 +18,9 @@ import SwiftUI
     var b: Int = 0
     var c: Int = 0
     
-    //valores usados pela balancaDados
-    var peso_direita: Int = 0
-    var peso_esquerda: Int = 0
+    //Booleanos usados pela balancaDados para travar a equação
+    var balanca_esquerda_travada: Bool = false
+    var balanca_direita_travada: Bool = false
     
     //Valor em que o usuário vai múltiplicar ou dividir
     var contador: Int = 0
