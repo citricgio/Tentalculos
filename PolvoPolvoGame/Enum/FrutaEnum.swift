@@ -6,11 +6,41 @@
 //
 
 import Foundation
+import SpriteKit
 
 //enum que vai falar qual o valor de cada fruta selecionada
-enum FrutaEnum: Int, CaseIterable {
-    case fruta1 = 1
-    case fruta2 = 2
-    case fruta3 = 3
-    case fruta5 = 5
+enum FrutaEnum {
+    case fruta1
+    case fruta2
+    case fruta3
+    case fruta5
+    
+    var valor: Int {
+        switch self {
+            
+        case .fruta1: 1
+        case .fruta2: 2
+        case .fruta3: 3
+        case .fruta5: 5
+            
+        }
+    }
+    var nome: String {
+        switch self {
+        case .fruta1:
+            "bushes"
+            
+        case .fruta2:
+            "fish"
+
+        case .fruta3:
+            ""
+
+        case .fruta5:
+            ""
+
+        }
+    }
 }
+
+
