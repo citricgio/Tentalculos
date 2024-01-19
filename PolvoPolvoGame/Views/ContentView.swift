@@ -1,26 +1,35 @@
 //
-//  ContentView.swift
-//  PolvoPolvoGame
+// ContentView.swift
+// PolvoPolvoGame
 //
-//  Created by Thiago Liporace on 15/01/24.
+// Created by Thiago Liporace on 15/01/24.
 //
-
 import SwiftUI
+import SpriteKit
 
 struct ContentView: View {
     
-    var removerNumeros = RemoverNumeros()
+  var scene: GameScene {
+    let scene: GameScene = GameScene()
+    scene.scaleMode = .resizeFill
+    return scene
+  }
     
-    var gerador = GeradorPesos()
-    
-    var body: some View {
-        VStack {
-            BotoesRemoverNumero(removerNumeros: removerNumeros,gerador: gerador)
-        }
-        .padding()
-    }
+  var body: some View {
+      
+    SpriteView(scene: scene)
+      .ignoresSafeArea()
+  }
+}
+#Preview {
+  ContentView()
 }
 
-#Preview {
-    ContentView()
-}
+
+
+
+
+
+
+
+
