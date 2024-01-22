@@ -11,6 +11,7 @@ import SwiftUI
 //essa classe vai fazer as operações utilizando o contador
 class Calculadora {
     
+    
     //operação de subtração
     func Subtracao(){
         if (DataModel.shared.peso - DataModel.shared.contador >= 0){

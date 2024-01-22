@@ -13,7 +13,7 @@ import SwiftUI
     static let shared = DataModel()
     
     //valores gerados pelo GeradorPesos
-    var peso: Int = 0 //valor de cada lado da equação
+    var peso: Int = 7 //valor de cada lado da equação
     var valorX: Int = 0 //variável ou o X da equação
     var valorMultiplicador: Int = 0 //valor que múltiplica a variável ou o X
     var b: Int = 0 //valor que soma o lado esquerdo com o X para ser igual ao peso
