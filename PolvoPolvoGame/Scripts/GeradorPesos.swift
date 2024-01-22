@@ -58,18 +58,18 @@ class GeradorPesos {
     //monta o texto da equação Basica e Intermediária
     func Montar_Texto(){
         
-        let textoEquacao: String = "\(DataModel.shared.b) + \(DataModel.shared.valorMultiplicador)x = \(DataModel.shared.peso)"
+        DataModel.shared.textoEquacao = "\(DataModel.shared.b) + \(DataModel.shared.valorMultiplicador)x = \(DataModel.shared.peso)"
         
-        print(textoEquacao)
+        print(DataModel.shared.textoEquacao)
         
     }
     
     //monta o texto da equação avançada
     func Montar_Texto_avançado() {
         
-        let textoEquacao: String = "\(DataModel.shared.b) + \(DataModel.shared.valorMultiplicador)x = \(DataModel.shared.c) + \(DataModel.shared.valorMultiplicador-1)x"
+        DataModel.shared.textoEquacao = "\(DataModel.shared.b) + \(DataModel.shared.valorMultiplicador)x = \(DataModel.shared.c) + \(DataModel.shared.valorMultiplicador-1)x"
         
-        print(textoEquacao)
+        print(DataModel.shared.textoEquacao)
     }
     
     

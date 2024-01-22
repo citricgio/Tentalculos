@@ -19,6 +19,9 @@ import SwiftUI
     var b: Int = 0 //valor que soma o lado esquerdo com o X para ser igual ao peso
     var c: Int = 0 //valor que soma o lado direito com o X para ser igual ao peso ou o Peso se não houver X do lado direito
     
+    //String que contém a equação
+    var textoEquacao: String = "" 
+    
     //Booleanos usados pela balancaDados para travar a equação
     var balanca_esquerda_travada: Bool = false
     var balanca_direita_travada: Bool = false
