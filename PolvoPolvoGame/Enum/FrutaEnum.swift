@@ -14,6 +14,7 @@ enum FrutaEnum {
     case fruta2
     case fruta3
     case fruta5
+    case incognita
     
     var valor: Int {
         switch self {
@@ -22,6 +23,7 @@ enum FrutaEnum {
         case .fruta2: 2
         case .fruta3: 3
         case .fruta5: 5
+        case .incognita: DataModel.shared.valorX
             
         }
     }
@@ -38,7 +40,8 @@ enum FrutaEnum {
 
         case .fruta5:
             ""
-
+        case .incognita:
+            "incognita"
         }
     }
 }
