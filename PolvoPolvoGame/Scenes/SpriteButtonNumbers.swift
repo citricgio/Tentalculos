@@ -16,7 +16,7 @@ class SpriteButtonNumbers: SKNode {
     var thumb: SKShapeNode
     var number: SKLabelNode
     var changeNumber = OperationButton()
-    var positionButton = CGPoint(x: 300, y: 400)
+    var positionButton = CGPoint(x: 300, y: 900)
     
     init(action: @escaping () -> Void) {
         clickAction = action
