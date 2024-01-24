@@ -66,6 +66,16 @@ class GameScene: SKScene {
         setupArm()
         setupTargets()
         backgroundColor = .white
+        
+        let button = SpriteButtonNumbers {
+            print("botao 1 deu certoo")
+        }
+        let button2 = SpriteButtonOperation {
+            print("botao 2 funciona")
+        }
+        
+        addChild(button)
+        addChild(button2)
     }
     
     // função que faz as bases iniciais do jogo
