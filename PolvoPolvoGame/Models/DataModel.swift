@@ -30,7 +30,9 @@ import SwiftUI
     var balanca_direita_travada: Bool = false
     
     //Valor em que o usuário vai múltiplicar ou dividir e é gerado pelo RemoverNumeros
-    var contador: Int = 0
+//    var contador: Int = 0
+    var numerosBotao: FrutaEnum = .fruta1
+//    var indexNumeros: Int = 1
     
     //Numero de equações feitas na fase
     var contadorEquacoes: Int = 0

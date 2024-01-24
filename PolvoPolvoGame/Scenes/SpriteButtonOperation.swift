@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 // botao de operacao que sera adaptado com o nosso design
-class SpriteButtonOperacao: SKNode {
+class SpriteButtonOperation: SKNode {
     
     var clickAction: () -> Void
     var base: SKShapeNode

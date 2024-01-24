@@ -22,6 +22,7 @@ class SpriteButtonNumbers: SKNode {
         clickAction = action
         
         number = SKLabelNode()
+        // mostra no botao a selectedFruit
         number.text = "\(changeNumber.selectedFruit.valor)"
         number.zPosition = 3
         number.fontColor = .black
