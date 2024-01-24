@@ -8,7 +8,7 @@ import SwiftUI
 import SpriteKit
 
 struct ContentView: View {
-    
+     
   var scene: GameScene {
     let scene: GameScene = GameScene()
     scene.scaleMode = .resizeFill  
@@ -18,7 +18,7 @@ struct ContentView: View {
   var body: some View {   
         
     SpriteView(scene: scene)
-      .ignoresSafeArea()  
+      .ignoresSafeArea()   
   }
 }
 #Preview {
