@@ -23,9 +23,13 @@ class GameScene: SKScene {
     
   override func didMove(to view: SKView) {
       
+      
+      
     setupDragLabelFood()
     setupTargets()
     backgroundColor = .white
+      
+      
       
   }
   //Colocar o texto na tela

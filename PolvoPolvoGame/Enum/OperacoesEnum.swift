@@ -10,4 +10,10 @@ import Foundation
 enum OperacoesEnum {
     case subtracao
     case divisao
+    var name: String {
+        switch self {
+        case .subtracao: "-"
+        case .divisao: ":"
+        }
+    }
 }

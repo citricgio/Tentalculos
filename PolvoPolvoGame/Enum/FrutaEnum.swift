@@ -8,9 +8,21 @@
 import Foundation
 
 //enum que vai falar qual o valor de cada fruta selecionada
-enum FrutaEnum: Int, CaseIterable {
-    case fruta1 = 1
-    case fruta2 = 2
-    case fruta3 = 3
-    case fruta5 = 5
+enum FrutaEnum: CaseIterable {
+    case fruta1
+    case fruta2
+    case fruta3
+    case fruta5
+    
+    var valor: Int {
+        switch self {
+        case .fruta1: 1
+        case .fruta2: 2
+        case .fruta3: 3
+        case .fruta5: 5
+        }
+    }
 }
+
+
+
