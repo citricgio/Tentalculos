@@ -6,20 +6,42 @@
 //
 
 import Foundation
+import SpriteKit
 
 //enum que vai falar qual o valor de cada fruta selecionada
-enum FrutaEnum: CaseIterable {
+enum FrutaEnum {
     case fruta1
     case fruta2
     case fruta3
     case fruta5
+    case incognita
     
     var valor: Int {
         switch self {
+            
         case .fruta1: 1
         case .fruta2: 2
         case .fruta3: 3
         case .fruta5: 5
+        case .incognita: DataModel.shared.valorX
+            
+        }
+    }
+    var nome: String {
+        switch self {
+        case .fruta1:
+            "bushes"
+            
+        case .fruta2:
+            "fish"
+
+        case .fruta3:
+            ""
+
+        case .fruta5:
+            ""
+        case .incognita:
+            "incognita"
         }
     }
 }
