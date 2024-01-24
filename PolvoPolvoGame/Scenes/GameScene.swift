@@ -55,9 +55,19 @@ class GameScene: SKScene {
     
     // variável que indica o ângulo dos braços do polvo
     var angle: CGFloat = 0
-        
+            
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
+  
+        food = .fruta1
+        setupDragLabelFood()
+        
+        food = .fruta2
+        setupDragLabelFood()
+        
+        food = .incognita
+        setupDragLabelFood()
+        
         setupGame()
         setupSpawners()
         setupArm()
@@ -77,6 +87,13 @@ class GameScene: SKScene {
         if DataModel.shared.balanca_direita_travada && DataModel.shared.balanca_esquerda_travada && DataModel.shared.hasX {
             //desespawnar e mostra botao de operacoes
             print("ACERTOUUU")
+            removeChildren(in: [spawner1, spawner2, spawner3])
+            
+            //nao esta funcionando
+//            if (foodNode.name == "food") {
+//                removeChildren(in: [foodNode])
+//            }
+            
         } else {
             print("errouuuuu")
         }
@@ -225,14 +242,19 @@ class GameScene: SKScene {
     func returnToSpawn(){
         switch food {
         case .fruta1:
-            foodNode.position = spawnLocation1
+            //foodNode.position = spawnLocation1
+            removeChildren(in: [foodNode])
         case .fruta2:
-            foodNode.position = spawnLocation2
+            //foodNode.position = spawnLocation2
+            removeChildren(in: [foodNode])
         case .incognita:
-            foodNode.position = spawnLocation3
+            //foodNode.position = spawnLocation3
+            removeChildren(in: [foodNode])
         default:
-            foodNode.position = spawnLocation1
+            removeChildren(in: [foodNode])
+            //foodNode.position = spawnLocation1
         }
+        
     }
     
     // função que é chamada a cada framde do jogo e atualiza a cena
@@ -333,9 +355,7 @@ class GameScene: SKScene {
                     balanca.adicionar_fruta_direita(fruta: food)
                 }
                 
-                else {
-                    returnToSpawn()
-                }
+                
             } else {
                 returnToSpawn()
             }
