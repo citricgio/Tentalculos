@@ -12,8 +12,8 @@ struct ContentView: View {
   var scene: GameScene {
     let scene: GameScene = GameScene()
     scene.scaleMode = .resizeFill  
-    return scene 
-  } 
+    return scene
+  }
    
   var body: some View {   
         
@@ -22,7 +22,7 @@ struct ContentView: View {
   }
 }
 #Preview {
-  ContentView()
+  ContentView() 
 }
 
 

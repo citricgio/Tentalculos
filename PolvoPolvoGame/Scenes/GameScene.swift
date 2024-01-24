@@ -162,24 +162,6 @@ class GameScene: SKScene {
         addChild(spawner3)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let position = touch.location(in: self)
-            if spawner1.frame.contains(touch.previousLocation(in: self)){
-                food = .fruta1
-                setupDragLabelFood()
-            }
-            else if spawner2.frame.contains(touch.previousLocation(in: self)){
-                food = .fruta2
-                setupDragLabelFood()
-            }
-            else if spawner3.frame.contains(touch.previousLocation(in: self)) {
-                food = .incognita
-                setupDragLabelFood()
-            }
-        }
-    }
-    
     func rotate(angleRotation: CGFloat){
         let rotateAction = SKAction.rotate(toAngle: angle, duration: 1, shortestUnitArc: true)
         //let rotateAction = SKAction.rotate(byAngle: angleRotation, duration: 1)
@@ -245,6 +227,23 @@ class GameScene: SKScene {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let position = touch.location(in: self)
+            if spawner1.frame.contains(touch.previousLocation(in: self)){
+                food = .fruta1
+                setupDragLabelFood()
+            }
+            else if spawner2.frame.contains(touch.previousLocation(in: self)){
+                food = .fruta2
+                setupDragLabelFood()
+            }
+            else if spawner3.frame.contains(touch.previousLocation(in: self)) {
+                food = .incognita
+                setupDragLabelFood()
+            }
+        }
+    }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
@@ -258,23 +257,26 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     
         if foodBin.frame.contains(foodNode.position) && food.valor + DataModel.shared.peso_lado_esquerdo <= DataModel.shared.peso {
+            
+            if foodNode.name == "food" || foodNode.name == "incognita" {
                 balanca.adicionar_fruta_esquerda(fruta: food)
-                
                 if !(DataModel.shared.balanca_esquerda_travada){
                     if foodNode.name == "incognita"{
                         hasX = true
                     }
+                    foodNode.name = "foodAdded"
                     isInBin1 = true
                     foodArrayLeft.append(foodNode)
                     foodContLeft += 10
                 } else {
                     returnToSpawn()
                 }
-                
+            }
             } else if foodBin2.frame.contains(foodNode.position) && food.valor + DataModel.shared.peso_lado_direito <= DataModel.shared.peso{
                 if foodNode.name == "food"{
                     balanca.adicionar_fruta_direita(fruta: food)
                     if !(DataModel.shared.balanca_direita_travada){
+                        foodNode.name = "foodAdded"
                         isInBin2 = true
                         foodArrayRight.append(foodNode)
                         foodContRight += 10
