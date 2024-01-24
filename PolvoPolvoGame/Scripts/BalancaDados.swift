@@ -17,22 +17,24 @@ class BalancaDados {
     func adicionar_fruta_direita(fruta: FrutaEnum){
         if !(DataModel.shared.peso_lado_direito == DataModel.shared.peso){
             DataModel.shared.peso_lado_direito += fruta.valor
+            print("peso na direita: \(DataModel.shared.peso_lado_direito)")
         }
         else{
             DataModel.shared.balanca_direita_travada = true
         }
-        print("peso na direita: \(DataModel.shared.peso_lado_direito)")
+        
     }
     
     //função que adiciona as frutas no lado esquerdo da balança e trava quando o valor do lado direito for igual o do peso
     func adicionar_fruta_esquerda(fruta: FrutaEnum){
         if !(DataModel.shared.peso_lado_esquerdo == DataModel.shared.peso){
             DataModel.shared.peso_lado_esquerdo += fruta.valor
+            print("peso na esquerda: \(DataModel.shared.peso_lado_esquerdo)")
         }
         else{
             DataModel.shared.balanca_esquerda_travada = true
         }
-        print("peso na esquerda: \(DataModel.shared.peso_lado_esquerdo)")
+        
     }
     
 }

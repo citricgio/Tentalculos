@@ -55,10 +55,7 @@ class GameScene: SKScene {
     
     // variável que indica o ângulo dos braços do polvo
     var angle: CGFloat = 0
-    
-    // variável que indica se tem X na bandeja ou não
-    var hasX: Bool = false
-    
+        
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
         setupGame()
@@ -67,15 +64,23 @@ class GameScene: SKScene {
         setupTargets()
         backgroundColor = .white
         
-        let button = SpriteButtonNumbers {
-            print("botao 1 deu certoo")
+        let nextButton = NextButton {
+            self.firstCheck()
         }
-        let button2 = SpriteButtonOperation {
-            print("botao 2 funciona")
+        addChild(nextButton)
+    }
+    
+    func firstCheck() {
+        print("balanca esquerda travada: \(DataModel.shared.balanca_esquerda_travada)")
+        print("balanca direita travada: \(DataModel.shared.balanca_direita_travada)")
+        print("tem x: \(DataModel.shared.hasX)")
+        if DataModel.shared.balanca_direita_travada && DataModel.shared.balanca_esquerda_travada && DataModel.shared.hasX {
+            //desespawnar e mostra botao de operacoes
+            print("ACERTOUUU")
+        } else {
+            print("errouuuuu")
         }
         
-        addChild(button)
-        addChild(button2)
     }
     
     // função que faz as bases iniciais do jogo
@@ -290,23 +295,29 @@ class GameScene: SKScene {
     // quando solta uma fruta, e esta estiver dentro de uma bandeja, ela é adicionada no foodArray e, caso seja a bandeja da esquerda, é preciso ter um X adicionado
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if foodTrayLeft.frame.contains(foodNode.position) && food.valor + DataModel.shared.peso_lado_esquerdo <= DataModel.shared.peso { // condição que adiciona uma fruta na bandeja da esquerda desde que ela não seja maior que o valor máximo de cada lado da equação
+        if foodTrayLeft.frame.contains(foodNode.position) && food.valor + DataModel.shared.peso_lado_esquerdo <= DataModel.shared.peso { // condição que adiciona uma fruta na bandeja da esquerda desde que a fruta não seja maior que o valor máximo de cada lado da equação
+            
+
             
             if foodNode.name == "food" || foodNode.name == "incognita" {
                 balanca.adicionar_fruta_esquerda(fruta: food)
                 if !(DataModel.shared.balanca_esquerda_travada){ // se a bandeja não estiver travada, adiciona fruta
                     if foodNode.name == "incognita"{ // condição que verifica que tem incógnita na bandeja da esquerda
-                        hasX = true
+                        DataModel.shared.hasX = true
                     }
+                    foodArrayLeft.append(foodNode)
                     foodNode.name = "foodAdded"
                     isInTrayLeft = true
-                    foodArrayLeft.append(foodNode)
                     foodContLeft += 10
-                } else {
-                    returnToSpawn()
                 }
+                
+                if DataModel.shared.peso_lado_esquerdo == DataModel.shared.peso{
+                    print("travou esquerdaa")
+                    balanca.adicionar_fruta_esquerda(fruta: food)
+                }
+                
             }
-        } else if foodTrayRight.frame.contains(foodNode.position) && food.valor + DataModel.shared.peso_lado_direito <= DataModel.shared.peso{ // condição que adiciona uma fruta na bandeja da direita desde que ela não seja maior que o valor máximo de cada lado da equação
+        } else if foodTrayRight.frame.contains(foodNode.position) && food.valor + DataModel.shared.peso_lado_direito <= DataModel.shared.peso{ // condição que adiciona uma fruta na bandeja da direita desde que a fruta não seja maior que o valor máximo de cada lado da equação
             
             if foodNode.name == "food"{
                 balanca.adicionar_fruta_direita(fruta: food)
@@ -315,7 +326,14 @@ class GameScene: SKScene {
                     isInTrayRight = true
                     foodArrayRight.append(foodNode)
                     foodContRight += 10
-                } else {
+                } 
+                
+                if DataModel.shared.peso_lado_direito == DataModel.shared.peso{
+                    print("travou direita")
+                    balanca.adicionar_fruta_direita(fruta: food)
+                }
+                
+                else {
                     returnToSpawn()
                 }
             } else {

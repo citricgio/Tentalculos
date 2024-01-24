@@ -17,7 +17,7 @@ class SpriteButtonOperation: SKNode {
     var thumb: SKShapeNode
     var number: SKLabelNode
     var changeOperation = OperationButton()
-    var positionButton = CGPoint(x: 150, y: 900)
+    var positionButton = CGPoint(x: 150, y: 800)
 
     
     init(action: @escaping () -> Void) {

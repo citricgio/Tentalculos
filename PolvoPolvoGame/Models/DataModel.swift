@@ -29,6 +29,9 @@ import SwiftUI
     var balanca_esquerda_travada: Bool = false
     var balanca_direita_travada: Bool = false
     
+    // variável que indica se tem X na bandeja ou não
+    var hasX: Bool = false
+    
     //Valor em que o usuário vai múltiplicar ou dividir e é gerado pelo RemoverNumeros
 //    var contador: Int = 0
     var numerosBotao: FrutaEnum = .fruta1
