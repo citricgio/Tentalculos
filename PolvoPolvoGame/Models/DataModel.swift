@@ -22,6 +22,8 @@ import SwiftUI
     //variáveis contam as frutas de cada lado quando o usuário estiver montando a balança
     var peso_lado_esquerdo: Int = 0
     var peso_lado_direito: Int = 0
+    //String que contém a equação
+    var textoEquacao: String = "" 
     
     //Booleanos usados pela balancaDados para travar a equação
     var balanca_esquerda_travada: Bool = false
