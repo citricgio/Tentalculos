@@ -5,6 +5,7 @@
 //
 import Foundation
 import SpriteKit
+import SwiftUI
 
 class GameScene: SKScene {
     
@@ -33,8 +34,8 @@ class GameScene: SKScene {
     let foodTrayRight = SKSpriteNode()
     
     // variáveis que armazenam o local da posição da bandeja de quando rotaciona o braço do polvo
-    var trayPositionUpY: CGFloat = 500
-    var trayPositionDownY: CGFloat = 300
+    var trayPositionUpY: CGFloat = 535
+    var trayPositionDownY: CGFloat = 395
     
     // variáveis que indicam se tem comida na bandeja ou não
     var isInTrayLeft: Bool = false
@@ -42,6 +43,8 @@ class GameScene: SKScene {
     
     // braço do polvo
     let octopusArm = SKSpriteNode()
+    
+    let octopusBody = SKSpriteNode()
     
     // spawners da onde saem as comidas
     let spawner1 = SKSpriteNode()
@@ -53,50 +56,67 @@ class GameScene: SKScene {
     var spawnLocation2 = CGPoint(x:340, y: 100)
     var spawnLocation3 = CGPoint(x:200, y: 100)
     
+    var foodRemovedArray: [SKSpriteNode] = []
+    
     // variável que indica o ângulo dos braços do polvo
     var angle: CGFloat = 0
-            
+    
+    var isCorrect: Bool = false
+    
+    var nextButton: NextButton = NextButton(action: {}, textLabel: "lalaal")
+    
+    var isButtonAdded: Bool = false
+    
+    var background = SKSpriteNode(imageNamed: "background")
+                
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
   
         food = .fruta1
-        setupDragLabelFood()
+        let food1 = setupDragLabelFood()
+        foodRemovedArray.append(food1)
         
         food = .fruta2
-        setupDragLabelFood()
+        let food2 = setupDragLabelFood()
+        foodRemovedArray.append(food2)
         
         food = .incognita
-        setupDragLabelFood()
+        let food3 = setupDragLabelFood()
+        foodRemovedArray.append(food3)
         
         setupGame()
         setupSpawners()
         setupArm()
         setupTargets()
-        backgroundColor = .white
         
-        let nextButton = NextButton {
-            self.firstCheck()
-        }
+        nextButton = NextButton(action: isCorrect ? finalizeCheck : firstCheck, textLabel: isCorrect ? "Finalizar" : "Próximo")
         addChild(nextButton)
+//        isButtonAdded = true
+        background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
+        addChild(background)
+        //backgroundColor = .white
+        
     }
     
     func firstCheck() {
-        print("balanca esquerda travada: \(DataModel.shared.balanca_esquerda_travada)")
-        print("balanca direita travada: \(DataModel.shared.balanca_direita_travada)")
-        print("tem x: \(DataModel.shared.hasX)")
+//        print("balanca esquerda travada: \(DataModel.shared.balanca_esquerda_travada)")
+//        print("balanca direita travada: \(DataModel.shared.balanca_direita_travada)")
+//        print("tem x: \(DataModel.shared.hasX)")
         if DataModel.shared.balanca_direita_travada && DataModel.shared.balanca_esquerda_travada && DataModel.shared.hasX {
             //desespawnar e mostra botao de operacoes
             print("ACERTOUUU")
+            isCorrect = true
+            nextButton.text.text = "Finalizar"
             removeChildren(in: [spawner1, spawner2, spawner3])
-            
-            //nao esta funcionando
-//            if (foodNode.name == "food") {
-//                removeChildren(in: [foodNode])
-//            }
+            removeChildren(in: foodRemovedArray)
             
         } else {
             print("errouuuuu")
         }
+        
+    }
+    
+    func finalizeCheck(){
         
     }
     
@@ -108,19 +128,19 @@ class GameScene: SKScene {
     // função que calcula o ângulo de rotação do braço do polvo (vai de -45º até 45º)
     func calculateAngle() {
         if DataModel.shared.peso_lado_esquerdo < DataModel.shared.peso_lado_direito{
-            angle = -(.pi / 4)
+            angle = -(.pi / 6)
             
         } else if DataModel.shared.peso_lado_esquerdo == DataModel.shared.peso_lado_direito {
             angle = 0
             
         } else {
-            angle = .pi / 4
+            angle = .pi / 6
         }
     }
     
     
     //Colocar a comida na tela
-    func setupDragLabelFood() {
+    func setupDragLabelFood() -> SKSpriteNode {
         
         // comida aparece na tela inicialmente no spawnLocation, por isso, booleanas são false
         isInTrayLeft = false
@@ -134,52 +154,65 @@ class GameScene: SKScene {
             foodNode.zPosition = 20
             foodNode.position = spawnLocation1
             addChild(foodNode)
+            return foodNode
         case .fruta2:
             foodNode = SKSpriteNode(imageNamed: food.nome)
             foodNode.name = "food"
             foodNode.zPosition = 20
             foodNode.position = spawnLocation2
             addChild(foodNode)
+            return foodNode
         case .fruta3:
             foodNode = SKSpriteNode(imageNamed: food.nome)
             foodNode.name = "food"
             foodNode.zPosition = 20
             addChild(foodNode)
+            return foodNode
         case .fruta5:
             foodNode = SKSpriteNode(imageNamed: food.nome)
             foodNode.zPosition = 20
             addChild(foodNode)
+            return foodNode
         case .incognita:
             foodNode = SKSpriteNode(imageNamed: food.nome)
             foodNode.name = "incognita"
             foodNode.zPosition = 20
             foodNode.position = spawnLocation3
             addChild(foodNode)
+            return foodNode
         }
     }
     
     // função que coloca o braço do polvo na tela
     func setupArm(){
-        octopusArm.color = SKColor.black
-        octopusArm.size = CGSize(width: 400, height: 200)
-        octopusArm.position = CGPoint(x: 200 , y: 400)
+        octopusArm.texture = SKTexture(imageNamed: "octopus-arm")
+        octopusArm.size = CGSize(width: 338, height: 80)
+        octopusArm.position = CGPoint(x: frame.size.width / 2, y: 415)
         octopusArm.zPosition = 5
         
+        octopusBody.texture = SKTexture(imageNamed: "octopus-body")
+        octopusBody.size = CGSize(width: 160, height: 259)
+        octopusBody.position = CGPoint(x: frame.size.width / 2, y: 385 )
+        octopusBody.zPosition = 7
+        
         addChild(octopusArm)
+        
+        addChild(octopusBody)
     }
     
     // função que coloca as bandejas na tela
     func setupTargets(){
-        foodTrayLeft.color = SKColor.yellow
-        foodTrayLeft.size = CGSize(width: 200, height: 200)
-        foodTrayLeft.position.y = octopusArm.position.y + 100
+//        foodTrayLeft.color = SKColor.yellow
+        foodTrayLeft.size = CGSize(width: 145, height: 30)
+        foodTrayLeft.texture = SKTexture(imageNamed: "tray")
+        foodTrayLeft.position.y = octopusArm.position.y + 50
         foodTrayLeft.position.x = 80
         foodTrayLeft.zPosition = 10
         
-        foodTrayRight.color = SKColor.yellow
-        foodTrayRight.size = CGSize(width: 200, height: 200)
+        foodTrayRight.size = CGSize(width: 145, height: 30)
+        foodTrayRight.texture = SKTexture(imageNamed: "tray")
         foodTrayRight.position = CGPoint(x: 340, y: 200)
-        foodTrayRight.position.y = octopusArm.position.y + 100
+        foodTrayRight.position.y = octopusArm.position.y + 50
         foodTrayRight.zPosition = 10
         
         addChild(foodTrayLeft)
@@ -263,27 +296,29 @@ class GameScene: SKScene {
         
         // Se a comida entrar na bandeja, a posição da comida vai ser atualizada, as comidas são posicionadas lado a lado quando adicionadas mais de uma
         if isInTrayLeft {
-            foodNode.position.x = (foodTrayLeft.position.x - 50) + foodContLeft
+            foodNode.position.x = (foodTrayLeft.position.x - 60) + foodContLeft
             rotate(angleRotation: angle)
             
         } else if isInTrayRight {
-            foodNode.position.x = (foodTrayRight.position.x - 50) + foodContRight
+            foodNode.position.x = (foodTrayRight.position.x - 60) + foodContRight
             rotate(angleRotation: angle)
         }
         
         // atualiza a posição da comida de acordo com a posição da bandeja
         for food in foodArrayLeft {
-            food.position.y = foodTrayLeft.position.y
+            food.position.y = foodTrayLeft.position.y + 20
         }
         for food in foodArrayRight {
-            food.position.y = foodTrayRight.position.y
+            food.position.y = foodTrayRight.position.y + 20
         }
         
-        // TODO: spawnar botao de proximo
-        // quando ambas as balanças estão travadas, aparece o botão de próximo
-        if DataModel.shared.balanca_direita_travada && DataModel.shared.balanca_esquerda_travada {
-            //funcao spawnar botao de proximo
-        }
+//        nextButton = NextButton(action: isCorrect ? finalizeCheck : firstCheck, textLabel: isCorrect ? "Finalizar" : "Próximo")
+//        
+//        if !(isButtonAdded){
+//            addChild(nextButton)
+//            isButtonAdded = true
+//        }
+        
     }
     
     // quando ocorre o toque, spawna uma fruta e coloca ela na tela
@@ -330,7 +365,7 @@ class GameScene: SKScene {
                     foodArrayLeft.append(foodNode)
                     foodNode.name = "foodAdded"
                     isInTrayLeft = true
-                    foodContLeft += 10
+                    foodContLeft += 15
                 }
                 
                 if DataModel.shared.peso_lado_esquerdo == DataModel.shared.peso{
@@ -347,8 +382,8 @@ class GameScene: SKScene {
                     foodNode.name = "foodAdded"
                     isInTrayRight = true
                     foodArrayRight.append(foodNode)
-                    foodContRight += 10
-                } 
+                    foodContRight += 15
+                }
                 
                 if DataModel.shared.peso_lado_direito == DataModel.shared.peso{
                     print("travou direita")

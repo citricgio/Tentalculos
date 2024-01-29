@@ -30,16 +30,16 @@ enum FrutaEnum: CaseIterable {
     var nome: String {
         switch self {
         case .fruta1:
-            "bushes"
+            "fruit1"
             
         case .fruta2:
-            "fish"
+            "fruit2"
 
         case .fruta3:
-            ""
+            "fruit3"
 
         case .fruta5:
-            ""
+            "fruit5"
         case .incognita:
             "incognita"
         }

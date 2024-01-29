@@ -14,13 +14,15 @@ class NextButton: SKNode {
     var base: SKShapeNode
     var thumb: SKShapeNode
     var text: SKLabelNode
+    var textLabel: String
     var positionButton = CGPoint(x: 230, y: 250)
     
-    init(action: @escaping () -> Void) {
+    init(action: @escaping () -> Void, textLabel: String) {
         clickAction = action
         
         text = SKLabelNode()
-        text.text = "Próximo"
+        self.textLabel = textLabel
+        text.text = textLabel
         text.zPosition = 3
         text.fontColor = .black
         text.position = positionButton
@@ -64,5 +66,11 @@ class NextButton: SKNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func remove(){
+        base.removeAllChildren()
+        thumb.removeAllChildren()
+        text.removeAllChildren()
     }
 }
