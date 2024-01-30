@@ -9,69 +9,68 @@ import SwiftUI
 
 struct MenuView: View {
     var body: some View {
-        VStack{
+        NavigationStack {
+            VStack{
             
-            HStack{
-                Spacer()
+                Text("Nome do Jogo")
+                    .font(Font.custom("Istok Web", size: 50))
+                    .bold()
+                Text("Sua Melhor Pontuação")
+                    .font(Font.custom("Istok Web", size: 23))
+                    .bold()
+                Text("\(DataModel.shared.contadorEquacoes)")
+                    .font(Font.custom("Istok Web", size: 36))
+                
+                Image("Polvo")
+                
                 Button {
-                    print("menu")
-                    DataModel.shared.soundIsOn.toggle()
+                    print("Indo pro Jogo")
+                    
                 } label: {
-                    if DataModel.shared.soundIsOn{
-                        Image("SoundButton")
+                    ZStack{
+                        Image("ButtonMenu")
+                        Text("Jogar")
+                            .font(Font.custom("Istok Web", size: 27))
+                            .bold()
                     }
-                    else {
-                        Image("SoundOffButton")
+                }
+                .padding(.all, 0)
+                
+                Button {
+                    print("Indo por Tutorial")
+                    
+                } label: {
+                    ZStack{
+                        Image("ButtonMenu")
+                        Text("Tutorial")
+                            .font(Font.custom("Istok Web", size: 27))
+                            .bold()
                     }
                 }
-                .padding(.trailing, 20)
-                .padding(.vertical, 0)
-            }
-            .padding(.vertical,0)
-            
-            Text("Nome do Jogo")
-                .font(Font.custom("Istok Web", size: 50))
-                .bold()
-            Text("Sua Melhor Pontuação")
-                .font(Font.custom("Istok Web", size: 23))
-                .bold()
-            Text("\(DataModel.shared.contadorEquacoes)")
-                .font(Font.custom("Istok Web", size: 36))
-            
-            Image("Polvo")
-            
-            Button {
-                print("Indo pro Jogo")
+                .padding(.all, 0)
                 
-            } label: {
-                ZStack{
-                    Image("ButtonMenu")
-                    Text("Jogar")
-                        .font(Font.custom("Istok Web", size: 27))
-                        .bold()
+            }
+            .background(
+                Image("Back")
+                    .ignoresSafeArea()
+            )
+            .foregroundStyle(Color(.white))
+            .toolbar {
+                ToolbarItem (placement: .automatic) {
+                    Button {
+                        print("menu")
+                        DataModel.shared.soundIsOn.toggle()
+                    } label: {
+                        if DataModel.shared.soundIsOn{
+                            Image("SoundButton")
+                        }
+                        else {
+                            Image("SoundOffButton")
+                        }
+                    }
                 }
             }
-            .padding(.all, 0)
-            
-            Button {
-                print("Indo por Tutorial")
-                
-            } label: {
-                ZStack{
-                    Image("ButtonMenu")
-                    Text("Tutorial")
-                        .font(Font.custom("Istok Web", size: 27))
-                        .bold()
-                }
-            }
-            .padding(.all, 0)
-            
         }
-        .background(
-            Image("Back")
-                .ignoresSafeArea()
-        )
-        .foregroundStyle(Color(.white))
     }
 }
 
