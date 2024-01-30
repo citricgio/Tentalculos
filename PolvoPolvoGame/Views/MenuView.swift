@@ -60,8 +60,13 @@ struct MenuView: View {
             .toolbar {
                 ToolbarItem (placement: .automatic) {
                     Button {
-                        print("menu")
                         DataModel.shared.soundIsOn.toggle()
+                        if DataModel.shared.soundIsOn{
+                            print("Som ligado")
+                        }
+                        else {
+                            print("Som desligado")
+                        }
                     } label: {
                         if DataModel.shared.soundIsOn{
                             Image("SoundButton")
