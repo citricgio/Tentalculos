@@ -77,20 +77,9 @@ struct EndView: View {
             .toolbar {
                 ToolbarItem (placement: .automatic) {
                     Button {
-                        DataModel.shared.soundIsOn.toggle()
-                        if DataModel.shared.soundIsOn{
-                            print("Som ligado")
-                        }
-                        else {
-                            print("Som desligado")
-                        }
+                        print("Ajustes")
                     } label: {
-                        if DataModel.shared.soundIsOn{
-                            Image("SoundButton")
-                        }
-                        else {
-                            Image("SoundOffButton")
-                        }
+                        Image("Ajustes")
                     }
                 }
             }
