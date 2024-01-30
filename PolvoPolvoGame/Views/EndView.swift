@@ -2,7 +2,46 @@
 //  EndView.swift
 //  PolvoPolvoGame
 //
-//  Created by Gabriel Sabaini on 30/01/24.
+//  Created by Gabriel Sabaini on 29/01/24.
 //
 
-import Foundation
+import SwiftUI
+
+struct EndView: View {
+    var body: some View {
+        VStack{
+            HStack{
+                Spacer()
+                Button {
+                    print("menu")
+                } label: {
+                    Image("SoundButton")
+                        .padding(.trailing, 20)
+                        .padding(.vertical, 0)
+                }
+            }.padding(.vertical,0)
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            HStack{
+                
+            }
+            ZStack{
+                
+            }
+            Button {
+                
+            } label: {
+                ZStack{
+                    Text("reiniciar")
+                }
+            }
+        }.background(
+            Image("Back")
+                .ignoresSafeArea()
+        )
+        .foregroundStyle(Color(.white))
+    }
+}
+
+#Preview {
+    EndView()
+}
