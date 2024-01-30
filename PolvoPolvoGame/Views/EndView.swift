@@ -26,6 +26,8 @@ struct EndView: View {
                 }
                 ZStack{
                     Image("SquareBox")
+                        .frame(width: 360.98, height: 355.94)
+
                     VStack {
                         Text("Pontuação")
                             .font(Font.custom("Istok Web", size: 23))
@@ -40,7 +42,6 @@ struct EndView: View {
                     }
                 }
                 
-                //TODO: Arrumar o tamanho do botão
                 Button {
                     
                     print("Reiniciando")
@@ -52,10 +53,12 @@ struct EndView: View {
                             .font(Font.custom("Istok Web", size: 27))
                             .bold()
                     }
+                    
+                    .frame(width: 170, height: 55)
                 }
+
                 .padding(.all, 0)
                 
-                //TODO: Arrumar o tamanho do botão
                 Button {
                     print("Indo para o Menu")
                     
@@ -66,6 +69,7 @@ struct EndView: View {
                             .font(Font.custom("Istok Web", size: 27))
                             .bold()
                     }
+                    .frame(width: 170, height: 55)
                 }
                 .padding(.all, 0)
             }

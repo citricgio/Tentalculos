@@ -23,7 +23,6 @@ struct MenuView: View {
                 
                 Image("Polvo")
                 
-                //TODO: Arrumar o tamanho do botão
                 Button {
                     print("Indo pro Jogo")
                     
@@ -34,10 +33,10 @@ struct MenuView: View {
                             .font(Font.custom("Istok Web", size: 27))
                             .bold()
                     }
+                    .frame(width: 170, height: 55)
                 }
                 .padding(.all, 0)
                 
-                //TODO: Arrumar o tamanho do botão
                 Button {
                     print("Indo por Tutorial")
                     
@@ -48,6 +47,7 @@ struct MenuView: View {
                             .font(Font.custom("Istok Web", size: 27))
                             .bold()
                     }
+                    .frame(width: 170, height: 55)
                 }
                 .padding(.all, 0)
                 
