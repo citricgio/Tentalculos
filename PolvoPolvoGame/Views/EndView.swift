@@ -20,7 +20,10 @@ struct EndView: View {
                         .padding(.vertical, 0)
                 }
             }.padding(.vertical,0)
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            
+            Text("Ops!")
+            Text("você deixou os pratos cairem.")
+            
             HStack{
                 
             }
@@ -34,7 +37,8 @@ struct EndView: View {
                     Text("reiniciar")
                 }
             }
-        }.background(
+        }
+        .background(
             Image("Back")
                 .ignoresSafeArea()
         )

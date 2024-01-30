@@ -19,6 +19,8 @@
 		8FED6B4C2B55BAF100F92D4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FED6B4B2B55BAF100F92D4F /* ContentView.swift */; };
 		8FED6B4E2B55BAF200F92D4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FED6B4D2B55BAF200F92D4F /* Assets.xcassets */; };
 		8FED6B512B55BAF200F92D4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FED6B502B55BAF200F92D4F /* Preview Assets.xcassets */; };
+		B494608D2B697497004CB1FD /* IstokWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B494608B2B697497004CB1FD /* IstokWeb-Bold.ttf */; };
+		B494608E2B697497004CB1FD /* IstokWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B494608C2B697497004CB1FD /* IstokWeb-Regular.ttf */; };
 		B49DE6962B696665004A795D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49DE6952B696665004A795D /* MenuView.swift */; };
 		B49DE6982B69666E004A795D /* EndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49DE6972B69666E004A795D /* EndView.swift */; };
 		FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */; };
@@ -39,6 +41,9 @@
 		8FED6B4B2B55BAF100F92D4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8FED6B4D2B55BAF200F92D4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8FED6B502B55BAF200F92D4F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B49460892B6973B1004CB1FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B494608B2B697497004CB1FD /* IstokWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Bold.ttf"; sourceTree = "<group>"; };
+		B494608C2B697497004CB1FD /* IstokWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Regular.ttf"; sourceTree = "<group>"; };
 		B49DE6952B696665004A795D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		B49DE6972B69666E004A795D /* EndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndView.swift; sourceTree = "<group>"; };
 		FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonOperation.swift; sourceTree = "<group>"; };
@@ -95,6 +100,8 @@
 		8FED6B482B55BAF100F92D4F /* PolvoPolvoGame */ = {
 			isa = PBXGroup;
 			children = (
+				B494608A2B69745C004CB1FD /* Resources */,
+				B49460892B6973B1004CB1FD /* Info.plist */,
 				8FED6B492B55BAF100F92D4F /* PolvoPolvoGameApp.swift */,
 				8F040E382B58504700AB8BBB /* Scripts */,
 				8F040E332B584F8F00AB8BBB /* Enum */,
@@ -141,6 +148,15 @@
 				8F040E472B58718000AB8BBB /* DataModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B494608A2B69745C004CB1FD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B494608B2B697497004CB1FD /* IstokWeb-Bold.ttf */,
+				B494608C2B697497004CB1FD /* IstokWeb-Regular.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +218,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FED6B512B55BAF200F92D4F /* Preview Assets.xcassets in Resources */,
+				B494608D2B697497004CB1FD /* IstokWeb-Bold.ttf in Resources */,
 				8FED6B4E2B55BAF200F92D4F /* Assets.xcassets in Resources */,
+				B494608E2B697497004CB1FD /* IstokWeb-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +381,7 @@
 				DEVELOPMENT_TEAM = 7FZ4ZHZT5J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -392,6 +411,7 @@
 				DEVELOPMENT_TEAM = 7FZ4ZHZT5J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
