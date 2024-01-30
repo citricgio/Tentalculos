@@ -23,6 +23,7 @@ struct MenuView: View {
                 
                 Image("Polvo")
                 
+                //TODO: Arrumar o tamanho do botão
                 Button {
                     print("Indo pro Jogo")
                     
@@ -36,6 +37,7 @@ struct MenuView: View {
                 }
                 .padding(.all, 0)
                 
+                //TODO: Arrumar o tamanho do botão
                 Button {
                     print("Indo por Tutorial")
                     
