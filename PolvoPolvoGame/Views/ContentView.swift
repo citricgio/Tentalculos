@@ -15,11 +15,12 @@ struct ContentView: View {
     return scene
   }
    
-  var body: some View {   
-        
-    SpriteView(scene: scene)
-      .ignoresSafeArea()   
-  }
+    var body: some View {   
+        NavigationView {
+            SpriteView(scene: scene)
+                .ignoresSafeArea()   
+        }
+    }
 }
 #Preview {
   ContentView() 

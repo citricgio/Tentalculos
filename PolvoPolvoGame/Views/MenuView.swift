@@ -25,7 +25,7 @@ struct MenuView: View {
                 
                 Button {
                     print("Indo pro Jogo")
-                    
+                
                 } label: {
                     ZStack{
                         Image("ButtonMenu")
