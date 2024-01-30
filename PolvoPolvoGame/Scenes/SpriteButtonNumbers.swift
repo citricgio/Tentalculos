@@ -41,9 +41,6 @@ class SpriteButtonNumbers: SKNode {
         thumb.zPosition = 2
         thumb.position = positionButton
 
-        
-        
-        
         super.init()
         
         addChild(base)

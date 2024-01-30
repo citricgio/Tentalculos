@@ -40,6 +40,7 @@ enum FrutaEnum: CaseIterable {
 
         case .fruta5:
             "fruit5"
+            
         case .incognita:
             "incognita"
         }
