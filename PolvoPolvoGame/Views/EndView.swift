@@ -77,11 +77,21 @@ struct EndView: View {
             .toolbar {
                 ToolbarItem (placement: .automatic) {
                     Button {
-                        print("Ajustes")
+                        DataModel.shared.soundIsOn.toggle()
+                        if DataModel.shared.soundIsOn{
+                            print("Som ligado")
+                        }
+                        else {
+                            print("Som desligado")
+                        }
                     } label: {
-                        Image("Ajustes")
-                    }
-                }
+                        if DataModel.shared.soundIsOn{
+                            Image("SoundButton")
+                        }
+                        else {
+                            Image("SoundOffButton")
+                        }
+                    }                }
             }
         }
     }
