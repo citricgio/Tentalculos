@@ -10,7 +10,7 @@ import SwiftUI
 class GameScene: SKScene {
     
     // instância do enum, para pegar a imagem e o valor de cada fruta
-    var food: FrutaEnum = .fruta1
+    var food: FrutaNode = FrutaNode(fruta: .fruta1)
     
     // instância de GeradorPesos para gerar uma equacão aleatória
     var gerador: GeradorPesos = GeradorPesos()
@@ -19,7 +19,7 @@ class GameScene: SKScene {
     var balanca: BalancaDados = BalancaDados()
     
     // instância de comida
-    var foodNode = SKSpriteNode()
+    //var foodNode = SKSpriteNode()
     
     // arrays que armazenam a quantidade de comida em cada bandeja
     var foodArrayLeft: [SKSpriteNode] = []
@@ -58,22 +58,26 @@ class GameScene: SKScene {
 
     
     // localização dos spawners
-    var spawnLocationIncognita = CGPoint(x:220, y: 100)
-    var spawnLocation1 = CGPoint(x:180, y: 100)
-    var spawnLocation2 = CGPoint(x:140, y: 100)
-    var spawnLocation3 = CGPoint(x:100, y: 100)
-    var spawnLocation5 = CGPoint(x:60, y: 100)
+    var spawnLocationIncognita = CGPoint(x:380, y: 260)
+    var spawnLocation1 = CGPoint(x:300, y: 260)
+    var spawnLocation2 = CGPoint(x:220, y: 260)
+    var spawnLocation3 = CGPoint(x:140, y: 260)
+    var spawnLocation5 = CGPoint(x:60, y: 260)
     
     var foodRemovedArray: [SKSpriteNode] = []
+    
+    var frutas: [FrutaNode] = []
     
     // variável que indica o ângulo dos braços do polvo
     var angle: CGFloat = 0
     
     var isCorrect: Bool = false
     
-    var nextButton: NextButton = NextButton(action: {}, textLabel: "lalaal")
+    var nextButton: NextButton = NextButton(action: {}, textLabel: "Próximo")
     
     var operationButton: SpriteButtonOperation = SpriteButtonOperation(action: {})
+    
+    var irButton: SpriteButtonReduce = SpriteButtonReduce(action: {}, textLabel: "Ir")
     
     var isButtonAdded: Bool = false
     
@@ -84,25 +88,20 @@ class GameScene: SKScene {
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
         
-        food = .fruta1
-        let food1 = setupDragLabelFood()
-        foodRemovedArray.append(food1)
+        let food1 = setupDragLabelFood(fruta: .fruta1)
+        foodRemovedArray.append(food1.node)
         
-        food = .fruta2
-        let food2 = setupDragLabelFood()
-        foodRemovedArray.append(food2)
+        let food2 = setupDragLabelFood(fruta: .fruta2)
+        foodRemovedArray.append(food2.node)
         
-        food = .fruta3
-        let food3 = setupDragLabelFood()
-        foodRemovedArray.append(food3)
+        let food3 = setupDragLabelFood(fruta: .fruta3)
+        foodRemovedArray.append(food3.node)
         
-        food = .fruta5
-        let food5 = setupDragLabelFood()
-        foodRemovedArray.append(food5)
+        let food5 = setupDragLabelFood(fruta: .fruta5)
+        foodRemovedArray.append(food5.node)
         
-        food = .incognita
-        let incognita = setupDragLabelFood()
-        foodRemovedArray.append(incognita)
+        let incognita = setupDragLabelFood(fruta: .incognita)
+        foodRemovedArray.append(incognita.node)
         
         setupGame()
         setupSpawners()
@@ -111,6 +110,7 @@ class GameScene: SKScene {
         
         nextButton = NextButton(action: isCorrect ? finalizeCheck : firstCheck, textLabel: isCorrect ? "Finalizar" : "Próximo")
         addChild(nextButton)
+        
         background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
         addChild(background)
         
@@ -120,16 +120,24 @@ class GameScene: SKScene {
         let operationNumbersButton = SpriteButtonNumbers(){
             print("ola")
         }
-        
-//        operationNumbersButton.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 3)
-//        operationNumbersButton.zPosition = 20
-//        
-//        operationButton.position = CGPoint(x: frame.size.width / 4 , y: frame.size.height / 3)
-//        operationButton.zPosition = 20
-        
         addChild(operationNumbersButton)
-//        addChild(operationButton)
+        
+        irButton = SpriteButtonReduce(action: reduceFood, textLabel: "Ir")
+        addChild(irButton)
+    
+        operationButton = SpriteButtonOperation() {
+            print("cliquei")
+        }
+        addChild(operationButton)
+        
     }
+    
+    func reduceFood() {
+        if operationButton.changeOperation.selectedOperation == .subtracao {
+            
+        }
+    }
+    
     
     func firstCheck() {
         if DataModel.shared.balanca_direita_travada && DataModel.shared.balanca_esquerda_travada && DataModel.shared.hasX {
@@ -148,7 +156,8 @@ class GameScene: SKScene {
     }
     
     func finalizeCheck(){
-        
+        //vitoria ou derrota
+        print("Vitoria")
     }
     
     // função que faz as bases iniciais do jogo
@@ -171,51 +180,117 @@ class GameScene: SKScene {
     
     
     //Colocar a comida na tela
-    func setupDragLabelFood() -> SKSpriteNode {
+    func setupDragLabelFood(fruta: FrutaEnum) -> FrutaNode{
         
         // comida aparece na tela inicialmente no spawnLocation, por isso, booleanas são false
         isInTrayLeft = false
         isInTrayRight = false
         
         // para cada fruta, pega o peso, o nome da imagem e coloca no spawnLocation respectivo
-        switch food {
+        
+        
+        switch fruta {
         case .fruta1:
-            foodNode = SKSpriteNode(imageNamed: food.nome)
-            foodNode.name = "food"
-            foodNode.zPosition = 20
-            foodNode.position = spawnLocation1
-            addChild(foodNode)
-            return foodNode
+            let frutaNode = FrutaEnum.fruta1.toNode()
+            frutaNode.node.name = "food"
+            frutaNode.node.zPosition = 20
+            frutaNode.node.position = spawnLocation1
+            frutas.append(frutaNode)
+            addChild(frutaNode.node)
+            return frutaNode
         case .fruta2:
-            foodNode = SKSpriteNode(imageNamed: food.nome)
-            foodNode.name = "food"
-            foodNode.zPosition = 20
-            foodNode.position = spawnLocation2
-            addChild(foodNode)
-            return foodNode
+            let frutaNode = FrutaEnum.fruta2.toNode()
+            frutaNode.node.name = "food"
+            frutaNode.node.zPosition = 20
+            frutaNode.node.position = spawnLocation2
+            frutas.append(frutaNode)
+            addChild(frutaNode.node)
+            return frutaNode
         case .fruta3:
-            foodNode = SKSpriteNode(imageNamed: food.nome)
-            foodNode.name = "food"
-            foodNode.zPosition = 20
-            foodNode.position = spawnLocation3
-            addChild(foodNode)
-            return foodNode
+            let frutaNode = FrutaEnum.fruta3.toNode()
+            frutaNode.node.name = "food"
+            frutaNode.node.zPosition = 20
+            frutaNode.node.position = spawnLocation3
+            frutas.append(frutaNode)
+            addChild(frutaNode.node)
+            return frutaNode
         case .fruta5:
-            foodNode = SKSpriteNode(imageNamed: food.nome)
-            foodNode.name = "food"
-            foodNode.zPosition = 20
-            foodNode.position = spawnLocation5
-            addChild(foodNode)
-            return foodNode
+            let frutaNode = FrutaEnum.fruta5.toNode()
+            frutaNode.node.name = "food"
+            frutaNode.node.zPosition = 20
+            frutaNode.node.position = spawnLocation5
+            frutas.append(frutaNode)
+            addChild(frutaNode.node)
+            return frutaNode
         case .incognita:
-            foodNode = SKSpriteNode(imageNamed: food.nome)
-            foodNode.name = "incognita"
-            foodNode.zPosition = 20
-            foodNode.position = spawnLocationIncognita
-            addChild(foodNode)
-            return foodNode
+            let frutaNode = FrutaEnum.incognita.toNode()
+            frutaNode.node.name = "incognita"
+            frutaNode.node.zPosition = 20
+            frutaNode.node.position = spawnLocationIncognita
+            frutas.append(frutaNode)
+            addChild(frutaNode.node)
+            return frutaNode
+        default:
+            let frutaNode = FrutaEnum.fruta1.toNode()
+            frutaNode.node.name = "food"
+            frutaNode.node.zPosition = 20
+            frutaNode.node.position = spawnLocation1
+            frutas.append(frutaNode)
+            addChild(frutaNode.node)
+            return frutaNode
         }
+        
+    
+        
+//        switch food {
+//        case .fruta1:
+//            foodNode = SKSpriteNode(imageNamed: food.nome)
+//            foodNode.name = "food"
+//            foodNode.zPosition = 20
+//            foodNode.position = spawnLocation1
+//            addChild(foodNode)
+//            return foodNode
+//        case .fruta2:
+//            foodNode = SKSpriteNode(imageNamed: food.nome)
+//            foodNode.name = "food"
+//            foodNode.zPosition = 20
+//            foodNode.position = spawnLocation2
+//            addChild(foodNode)
+//            return foodNode
+//        case .fruta3:
+//            foodNode = SKSpriteNode(imageNamed: food.nome)
+//            foodNode.name = "food"
+//            foodNode.zPosition = 20
+//            foodNode.position = spawnLocation3
+//            addChild(foodNode)
+//            return foodNode
+//        case .fruta5:
+//            foodNode = SKSpriteNode(imageNamed: food.nome)
+//            foodNode.name = "food"
+//            foodNode.zPosition = 20
+//            foodNode.position = spawnLocation5
+//            addChild(foodNode)
+//            return foodNode
+//        case .incognita:
+//            foodNode = SKSpriteNode(imageNamed: food.nome)
+//            foodNode.name = "incognita"
+//            foodNode.zPosition = 20
+//            foodNode.position = spawnLocationIncognita
+//            addChild(foodNode)
+//            return foodNode
+//        }
     }
+    
+//    func findFruit(fruta: FrutaEnum) -> SKSpriteNode{
+        
+//        var node: SKSpriteNode
+//        for (index, frutaNode) in frutas.enumerated() {
+//            if fruta == frutaNode.fruta {
+//                node = frutas[index].node
+//            }
+//        }
+//        return node
+//    }
     
     // função que coloca o braço do polvo na tela
     func setupArm(){
@@ -353,17 +428,19 @@ class GameScene: SKScene {
     
     //função que retorna a fruta para o local de spawn
     func returnToSpawn(){
-        switch food {
+        switch food.fruta {
         case .fruta1:
-            removeChildren(in: [foodNode])
+            removeChildren(in: [food.node])
         case .fruta2:
-            removeChildren(in: [foodNode])
+            removeChildren(in: [food.node])
         case .fruta3:
-            removeChildren(in: [foodNode])
+            removeChildren(in: [food.node])
         case .fruta5:
-            removeChildren(in: [foodNode])
+            removeChildren(in: [food.node])
         case .incognita:
-            removeChildren(in: [foodNode])
+            removeChildren(in: [food.node])
+        default:
+            removeChildren(in: [food.node])
         }
         
     }
@@ -374,11 +451,11 @@ class GameScene: SKScene {
         
         // Se a comida entrar na bandeja, a posição da comida vai ser atualizada, as comidas são posicionadas lado a lado quando adicionadas mais de uma
         if isInTrayLeft {
-            foodNode.position.x = (foodTrayLeft.position.x - 60) + foodContLeft
+            food.node.position.x = (foodTrayLeft.position.x - 60) + foodContLeft
             rotate(angleRotation: angle)
             
         } else if isInTrayRight {
-            foodNode.position.x = (foodTrayRight.position.x - 60) + foodContRight
+            food.node.position.x = (foodTrayRight.position.x - 60) + foodContRight
             rotate(angleRotation: angle)
         }
         
@@ -397,24 +474,20 @@ class GameScene: SKScene {
         if let touch = touches.first {
             //let position = touch.location(in: self)
             if spawner1.frame.contains(touch.previousLocation(in: self)){
-                food = .fruta1
-                setupDragLabelFood()
+                food = setupDragLabelFood(fruta: .fruta1)
             }
             else if spawner2.frame.contains(touch.previousLocation(in: self)){
-                food = .fruta2
-                setupDragLabelFood()
+                food = setupDragLabelFood(fruta: .fruta2)
+
             }
             else if spawner3.frame.contains(touch.previousLocation(in: self)) {
-                food = .fruta3
-                setupDragLabelFood()
+                food = setupDragLabelFood(fruta: .fruta3)
             }
             else if spawner5.frame.contains(touch.previousLocation(in: self)) {
-                food = .fruta5
-                setupDragLabelFood()
+                food = setupDragLabelFood(fruta: .fruta5)
             }
             else if spawnerIncognita.frame.contains(touch.previousLocation(in: self)) {
-                food = .incognita
-                setupDragLabelFood()
+                food = setupDragLabelFood(fruta: .incognita)
             }
         }
     }
@@ -423,80 +496,81 @@ class GameScene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         
-        if foodNode.frame.contains(touch.previousLocation(in: self)) {
-            foodNode.position = touch.location(in: self)
+        
+        if food.node.frame.contains(touch.previousLocation(in: self)) {
+            food.node.position = touch.location(in: self)
         }
     }
     
     // quando solta uma fruta, e esta estiver dentro de uma bandeja, ela é adicionada no foodArray e, caso seja a bandeja da esquerda, é preciso ter um X adicionado
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if foodInvisibleFrameLeft.frame.contains(foodNode.position) && food.valor + DataModel.shared.peso_lado_esquerdo <= DataModel.shared.peso { // condição que adiciona uma fruta na bandeja da esquerda desde que a fruta não seja maior que o valor máximo de cada lado da equação
+        if foodInvisibleFrameLeft.frame.contains(food.node.position) && food.fruta.valor + DataModel.shared.peso_lado_esquerdo <= DataModel.shared.peso { // condição que adiciona uma fruta na bandeja da esquerda desde que a fruta não seja maior que o valor máximo de cada lado da equação
             
 
             
-            if foodNode.name == "food" || foodNode.name == "incognita" {
-                balanca.adicionar_fruta_esquerda(fruta: food)
+            if food.node.name == "food" || food.node.name == "incognita" {
+                balanca.adicionar_fruta_esquerda(fruta: food.fruta)
                 if !(DataModel.shared.balanca_esquerda_travada){ // se a bandeja não estiver travada, adiciona fruta
-                    if foodNode.name == "incognita"{ // condição que verifica que tem incógnita na bandeja da esquerda
+                    if food.node.name == "incognita"{ // condição que verifica que tem incógnita na bandeja da esquerda
                         DataModel.shared.hasX = true
                     }
-                    foodNode.name = "foodAdded"
+                    food.node.name = "foodAdded"
                     isInTrayLeft = true
-                    foodArrayLeft.append(foodNode)
+                    foodArrayLeft.append(food.node)
                     foodContLeft += 15
                 }
                 
                 if DataModel.shared.peso_lado_esquerdo == DataModel.shared.peso{
                     print("travou esquerdaa")
-                    balanca.adicionar_fruta_esquerda(fruta: food)
+                    balanca.adicionar_fruta_esquerda(fruta: food.fruta)
                 }
                 
             }
-        } else if foodInvisibleFrameRight.frame.contains(foodNode.position) && food.valor + DataModel.shared.peso_lado_direito <= DataModel.shared.peso{ // condição que adiciona uma fruta na bandeja da direita desde que a fruta não seja maior que o valor máximo de cada lado da equação
+        } else if foodInvisibleFrameRight.frame.contains(food.node.position) && food.fruta.valor + DataModel.shared.peso_lado_direito <= DataModel.shared.peso{ // condição que adiciona uma fruta na bandeja da direita desde que a fruta não seja maior que o valor máximo de cada lado da equação
             
-            if foodNode.name == "food"{
-                balanca.adicionar_fruta_direita(fruta: food)
+            if food.node.name == "food"{
+                balanca.adicionar_fruta_direita(fruta: food.fruta)
                 if !(DataModel.shared.balanca_direita_travada){ // se a bandeja não estiver travada, adiciona fruta
-                    foodNode.name = "foodAdded"
+                    food.node.name = "foodAdded"
                     isInTrayRight = true
-                    foodArrayRight.append(foodNode)
+                    foodArrayRight.append(food.node)
                     foodContRight += 15
                 }
                 
                 if DataModel.shared.peso_lado_direito == DataModel.shared.peso{
                     print("travou direita")
-                    balanca.adicionar_fruta_direita(fruta: food)
+                    balanca.adicionar_fruta_direita(fruta: food.fruta)
                 }
             } 
             else {
                 if !(isInTrayLeft && isInTrayRight){
-                    if (foodNode.name == "incognita") {
-                        foodNode.position = spawnLocationIncognita
-                        foodRemovedArray.append(foodNode)
+                    if (food.node.name == "incognita") {
+                        food.node.position = spawnLocationIncognita
+                        foodRemovedArray.append(food.node)
                     }
-                    else if (foodNode.name == "food"){
+                    else if (food.node.name == "food"){
                         returnToSpawn()
                     }
                 }
                 
-                else if (foodNode.name == "food") || (foodNode.name == "incognita"){
+                else if (food.node.name == "food") || (food.node.name == "incognita"){
                     returnToSpawn()
                 }
             }
         }
         else {
             if !(isInTrayLeft && isInTrayRight){
-                if (foodNode.name == "incognita") {
-                    foodNode.position = spawnLocationIncognita
-                    foodRemovedArray.append(foodNode)
+                if (food.node.name == "incognita") {
+                    food.node.position = spawnLocationIncognita
+                    foodRemovedArray.append(food.node)
                 }
-                else if (foodNode.name == "food"){
+                else if (food.node.name == "food"){
                     returnToSpawn()
                 }
             }
             
-            else if (foodNode.name == "food") || (foodNode.name == "incognita"){
+            else if (food.node.name == "food") || (food.node.name == "incognita"){
                 returnToSpawn()
             }
             

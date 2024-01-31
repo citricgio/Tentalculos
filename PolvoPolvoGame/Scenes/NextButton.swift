@@ -15,7 +15,7 @@ class NextButton: SKNode {
     var thumb: SKShapeNode
     var text: SKLabelNode
     var textLabel: String
-    var positionButton = CGPoint(x: 230, y: 250)
+    var positionButton = CGPoint(x: 210, y: 100)
     
     init(action: @escaping () -> Void, textLabel: String) {
         clickAction = action

@@ -17,7 +17,7 @@ class SpriteButtonOperation: SKNode {
     var thumb: SKShapeNode
     var number: SKLabelNode
     var changeOperation = OperationButton()
-    var positionButton = CGPoint(x: 150, y: 800)
+    var positionButton = CGPoint(x: 100, y: 240)
 
     
     init(action: @escaping () -> Void) {
@@ -25,7 +25,7 @@ class SpriteButtonOperation: SKNode {
         
         number = SKLabelNode()
         // mostra no botao a selectedOperation
-        number.text = "\(changeOperation.selectedOperation)"
+        number.text = "\(changeOperation.selectedOperation.name)"
         number.zPosition = 3
         number.fontColor = .black
         number.position = positionButton
@@ -57,7 +57,7 @@ class SpriteButtonOperation: SKNode {
     //ao clicar no botao, o texto do botao troca de acordo com a funcao do changeOperation, que varia entre subtracao e divisao
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         thumb.run(SKAction.scale(to: 0.7, duration: 0.5))
-        number.text = "\(changeOperation.changeOperation())"
+        number.text = "\(changeOperation.changeOperation().name)"
         
     }
     

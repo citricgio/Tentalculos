@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		08056D9D2B61985A000DDDEE /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9C2B61985A000DDDEE /* NextButton.swift */; };
+		08056D9F2B6AB48D000DDDEE /* SpriteButtonReduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */; };
+		08056DA12B6ADA96000DDDEE /* FrutaNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056DA02B6ADA96000DDDEE /* FrutaNode.swift */; };
 		8F040E352B584FB700AB8BBB /* FrutaEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E342B584FB700AB8BBB /* FrutaEnum.swift */; };
 		8F040E372B58501400AB8BBB /* GeradorPesos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E362B58501400AB8BBB /* GeradorPesos.swift */; };
 		8F040E3A2B58505900AB8BBB /* BalancaDados.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E392B58505900AB8BBB /* BalancaDados.swift */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		08056D9C2B61985A000DDDEE /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonReduce.swift; sourceTree = "<group>"; };
+		08056DA02B6ADA96000DDDEE /* FrutaNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutaNode.swift; sourceTree = "<group>"; };
 		8F040E342B584FB700AB8BBB /* FrutaEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutaEnum.swift; sourceTree = "<group>"; };
 		8F040E362B58501400AB8BBB /* GeradorPesos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeradorPesos.swift; sourceTree = "<group>"; };
 		8F040E392B58505900AB8BBB /* BalancaDados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancaDados.swift; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				8F040E342B584FB700AB8BBB /* FrutaEnum.swift */,
+				08056DA02B6ADA96000DDDEE /* FrutaNode.swift */,
 				8F040E452B58692F00AB8BBB /* OperacoesEnum.swift */,
 			);
 			path = Enum;
@@ -119,6 +124,7 @@
 				8F040E3D2B58514700AB8BBB /* GameScene.swift */,
 				08056D9C2B61985A000DDDEE /* NextButton.swift */,
 				FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */,
+				08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */,
 				FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */,
 			);
 			path = Scenes;
@@ -212,6 +218,7 @@
 			files = (
 				08056D9D2B61985A000DDDEE /* NextButton.swift in Sources */,
 				8F040E402B58518A00AB8BBB /* OperationButton.swift in Sources */,
+				08056DA12B6ADA96000DDDEE /* FrutaNode.swift in Sources */,
 				8F040E462B58692F00AB8BBB /* OperacoesEnum.swift in Sources */,
 				8F040E442B58691600AB8BBB /* Calculadora.swift in Sources */,
 				8FED6B4C2B55BAF100F92D4F /* ContentView.swift in Sources */,
@@ -220,6 +227,7 @@
 				FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */,
 				8FED6B4A2B55BAF100F92D4F /* PolvoPolvoGameApp.swift in Sources */,
 				FA89DFB02B602D0100FCC114 /* SpriteButtonNumbers.swift in Sources */,
+				08056D9F2B6AB48D000DDDEE /* SpriteButtonReduce.swift in Sources */,
 				8F040E3A2B58505900AB8BBB /* BalancaDados.swift in Sources */,
 				8F040E372B58501400AB8BBB /* GeradorPesos.swift in Sources */,
 				8F040E3E2B58514700AB8BBB /* GameScene.swift in Sources */,
