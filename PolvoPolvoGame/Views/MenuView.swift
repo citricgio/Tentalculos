@@ -5,82 +5,73 @@
 //  Created by Gabriel Sabaini on 29/01/24.
 //
 
-import SwiftUI
+//import SwiftUI
 
-struct MenuView: View {
-    var body: some View {
-        NavigationStack {
-            VStack{
-            
-                Text("Nome do Jogo")
-                    .font(Font.custom("Istok Web", size: 50))
-                    .bold()
-                Text("Sua Melhor Pontuação")
-                    .font(Font.custom("Istok Web", size: 23))
-                    .bold()
-                Text("\(DataModel.shared.contadorEquacoes)")
-                    .font(Font.custom("Istok Web", size: 36))
-                
-                Image("Polvo")
-                
-                Button {
-                    print("Indo pro Jogo")
-                
-                } label: {
-                    ZStack{
-                        Image("ButtonMenu")
-                        Text("Jogar")
-                            .font(Font.custom("Istok Web", size: 27))
-                            .bold()
-                    }
-                    .frame(width: 170, height: 55)
-                }
-                .padding(.all, 0)
-                
-                Button {
-                    print("Indo por Tutorial")
-                    
-                } label: {
-                    ZStack{
-                        Image("ButtonMenu")
-                        Text("Tutorial")
-                            .font(Font.custom("Istok Web", size: 27))
-                            .bold()
-                    }
-                    .frame(width: 170, height: 55)
-                }
-                .padding(.all, 0)
-                
-            }
-            .background(
-                Image("Back")
-                    .ignoresSafeArea()
-            )
-            .foregroundStyle(Color(.white))
-            .toolbar {
-                ToolbarItem (placement: .automatic) {
-                    Button {
-                        DataModel.shared.soundIsOn.toggle()
-                        if DataModel.shared.soundIsOn{
-                            print("Som ligado")
-                        }
-                        else {
-                            print("Som desligado")
-                        }
-                    } label: {
-                        if DataModel.shared.soundIsOn{
-                            Image("SoundButton")
-                        }
-                        else {
-                            Image("SoundOffButton")
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-#Preview {
-    MenuView()
-}
+//struct MenuView: View {
+//    var body: some View {
+//        NavigationStack {
+//            VStack{
+//                
+//                Text("Nome do Jogo")
+//                    .font(Font.custom("Istok Web", size: 50))
+//                    .bold()
+//                Text("Sua Melhor Pontuação")
+//                    .font(Font.custom("Istok Web", size: 23))
+//                    .bold()
+//                Text("\(DataModel.shared.contadorEquacoes)")
+//                    .font(Font.custom("Istok Web", size: 36))
+//                
+//                Image("Polvo")
+//                
+//                NavigationLink(destination: EndView()) {
+//                    NavigationButtonView()
+//                }
+//                .padding(.all, 0)
+//                
+//                Button {
+//                    print("Indo por Tutorial")
+//                    
+//                } label: {
+//                    ZStack{
+//                        Image("ButtonMenu")
+//                        Text("Tutorial")
+//                            .font(Font.custom("Istok Web", size: 27))
+//                            .bold()
+//                    }
+//                    .frame(width: 170, height: 55)
+//                }
+//                .padding(.all, 0)
+//                
+//            }
+//            .background(
+//                Image("Back")
+//                    .ignoresSafeArea()
+//            )
+//            .foregroundStyle(Color(.white))
+//            .toolbar {
+//                ToolbarItem (placement: .automatic) {
+//                    Button {
+//                        DataModel.shared.soundIsOn.toggle()
+//                        if DataModel.shared.soundIsOn{
+//                            print("Som ligado")
+//                        }
+//                        else {
+//                            print("Som desligado")
+//                        }
+//                    } label: {
+//                        if DataModel.shared.soundIsOn{
+//                            Image("SoundButton")
+//                        }
+//                        else {
+//                            Image("SoundOffButton")
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//#Preview {
+//    MenuView()
+//}

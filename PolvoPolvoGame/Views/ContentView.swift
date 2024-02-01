@@ -19,7 +19,7 @@ struct ContentView: View {
         NavigationView {
             SpriteView(scene: scene)
                 .ignoresSafeArea()   
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 #Preview {
