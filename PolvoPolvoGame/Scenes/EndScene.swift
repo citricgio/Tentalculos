@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 
+//cena de quando o jogador perde o jogo
 class EndScene: SKScene {
     
     //Adiciona a caixa com os dados do final do jogo (que está dentro da EndData)
@@ -69,4 +70,6 @@ class EndScene: SKScene {
         let newScene = MenuScene()
         self.changeTo(scene: newScene)
     }
+    
+    //TODO: Botão de som
 }

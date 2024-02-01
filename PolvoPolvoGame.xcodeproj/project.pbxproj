@@ -33,6 +33,7 @@
 		B4DFD3842B6C06BB006AF2DC /* WriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3832B6C06BB006AF2DC /* WriteButton.swift */; };
 		B4DFD3862B6C13BA006AF2DC /* EndData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3852B6C13BA006AF2DC /* EndData.swift */; };
 		B4DFD3882B6C32A4006AF2DC /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */; };
+		B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */; };
 		FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */; };
 		FA89DFB02B602D0100FCC114 /* SpriteButtonNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		B4DFD3832B6C06BB006AF2DC /* WriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteButton.swift; sourceTree = "<group>"; };
 		B4DFD3852B6C13BA006AF2DC /* EndData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndData.swift; sourceTree = "<group>"; };
 		B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
+		B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNode.swift; sourceTree = "<group>"; };
 		FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonOperation.swift; sourceTree = "<group>"; };
 		FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonNumbers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,6 +211,7 @@
 			children = (
 				B4DFD3832B6C06BB006AF2DC /* WriteButton.swift */,
 				B4DFD3852B6C13BA006AF2DC /* EndData.swift */,
+				B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */,
 			);
 			path = SceneComponents;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			files = (
 				08056D9D2B61985A000DDDEE /* NextButton.swift in Sources */,
 				8F040E402B58518A00AB8BBB /* OperationButton.swift in Sources */,
+				B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */,
 				B4DFD3862B6C13BA006AF2DC /* EndData.swift in Sources */,
 				08056DA12B6ADA96000DDDEE /* FrutaNode.swift in Sources */,
 				8F040E462B58692F00AB8BBB /* OperacoesEnum.swift in Sources */,

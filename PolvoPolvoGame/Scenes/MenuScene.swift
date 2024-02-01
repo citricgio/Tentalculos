@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+//cena de quando o jogador abre o jogo
 class  MenuScene: SKScene {
     
     //botões de Jogar e Tutorial
@@ -24,11 +25,11 @@ class  MenuScene: SKScene {
     var soundButton: SKSpriteNode = SKSpriteNode(imageNamed: "SoundButton")
     
     //Adiciona o título do jogo
-    var title: SKSpriteNode = SKSpriteNode()
+    var title: WriteNode = WriteNode(name: "title", fontSize: <#T##CGFloat#>, text: "Nome do Jogo", fontName: <#T##String#>)
     
     //Adiciona o texto da melhor pontuação e a pontuação
-    var bPoint: SKSpriteNode = SKSpriteNode()
-    var labelPoint: SKSpriteNode = SKSpriteNode()
+    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: <#T##CGFloat#>, text: "", fontName: <#T##String#>)
+    var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: <#T##CGFloat#>, text: "Sua melhor pontuação", fontName: <#T##String#>)
     
     override func didMove(to view: SKView) {
         
@@ -82,7 +83,7 @@ class  MenuScene: SKScene {
         let newScene = EndScene()
         self.changeTo(scene: newScene)
     }
-    
+    //TODO: adicionar o botão de som, fazer funcionar e mudar ele
     func soundIsOn() {
         DataModel.shared.soundIsOn.toggle()
     }
