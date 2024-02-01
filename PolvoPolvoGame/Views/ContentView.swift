@@ -9,13 +9,9 @@ import SpriteKit
 
 struct ContentView: View {
      
-<<<<<<< HEAD
+
   var scene: MenuScene {
     let scene: MenuScene = MenuScene()
-=======
-  var scene: GameScene { 
-    let scene: GameScene = GameScene()
->>>>>>> dev
     scene.scaleMode = .resizeFill  
     return scene
   }

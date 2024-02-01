@@ -15,7 +15,7 @@ class WriteButton {
     let node: SKSpriteNode
     
     init(name: String, text: String) {
-        let textNode = SKLabelNode(fontNamed: "Istok Web") //qual fonte usar
+        let textNode = SKLabelNode(fontNamed: "IstokWeb-Bold") //qual fonte usar
         textNode.text = text //Texto que vai dentro do botão, que é uma variável recebida quando o Node é chamado
         textNode.fontSize = 28 //Tamanho do texto que vai dentro do botão
         textNode.fontColor = SKColor.white //Cor do botão
