@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-struct FrutaNode {
+struct FrutaNode: Hashable {
     let fruta: FrutaEnum
     let node: SKSpriteNode
     

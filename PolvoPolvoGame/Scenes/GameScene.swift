@@ -22,8 +22,8 @@ class GameScene: SKScene {
     //var foodNode = SKSpriteNode()
     
     // arrays que armazenam a quantidade de comida em cada bandeja
-    var foodArrayLeft: [SKSpriteNode] = []
-    var foodArrayRight: [SKSpriteNode] = []
+    var foodArrayLeft: [FrutaNode] = []
+    var foodArrayRight: [FrutaNode] = []
     
     // contador de quantas posições a fruta adicionada vai andar
     var foodContLeft: CGFloat = 0
@@ -66,8 +66,6 @@ class GameScene: SKScene {
     
     var foodRemovedArray: [SKSpriteNode] = []
     
-    var frutas: [FrutaNode] = []
-    
     // variável que indica o ângulo dos braços do polvo
     var angle: CGFloat = 0
     
@@ -76,6 +74,8 @@ class GameScene: SKScene {
     var nextButton: NextButton = NextButton(action: {}, textLabel: "Próximo")
     
     var operationButton: SpriteButtonOperation = SpriteButtonOperation(action: {})
+    
+    var operationNumbersButton: SpriteButtonNumbers = SpriteButtonNumbers(action: {})
     
     var irButton: SpriteButtonReduce = SpriteButtonReduce(action: {}, textLabel: "Ir")
     
@@ -117,7 +117,7 @@ class GameScene: SKScene {
     }
     
     func addOperationButtons() {
-        let operationNumbersButton = SpriteButtonNumbers(){
+        operationNumbersButton = SpriteButtonNumbers(){
             print("ola")
         }
         addChild(operationNumbersButton)
@@ -133,9 +133,80 @@ class GameScene: SKScene {
     }
     
     func reduceFood() {
-        if operationButton.changeOperation.selectedOperation == .subtracao {
+        // Se o botao da operacao for subtracao
+        //if operationButton.changeOperation.selectedOperation == .subtracao {
+        
+        // valor subtraído for maior que o peso da balanca, nao faz nada
+        if operationNumbersButton.changeNumber.selectedFruit.valor > DataModel.shared.peso {
+            print("Numero maior que o peso, acao negada")
+        }
+        // valor subtraído for igual ao peso da balanca, nao faz nada
+        else if operationNumbersButton.changeNumber.selectedFruit.valor == DataModel.shared.peso {
+            print("Numero igual ao peso, acao negada")
+            
+        //valor subtraído é menor que o peso da balanca
+        } else {
+            
+            //1º caso: vai ver se encontra fruta com mesmo valor do valor subtraído
+            for (index, frutaNode) in foodArrayLeft.enumerated() {
+                
+                var soma: Int = 0
+                
+//                if foodArrayLeft[index].node.name != "incognita"{
+//                    soma = foodArrayLeft[index].fruta.valor
+//                    break
+//                }
+                
+                print("operation: \(operationNumbersButton.changeNumber.selectedFruit.valor)")
+                print("fruta: \(frutaNode.fruta.valor)")
+                //se o valor subtraido for igual ao valor de uma fruta do array da esquerda
+                if foodArrayLeft[index].node.name != "incognita" {
+                    if operationNumbersButton.changeNumber.selectedFruit.valor == frutaNode.fruta.valor{
+                        //remove
+                        frutaNode.node.removeFromParent()
+                        foodArrayLeft.remove(at: index)
+                        break
+                    }
+                    else {
+                        print("entrou")
+                        //2º caso: somar numeros para dar o valor do valor subtraído
+                        var cont = 0
+                        var deleteItemsArray: Set<FrutaNode> = []
+                        var aux = 0
+                        
+                        
+                        for i in 0...foodArrayLeft.count {
+                            for j in 0...(foodArrayLeft.count) - 1 {
+                                deleteItemsArray.insert(foodArrayLeft[i])
+                                aux = soma + foodArrayLeft[cont].fruta.valor
+                                if soma == operationNumbersButton.changeNumber.selectedFruit.valor {
+                                    for node in deleteItemsArray{
+                                        removeChildren(in: [node.node])
+                                    }
+                                    
+                                } else {
+                                    cont += 1
+                                    if aux <= operationNumbersButton.changeNumber.selectedFruit.valor {
+                                        soma = aux
+                                        deleteItemsArray.insert(foodArrayLeft[cont])
+                                        //foodArrayLeft = foodArrayLeft.filter{ !deleteItemsArray.contains(where: $0)}
+                                        foodArrayLeft.removeAll(where: { deleteItemsArray.contains($0) })
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                
+            }
+            
+            
+            //3º caso: subtrair de uma fruta com valor maior do que o valor subtraído
+            
             
         }
+        //}
     }
     
     
@@ -195,7 +266,6 @@ class GameScene: SKScene {
             frutaNode.node.name = "food"
             frutaNode.node.zPosition = 20
             frutaNode.node.position = spawnLocation1
-            frutas.append(frutaNode)
             addChild(frutaNode.node)
             return frutaNode
         case .fruta2:
@@ -203,7 +273,6 @@ class GameScene: SKScene {
             frutaNode.node.name = "food"
             frutaNode.node.zPosition = 20
             frutaNode.node.position = spawnLocation2
-            frutas.append(frutaNode)
             addChild(frutaNode.node)
             return frutaNode
         case .fruta3:
@@ -211,7 +280,6 @@ class GameScene: SKScene {
             frutaNode.node.name = "food"
             frutaNode.node.zPosition = 20
             frutaNode.node.position = spawnLocation3
-            frutas.append(frutaNode)
             addChild(frutaNode.node)
             return frutaNode
         case .fruta5:
@@ -219,7 +287,6 @@ class GameScene: SKScene {
             frutaNode.node.name = "food"
             frutaNode.node.zPosition = 20
             frutaNode.node.position = spawnLocation5
-            frutas.append(frutaNode)
             addChild(frutaNode.node)
             return frutaNode
         case .incognita:
@@ -227,7 +294,6 @@ class GameScene: SKScene {
             frutaNode.node.name = "incognita"
             frutaNode.node.zPosition = 20
             frutaNode.node.position = spawnLocationIncognita
-            frutas.append(frutaNode)
             addChild(frutaNode.node)
             return frutaNode
         default:
@@ -235,62 +301,10 @@ class GameScene: SKScene {
             frutaNode.node.name = "food"
             frutaNode.node.zPosition = 20
             frutaNode.node.position = spawnLocation1
-            frutas.append(frutaNode)
             addChild(frutaNode.node)
             return frutaNode
         }
-        
-    
-        
-//        switch food {
-//        case .fruta1:
-//            foodNode = SKSpriteNode(imageNamed: food.nome)
-//            foodNode.name = "food"
-//            foodNode.zPosition = 20
-//            foodNode.position = spawnLocation1
-//            addChild(foodNode)
-//            return foodNode
-//        case .fruta2:
-//            foodNode = SKSpriteNode(imageNamed: food.nome)
-//            foodNode.name = "food"
-//            foodNode.zPosition = 20
-//            foodNode.position = spawnLocation2
-//            addChild(foodNode)
-//            return foodNode
-//        case .fruta3:
-//            foodNode = SKSpriteNode(imageNamed: food.nome)
-//            foodNode.name = "food"
-//            foodNode.zPosition = 20
-//            foodNode.position = spawnLocation3
-//            addChild(foodNode)
-//            return foodNode
-//        case .fruta5:
-//            foodNode = SKSpriteNode(imageNamed: food.nome)
-//            foodNode.name = "food"
-//            foodNode.zPosition = 20
-//            foodNode.position = spawnLocation5
-//            addChild(foodNode)
-//            return foodNode
-//        case .incognita:
-//            foodNode = SKSpriteNode(imageNamed: food.nome)
-//            foodNode.name = "incognita"
-//            foodNode.zPosition = 20
-//            foodNode.position = spawnLocationIncognita
-//            addChild(foodNode)
-//            return foodNode
-//        }
     }
-    
-//    func findFruit(fruta: FrutaEnum) -> SKSpriteNode{
-        
-//        var node: SKSpriteNode
-//        for (index, frutaNode) in frutas.enumerated() {
-//            if fruta == frutaNode.fruta {
-//                node = frutas[index].node
-//            }
-//        }
-//        return node
-//    }
     
     // função que coloca o braço do polvo na tela
     func setupArm(){
@@ -461,10 +475,10 @@ class GameScene: SKScene {
         
         // atualiza a posição da comida de acordo com a posição da bandeja
         for food in foodArrayLeft {
-            food.position.y = foodTrayLeft.position.y + 20
+            food.node.position.y = foodTrayLeft.position.y + 20
         }
         for food in foodArrayRight {
-            food.position.y = foodTrayRight.position.y + 20
+            food.node.position.y = foodTrayRight.position.y + 20
         }
         
     }
@@ -515,9 +529,11 @@ class GameScene: SKScene {
                     if food.node.name == "incognita"{ // condição que verifica que tem incógnita na bandeja da esquerda
                         DataModel.shared.hasX = true
                     }
-                    food.node.name = "foodAdded"
+                    else{
+                        food.node.name = "foodAdded"
+                    }
                     isInTrayLeft = true
-                    foodArrayLeft.append(food.node)
+                    foodArrayLeft.append(food)
                     foodContLeft += 15
                 }
                 
@@ -534,7 +550,7 @@ class GameScene: SKScene {
                 if !(DataModel.shared.balanca_direita_travada){ // se a bandeja não estiver travada, adiciona fruta
                     food.node.name = "foodAdded"
                     isInTrayRight = true
-                    foodArrayRight.append(food.node)
+                    foodArrayRight.append(food)
                     foodContRight += 15
                 }
                 
