@@ -54,7 +54,4 @@ import SwiftUI
             return selectedOperation
         }
     }
-    //teste
-        
-    
 }
