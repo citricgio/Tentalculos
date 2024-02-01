@@ -13,7 +13,7 @@ enum OperacoesEnum {
     var name: String {
         switch self {
         case .subtracao: "-"
-        case .divisao: ":"
+        case .divisao: "/"
         }
     }
 }
