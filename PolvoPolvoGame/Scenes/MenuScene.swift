@@ -25,11 +25,11 @@ class  MenuScene: SKScene {
     var soundButton: SKSpriteNode = SKSpriteNode(imageNamed: "SoundButton")
     
     //Adiciona o título do jogo
-    var title: WriteNode = WriteNode(name: "title", fontSize: <#T##CGFloat#>, text: "Nome do Jogo", fontName: <#T##String#>)
+    var title: WriteNode = WriteNode(name: "title", fontSize: .labelPoints, text: "Nome do Jogo", fontName: .buttons)
     
     //Adiciona o texto da melhor pontuação e a pontuação
-    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: 36, text: "", fontName: <#T##String#>)
-    var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: 24, text: "Sua melhor pontuação", fontName: "")
+    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .buttons, text: "", fontName: .buttons)
+    var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: .labelPoints, text: "Sua melhor pontuação", fontName: .labelPoints )
     
     override func didMove(to view: SKView) {
         
