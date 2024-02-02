@@ -11,10 +11,10 @@ import SpriteKit
 class WriteNode {
     let node: SKNode
     
-    init(name: String, fontSize: CGFloat, text: String, fontName: String) {
-        let textNode = SKLabelNode(fontNamed: fontName) //qual fonte usar
+    init(name: String, fontSize: FontesEnum, text: String, fontName: FontesEnum) {
+        let textNode = SKLabelNode(fontNamed: fontName.font) //qual fonte usar
         textNode.text = text //Texto que vai dentro do node, que é uma variável recebida quando o Node é chamado
-        textNode.fontSize = fontSize //Tamanho do texto que vai dentro do node
+        textNode.fontSize = fontSize.size //Tamanho do texto que vai dentro do node
         textNode.fontColor = SKColor.white //Cor do texto
         textNode.verticalAlignmentMode = .center //o alinhamento do texto dentro do Node
         textNode.name = name //recebe o nome do Node, que é recebido quando o Node é chamado
