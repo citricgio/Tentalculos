@@ -23,7 +23,7 @@ class EndScene: SKScene {
     
     //instancia o texto acima da caixa
     var label1: WriteNode = WriteNode(name: "label1", fontSize: .labelPoints, text: "Ops!", fontName: .labelPoints)
-    var label2: WriteNode = WriteNode(name: "label2", fontSize: .labelPoints, text: "você deicou os pratos cairem.", fontName: .buttons)
+    var label2: WriteNode = WriteNode(name: "label2", fontSize: .points, text: "você deixou os pratos cairem.", fontName: .labelPoints)
     
     //instancia os tres pratos quebrados
     var brokenplates = SKSpriteNode(imageNamed: "3brokenplates")
@@ -39,7 +39,7 @@ class EndScene: SKScene {
         addChild(reiniciarButton.node)
         
         //Adicionar o botão menu
-        menuButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 300)
+        menuButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 330)
         addChild(menuButton.node)
         
         //Adiciona o Background
