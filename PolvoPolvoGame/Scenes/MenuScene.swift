@@ -15,19 +15,19 @@ class  MenuScene: SKScene {
     var startButton: WriteButton = WriteButton(name: "startButton", text: "Jogar")
     var tutorialButton: WriteButton = WriteButton(name: "tutorialButton", text: "Tutorial")
     
-    //adiciona o Sprite do polvo
+    //Instancia Sprite do polvo
     var octopus: SKSpriteNode = SKSpriteNode(imageNamed: "octopus-full")
     
-    //Adiciona o background
+    //instancia background
     var background = SKSpriteNode(imageNamed: "background")
     
-    //Adiciona o botão de som e coloca sua imagem
+    //instancia botão de som e coloca sua imagem
     var soundButton: SKSpriteNode = SKSpriteNode(imageNamed: "SoundButton")
     
-    //Adiciona o título do jogo
+    //instancia título do jogo
     var title: WriteNode = WriteNode(name: "title", fontSize: .appTitle, text: "Nome do Jogo", fontName: .appTitle)
     
-    //Adiciona o texto da melhor pontuação e a pontuação
+    //instancia texto da melhor pontuação e a pontuação
     var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.contadorEquacoes)", fontName: .points)
     var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: .labelPoints, text: "Sua melhor pontuação", fontName: .labelPoints )
     

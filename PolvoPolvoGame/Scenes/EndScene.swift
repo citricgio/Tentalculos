@@ -11,14 +11,14 @@ import SpriteKit
 //cena de quando o jogador perde o jogo
 class EndScene: SKScene {
     
-    //Adiciona a caixa com os dados do final do jogo (que está dentro da EndData)
+    //instancia a caixa com os dados do final do jogo (que está dentro da EndData)
     var endData: EndData = EndData(points: DataModel.shared.contadorEquacoes, bPoints: 0)
     
-    //Adiciona botão de Reiniciar e Voltar para o Menu
+    //instancia botão de Reiniciar e Voltar para o Menu
     var reiniciarButton: WriteButton = WriteButton(name: "reiniciarButton", text: "Reiniciar")
     var menuButton: WriteButton = WriteButton(name: "menuButton", text: "Menu")
     
-    //Adiciona o background
+    //instancia o background
     var background = SKSpriteNode(imageNamed: "background")
     
     override func didMove(to view: SKView) {
