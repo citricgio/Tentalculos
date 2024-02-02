@@ -84,6 +84,10 @@ class GameScene: SKScene {
     var background = SKSpriteNode(imageNamed: "background")
     
     var changeOperation = OperationButton()
+    
+    var score = 0
+    var scoreLabel = SKLabelNode()
+    var bestScore = 0
                 
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
@@ -114,6 +118,9 @@ class GameScene: SKScene {
         background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
         addChild(background)
         
+        addScore()
+        
+        
     }
     
     func addOperationButtons() {
@@ -137,6 +144,20 @@ class GameScene: SKScene {
             
         }
     }
+    
+    
+    
+    func addScore() {
+        scoreLabel.text = "Pontos: \(score)"
+        scoreLabel.fontSize = 30
+        scoreLabel.fontColor = .white
+        scoreLabel.zPosition = 10
+        scoreLabel.position = CGPoint(x: size.width / 2, y: 700)
+        
+        
+        addChild(scoreLabel)
+    }
+    
     
     
     func firstCheck() {
