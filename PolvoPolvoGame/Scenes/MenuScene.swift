@@ -25,10 +25,10 @@ class  MenuScene: SKScene {
     var soundButton: SKSpriteNode = SKSpriteNode(imageNamed: "SoundButton")
     
     //Adiciona o título do jogo
-    var title: WriteNode = WriteNode(name: "title", fontSize: .labelPoints, text: "Nome do Jogo", fontName: .buttons)
+    var title: WriteNode = WriteNode(name: "title", fontSize: .appTitle, text: "Nome do Jogo", fontName: .appTitle)
     
     //Adiciona o texto da melhor pontuação e a pontuação
-    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .buttons, text: "", fontName: .buttons)
+    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.contadorEquacoes)", fontName: .points)
     var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: .labelPoints, text: "Sua melhor pontuação", fontName: .labelPoints )
     
     override func didMove(to view: SKView) {
@@ -51,7 +51,15 @@ class  MenuScene: SKScene {
         background.position = CGPoint(x: frame.midX , y: frame.midY)
         addChild(background)
         
+        //Adiciona o texto e a maior pontuação e suas posições
+        bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + 200)
+        labelPoint.node.position = CGPoint(x: frame.midX , y: frame.midY + 240)
+        addChild(bPoint.node)
+        addChild(labelPoint.node)
         
+        //Adiciona o Título
+        title.node.position = CGPoint(x: frame.midX, y: frame.midY + 300)
+        addChild(title.node)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
