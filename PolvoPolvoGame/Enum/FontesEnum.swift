@@ -14,6 +14,7 @@ enum FontesEnum {
     case points
     case labelPoints
     case squareButtons
+    case appTitle
     
     var size: CGFloat {
         switch self {
@@ -22,6 +23,7 @@ enum FontesEnum {
         case .points: return 24
         case .labelPoints: return 36
         case .squareButtons: return 40
+        case .appTitle: return 50
         }
     }
     
