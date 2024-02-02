@@ -99,7 +99,7 @@ class GameScene: SKScene {
     var plate = SKTexture(imageNamed: "normal-plate")
     
     var isAlive: [Bool] = [true,true,true]
-    
+    var livesCount: Int = 0
 
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
@@ -236,16 +236,22 @@ class GameScene: SKScene {
                 isAlive[0] = false
                 print("errouuuuu1")
                 updateLives()
+                livesCount += 1
+                print("oiiii \(livesCount)")
             }
             else if childNode(withName: "live2") != nil && isAlive[1] == true {
                 isAlive[1] = false
                 print("errouuuuu2")
                 updateLives()
+                livesCount += 1
+                print("oiiii \(livesCount)")
             }
             else if childNode(withName: "live1") != nil && isAlive[2] == true {
                 isAlive[2] = false
                 print("errouuuuu3")
                 updateLives()
+                livesCount += 1
+                print("oiiii \(livesCount)")
             }
             
         }
