@@ -32,29 +32,36 @@ class EndScene: SKScene {
         
         //Adiciona a caixa EndData
         endData.node.position = CGPoint(x: frame.midX, y: frame.midY)
+        endData.node.setScale(1/1.08)
         addChild(endData.node)
         
         //Adiciona o botão reiniciar
         reiniciarButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 250)
+        reiniciarButton.node.setScale(1/1.08)
         addChild(reiniciarButton.node)
         
         //Adicionar o botão menu
         menuButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 330)
+        menuButton.node.setScale(1/1.08)
         addChild(menuButton.node)
         
         //Adiciona o Background
         background.zPosition = CGFloat(-10)
         background.position = CGPoint(x: frame.midX , y: frame.midY)
+        background.setScale(1/1.08)
         addChild(background)
         
         //Adiciona o texto acima da caixa
         label1.node.position = CGPoint(x: frame.midX, y: frame.midY + 300)
         label2.node.position = CGPoint(x: frame.midX, y: frame.midY + 250)
+        label1.node.setScale(1/1.08)
+        label2.node.setScale(1/1.08)
         addChild(label1.node)
         addChild(label2.node)
         
         //Adiciona os tres pratos quebrados
         brokenplates.position = CGPoint(x: frame.midX, y: frame.midY + 200)
+        brokenplates.setScale(1/1.08)
         addChild(brokenplates)
     }
     

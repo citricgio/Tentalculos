@@ -35,30 +35,37 @@ class  MenuScene: SKScene {
         
         //Adiciona o botão de Jogar e sua Posição
         startButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 150)
+        startButton.node.setScale(1/1.08)
         addChild(startButton.node)
         
         //Adiciona o botão de Tutorial e sua posição
         tutorialButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 250)
+        tutorialButton.node.setScale(1/1.08)
         addChild(tutorialButton.node)
         
         //Adiciona o polvo e sua posição
         octopus.size = CGSize(width: 330, height: 253)
         octopus.position = CGPoint(x: frame.midX, y: frame.size.height / 1.89 )
+        octopus.setScale(1/1.08)
         addChild(octopus)
         
         //Adiciona o Background e sua posição
         background.zPosition = CGFloat(-10)
         background.position = CGPoint(x: frame.midX , y: frame.midY)
+        background.setScale(1/1.08)
         addChild(background)
         
         //Adiciona o texto e a maior pontuação e suas posições
         bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + 200)
         labelPoint.node.position = CGPoint(x: frame.midX , y: frame.midY + 240)
+        bPoint.node.setScale(1/1.08)
+        labelPoint.node.setScale(1/1.08)
         addChild(bPoint.node)
         addChild(labelPoint.node)
         
         //Adiciona o Título
         title.node.position = CGPoint(x: frame.midX, y: frame.midY + 300)
+        title.node.setScale(1/1.08)
         addChild(title.node)
     }
     
