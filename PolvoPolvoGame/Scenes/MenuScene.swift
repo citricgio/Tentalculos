@@ -28,8 +28,8 @@ class  MenuScene: SKScene {
     var title: WriteNode = WriteNode(name: "title", fontSize: <#T##CGFloat#>, text: "Nome do Jogo", fontName: <#T##String#>)
     
     //Adiciona o texto da melhor pontuação e a pontuação
-    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: <#T##CGFloat#>, text: "", fontName: <#T##String#>)
-    var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: <#T##CGFloat#>, text: "Sua melhor pontuação", fontName: <#T##String#>)
+    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: 36, text: "", fontName: <#T##String#>)
+    var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: 24, text: "Sua melhor pontuação", fontName: "")
     
     override func didMove(to view: SKView) {
         

@@ -34,6 +34,7 @@
 		B4DFD3862B6C13BA006AF2DC /* EndData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3852B6C13BA006AF2DC /* EndData.swift */; };
 		B4DFD3882B6C32A4006AF2DC /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */; };
 		B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */; };
+		B4DFD38C2B6D56DC006AF2DC /* FontesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */; };
 		FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */; };
 		FA89DFB02B602D0100FCC114 /* SpriteButtonNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		B4DFD3852B6C13BA006AF2DC /* EndData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndData.swift; sourceTree = "<group>"; };
 		B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNode.swift; sourceTree = "<group>"; };
+		B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontesEnum.swift; sourceTree = "<group>"; };
 		FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonOperation.swift; sourceTree = "<group>"; };
 		FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonNumbers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,7 @@
 				8F040E342B584FB700AB8BBB /* FrutaEnum.swift */,
 				08056DA02B6ADA96000DDDEE /* FrutaNode.swift */,
 				8F040E452B58692F00AB8BBB /* OperacoesEnum.swift */,
+				B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				B400CB882B6AE73500C9C645 /* SKScene+.swift in Sources */,
 				B4DFD3882B6C32A4006AF2DC /* TutorialScene.swift in Sources */,
 				08056D9F2B6AB48D000DDDEE /* SpriteButtonReduce.swift in Sources */,
+				B4DFD38C2B6D56DC006AF2DC /* FontesEnum.swift in Sources */,
 				8F040E3A2B58505900AB8BBB /* BalancaDados.swift in Sources */,
 				8F040E372B58501400AB8BBB /* GeradorPesos.swift in Sources */,
 				B400CB832B6AD80400C9C645 /* MenuScene.swift in Sources */,
