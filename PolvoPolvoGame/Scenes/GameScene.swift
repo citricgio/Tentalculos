@@ -88,7 +88,19 @@ class GameScene: SKScene {
     var score = 0
     var scoreLabel = SKLabelNode()
     var bestScore = 0
-                
+    
+    
+    var live1 = SKSpriteNode()
+    var live2 = SKSpriteNode()
+    var live3 = SKSpriteNode()
+    var lives: [SKSpriteNode] = []
+    
+    var brokenPlate = SKTexture(imageNamed: "broken-plate")
+    var plate = SKTexture(imageNamed: "normal-plate")
+    
+    var isAlive: [Bool] = [true,true,true]
+    
+
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
         
@@ -119,6 +131,7 @@ class GameScene: SKScene {
         addChild(background)
         
         addScore()
+        addLives()
         
         
     }
@@ -164,6 +177,48 @@ class GameScene: SKScene {
         scoreLabel.text = "Pontos: \(score)"
     }
     
+    
+    func addLives() {
+        live1 = SKSpriteNode(texture: plate)
+        live1.position = CGPoint(x: 150, y: 650)
+        live1.zPosition = 11
+        live1.name = "live1"
+        print("VIDA 1")
+        
+        addChild(live1)
+        lives.append(live1)
+        
+        live2 = SKSpriteNode(texture: plate)
+        live2.position = CGPoint(x: 200, y: 650)
+        live2.zPosition = 11
+        live2.name = "live2"
+        print("VIDA 2")
+        
+        addChild(live2)
+        lives.append(live2)
+
+        
+        live3 = SKSpriteNode(texture: plate)
+        live3.position = CGPoint(x: 250, y: 650)
+        live3.zPosition = 11
+        live3.name = "live3"
+        print("VIDA 3")
+        
+        addChild(live3)
+        lives.append(live3)
+
+    }
+    
+    func updateLives() {
+        for i in 0...lives.count - 1 {
+            if isAlive[i] == false {
+                let live = lives[i]
+                live.texture = brokenPlate
+            }
+        }
+    }
+    
+    
     func firstCheck() {
         if DataModel.shared.balanca_direita_travada && DataModel.shared.balanca_esquerda_travada && DataModel.shared.hasX {
             //desespawnar e mostra botao de operacoes
@@ -176,7 +231,23 @@ class GameScene: SKScene {
             updateScore()
             
         } else {
-            print("errouuuuu")
+            
+            if childNode(withName: "live1") != nil && isAlive[0] == true {
+                isAlive[0] = false
+                print("errouuuuu1")
+                updateLives()
+            }
+            else if childNode(withName: "live2") != nil && isAlive[1] == true {
+                isAlive[1] = false
+                print("errouuuuu2")
+                updateLives()
+            }
+            else if childNode(withName: "live1") != nil && isAlive[2] == true {
+                isAlive[2] = false
+                print("errouuuuu3")
+                updateLives()
+            }
+            
         }
         
     }
