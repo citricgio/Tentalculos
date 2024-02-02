@@ -159,6 +159,10 @@ class GameScene: SKScene {
     }
     
     
+    func updateScore() {
+        score += 1
+        scoreLabel.text = "Pontos: \(score)"
+    }
     
     func firstCheck() {
         if DataModel.shared.balanca_direita_travada && DataModel.shared.balanca_esquerda_travada && DataModel.shared.hasX {
@@ -169,6 +173,7 @@ class GameScene: SKScene {
             removeChildren(in: [spawner1, spawner2, spawner3, spawner5, spawnerIncognita])
             removeChildren(in: foodRemovedArray)
             addOperationButtons()
+            updateScore()
             
         } else {
             print("errouuuuu")
