@@ -159,7 +159,7 @@ class GameScene: SKScene {
     }
     
     
-    
+    // adicionar a label dos pontos na tela
     func addScore() {
         scoreLabel.text = "Pontos: \(score)"
         scoreLabel.fontSize = 30
@@ -171,13 +171,13 @@ class GameScene: SKScene {
         addChild(scoreLabel)
     }
     
-    
+    // fazer o update dos pontos
     func updateScore() {
-        score += 1
-        scoreLabel.text = "Pontos: \(score)"
+        DataModel.shared.contadorEquacoes += 1
+        scoreLabel.text = "Pontos: \(DataModel.shared.contadorEquacoes)"
     }
     
-    
+    // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
     func addLives() {
         live1 = SKSpriteNode(texture: plate)
         live1.position = CGPoint(x: 150, y: 650)
@@ -209,12 +209,50 @@ class GameScene: SKScene {
 
     }
     
+    // muda o estado do prato para quebrado
     func updateLives() {
+        // passa pelo array de vidas
         for i in 0...lives.count - 1 {
+            // se a posicao daquela vida se tornar falsa porque o jogador perdeu, pega a vida que está naquela posicao e troca a imagem para brokenPlate
             if isAlive[i] == false {
                 let live = lives[i]
                 live.texture = brokenPlate
             }
+        }
+    }
+    
+    func endGame() {
+        
+        
+        //pega a primeira vida e confirma se a posicao dela é verdadeira
+        if childNode(withName: "live1") != nil && isAlive[0] == true {
+            // muda a sua posicao para falso, chama a funcao updateLives() e aumenta o contador que acompanha a quantidade de vidas que o jogador tem
+            isAlive[0] = false
+            print("errouuuuu1")
+            updateLives()
+            livesCount += 1
+            print("oiiii \(livesCount)")
+        }
+        else if childNode(withName: "live2") != nil && isAlive[1] == true {
+            isAlive[1] = false
+            print("errouuuuu2")
+            updateLives()
+            livesCount += 1
+            print("oiiii \(livesCount)")
+        }
+        else if childNode(withName: "live3") != nil && isAlive[2] == true {
+            isAlive[2] = false
+            print("errouuuuu3")
+            updateLives()
+            livesCount += 1
+            print("oiiii \(livesCount)")
+            endGame()
+        }
+        
+        // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
+        if livesCount == 3 {
+            let endGameScene = EndScene()
+            self.changeTo(scene: endGameScene)
         }
     }
     
@@ -232,31 +270,36 @@ class GameScene: SKScene {
             
         } else {
             
-            if childNode(withName: "live1") != nil && isAlive[0] == true {
-                isAlive[0] = false
-                print("errouuuuu1")
-                updateLives()
-                livesCount += 1
-                print("oiiii \(livesCount)")
-            }
-            else if childNode(withName: "live2") != nil && isAlive[1] == true {
-                isAlive[1] = false
-                print("errouuuuu2")
-                updateLives()
-                livesCount += 1
-                print("oiiii \(livesCount)")
-            }
-            else if childNode(withName: "live1") != nil && isAlive[2] == true {
-                isAlive[2] = false
-                print("errouuuuu3")
-                updateLives()
-                livesCount += 1
-                print("oiiii \(livesCount)")
-            }
+            endGame()
+            
+//            if childNode(withName: "live1") != nil && isAlive[0] == true {
+//                isAlive[0] = false
+//                print("errouuuuu1")
+//                updateLives()
+//                livesCount += 1
+//                print("oiiii \(livesCount)")
+//            }
+//            else if childNode(withName: "live2") != nil && isAlive[1] == true {
+//                isAlive[1] = false
+//                print("errouuuuu2")
+//                updateLives()
+//                livesCount += 1
+//                print("oiiii \(livesCount)")
+//            }
+//            else if childNode(withName: "live3") != nil && isAlive[2] == true {
+//                isAlive[2] = false
+//                print("errouuuuu3")
+//                updateLives()
+//                livesCount += 1
+//                print("oiiii \(livesCount)")
+//                endGame()
+//            }
             
         }
         
     }
+    
+    
     
     func finalizeCheck(){
         //vitoria ou derrota
