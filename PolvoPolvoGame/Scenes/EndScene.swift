@@ -23,10 +23,10 @@ class EndScene: SKScene {
     
     //instancia o texto acima da caixa
     var label1: WriteNode = WriteNode(name: "label1", fontSize: .labelPoints, text: "Ops!", fontName: .labelPoints)
-    var label2: WriteNode = WriteNode(name: "label2", fontSize: .labelPoints, text: "você deicou os pratos cairem.", fontName: <#T##FontesEnum#>)
+    var label2: WriteNode = WriteNode(name: "label2", fontSize: .labelPoints, text: "você deicou os pratos cairem.", fontName: .buttons)
     
     //instancia os tres pratos quebrados
-    var brokenplates = SKSpriteNode(imageNamed: "brokenplates")
+    var brokenplates = SKSpriteNode(imageNamed: "3brokenplates")
     
     override func didMove(to view: SKView) {
         
