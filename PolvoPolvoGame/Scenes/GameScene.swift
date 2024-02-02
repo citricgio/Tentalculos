@@ -118,7 +118,7 @@ class GameScene: SKScene {
     
     func addOperationButtons() {
         operationNumbersButton = SpriteButtonNumbers(){
-            print("ola")
+           //print("ola")
         }
         addChild(operationNumbersButton)
         
@@ -126,13 +126,22 @@ class GameScene: SKScene {
         addChild(irButton)
     
         operationButton = SpriteButtonOperation() {
-            print("cliquei")
+            //print("cliquei")
         }
         addChild(operationButton)
         
     }
     
     func reduceFood() {
+        var soma_left = 0
+        var aux_left = 0
+        var cont_left = 0
+        var deleteItemsArrayLeft : [SKSpriteNode] = []
+        
+        var soma_right = 0
+        var aux_right = 0
+        var cont_right = 0
+        var deleteItemsArrayRight : [SKSpriteNode] = []
         // Se o botao da operacao for subtracao
         //if operationButton.changeOperation.selectedOperation == .subtracao {
         
@@ -144,69 +153,187 @@ class GameScene: SKScene {
         else if operationNumbersButton.changeNumber.selectedFruit.valor == DataModel.shared.peso {
             print("Numero igual ao peso, acao negada")
             
-        //valor subtraído é menor que o peso da balanca
+            //valor subtraído é menor que o peso da balanca
         } else {
             
-            //1º caso: vai ver se encontra fruta com mesmo valor do valor subtraído
-            for (index, frutaNode) in foodArrayLeft.enumerated() {
-                
-                var soma: Int = 0
-                
-//                if foodArrayLeft[index].node.name != "incognita"{
-//                    soma = foodArrayLeft[index].fruta.valor
-//                    break
-//                }
-                
+            for (index, frutaNode) in foodArrayLeft.enumerated(){
                 print("operation: \(operationNumbersButton.changeNumber.selectedFruit.valor)")
                 print("fruta: \(frutaNode.fruta.valor)")
                 //se o valor subtraido for igual ao valor de uma fruta do array da esquerda
-                if foodArrayLeft[index].node.name != "incognita" {
-                    if operationNumbersButton.changeNumber.selectedFruit.valor == frutaNode.fruta.valor{
-                        //remove
-                        frutaNode.node.removeFromParent()
+                if operationNumbersButton.changeNumber.selectedFruit.valor == frutaNode.fruta.valor && foodArrayLeft[index].node.name != "incognitaAdded"{
+                    //remove a fruta
+                    frutaNode.node.removeFromParent()
+                    foodArrayLeft.remove(at: index)
+                    break
+                } else if operationNumbersButton.changeNumber.selectedFruit.valor > frutaNode.fruta.valor && foodArrayLeft[index].node.name != "incognitaAdded" {
+                    soma_left += foodArrayLeft[index].fruta.valor
+                    if soma_left < operationNumbersButton.changeNumber.selectedFruit.valor {
+                        deleteItemsArrayLeft.append(frutaNode.node)
+                        
+                    } else if soma_left == operationNumbersButton.changeNumber.selectedFruit.valor {
+                        deleteItemsArrayLeft.append(frutaNode.node)
                         foodArrayLeft.remove(at: index)
+                        removeChildren(in: deleteItemsArrayLeft)
+                    }
+                    
+                    else {
+                        soma_left -= foodArrayLeft[index].fruta.valor
+                        
+                        //arrumar porque nao ta funfando
                         break
                     }
-                    else {
-                        print("entrou")
-                        //2º caso: somar numeros para dar o valor do valor subtraído
-                        var cont = 0
-                        var deleteItemsArray: Set<FrutaNode> = []
-                        var aux = 0
-                        
-                        
-                        for i in 0...foodArrayLeft.count {
-                            for j in 0...(foodArrayLeft.count) - 1 {
-                                deleteItemsArray.insert(foodArrayLeft[i])
-                                aux = soma + foodArrayLeft[cont].fruta.valor
-                                if soma == operationNumbersButton.changeNumber.selectedFruit.valor {
-                                    for node in deleteItemsArray{
-                                        removeChildren(in: [node.node])
-                                    }
-                                    
-                                } else {
-                                    cont += 1
-                                    if aux <= operationNumbersButton.changeNumber.selectedFruit.valor {
-                                        soma = aux
-                                        deleteItemsArray.insert(foodArrayLeft[cont])
-                                        //foodArrayLeft = foodArrayLeft.filter{ !deleteItemsArray.contains(where: $0)}
-                                        foodArrayLeft.removeAll(where: { deleteItemsArray.contains($0) })
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    
                 }
-                
+                // 3º caso: se o valor subtraido for menor que o valor da fruta, remove ela e coloca outra no lugar
+                else if operationNumbersButton.changeNumber.selectedFruit.valor < frutaNode.fruta.valor && foodArrayLeft[index].node.name != "incognitaAdded" {
+                    if frutaNode.fruta.valor > aux_left {
+                        cont_left = index
+                        aux_left = frutaNode.fruta.valor
+                    }
+                    else {
+                        aux_left = aux_left - operationNumbersButton.changeNumber.selectedFruit.valor
+                    }
+                    
+                    if aux_left == frutaNode.fruta.valor && foodArrayLeft[index].node.name != "incognitaAdded"{
+                        aux_left -= operationNumbersButton.changeNumber.selectedFruit.valor
+                    }
+                    print("aux: \(aux_left)")
+                        //substitui
+                    switch aux_left {
+                    case 1:
+                        print("virou fruta 1")
+                        let texture = SKTexture(imageNamed: "fruit1")
+                        let action = SKAction.setTexture(texture, resize: true)
+                        foodArrayLeft[cont_left].fruta = .fruta1
+                        foodArrayLeft[cont_left].node.run(action)
+                    case 2:
+                        print("virou fruta 2")
+                        let texture = SKTexture(imageNamed: "fruit2")
+                        let action = SKAction.setTexture(texture, resize: true)
+                        foodArrayLeft[cont_left].fruta = .fruta2
+                        foodArrayLeft[cont_left].node.run(action)
+                    case 3:
+                        print("virou fruta 3")
+                        let texture = SKTexture(imageNamed: "fruit3")
+                        let action = SKAction.setTexture(texture, resize: true)
+                        foodArrayLeft[cont_left].fruta = .fruta3
+                        foodArrayLeft[cont_left].node.run(action)
+                    case 4:
+                        print("virou duas frutas 2")
+                        let texture = SKTexture(imageNamed: "fruit2")
+                        let action = SKAction.setTexture(texture, resize: true)
+                        let food: FrutaNode = FrutaNode(fruta: .fruta2)
+                        foodArrayLeft[cont_left].fruta = .fruta2
+                        foodArrayLeft[cont_left].node.run(action)
+                        
+                        food.node.zPosition = 20
+                        food.node.position.y = foodArrayLeft[cont_left].node.position.y
+                        food.node.name = "foodAdded"
+                        isInTrayLeft = true
+                        foodArrayLeft.append(food)
+                        foodContLeft += 15
+                        food.node.position.x = foodArrayLeft[cont_left].node.position.x + 15
+                        addChild(food.node)
+                    default:
+                        print("default")
+                        foodArrayLeft[cont_left].fruta = .fruta1
+                        foodArrayLeft[cont_left].node = SKSpriteNode(imageNamed: "fruit1")
+                    }
+                    break
+                }
                 
             }
             
-            
-            //3º caso: subtrair de uma fruta com valor maior do que o valor subtraído
-            
-            
+            for (index, frutaNode) in foodArrayRight.enumerated(){
+                print("operation: \(operationNumbersButton.changeNumber.selectedFruit.valor)")
+                print("fruta: \(frutaNode.fruta.valor)")
+                //se o valor subtraido for igual ao valor de uma fruta do array da esquerda
+                if operationNumbersButton.changeNumber.selectedFruit.valor == frutaNode.fruta.valor{
+                    print("entrou na remocao de uma fruta")
+                    //remove a fruta
+                    frutaNode.node.removeFromParent()
+                    foodArrayRight.remove(at: index)
+                    break
+                } else if operationNumbersButton.changeNumber.selectedFruit.valor > frutaNode.fruta.valor {
+                    print("entrou na remocao de varios")
+                    soma_right += foodArrayRight[index].fruta.valor
+                    if soma_right < operationNumbersButton.changeNumber.selectedFruit.valor {
+                        deleteItemsArrayRight.append(frutaNode.node)
+                        
+                    } else if soma_right == operationNumbersButton.changeNumber.selectedFruit.valor {
+                        deleteItemsArrayRight.append(frutaNode.node)
+                        foodArrayRight.remove(at: index)
+                        removeChildren(in: deleteItemsArrayRight)
+                    }
+                    else {
+                        soma_right -= foodArrayRight[index].fruta.valor
+                    }
+                    break
+                }
+                // 3º caso: se o valor subtraido for menor que o valor da fruta, remove ela e coloca outra no lugar
+                else if operationNumbersButton.changeNumber.selectedFruit.valor < frutaNode.fruta.valor{
+                    print("entrou na transformacao de uma fruta")
+                    if frutaNode.fruta.valor > aux_right {
+                        cont_right = index
+                        aux_right = frutaNode.fruta.valor
+                    }
+                    else {
+                        aux_right = aux_right - operationNumbersButton.changeNumber.selectedFruit.valor
+                    }
+                    
+                    if aux_right == frutaNode.fruta.valor{
+                        aux_right -= operationNumbersButton.changeNumber.selectedFruit.valor
+                    }
+                    print("aux: \(aux_right)")
+                        //substitui
+                    switch aux_right {
+                    case 1:
+                        print("virou fruta 1")
+                        let texture = SKTexture(imageNamed: "fruit1")
+                        let action = SKAction.setTexture(texture, resize: true)
+                        foodArrayRight[cont_right].fruta = .fruta1
+                        foodArrayRight[cont_right].node.run(action)
+                        //frutaNode.node.run(action)
+                    case 2:
+                        print("virou fruta 2")
+                        let texture = SKTexture(imageNamed: "fruit2")
+                        let action = SKAction.setTexture(texture, resize: true)
+                        foodArrayRight[cont_right].fruta = .fruta2
+                        foodArrayRight[cont_right].node.run(action)
+                        //frutaNode.node.run(action)
+                    case 3:
+                        print("virou fruta 3")
+                        let texture = SKTexture(imageNamed: "fruit3")
+                        let action = SKAction.setTexture(texture, resize: true)
+                        foodArrayRight[cont_right].fruta = .fruta3
+                        foodArrayRight[cont_right].node.run(action)
+//                        frutaNode.node.run(action)
+                    case 4:
+                        print("virou duas frutas 2")
+                        let texture = SKTexture(imageNamed: "fruit2")
+                        let action = SKAction.setTexture(texture, resize: true)
+                        let food: FrutaNode = FrutaNode(fruta: .fruta2)
+                        foodArrayRight[cont_right].fruta = .fruta2
+                        foodArrayRight[cont_right].node.run(action)
+                        
+                        food.node.zPosition = 20
+                        food.node.position.y = foodArrayRight[cont_right].node.position.y
+                        food.node.name = "foodAdded"
+                        isInTrayRight = true
+                        foodArrayRight.append(food)
+                        foodContRight += 15
+                        food.node.position.x = foodArrayRight[cont_right].node.position.x + 15
+                        addChild(food.node)
+                    default:
+                        print("default")
+                        foodArrayRight[cont_right].fruta = .fruta1
+                        foodArrayRight[cont_right].node = SKSpriteNode(imageNamed: "fruit1")
+                    }
+                    break
+                }
+                
+            }
         }
-        //}
     }
     
     
@@ -528,6 +655,7 @@ class GameScene: SKScene {
                 if !(DataModel.shared.balanca_esquerda_travada){ // se a bandeja não estiver travada, adiciona fruta
                     if food.node.name == "incognita"{ // condição que verifica que tem incógnita na bandeja da esquerda
                         DataModel.shared.hasX = true
+                        food.node.name = "incognitaAdded"
                     }
                     else{
                         food.node.name = "foodAdded"
