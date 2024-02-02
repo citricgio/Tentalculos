@@ -7,6 +7,7 @@
 
 
 import SpriteKit
+import GameKit
 
 //cena de quando o jogador abre o jogo
 class  MenuScene: SKScene {
@@ -67,6 +68,9 @@ class  MenuScene: SKScene {
         title.node.position = CGPoint(x: frame.midX, y: frame.midY + 300)
         title.node.setScale(1/1.08)
         addChild(title.node)
+        
+        autenticarGameCenter()
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -108,4 +112,19 @@ class  MenuScene: SKScene {
         soundButton.position = CGPoint(x: frame.size.width / 10, y: frame.size.height / 5)
         addChild(soundButton)
     }
+    
+    //func que autentifica o game center
+    func autenticarGameCenter() {
+        GKLocalPlayer.local.authenticateHandler = { viewController, error in
+            if let viewController = viewController {
+                return
+            }
+            if error != nil {
+                return
+            }
+        }
+    }
+    
+    
+    
 }

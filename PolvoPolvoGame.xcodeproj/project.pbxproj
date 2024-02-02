@@ -70,6 +70,7 @@
 		B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNode.swift; sourceTree = "<group>"; };
 		B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontesEnum.swift; sourceTree = "<group>"; };
+		B4DFD38D2B6D7AA8006AF2DC /* PolvoPolvoGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PolvoPolvoGame.entitlements; sourceTree = "<group>"; };
 		FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonOperation.swift; sourceTree = "<group>"; };
 		FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonNumbers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +127,7 @@
 		8FED6B482B55BAF100F92D4F /* PolvoPolvoGame */ = {
 			isa = PBXGroup;
 			children = (
+				B4DFD38D2B6D7AA8006AF2DC /* PolvoPolvoGame.entitlements */,
 				8FED6B492B55BAF100F92D4F /* PolvoPolvoGameApp.swift */,
 				B49460892B6973B1004CB1FD /* Info.plist */,
 				B400CB862B6AE71A00C9C645 /* Extensions */,
@@ -447,6 +449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PolvoPolvoGame/PolvoPolvoGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
@@ -454,17 +457,19 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Tentalculos;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.educational-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gibonifacio.PolvoPolvoGame;
+				MARKETING_VERSION = 0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = br.academy.PolvoPolvoGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -477,6 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PolvoPolvoGame/PolvoPolvoGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
@@ -484,17 +490,19 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Tentalculos;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.educational-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gibonifacio.PolvoPolvoGame;
+				MARKETING_VERSION = 0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = br.academy.PolvoPolvoGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
