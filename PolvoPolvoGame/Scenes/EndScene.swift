@@ -21,6 +21,13 @@ class EndScene: SKScene {
     //instancia o background
     var background = SKSpriteNode(imageNamed: "background")
     
+    //instancia o texto acima da caixa
+    var label1: WriteNode = WriteNode(name: "label1", fontSize: .labelPoints, text: "Ops!", fontName: .labelPoints)
+    var label2: WriteNode = WriteNode(name: "label2", fontSize: .labelPoints, text: "você deicou os pratos cairem.", fontName: <#T##FontesEnum#>)
+    
+    //instancia os tres pratos quebrados
+    var brokenplates = SKSpriteNode(imageNamed: "brokenplates")
+    
     override func didMove(to view: SKView) {
         
         //Adiciona a caixa EndData
@@ -39,6 +46,16 @@ class EndScene: SKScene {
         background.zPosition = CGFloat(-10)
         background.position = CGPoint(x: frame.midX , y: frame.midY)
         addChild(background)
+        
+        //Adiciona o texto acima da caixa
+        label1.node.position = CGPoint(x: frame.midX, y: frame.midY + 300)
+        label2.node.position = CGPoint(x: frame.midX, y: frame.midY + 250)
+        addChild(label1.node)
+        addChild(label2.node)
+        
+        //Adiciona os tres pratos quebrados
+        brokenplates.position = CGPoint(x: frame.midX, y: frame.midY + 200)
+        addChild(brokenplates)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
