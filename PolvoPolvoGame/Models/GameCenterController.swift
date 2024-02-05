@@ -27,7 +27,7 @@ class GameCenterController {
     //função que configura o ponto de acesso do game center
     func pontoDeAcesso() {
         GKAccessPoint.shared.location = .topLeading
-        
+        GKAccessPoint.shared.showHighlights = true
         GKAccessPoint.shared.isActive = true
     }
     
