@@ -46,6 +46,7 @@ import SwiftUI
     
     //Melhor score do numedo de equacoes
     var bestPoints: Int = 0
+    var bestPointsLabel: String = ""
 }
 
 

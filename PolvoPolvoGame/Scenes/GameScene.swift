@@ -552,7 +552,7 @@ class GameScene: SKScene {
             
             //parte que coloca o bestScore no Leaderboards
             if DataModel.shared.contadorEquacoes > DataModel.shared.bestPoints {
-                DataModel.shared.bestPoints = DataModel.shared.contadorEquacoes
+ //               DataModel.shared.bestPoints = DataModel.shared.contadorEquacoes
                 GameCenterController.shared.scoreToLeaderboard()
             }
         }

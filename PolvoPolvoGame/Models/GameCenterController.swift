@@ -20,9 +20,11 @@ class GameCenterController {
     func autenticarGameCenter() {
         GKLocalPlayer.local.authenticateHandler = { viewController, error in
             if let viewController = viewController {
+                
                 return
             }
             if error != nil {
+                
                 return
             }
         }
@@ -49,8 +51,9 @@ class GameCenterController {
     func acessBestScore() {
         GKLeaderboard.loadLeaderboards(IDs:["my.recurring.leaderboard.id"]) { (fetchedLBs, error) in
             if let current = fetchedLBs?.first {
-//                DataModel.shared.bestPoints = current
+
                 current.loadPreviousOccurrence { (prevOccurrence, error) in
+                    DataModel.shared.bestPointsLabel = "\(prevOccurrence)"
                     // Do something with the previous occurrence
                 }
             }
