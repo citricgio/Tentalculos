@@ -13,11 +13,10 @@ class Calculadora {
     var fruta: FrutaEnum = .fruta1
     
     //operação de subtração
-    func Subtracao(fruta: FrutaEnum){
-        if (DataModel.shared.peso - fruta.valor >= 0){
-            DataModel.shared.peso -= fruta.valor
-        }
-        print(DataModel.shared.peso)
+    func Subtracao(valor: Int){
+        DataModel.shared.peso -= valor
+        print("peso: \(DataModel.shared.peso)")
+        
     }
     
     //operação de divisão
