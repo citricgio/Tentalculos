@@ -67,6 +67,9 @@ class  MenuScene: SKScene {
         title.node.position = CGPoint(x: frame.midX, y: frame.midY + 300)
         title.node.setScale(1/1.08)
         addChild(title.node)
+        
+        
+        playSound(sound: "Menu", type: "mp3")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -77,6 +80,8 @@ class  MenuScene: SKScene {
             //O que indica que quando clicar no startButton vai chamar a função de ir para a cena de jogo
             if touchedNode.name == "startButton" {
                 startGame()
+//                playSound(sound: "Jogo", type: "mp3")
+
             }
             
             //O que indica que quando clicar no tutorialButton vai chamar a função de ir para a cena de tutorial
@@ -91,12 +96,14 @@ class  MenuScene: SKScene {
         // Animar botão sendo pressionado
         let newScene = GameScene()
         self.changeTo(scene: newScene)
+        playSound(sound: "Jogo", type: "mp3")
     }
     
     //função que Chama a TutorialScene
     func startTutorial() {
         let newScene = EndScene()
         self.changeTo(scene: newScene)
+        playSound(sound: "Jogo", type: "mp3")
     }
     //TODO: adicionar o botão de som, fazer funcionar e mudar ele
     func soundIsOn() {

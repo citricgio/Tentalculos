@@ -119,6 +119,9 @@ class GameScene: SKScene {
         let incognita = setupDragLabelFood(fruta: .incognita)
         foodRemovedArray.append(incognita.node)
         
+        DataModel.shared.peso_lado_direito = 0
+        DataModel.shared.peso_lado_esquerdo = 0
+        
         setupGame()
         setupSpawners()
         setupArm()
@@ -133,6 +136,7 @@ class GameScene: SKScene {
         addScore()
         addLives()
         
+        playSound(sound: "Jogo", type: "mp3=")
         
     }
     
@@ -217,14 +221,14 @@ class GameScene: SKScene {
             if isAlive[i] == false {
                 let live = lives[i]
                 live.texture = brokenPlate
+//                playSound(sound: "Prato quebrando", type: "mp3")
+
             }
         }
     }
     
     func endGame() {
-        
-        
-        //pega a primeira vida e confirma se a posicao dela é verdadeira
+                //pega a primeira vida e confirma se a posicao dela é verdadeira
         if childNode(withName: "live1") != nil && isAlive[0] == true {
             // muda a sua posicao para falso, chama a funcao updateLives() e aumenta o contador que acompanha a quantidade de vidas que o jogador tem
             isAlive[0] = false
@@ -232,6 +236,8 @@ class GameScene: SKScene {
             updateLives()
             livesCount += 1
             print("oiiii \(livesCount)")
+            playSound(sound: "Prato quebrando", type: "mp3")
+            playSound(sound: "Jogo", type: "mp3")
         }
         else if childNode(withName: "live2") != nil && isAlive[1] == true {
             isAlive[1] = false
@@ -239,6 +245,9 @@ class GameScene: SKScene {
             updateLives()
             livesCount += 1
             print("oiiii \(livesCount)")
+            playSound(sound: "Prato quebrando", type: "mp3")
+            playSound(sound: "Jogo", type: "mp3")
+
         }
         else if childNode(withName: "live3") != nil && isAlive[2] == true {
             isAlive[2] = false
@@ -246,6 +255,7 @@ class GameScene: SKScene {
             updateLives()
             livesCount += 1
             print("oiiii \(livesCount)")
+            playSound(sound: "Prato quebrando", type: "mp3")
             endGame()
         }
         
@@ -253,6 +263,7 @@ class GameScene: SKScene {
         if livesCount == 3 {
             let endGameScene = EndScene()
             self.changeTo(scene: endGameScene)
+//            playSound(sound: "Derrota2", type: "mp3")
         }
     }
     
@@ -269,31 +280,9 @@ class GameScene: SKScene {
             updateScore()
             
         } else {
-            
+
             endGame()
-            
-//            if childNode(withName: "live1") != nil && isAlive[0] == true {
-//                isAlive[0] = false
-//                print("errouuuuu1")
-//                updateLives()
-//                livesCount += 1
-//                print("oiiii \(livesCount)")
-//            }
-//            else if childNode(withName: "live2") != nil && isAlive[1] == true {
-//                isAlive[1] = false
-//                print("errouuuuu2")
-//                updateLives()
-//                livesCount += 1
-//                print("oiiii \(livesCount)")
-//            }
-//            else if childNode(withName: "live3") != nil && isAlive[2] == true {
-//                isAlive[2] = false
-//                print("errouuuuu3")
-//                updateLives()
-//                livesCount += 1
-//                print("oiiii \(livesCount)")
-//                endGame()
-//            }
+
             
         }
         
