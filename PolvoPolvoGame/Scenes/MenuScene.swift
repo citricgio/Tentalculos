@@ -51,8 +51,7 @@ class  MenuScene: SKScene {
         
         //Adiciona o Background e sua posição
         background.zPosition = CGFloat(-10)
-        background.position = CGPoint(x: frame.midX , y: frame.midY)
-        background.setScale(1/1.08)
+        background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
         addChild(background)
         
         //Adiciona o texto e a maior pontuação e suas posições

@@ -47,8 +47,7 @@ class EndScene: SKScene {
         
         //Adiciona o Background
         background.zPosition = CGFloat(-10)
-        background.position = CGPoint(x: frame.midX , y: frame.midY)
-        background.setScale(1/1.08)
+        background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
         addChild(background)
         
         //Adiciona o texto acima da caixa
