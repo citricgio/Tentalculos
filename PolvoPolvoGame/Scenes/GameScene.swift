@@ -84,7 +84,23 @@ class GameScene: SKScene {
     var background = SKSpriteNode(imageNamed: "background")
     
     var changeOperation = OperationButton()
-                
+    
+    var score = 0
+    var scoreLabel = SKLabelNode()
+    var bestScore = 0
+    
+    
+    var live1 = SKSpriteNode()
+    var live2 = SKSpriteNode()
+    var live3 = SKSpriteNode()
+    var lives: [SKSpriteNode] = []
+    
+    var brokenPlate = SKTexture(imageNamed: "broken-plate")
+    var plate = SKTexture(imageNamed: "normal-plate")
+    
+    var isAlive: [Bool] = [true,true,true]
+    var livesCount: Int = 0
+
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
         
@@ -114,6 +130,10 @@ class GameScene: SKScene {
         background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
         addChild(background)
         
+        addScore()
+        addLives()
+        
+        
     }
     
     func addOperationButtons() {
@@ -139,6 +159,104 @@ class GameScene: SKScene {
     }
     
     
+    // adicionar a label dos pontos na tela
+    func addScore() {
+        scoreLabel.text = "Pontos: \(score)"
+        scoreLabel.fontSize = 30
+        scoreLabel.fontColor = .white
+        scoreLabel.zPosition = 10
+        scoreLabel.position = CGPoint(x: size.width / 2, y: 700)
+        
+        
+        addChild(scoreLabel)
+    }
+    
+    // fazer o update dos pontos
+    func updateScore() {
+        DataModel.shared.contadorEquacoes += 1
+        scoreLabel.text = "Pontos: \(DataModel.shared.contadorEquacoes)"
+    }
+    
+    // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
+    func addLives() {
+        live1 = SKSpriteNode(texture: plate)
+        live1.position = CGPoint(x: 150, y: 650)
+        live1.zPosition = 11
+        live1.name = "live1"
+        print("VIDA 1")
+        
+        addChild(live1)
+        lives.append(live1)
+        
+        live2 = SKSpriteNode(texture: plate)
+        live2.position = CGPoint(x: 200, y: 650)
+        live2.zPosition = 11
+        live2.name = "live2"
+        print("VIDA 2")
+        
+        addChild(live2)
+        lives.append(live2)
+
+        
+        live3 = SKSpriteNode(texture: plate)
+        live3.position = CGPoint(x: 250, y: 650)
+        live3.zPosition = 11
+        live3.name = "live3"
+        print("VIDA 3")
+        
+        addChild(live3)
+        lives.append(live3)
+
+    }
+    
+    // muda o estado do prato para quebrado
+    func updateLives() {
+        // passa pelo array de vidas
+        for i in 0...lives.count - 1 {
+            // se a posicao daquela vida se tornar falsa porque o jogador perdeu, pega a vida que está naquela posicao e troca a imagem para brokenPlate
+            if isAlive[i] == false {
+                let live = lives[i]
+                live.texture = brokenPlate
+            }
+        }
+    }
+    
+    func endGame() {
+        
+        
+        //pega a primeira vida e confirma se a posicao dela é verdadeira
+        if childNode(withName: "live1") != nil && isAlive[0] == true {
+            // muda a sua posicao para falso, chama a funcao updateLives() e aumenta o contador que acompanha a quantidade de vidas que o jogador tem
+            isAlive[0] = false
+            print("errouuuuu1")
+            updateLives()
+            livesCount += 1
+            print("oiiii \(livesCount)")
+        }
+        else if childNode(withName: "live2") != nil && isAlive[1] == true {
+            isAlive[1] = false
+            print("errouuuuu2")
+            updateLives()
+            livesCount += 1
+            print("oiiii \(livesCount)")
+        }
+        else if childNode(withName: "live3") != nil && isAlive[2] == true {
+            isAlive[2] = false
+            print("errouuuuu3")
+            updateLives()
+            livesCount += 1
+            print("oiiii \(livesCount)")
+            endGame()
+        }
+        
+        // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
+        if livesCount == 3 {
+            let endGameScene = EndScene()
+            self.changeTo(scene: endGameScene)
+        }
+    }
+    
+    
     func firstCheck() {
         if DataModel.shared.balanca_direita_travada && DataModel.shared.balanca_esquerda_travada && DataModel.shared.hasX {
             //desespawnar e mostra botao de operacoes
@@ -148,12 +266,40 @@ class GameScene: SKScene {
             removeChildren(in: [spawner1, spawner2, spawner3, spawner5, spawnerIncognita])
             removeChildren(in: foodRemovedArray)
             addOperationButtons()
+            updateScore()
             
         } else {
-            print("errouuuuu")
+            
+            endGame()
+            
+//            if childNode(withName: "live1") != nil && isAlive[0] == true {
+//                isAlive[0] = false
+//                print("errouuuuu1")
+//                updateLives()
+//                livesCount += 1
+//                print("oiiii \(livesCount)")
+//            }
+//            else if childNode(withName: "live2") != nil && isAlive[1] == true {
+//                isAlive[1] = false
+//                print("errouuuuu2")
+//                updateLives()
+//                livesCount += 1
+//                print("oiiii \(livesCount)")
+//            }
+//            else if childNode(withName: "live3") != nil && isAlive[2] == true {
+//                isAlive[2] = false
+//                print("errouuuuu3")
+//                updateLives()
+//                livesCount += 1
+//                print("oiiii \(livesCount)")
+//                endGame()
+//            }
+            
         }
         
     }
+    
+    
     
     func finalizeCheck(){
         //vitoria ou derrota
