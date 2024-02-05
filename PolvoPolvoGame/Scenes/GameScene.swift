@@ -263,7 +263,12 @@ class GameScene: SKScene {
         if livesCount == 3 {
             let endGameScene = EndScene()
             self.changeTo(scene: endGameScene)
+
 //            playSound(sound: "Derrota2", type: "mp3")
+            if DataModel.shared.contadorEquacoes > DataModel.shared.bestPoints {
+                DataModel.shared.bestPoints = DataModel.shared.contadorEquacoes
+                GameCenterController.shared.scoreToLeaderboard()
+            }
         }
     }
     
@@ -711,13 +716,4 @@ class GameScene: SKScene {
             
         }
     }
-    
-    // função que muda a tela para a de final e envia os dados para o GameCenter
-    func startEnd() {
-        let newScene = EndScene()
-        self.changeTo(scene: newScene)
-        
-        GameCenterController.shared.scoreToLeaderboard()
-    }
-    
 }
