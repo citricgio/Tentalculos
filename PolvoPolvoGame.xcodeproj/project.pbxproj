@@ -36,6 +36,12 @@
 		B4DFD3882B6C32A4006AF2DC /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */; };
 		B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */; };
 		B4DFD38C2B6D56DC006AF2DC /* FontesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */; };
+		FA0C17A92B714F7E004BF668 /* BackgroundSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */; };
+		FA0C17AC2B7152AB004BF668 /* Prato quebrando.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17AB2B7152AB004BF668 /* Prato quebrando.mp3 */; };
+		FA0C17AE2B7152B4004BF668 /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17AD2B7152B4004BF668 /* Menu.mp3 */; };
+		FA0C17B02B7152BB004BF668 /* Jogo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17AF2B7152BB004BF668 /* Jogo.mp3 */; };
+		FA0C17B22B7153F7004BF668 /* Derrota.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17B12B7153F7004BF668 /* Derrota.mp3 */; };
+		FA0C17B42B7153FC004BF668 /* Derrota2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17B32B7153FC004BF668 /* Derrota2.mp3 */; };
 		FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */; };
 		FA89DFB02B602D0100FCC114 /* SpriteButtonNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +79,12 @@
 		B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNode.swift; sourceTree = "<group>"; };
 		B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontesEnum.swift; sourceTree = "<group>"; };
 		B4DFD38D2B6D7AA8006AF2DC /* PolvoPolvoGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PolvoPolvoGame.entitlements; sourceTree = "<group>"; };
+		FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSound.swift; sourceTree = "<group>"; };
+		FA0C17AB2B7152AB004BF668 /* Prato quebrando.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Prato quebrando.mp3"; path = "../../../../../Downloads/Prato quebrando.mp3"; sourceTree = "<group>"; };
+		FA0C17AD2B7152B4004BF668 /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Menu.mp3; path = ../../../../../Downloads/Menu.mp3; sourceTree = "<group>"; };
+		FA0C17AF2B7152BB004BF668 /* Jogo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Jogo.mp3; path = ../../../../../Downloads/Jogo.mp3; sourceTree = "<group>"; };
+		FA0C17B12B7153F7004BF668 /* Derrota.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Derrota.mp3; path = ../../../../../Downloads/Derrota.mp3; sourceTree = "<group>"; };
+		FA0C17B32B7153FC004BF668 /* Derrota2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Derrota2.mp3; path = ../../../../../Downloads/Derrota2.mp3; sourceTree = "<group>"; };
 		FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonOperation.swift; sourceTree = "<group>"; };
 		FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonNumbers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +151,7 @@
 				8FED6B592B55BB8500F92D4F /* Models */,
 				8FED6B582B55BB7F00F92D4F /* Views */,
 				8FED6B572B55BB7800F92D4F /* Scenes */,
+				FA0C17AA2B715287004BF668 /* Sound */,
 				8FED6B4D2B55BAF200F92D4F /* Assets.xcassets */,
 				8FED6B4F2B55BAF200F92D4F /* Preview Content */,
 			);
@@ -165,6 +178,7 @@
 				FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */,
 				08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */,
 				FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */,
+				FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -222,6 +236,18 @@
 				B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */,
 			);
 			path = SceneComponents;
+			sourceTree = "<group>";
+		};
+		FA0C17AA2B715287004BF668 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				FA0C17AF2B7152BB004BF668 /* Jogo.mp3 */,
+				FA0C17AD2B7152B4004BF668 /* Menu.mp3 */,
+				FA0C17B12B7153F7004BF668 /* Derrota.mp3 */,
+				FA0C17AB2B7152AB004BF668 /* Prato quebrando.mp3 */,
+				FA0C17B32B7153FC004BF668 /* Derrota2.mp3 */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,8 +310,13 @@
 			files = (
 				8FED6B512B55BAF200F92D4F /* Preview Assets.xcassets in Resources */,
 				B494608D2B697497004CB1FD /* IstokWeb-Bold.ttf in Resources */,
+				FA0C17B22B7153F7004BF668 /* Derrota.mp3 in Resources */,
 				8FED6B4E2B55BAF200F92D4F /* Assets.xcassets in Resources */,
+				FA0C17AE2B7152B4004BF668 /* Menu.mp3 in Resources */,
 				B494608E2B697497004CB1FD /* IstokWeb-Regular.ttf in Resources */,
+				FA0C17B02B7152BB004BF668 /* Jogo.mp3 in Resources */,
+				FA0C17B42B7153FC004BF668 /* Derrota2.mp3 in Resources */,
+				FA0C17AC2B7152AB004BF668 /* Prato quebrando.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +331,7 @@
 				B43675952B715256007B7615 /* GameCenterController.swift in Sources */,
 				8F040E402B58518A00AB8BBB /* OperationButton.swift in Sources */,
 				B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */,
+				FA0C17A92B714F7E004BF668 /* BackgroundSound.swift in Sources */,
 				B4DFD3862B6C13BA006AF2DC /* EndData.swift in Sources */,
 				08056DA12B6ADA96000DDDEE /* FrutaNode.swift in Sources */,
 				8F040E462B58692F00AB8BBB /* OperacoesEnum.swift in Sources */,
