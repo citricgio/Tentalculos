@@ -57,19 +57,21 @@ class  MenuScene: SKScene {
         addChild(background)
         
         //Adiciona o texto e a maior pontuação e suas posições
-        bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + 200)
-        labelPoint.node.position = CGPoint(x: frame.midX , y: frame.midY + 240)
+        bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + 170)
+        labelPoint.node.position = CGPoint(x: frame.midX , y: frame.midY + 200)
         bPoint.node.setScale(1/1.08)
         labelPoint.node.setScale(1/1.08)
         addChild(bPoint.node)
         addChild(labelPoint.node)
         
         //Adiciona o Título
-        title.node.position = CGPoint(x: frame.midX, y: frame.midY + 300)
+        title.node.position = CGPoint(x: frame.midX, y: frame.midY + 250)
         title.node.setScale(1/1.08)
         addChild(title.node)
         
         autenticarGameCenter()
+        
+        pontoDeAcesso()
         
     }
     
@@ -125,6 +127,10 @@ class  MenuScene: SKScene {
         }
     }
     
-    
+    func pontoDeAcesso() {
+        GKAccessPoint.shared.location = .topLeading
+        
+        GKAccessPoint.shared.isActive = true
+    }
     
 }
