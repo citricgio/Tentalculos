@@ -22,6 +22,25 @@
 		8FED6B4C2B55BAF100F92D4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FED6B4B2B55BAF100F92D4F /* ContentView.swift */; };
 		8FED6B4E2B55BAF200F92D4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FED6B4D2B55BAF200F92D4F /* Assets.xcassets */; };
 		8FED6B512B55BAF200F92D4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FED6B502B55BAF200F92D4F /* Preview Assets.xcassets */; };
+		B400CB812B6AB31F00C9C645 /* NavigationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400CB802B6AB31F00C9C645 /* NavigationButtonView.swift */; };
+		B400CB832B6AD80400C9C645 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400CB822B6AD80400C9C645 /* MenuScene.swift */; };
+		B400CB852B6AD80F00C9C645 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400CB842B6AD80F00C9C645 /* EndScene.swift */; };
+		B400CB882B6AE73500C9C645 /* SKScene+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400CB872B6AE73500C9C645 /* SKScene+.swift */; };
+		B494608D2B697497004CB1FD /* IstokWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B494608B2B697497004CB1FD /* IstokWeb-Bold.ttf */; };
+		B494608E2B697497004CB1FD /* IstokWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B494608C2B697497004CB1FD /* IstokWeb-Regular.ttf */; };
+		B49DE6962B696665004A795D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49DE6952B696665004A795D /* MenuView.swift */; };
+		B49DE6982B69666E004A795D /* EndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49DE6972B69666E004A795D /* EndView.swift */; };
+		B4DFD3842B6C06BB006AF2DC /* WriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3832B6C06BB006AF2DC /* WriteButton.swift */; };
+		B4DFD3862B6C13BA006AF2DC /* EndData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3852B6C13BA006AF2DC /* EndData.swift */; };
+		B4DFD3882B6C32A4006AF2DC /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */; };
+		B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */; };
+		B4DFD38C2B6D56DC006AF2DC /* FontesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */; };
+		FA0C17A92B714F7E004BF668 /* BackgroundSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */; };
+		FA0C17AC2B7152AB004BF668 /* Prato quebrando.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17AB2B7152AB004BF668 /* Prato quebrando.mp3 */; };
+		FA0C17AE2B7152B4004BF668 /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17AD2B7152B4004BF668 /* Menu.mp3 */; };
+		FA0C17B02B7152BB004BF668 /* Jogo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17AF2B7152BB004BF668 /* Jogo.mp3 */; };
+		FA0C17B22B7153F7004BF668 /* Derrota.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17B12B7153F7004BF668 /* Derrota.mp3 */; };
+		FA0C17B42B7153FC004BF668 /* Derrota2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17B32B7153FC004BF668 /* Derrota2.mp3 */; };
 		FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */; };
 		FA89DFB02B602D0100FCC114 /* SpriteButtonNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +62,26 @@
 		8FED6B4B2B55BAF100F92D4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8FED6B4D2B55BAF200F92D4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8FED6B502B55BAF200F92D4F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B400CB802B6AB31F00C9C645 /* NavigationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonView.swift; sourceTree = "<group>"; };
+		B400CB822B6AD80400C9C645 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		B400CB842B6AD80F00C9C645 /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
+		B400CB872B6AE73500C9C645 /* SKScene+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKScene+.swift"; sourceTree = "<group>"; };
+		B49460892B6973B1004CB1FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B494608B2B697497004CB1FD /* IstokWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Bold.ttf"; sourceTree = "<group>"; };
+		B494608C2B697497004CB1FD /* IstokWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Regular.ttf"; sourceTree = "<group>"; };
+		B49DE6952B696665004A795D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		B49DE6972B69666E004A795D /* EndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndView.swift; sourceTree = "<group>"; };
+		B4DFD3832B6C06BB006AF2DC /* WriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteButton.swift; sourceTree = "<group>"; };
+		B4DFD3852B6C13BA006AF2DC /* EndData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndData.swift; sourceTree = "<group>"; };
+		B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
+		B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNode.swift; sourceTree = "<group>"; };
+		B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontesEnum.swift; sourceTree = "<group>"; };
+		FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSound.swift; sourceTree = "<group>"; };
+		FA0C17AB2B7152AB004BF668 /* Prato quebrando.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Prato quebrando.mp3"; path = "../../../../../Downloads/Prato quebrando.mp3"; sourceTree = "<group>"; };
+		FA0C17AD2B7152B4004BF668 /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Menu.mp3; path = ../../../../../Downloads/Menu.mp3; sourceTree = "<group>"; };
+		FA0C17AF2B7152BB004BF668 /* Jogo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Jogo.mp3; path = ../../../../../Downloads/Jogo.mp3; sourceTree = "<group>"; };
+		FA0C17B12B7153F7004BF668 /* Derrota.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Derrota.mp3; path = ../../../../../Downloads/Derrota.mp3; sourceTree = "<group>"; };
+		FA0C17B32B7153FC004BF668 /* Derrota2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Derrota2.mp3; path = ../../../../../Downloads/Derrota2.mp3; sourceTree = "<group>"; };
 		FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonOperation.swift; sourceTree = "<group>"; };
 		FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonNumbers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +103,7 @@
 				8F040E342B584FB700AB8BBB /* FrutaEnum.swift */,
 				08056DA02B6ADA96000DDDEE /* FrutaNode.swift */,
 				8F040E452B58692F00AB8BBB /* OperacoesEnum.swift */,
+				B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -99,11 +139,15 @@
 			isa = PBXGroup;
 			children = (
 				8FED6B492B55BAF100F92D4F /* PolvoPolvoGameApp.swift */,
+				B49460892B6973B1004CB1FD /* Info.plist */,
+				B400CB862B6AE71A00C9C645 /* Extensions */,
+				B494608A2B69745C004CB1FD /* Resources */,
 				8F040E382B58504700AB8BBB /* Scripts */,
 				8F040E332B584F8F00AB8BBB /* Enum */,
 				8FED6B592B55BB8500F92D4F /* Models */,
 				8FED6B582B55BB7F00F92D4F /* Views */,
 				8FED6B572B55BB7800F92D4F /* Scenes */,
+				FA0C17AA2B715287004BF668 /* Sound */,
 				8FED6B4D2B55BAF200F92D4F /* Assets.xcassets */,
 				8FED6B4F2B55BAF200F92D4F /* Preview Content */,
 			);
@@ -121,11 +165,16 @@
 		8FED6B572B55BB7800F92D4F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B4DFD3822B6C069C006AF2DC /* SceneComponents */,
 				8F040E3D2B58514700AB8BBB /* GameScene.swift */,
+				B400CB822B6AD80400C9C645 /* MenuScene.swift */,
+				B400CB842B6AD80F00C9C645 /* EndScene.swift */,
+				B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */,
 				08056D9C2B61985A000DDDEE /* NextButton.swift */,
 				FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */,
 				08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */,
 				FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */,
+				FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -133,7 +182,10 @@
 		8FED6B582B55BB7F00F92D4F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B400CB7F2B6AB30D00C9C645 /* Components */,
 				8FED6B4B2B55BAF100F92D4F /* ContentView.swift */,
+				B49DE6952B696665004A795D /* MenuView.swift */,
+				B49DE6972B69666E004A795D /* EndView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +196,53 @@
 				8F040E472B58718000AB8BBB /* DataModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B400CB7F2B6AB30D00C9C645 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B400CB802B6AB31F00C9C645 /* NavigationButtonView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B400CB862B6AE71A00C9C645 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B400CB872B6AE73500C9C645 /* SKScene+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B494608A2B69745C004CB1FD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B494608B2B697497004CB1FD /* IstokWeb-Bold.ttf */,
+				B494608C2B697497004CB1FD /* IstokWeb-Regular.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B4DFD3822B6C069C006AF2DC /* SceneComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B4DFD3832B6C06BB006AF2DC /* WriteButton.swift */,
+				B4DFD3852B6C13BA006AF2DC /* EndData.swift */,
+				B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */,
+			);
+			path = SceneComponents;
+			sourceTree = "<group>";
+		};
+		FA0C17AA2B715287004BF668 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				FA0C17AF2B7152BB004BF668 /* Jogo.mp3 */,
+				FA0C17AD2B7152B4004BF668 /* Menu.mp3 */,
+				FA0C17B12B7153F7004BF668 /* Derrota.mp3 */,
+				FA0C17AB2B7152AB004BF668 /* Prato quebrando.mp3 */,
+				FA0C17B32B7153FC004BF668 /* Derrota2.mp3 */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,7 +304,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FED6B512B55BAF200F92D4F /* Preview Assets.xcassets in Resources */,
+				B494608D2B697497004CB1FD /* IstokWeb-Bold.ttf in Resources */,
+				FA0C17B22B7153F7004BF668 /* Derrota.mp3 in Resources */,
 				8FED6B4E2B55BAF200F92D4F /* Assets.xcassets in Resources */,
+				FA0C17AE2B7152B4004BF668 /* Menu.mp3 in Resources */,
+				B494608E2B697497004CB1FD /* IstokWeb-Regular.ttf in Resources */,
+				FA0C17B02B7152BB004BF668 /* Jogo.mp3 in Resources */,
+				FA0C17B42B7153FC004BF668 /* Derrota2.mp3 in Resources */,
+				FA0C17AC2B7152AB004BF668 /* Prato quebrando.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,19 +324,31 @@
 			files = (
 				08056D9D2B61985A000DDDEE /* NextButton.swift in Sources */,
 				8F040E402B58518A00AB8BBB /* OperationButton.swift in Sources */,
+				B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */,
+				FA0C17A92B714F7E004BF668 /* BackgroundSound.swift in Sources */,
+				B4DFD3862B6C13BA006AF2DC /* EndData.swift in Sources */,
 				08056DA12B6ADA96000DDDEE /* FrutaNode.swift in Sources */,
 				8F040E462B58692F00AB8BBB /* OperacoesEnum.swift in Sources */,
 				8F040E442B58691600AB8BBB /* Calculadora.swift in Sources */,
 				8FED6B4C2B55BAF100F92D4F /* ContentView.swift in Sources */,
 				8F040E352B584FB700AB8BBB /* FrutaEnum.swift in Sources */,
+				B400CB852B6AD80F00C9C645 /* EndScene.swift in Sources */,
 				8F040E482B58718000AB8BBB /* DataModel.swift in Sources */,
 				FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */,
+				B49DE6962B696665004A795D /* MenuView.swift in Sources */,
 				8FED6B4A2B55BAF100F92D4F /* PolvoPolvoGameApp.swift in Sources */,
 				FA89DFB02B602D0100FCC114 /* SpriteButtonNumbers.swift in Sources */,
+				B400CB812B6AB31F00C9C645 /* NavigationButtonView.swift in Sources */,
+				B400CB882B6AE73500C9C645 /* SKScene+.swift in Sources */,
+				B4DFD3882B6C32A4006AF2DC /* TutorialScene.swift in Sources */,
 				08056D9F2B6AB48D000DDDEE /* SpriteButtonReduce.swift in Sources */,
+				B4DFD38C2B6D56DC006AF2DC /* FontesEnum.swift in Sources */,
 				8F040E3A2B58505900AB8BBB /* BalancaDados.swift in Sources */,
 				8F040E372B58501400AB8BBB /* GeradorPesos.swift in Sources */,
+				B400CB832B6AD80400C9C645 /* MenuScene.swift in Sources */,
+				B49DE6982B69666E004A795D /* EndView.swift in Sources */,
 				8F040E3E2B58514700AB8BBB /* GameScene.swift in Sources */,
+				B4DFD3842B6C06BB006AF2DC /* WriteButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,9 +482,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 543L4H35A3;
+				DEVELOPMENT_TEAM = 7FZ4ZHZT5J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -393,9 +512,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 543L4H35A3;
+				DEVELOPMENT_TEAM = 7FZ4ZHZT5J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

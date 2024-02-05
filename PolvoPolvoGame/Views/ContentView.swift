@@ -9,17 +9,19 @@ import SpriteKit
 
 struct ContentView: View {
      
-  var scene: GameScene { 
-    let scene: GameScene = GameScene()
-    scene.scaleMode = .resizeFill  
+
+  var scene: MenuScene {
+    let scene: MenuScene = MenuScene()
+//    playSound(sound: "Menu", type: "mp3")
+    scene.scaleMode = .resizeFill
     return scene
+      
   }
    
-  var body: some View {   
-        
-    SpriteView(scene: scene)
-      .ignoresSafeArea()   
-  }
+    var body: some View {
+            SpriteView(scene: scene)
+                .ignoresSafeArea()
+    }
 }
 #Preview {
   ContentView() 
