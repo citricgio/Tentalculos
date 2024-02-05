@@ -10,6 +10,11 @@
 		08056D9D2B61985A000DDDEE /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9C2B61985A000DDDEE /* NextButton.swift */; };
 		08056D9F2B6AB48D000DDDEE /* SpriteButtonReduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */; };
 		08056DA12B6ADA96000DDDEE /* FrutaNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056DA02B6ADA96000DDDEE /* FrutaNode.swift */; };
+		08F589782B716FE50092D72A /* Jogo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F589772B716FE50092D72A /* Jogo.mp3 */; };
+		08F5897A2B716FF00092D72A /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F589792B716FF00092D72A /* Menu.mp3 */; };
+		08F5897C2B7170080092D72A /* Derrota.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F5897B2B7170080092D72A /* Derrota.mp3 */; };
+		08F5897E2B71701A0092D72A /* Derrota2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F5897D2B71701A0092D72A /* Derrota2.mp3 */; };
+		08F589802B7170B00092D72A /* Prato quebrando.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F5897F2B7170B00092D72A /* Prato quebrando.mp3 */; };
 		8F040E352B584FB700AB8BBB /* FrutaEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E342B584FB700AB8BBB /* FrutaEnum.swift */; };
 		8F040E372B58501400AB8BBB /* GeradorPesos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E362B58501400AB8BBB /* GeradorPesos.swift */; };
 		8F040E3A2B58505900AB8BBB /* BalancaDados.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E392B58505900AB8BBB /* BalancaDados.swift */; };
@@ -37,11 +42,6 @@
 		B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */; };
 		B4DFD38C2B6D56DC006AF2DC /* FontesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */; };
 		FA0C17A92B714F7E004BF668 /* BackgroundSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */; };
-		FA0C17AC2B7152AB004BF668 /* Prato quebrando.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17AB2B7152AB004BF668 /* Prato quebrando.mp3 */; };
-		FA0C17AE2B7152B4004BF668 /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17AD2B7152B4004BF668 /* Menu.mp3 */; };
-		FA0C17B02B7152BB004BF668 /* Jogo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17AF2B7152BB004BF668 /* Jogo.mp3 */; };
-		FA0C17B22B7153F7004BF668 /* Derrota.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17B12B7153F7004BF668 /* Derrota.mp3 */; };
-		FA0C17B42B7153FC004BF668 /* Derrota2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA0C17B32B7153FC004BF668 /* Derrota2.mp3 */; };
 		FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */; };
 		FA89DFB02B602D0100FCC114 /* SpriteButtonNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +50,11 @@
 		08056D9C2B61985A000DDDEE /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonReduce.swift; sourceTree = "<group>"; };
 		08056DA02B6ADA96000DDDEE /* FrutaNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutaNode.swift; sourceTree = "<group>"; };
+		08F589772B716FE50092D72A /* Jogo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jogo.mp3; sourceTree = "<group>"; };
+		08F589792B716FF00092D72A /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu.mp3; sourceTree = "<group>"; };
+		08F5897B2B7170080092D72A /* Derrota.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Derrota.mp3; sourceTree = "<group>"; };
+		08F5897D2B71701A0092D72A /* Derrota2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Derrota2.mp3; sourceTree = "<group>"; };
+		08F5897F2B7170B00092D72A /* Prato quebrando.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Prato quebrando.mp3"; sourceTree = "<group>"; };
 		8F040E342B584FB700AB8BBB /* FrutaEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutaEnum.swift; sourceTree = "<group>"; };
 		8F040E362B58501400AB8BBB /* GeradorPesos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeradorPesos.swift; sourceTree = "<group>"; };
 		8F040E392B58505900AB8BBB /* BalancaDados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancaDados.swift; sourceTree = "<group>"; };
@@ -80,11 +85,6 @@
 		B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontesEnum.swift; sourceTree = "<group>"; };
 		B4DFD38D2B6D7AA8006AF2DC /* PolvoPolvoGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PolvoPolvoGame.entitlements; sourceTree = "<group>"; };
 		FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSound.swift; sourceTree = "<group>"; };
-		FA0C17AB2B7152AB004BF668 /* Prato quebrando.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Prato quebrando.mp3"; path = "../../../../../Downloads/Prato quebrando.mp3"; sourceTree = "<group>"; };
-		FA0C17AD2B7152B4004BF668 /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Menu.mp3; path = ../../../../../Downloads/Menu.mp3; sourceTree = "<group>"; };
-		FA0C17AF2B7152BB004BF668 /* Jogo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Jogo.mp3; path = ../../../../../Downloads/Jogo.mp3; sourceTree = "<group>"; };
-		FA0C17B12B7153F7004BF668 /* Derrota.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Derrota.mp3; path = ../../../../../Downloads/Derrota.mp3; sourceTree = "<group>"; };
-		FA0C17B32B7153FC004BF668 /* Derrota2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Derrota2.mp3; path = ../../../../../Downloads/Derrota2.mp3; sourceTree = "<group>"; };
 		FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonOperation.swift; sourceTree = "<group>"; };
 		FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonNumbers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -241,11 +241,11 @@
 		FA0C17AA2B715287004BF668 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				FA0C17AF2B7152BB004BF668 /* Jogo.mp3 */,
-				FA0C17AD2B7152B4004BF668 /* Menu.mp3 */,
-				FA0C17B12B7153F7004BF668 /* Derrota.mp3 */,
-				FA0C17AB2B7152AB004BF668 /* Prato quebrando.mp3 */,
-				FA0C17B32B7153FC004BF668 /* Derrota2.mp3 */,
+				08F589772B716FE50092D72A /* Jogo.mp3 */,
+				08F589792B716FF00092D72A /* Menu.mp3 */,
+				08F5897B2B7170080092D72A /* Derrota.mp3 */,
+				08F5897F2B7170B00092D72A /* Prato quebrando.mp3 */,
+				08F5897D2B71701A0092D72A /* Derrota2.mp3 */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -310,13 +310,13 @@
 			files = (
 				8FED6B512B55BAF200F92D4F /* Preview Assets.xcassets in Resources */,
 				B494608D2B697497004CB1FD /* IstokWeb-Bold.ttf in Resources */,
-				FA0C17B22B7153F7004BF668 /* Derrota.mp3 in Resources */,
+				08F5897C2B7170080092D72A /* Derrota.mp3 in Resources */,
 				8FED6B4E2B55BAF200F92D4F /* Assets.xcassets in Resources */,
-				FA0C17AE2B7152B4004BF668 /* Menu.mp3 in Resources */,
+				08F589802B7170B00092D72A /* Prato quebrando.mp3 in Resources */,
 				B494608E2B697497004CB1FD /* IstokWeb-Regular.ttf in Resources */,
-				FA0C17B02B7152BB004BF668 /* Jogo.mp3 in Resources */,
-				FA0C17B42B7153FC004BF668 /* Derrota2.mp3 in Resources */,
-				FA0C17AC2B7152AB004BF668 /* Prato quebrando.mp3 in Resources */,
+				08F589782B716FE50092D72A /* Jogo.mp3 in Resources */,
+				08F5897A2B716FF00092D72A /* Menu.mp3 in Resources */,
+				08F5897E2B71701A0092D72A /* Derrota2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
