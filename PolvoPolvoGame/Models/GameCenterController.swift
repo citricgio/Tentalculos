@@ -11,6 +11,7 @@ import GameKit
 class GameCenterController {
     
     static let shared = GameCenterController()
+    var points: Int = DataModel.shared.contadorEquacoes
     
     //func que autentifica o game center
     func autenticarGameCenter() {
@@ -31,5 +32,28 @@ class GameCenterController {
         GKAccessPoint.shared.isActive = true
     }
     
+    //Envia um Score para os leaderboards
+    func scoreToLeaderboard() {
+        GKLeaderboard.submitScore(self.points, context: 0, player: GKLocalPlayer.local,
+                                  leaderboardIDs: ["my.recurring.leaderboard.000"]) { error in
+            if error != nil {
+                print("Error: \(error!.localizedDescription).")
+            }
+        }
+    }
     
+    func acessBestScore() {
+        GKLeaderboard.loadLeaderboards(IDs:["my.recurring.leaderboard.id"]) { (fetchedLBs, error) in
+            if let current = fetchedLBs?.first {
+                // Load previous occurrence using the current occurrence
+                current.loadPreviousOccurrence { (prevOccurrence, error) in
+                    // Do something with the previous occurrence
+                }
+            }
+        }
+    }
+    
+//    func loadLeaderboards() async {
+//        let leaderboards = try await GKLeaderboard.loadLeaderboards(IDs: ["my.leaderboard.000"])
+//    }
 }

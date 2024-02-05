@@ -73,6 +73,7 @@ class  MenuScene: SKScene {
         
         GameCenterController.shared.pontoDeAcesso()
         
+        GameCenterController.shared.acessBestScore()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

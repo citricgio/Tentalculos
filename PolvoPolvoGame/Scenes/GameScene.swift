@@ -151,6 +151,7 @@ class GameScene: SKScene {
             
         } else {
             print("errouuuuu")
+//            startEnd()
         }
         
     }
@@ -575,6 +576,14 @@ class GameScene: SKScene {
             }
             
         }
+    }
+    
+    // função que muda a tela para a de final e envia os dados para o GameCenter
+    func startEnd() {
+        let newScene = EndScene()
+        self.changeTo(scene: newScene)
+        
+        GameCenterController.shared.scoreToLeaderboard()
     }
     
 }

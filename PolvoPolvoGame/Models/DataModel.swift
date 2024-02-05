@@ -43,6 +43,9 @@ import SwiftUI
     
     //Variável que vai falar se o som está Ativo ou não
     var soundIsOn: Bool = true
+    
+    //Melhor score do numedo de equacoes
+    var bestPoints: Int = 0
 }
 
 
