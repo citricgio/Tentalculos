@@ -26,6 +26,7 @@
 		B400CB832B6AD80400C9C645 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400CB822B6AD80400C9C645 /* MenuScene.swift */; };
 		B400CB852B6AD80F00C9C645 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400CB842B6AD80F00C9C645 /* EndScene.swift */; };
 		B400CB882B6AE73500C9C645 /* SKScene+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400CB872B6AE73500C9C645 /* SKScene+.swift */; };
+		B43675952B715256007B7615 /* GameCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43675942B715256007B7615 /* GameCenterController.swift */; };
 		B494608D2B697497004CB1FD /* IstokWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B494608B2B697497004CB1FD /* IstokWeb-Bold.ttf */; };
 		B494608E2B697497004CB1FD /* IstokWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B494608C2B697497004CB1FD /* IstokWeb-Regular.ttf */; };
 		B49DE6962B696665004A795D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49DE6952B696665004A795D /* MenuView.swift */; };
@@ -60,6 +61,7 @@
 		B400CB822B6AD80400C9C645 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		B400CB842B6AD80F00C9C645 /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
 		B400CB872B6AE73500C9C645 /* SKScene+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKScene+.swift"; sourceTree = "<group>"; };
+		B43675942B715256007B7615 /* GameCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterController.swift; sourceTree = "<group>"; };
 		B49460892B6973B1004CB1FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B494608B2B697497004CB1FD /* IstokWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Bold.ttf"; sourceTree = "<group>"; };
 		B494608C2B697497004CB1FD /* IstokWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Regular.ttf"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		8FED6B592B55BB8500F92D4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B43675942B715256007B7615 /* GameCenterController.swift */,
 				8F040E472B58718000AB8BBB /* DataModel.swift */,
 			);
 			path = Models;
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08056D9D2B61985A000DDDEE /* NextButton.swift in Sources */,
+				B43675952B715256007B7615 /* GameCenterController.swift in Sources */,
 				8F040E402B58518A00AB8BBB /* OperationButton.swift in Sources */,
 				B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */,
 				B4DFD3862B6C13BA006AF2DC /* EndData.swift in Sources */,

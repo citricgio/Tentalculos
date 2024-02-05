@@ -69,9 +69,9 @@ class  MenuScene: SKScene {
         title.node.setScale(1/1.08)
         addChild(title.node)
         
-        autenticarGameCenter()
+        GameCenterController.shared.autenticarGameCenter()
         
-        pontoDeAcesso()
+        GameCenterController.shared.pontoDeAcesso()
         
     }
     
@@ -115,22 +115,5 @@ class  MenuScene: SKScene {
         addChild(soundButton)
     }
     
-    //func que autentifica o game center
-    func autenticarGameCenter() {
-        GKLocalPlayer.local.authenticateHandler = { viewController, error in
-            if let viewController = viewController {
-                return
-            }
-            if error != nil {
-                return
-            }
-        }
-    }
-    
-    func pontoDeAcesso() {
-        GKAccessPoint.shared.location = .topLeading
-        
-        GKAccessPoint.shared.isActive = true
-    }
-    
+   
 }
