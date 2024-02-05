@@ -8,9 +8,12 @@
 import Foundation
 import GameKit
 
+//Classe que tem todas as funções ligadas ao GameCenter
 class GameCenterController {
     
     static let shared = GameCenterController()
+    
+    //função que instancia o points com o valor do contador de equações
     var points: Int = DataModel.shared.contadorEquacoes
     
     //func que autentifica o game center
@@ -42,10 +45,11 @@ class GameCenterController {
         }
     }
     
+    //Acessa o BestScore e coloca no código
     func acessBestScore() {
         GKLeaderboard.loadLeaderboards(IDs:["my.recurring.leaderboard.id"]) { (fetchedLBs, error) in
             if let current = fetchedLBs?.first {
-                // Load previous occurrence using the current occurrence
+//                DataModel.shared.bestPoints = current
                 current.loadPreviousOccurrence { (prevOccurrence, error) in
                     // Do something with the previous occurrence
                 }

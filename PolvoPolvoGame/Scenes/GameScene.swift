@@ -549,6 +549,8 @@ class GameScene: SKScene {
             self.changeTo(scene: endGameScene)
 
 //            playSound(sound: "Derrota2", type: "mp3")
+            
+            //parte que coloca o bestScore no Leaderboards
             if DataModel.shared.contadorEquacoes > DataModel.shared.bestPoints {
                 DataModel.shared.bestPoints = DataModel.shared.contadorEquacoes
                 GameCenterController.shared.scoreToLeaderboard()

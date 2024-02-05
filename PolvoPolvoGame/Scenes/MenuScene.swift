@@ -68,10 +68,9 @@ class  MenuScene: SKScene {
         title.node.setScale(1/1.08)
         addChild(title.node)
         
+        //funções de ligadas ao GameCenter que vem do GameCenterController
         GameCenterController.shared.autenticarGameCenter()
-        
         GameCenterController.shared.pontoDeAcesso()
-        
         GameCenterController.shared.acessBestScore()
         
         playSound(sound: "Menu", type: "mp3")
@@ -114,7 +113,6 @@ class  MenuScene: SKScene {
     func soundIsOn() {
         DataModel.shared.soundIsOn.toggle()
     }
-    
     func createSound(){
         soundButton = SKSpriteNode(imageNamed: DataModel.shared.soundIsOn ? "SoundButton" : "SoundOff")
         soundButton.position = CGPoint(x: frame.size.width / 10, y: frame.size.height / 5)
