@@ -5,8 +5,8 @@
 //  Created by Gabriel Sabaini on 31/01/24.
 //
 
-import Foundation
 import SpriteKit
+import GameKit
 
 //cena de quando o jogador perde o jogo
 class EndScene: SKScene {
