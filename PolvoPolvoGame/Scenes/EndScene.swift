@@ -12,7 +12,7 @@ import SpriteKit
 class EndScene: SKScene {
     
     //instancia a caixa com os dados do final do jogo (que está dentro da EndData)
-    var endData: EndData = EndData(points: DataModel.shared.contadorEquacoes, bPoints: 0)
+    var endData: EndData = EndData(points: DataModel.shared.equationCount, bPoints: 0)
     
     //instancia botão de Reiniciar e Voltar para o Menu
     var reiniciarButton: WriteButton = WriteButton(name: "reiniciarButton", text: "Reiniciar")
@@ -47,8 +47,7 @@ class EndScene: SKScene {
         
         //Adiciona o Background
         background.zPosition = CGFloat(-10)
-        background.position = CGPoint(x: frame.midX , y: frame.midY)
-        background.setScale(1/1.08)
+        background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
         addChild(background)
         
         //Adiciona o texto acima da caixa
@@ -63,6 +62,8 @@ class EndScene: SKScene {
         brokenplates.position = CGPoint(x: frame.midX, y: frame.midY + 200)
         brokenplates.setScale(1/1.08)
         addChild(brokenplates)
+        
+        playSound(sound: "Derrota2", type: "mp3")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -73,11 +74,13 @@ class EndScene: SKScene {
             //O que indica que quando clicar no startButton vai chamar a função de ir para a cena de jogo
             if touchedNode.name == "reiniciarButton" {
                 restartGame()
+                playSound(sound: "Jogo", type: "mp3")
             }
             
             //O que indica que quando clicar no tutorialButton vai chamar a função de ir para a cena de tutorial
             if touchedNode.name == "menuButton" {
                 backMenu()
+                playSound(sound: "Menu", type: "mp3")
             }
         }
     }
@@ -87,12 +90,15 @@ class EndScene: SKScene {
         // Animar botão sendo pressionado
         let newScene = GameScene()
         self.changeTo(scene: newScene)
+//        playSound(sound: "Jogo", type: "mp3")
+
     }
     
     //função que chama a MenuScene
     func backMenu() {
         let newScene = MenuScene()
         self.changeTo(scene: newScene)
+//        playSound(sound: "Menu", type: "mp3")
     }
     
     //TODO: Botão de som

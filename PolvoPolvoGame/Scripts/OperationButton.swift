@@ -14,18 +14,18 @@ import SwiftUI
     //variavel usada para passar pela fruitList
     var fruitIndex = 0
     //lista que contém todos os valores possiveis do botao
-    var fruitList: [FrutaEnum] = [.fruta1, .fruta2, .fruta3, .fruta5]
+    var fruitList: [FruitEnum] = [.fruit1, .fruit2, .fruit3, .fruit5]
     //variavel que armazena a fruta selecionada no momento
-    var selectedFruit: FrutaEnum = .fruta1
+    var selectedFruit: FruitEnum = .fruit1
     //booleano que troca o valor para variar entre subtracao e divisao
     var operationBool: Bool = true
     //variavel que armazena a operacao selecionada no momento
-    var selectedOperation: OperacoesEnum = .subtracao
+    var selectedOperation: OperationsEnum = .subtraction
     
     //vai mudar o numero do botao, na ordem: 1, 2, 3 ou 5
-    func changeNumber() -> FrutaEnum {
+    func changeNumber() -> FruitEnum {
         //
-        if (DataModel.shared.numerosBotao.valor < DataModel.shared.peso){
+        if (DataModel.shared.numbersButton.valor < DataModel.shared.weight){
             // ao acionar essa função ela irá aumentar 1 no fruitIndex até o fruitIndex ser menor que 3, quando ele se tornar 3, volta para o 0
                 if fruitIndex < 3 {
                     fruitIndex += 1
@@ -37,20 +37,20 @@ import SwiftUI
                 return selectedFruit
 //            }
         }
-        print(DataModel.shared.numerosBotao.valor)
+        print(DataModel.shared.numbersButton.valor)
         return selectedFruit
     }
     
     // vai mudar a operação do botao, sendo subtracao ou divisao
-    func changeOperation() -> OperacoesEnum {
+    func changeOperation() -> OperationsEnum {
         // ao acinar a funcao, o operationBool varia entre true ou false
         operationBool.toggle()
         // se o operationBool estiver no true, a selectedOperation será subtracao, se estiver no false, sera divisao
         if operationBool {
-            selectedOperation = OperacoesEnum.subtracao
+            selectedOperation = OperationsEnum.subtraction
             return selectedOperation
         } else {
-            selectedOperation = OperacoesEnum.divisao
+            selectedOperation = OperationsEnum.division
             return selectedOperation
         }
     }

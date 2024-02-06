@@ -14,34 +14,34 @@ enum FruitEnum: CaseIterable {
     case fruit1
     case fruit2
     case fruit3
-    case fruit4
-    case incognita
+    case fruit5
+    case unknown
     
     func name() -> String {
         switch self {
-        case .fruta1: return "fruit1"
-        case .fruta2: return "fruit2"
-        case .fruta3: return "fruit3"
-        case .fruta5: return "fruit5"
-        case .incognita: return "incognita"
+        case .fruit1: return "fruit1"
+        case .fruit2: return "fruit2"
+        case .fruit3: return "fruit3"
+        case .fruit5: return "fruit5"
+        case .unknown: return "incognita"
         case .empty: return "empty"
 
             
         }
     }
     
-    func toNode() -> FrutaNode {
-        return FrutaNode(fruta: self)
+    func toNode() -> FruitNode {
+        return FruitNode(fruit: self)
     }
     
     var valor: Int {
         
         switch self {
-        case .fruta1: 1
-        case .fruta2: 2
-        case .fruta3: 3
-        case .fruta5: 5
-        case .incognita: DataModel.shared.valorX
+        case .fruit1: 1
+        case .fruit2: 2
+        case .fruit3: 3
+        case .fruit5: 5
+        case .unknown: DataModel.shared.valueX
         case .empty: -1
         }
     }

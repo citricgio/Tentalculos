@@ -28,7 +28,7 @@ class  MenuScene: SKScene {
     var title: WriteNode = WriteNode(name: "title", fontSize: .appTitle, text: "Nome do Jogo", fontName: .appTitle)
     
     //instancia texto da melhor pontuação e a pontuação
-    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.contadorEquacoes)", fontName: .points)
+    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.equationCount)", fontName: .points)
     var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: .labelPoints, text: "Sua melhor pontuação", fontName: .labelPoints )
     
     override func didMove(to view: SKView) {
@@ -51,8 +51,7 @@ class  MenuScene: SKScene {
         
         //Adiciona o Background e sua posição
         background.zPosition = CGFloat(-10)
-        background.position = CGPoint(x: frame.midX , y: frame.midY)
-        background.setScale(1/1.08)
+        background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
         addChild(background)
         
         //Adiciona o texto e a maior pontuação e suas posições
@@ -67,6 +66,9 @@ class  MenuScene: SKScene {
         title.node.position = CGPoint(x: frame.midX, y: frame.midY + 300)
         title.node.setScale(1/1.08)
         addChild(title.node)
+        
+        
+        playSound(sound: "Menu", type: "mp3")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -77,6 +79,8 @@ class  MenuScene: SKScene {
             //O que indica que quando clicar no startButton vai chamar a função de ir para a cena de jogo
             if touchedNode.name == "startButton" {
                 startGame()
+//                playSound(sound: "Jogo", type: "mp3")
+
             }
             
             //O que indica que quando clicar no tutorialButton vai chamar a função de ir para a cena de tutorial
@@ -91,12 +95,14 @@ class  MenuScene: SKScene {
         // Animar botão sendo pressionado
         let newScene = GameScene()
         self.changeTo(scene: newScene)
+        playSound(sound: "Jogo", type: "mp3")
     }
     
     //função que Chama a TutorialScene
     func startTutorial() {
         let newScene = EndScene()
         self.changeTo(scene: newScene)
+        playSound(sound: "Jogo", type: "mp3")
     }
     //TODO: adicionar o botão de som, fazer funcionar e mudar ele
     func soundIsOn() {

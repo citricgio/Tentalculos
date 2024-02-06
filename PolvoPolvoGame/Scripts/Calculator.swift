@@ -10,22 +10,21 @@ import SwiftUI
 //essa classe vai fazer as operações utilizando o contador
 class Calculadora {
     
-    var fruta: FrutaEnum = .fruta1
+    var fruit: FruitEnum = .fruit1
     
     //operação de subtração
-    func Subtracao(fruta: FrutaEnum){
-        if (DataModel.shared.peso - fruta.valor >= 0){
-            DataModel.shared.peso -= fruta.valor
-        }
-        print(DataModel.shared.peso)
+    func Subtracao(valor: Int){
+        DataModel.shared.weight -= valor
+        print("peso: \(DataModel.shared.weight)")
+        
     }
     
     //operação de divisão
-    func Divisao(fruta: FrutaEnum){
-        if (DataModel.shared.peso / fruta.valor >= 0) {
-            DataModel.shared.peso = DataModel.shared.peso / fruta.valor
+    func Divisao(fruit: FruitEnum){
+        if (DataModel.shared.weight / fruit.valor >= 0) {
+            DataModel.shared.weight = DataModel.shared.weight / fruit.valor
         }
-        print(DataModel.shared.peso)
+        print(DataModel.shared.weight)
     }
     
 }

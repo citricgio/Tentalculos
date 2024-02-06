@@ -9,8 +9,9 @@ import Foundation
 import SpriteKit
 
 struct FruitNode {
-    let fruit: FruitEnum
-    let node: SKSpriteNode
+    var fruit: FruitEnum
+    var node: SKSpriteNode
+
     
     init(fruit: FruitEnum) {
         self.fruit = fruit

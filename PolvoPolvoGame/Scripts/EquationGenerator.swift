@@ -9,67 +9,69 @@ import Foundation
 import SwiftUI
 
 //Gerar as equações para o usuário igualar
-class GeradorPesos {
+class EquationGenerator {
 
     //valor máximo em que se pode dar para o valor de X ou variável
-    public var valor_max: Int = 5
+    public var maxValue: Int = 5
     
     //Gera uma equação mais simples, sem multiplicar a Variável
-    func Gerar_Numeros_Basico(){
-        DataModel.shared.valorX = Int.random(in: 1..<valor_max) //randomizador do valor de X
-        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação a partir do valor de X
+    func generateBasicEquation(){
+        DataModel.shared.valueX = 3
+        //Int.random(in: 1..<valor_max) //randomizador do valor de X
+        DataModel.shared.weight = 8
+        //Int.random(in: (DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação a partir do valor de X
         
-        DataModel.shared.b = DataModel.shared.peso-DataModel.shared.valorX //calcula o valor que soma a variável na equação
-        DataModel.shared.c = DataModel.shared.peso //Fala qual é o valor que iguala na equação
-        DataModel.shared.valorMultiplicador = 1
+        DataModel.shared.b = DataModel.shared.weight-DataModel.shared.valueX //calcula o valor que soma a variável na equação
+        DataModel.shared.c = DataModel.shared.weight //Fala qual é o valor que iguala na equação
+        DataModel.shared.valueMultiplier = 1
          
-        print(DataModel.shared.valorX)
-        print(DataModel.shared.peso)
+        print(DataModel.shared.valueX)
+        print(DataModel.shared.weight)
     }
     
     //Gera uma equação um pouco mais complexa com um valor multiplicando a variável
-    func Gerar_Numeros_Intermediario(){
-        DataModel.shared.valorX = Int.random(in: 1..<valor_max) //randomizador do valor de X
-        DataModel.shared.valorMultiplicador = Int.random(in: 1...2) //randomizador do valor que multiplica X
-        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorMultiplicador*DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação
+    func generateIntermidiateEquation(){
+        DataModel.shared.valueX = Int.random(in: 1..<maxValue) //randomizador do valor de X
+        DataModel.shared.valueMultiplier = Int.random(in: 1...2) //randomizador do valor que multiplica X
+        DataModel.shared.weight = Int.random(in: (DataModel.shared.valueMultiplier*DataModel.shared.valueX + 1)..<(2*maxValue)) //randomizador do valor de cada lado da equação
         
-        DataModel.shared.b = DataModel.shared.peso-(DataModel.shared.valorX*DataModel.shared.valorMultiplicador) //calcula o valor que soma a variável na equação
-        DataModel.shared.c = DataModel.shared.peso //Fala qual é o valor que iguala na equação
+        DataModel.shared.b = DataModel.shared.weight-(DataModel.shared.valueX*DataModel.shared.valueMultiplier) //calcula o valor que soma a variável na equação
+        DataModel.shared.c = DataModel.shared.weight //Fala qual é o valor que iguala na equação
         
-        print(DataModel.shared.valorX)
-        print(DataModel.shared.valorMultiplicador)
-        print(DataModel.shared.peso)
+        print(DataModel.shared.valueX)
+        print(DataModel.shared.valueMultiplier)
+        print(DataModel.shared.weight)
     }
     
     //Gera uma equação avançada com variáveis dos dois lados
-    func Gerar_Numeros_Avancado(){
-        DataModel.shared.valorX = Int.random(in: 1..<valor_max) //randomizador do valor de X
-        DataModel.shared.valorMultiplicador = Int.random(in: 1...4) //randomizador do valor que multiplica X
-        DataModel.shared.peso = Int.random(in: (DataModel.shared.valorMultiplicador*DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação
+    func generateAdvancedEquation(){
+        DataModel.shared.valueX = Int.random(in: 1..<maxValue) //randomizador do valor de X
+        DataModel.shared.valueMultiplier = Int.random(in: 1...4) //randomizador do valor que multiplica X
+        DataModel.shared.weight = Int.random(in: (DataModel.shared.valueMultiplier*DataModel.shared.valueX + 1)..<(2*maxValue)) //randomizador do valor de cada lado da equação
         
-        DataModel.shared.b = DataModel.shared.peso-(DataModel.shared.valorX*DataModel.shared.valorMultiplicador) //calcula o valor que soma a variável na equação
-        DataModel.shared.c = DataModel.shared.peso-(DataModel.shared.valorX*(DataModel.shared.valorMultiplicador-1))//Fala qual é o valor que iguala na equação
+        DataModel.shared.b = DataModel.shared.weight-(DataModel.shared.valueX*DataModel.shared.valueMultiplier) //calcula o valor que soma a variável na equação
+        DataModel.shared.c = DataModel.shared.weight-(DataModel.shared.valueX*(DataModel.shared.valueMultiplier-1))//Fala qual é o valor que iguala na equação
         
-        print(DataModel.shared.valorX)
-        print(DataModel.shared.valorMultiplicador)
-        print(DataModel.shared.peso)
+        print(DataModel.shared.valueX)
+        print(DataModel.shared.valueMultiplier)
+        print(DataModel.shared.weight)
     }
     
     //monta o texto da equação Basica e Intermediária
-    func Montar_Texto(){
+    func assembleEquation(){
         
-        DataModel.shared.textoEquacao = "\(DataModel.shared.b) + \(DataModel.shared.valorMultiplicador)x = \(DataModel.shared.peso)"
+        DataModel.shared.equationText = "\(DataModel.shared.b) + \(DataModel.shared.valueMultiplier)x = \(DataModel.shared.weight)"
         
-        print(DataModel.shared.textoEquacao)
+        print(DataModel.shared.equationText)
         
     }
     
     //monta o texto da equação avançada
-    func Montar_Texto_avançado() {
+    func assembleAdvancedEquation() {
         
-        DataModel.shared.textoEquacao = "\(DataModel.shared.b) + \(DataModel.shared.valorMultiplicador)x = \(DataModel.shared.c) + \(DataModel.shared.valorMultiplicador-1)x"
+        DataModel.shared.equationText = "\(DataModel.shared.b) + \(DataModel.shared.valueMultiplier)x = \(DataModel.shared.c) + \(DataModel.shared.valueMultiplier-1)x"
         
-        print(DataModel.shared.textoEquacao)
+        print(DataModel.shared.equationText)
     }
     
     
