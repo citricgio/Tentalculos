@@ -3,7 +3,7 @@
 //
 // Created by Giovanna Micher on 19/01/24.
 //
-import Foundation
+import GameKit
 import SpriteKit
 import SwiftUI
 
