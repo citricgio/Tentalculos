@@ -16,10 +16,8 @@ class EquationGenerator {
     
     //Gera uma equação mais simples, sem multiplicar a Variável
     func generateBasicEquation(){
-        DataModel.shared.valueX = 3
-        //Int.random(in: 1..<valor_max) //randomizador do valor de X
-        DataModel.shared.weight = 8
-        //Int.random(in: (DataModel.shared.valorX + 1)..<(2*valor_max)) //randomizador do valor de cada lado da equação a partir do valor de X
+        DataModel.shared.valueX = Int.random(in: 1..<maxValue) //randomizador do valor de X
+        DataModel.shared.weight = Int.random(in: (DataModel.shared.valueX + 1)..<(2*maxValue)) //randomizador do valor de cada lado da equação a partir do valor de X
         
         DataModel.shared.b = DataModel.shared.weight-DataModel.shared.valueX //calcula o valor que soma a variável na equação
         DataModel.shared.c = DataModel.shared.weight //Fala qual é o valor que iguala na equação

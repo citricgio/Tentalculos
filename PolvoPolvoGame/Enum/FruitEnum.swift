@@ -34,7 +34,7 @@ enum FruitEnum: CaseIterable {
         return FruitNode(fruit: self)
     }
     
-    var valor: Int {
+    var value: Int {
         
         switch self {
         case .fruit1: 1

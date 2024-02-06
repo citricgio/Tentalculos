@@ -36,6 +36,7 @@
 		FA0C17A92B714F7E004BF668 /* BackgroundSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */; };
 		FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */; };
 		FA89DFB02B602D0100FCC114 /* SpriteButtonNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */; };
+		FAAA6EE22B72CA840007013B /* ReduceFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAA6EE12B72CA840007013B /* ReduceFood.swift */; };
 		FAD108492B72BC1E00DD3767 /* FruitEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD108452B72BC1D00DD3767 /* FruitEnum.swift */; };
 		FAD1084A2B72BC1E00DD3767 /* FontsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD108462B72BC1D00DD3767 /* FontsEnum.swift */; };
 		FAD1084B2B72BC1E00DD3767 /* FruitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD108472B72BC1D00DD3767 /* FruitNode.swift */; };
@@ -77,6 +78,7 @@
 		FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSound.swift; sourceTree = "<group>"; };
 		FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonOperation.swift; sourceTree = "<group>"; };
 		FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonNumbers.swift; sourceTree = "<group>"; };
+		FAAA6EE12B72CA840007013B /* ReduceFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduceFood.swift; sourceTree = "<group>"; };
 		FAD108452B72BC1D00DD3767 /* FruitEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitEnum.swift; sourceTree = "<group>"; };
 		FAD108462B72BC1D00DD3767 /* FontsEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontsEnum.swift; sourceTree = "<group>"; };
 		FAD108472B72BC1D00DD3767 /* FruitNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitNode.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				B400CB872B6AE73500C9C645 /* SKScene+.swift */,
+				FAAA6EE12B72CA840007013B /* ReduceFood.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				B49DE6982B69666E004A795D /* EndView.swift in Sources */,
 				8F040E3E2B58514700AB8BBB /* GameScene.swift in Sources */,
 				B4DFD3842B6C06BB006AF2DC /* WriteButton.swift in Sources */,
+				FAAA6EE22B72CA840007013B /* ReduceFood.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +486,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 7FZ4ZHZT5J;
+				DEVELOPMENT_TEAM = ACG36J6YH2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
@@ -496,7 +500,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gibonifacio.PolvoPolvoGame;
+				PRODUCT_BUNDLE_IDENTIFIER = gibonifacio1.PolvoPolvoGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -512,7 +516,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 7FZ4ZHZT5J;
+				DEVELOPMENT_TEAM = ACG36J6YH2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
@@ -526,7 +530,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gibonifacio.PolvoPolvoGame;
+				PRODUCT_BUNDLE_IDENTIFIER = gibonifacio1.PolvoPolvoGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

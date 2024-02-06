@@ -16,7 +16,7 @@ class DataBalance {
     //função que adiciona as frutas no lado direito da balança e trava quando o valor do lado direito for o peso necessário para a balança
     func addRightFruit(fruit: FruitEnum){
         if !(DataModel.shared.weightRightSide == DataModel.shared.weight){
-            DataModel.shared.weightRightSide += fruit.valor
+            DataModel.shared.weightRightSide += fruit.value
             print("peso na direita: \(DataModel.shared.weightRightSide)")
         }
         else{
@@ -28,7 +28,7 @@ class DataBalance {
     //função que adiciona as frutas no lado esquerdo da balança e trava quando o valor do lado direito for igual o do peso
     func addLeftFruit(fruit: FruitEnum){
         if !(DataModel.shared.weightLeftSide == DataModel.shared.weight){
-            DataModel.shared.weightLeftSide += fruit.valor
+            DataModel.shared.weightLeftSide += fruit.value
             print("peso na esquerda: \(DataModel.shared.weightLeftSide)")
         }
         else{
@@ -39,7 +39,7 @@ class DataBalance {
     
     func removeRightFruit(fruit: FruitEnum){
         if !(DataModel.shared.weightRightSide == DataModel.shared.weight){
-            DataModel.shared.weightRightSide -= fruit.valor
+            DataModel.shared.weightRightSide -= fruit.value
             print("peso na direita: \(DataModel.shared.weightRightSide)")
         }
         else{
@@ -49,7 +49,7 @@ class DataBalance {
     
     func removeLeftFruit(fruit: FruitEnum){
         if !(DataModel.shared.weightLeftSide == DataModel.shared.weight){
-            DataModel.shared.weightLeftSide -= fruit.valor
+            DataModel.shared.weightLeftSide -= fruit.value
             print("peso na esquerda: \(DataModel.shared.weightLeftSide)")
         }
         else{

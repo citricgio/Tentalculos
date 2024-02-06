@@ -23,7 +23,7 @@ class SpriteButtonNumbers: SKNode {
         
         number = SKLabelNode()
         // mostra no botao a selectedFruit
-        number.text = "\(changeNumber.selectedFruit.valor)"
+        number.text = "\(changeNumber.selectedFruit.value)"
         number.zPosition = 3
         number.fontColor = .black
         number.position = positionButton
@@ -54,7 +54,7 @@ class SpriteButtonNumbers: SKNode {
     //ao clicar no botao, o texto do botao troca de acordo com a funcao do changeNumero, que varia entre 1, 2, 3 e 5
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         thumb.run(SKAction.scale(to: 0.7, duration: 0.5))
-        number.text = "\(changeNumber.changeNumber().valor)"
+        number.text = "\(changeNumber.changeNumber().value)"
         
 //        numeroFruta = mudarNumero.AumentarContador()
 //        print(numeroFruta)

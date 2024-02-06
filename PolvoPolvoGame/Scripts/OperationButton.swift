@@ -25,7 +25,7 @@ import SwiftUI
     //vai mudar o numero do botao, na ordem: 1, 2, 3 ou 5
     func changeNumber() -> FruitEnum {
         //
-        if (DataModel.shared.numbersButton.valor < DataModel.shared.weight){
+        if (DataModel.shared.numbersButton.value < DataModel.shared.weight){
             // ao acionar essa função ela irá aumentar 1 no fruitIndex até o fruitIndex ser menor que 3, quando ele se tornar 3, volta para o 0
                 if fruitIndex < 3 {
                     fruitIndex += 1
@@ -37,7 +37,7 @@ import SwiftUI
                 return selectedFruit
 //            }
         }
-        print(DataModel.shared.numbersButton.valor)
+        print(DataModel.shared.numbersButton.value)
         return selectedFruit
     }
     
