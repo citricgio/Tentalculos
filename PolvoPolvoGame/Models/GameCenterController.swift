@@ -31,7 +31,7 @@ class GameCenterController {
     }
     
     //função que configura o ponto de acesso do game center
-    func acessPoint() {
+    func accessPoint() {
         GKAccessPoint.shared.location = .topLeading
         GKAccessPoint.shared.showHighlights = true
         GKAccessPoint.shared.isActive = true
@@ -49,7 +49,7 @@ class GameCenterController {
     
     //Acessa o BestScore e coloca no código
     func accessBestScore() {
-        GKLeaderboard.loadLeaderboards(IDs:["my.recurring.leaderboard.id"]) { (fetchedLBs, error) in
+        GKLeaderboard.loadLeaderboards(IDs:["my.recurring.leaderboard.000"]) { (fetchedLBs, error) in
             if let current = fetchedLBs?.first {
 
                 current.loadPreviousOccurrence { (prevOccurrence, error) in
@@ -59,8 +59,4 @@ class GameCenterController {
             }
         }
     }
-    
-//    func loadLeaderboards() async {
-//        let leaderboards = try await GKLeaderboard.loadLeaderboards(IDs: ["my.leaderboard.000"])
-//    }
 }

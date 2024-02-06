@@ -70,7 +70,7 @@ class  MenuScene: SKScene {
         
         //funções de ligadas ao GameCenter que vem do GameCenterController
         GameCenterController.shared.authenticateGameCenter()
-        GameCenterController.shared.acessPoint()
+        GameCenterController.shared.accessPoint()
         GameCenterController.shared.accessBestScore()
         
         playSound(sound: "Menu", type: "mp3")
