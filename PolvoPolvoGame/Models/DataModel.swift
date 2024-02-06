@@ -13,33 +13,33 @@ import SwiftUI
     static let shared = DataModel()
     
     //valores gerados pelo GeradorPesos
-    var peso: Int = 7 //valor de cada lado da equação
-    var valorX: Int = 0 //variável ou o X da equação
-    var valorMultiplicador: Int = 0 //valor que múltiplica a variável ou o X
+    var weight: Int = 7 //valor de cada lado da equação
+    var valueX: Int = 0 //variável ou o X da equação
+    var valueMultiplier: Int = 0 //valor que múltiplica a variável ou o X
     var b: Int = 0 //valor que soma o lado esquerdo com o X para ser igual ao peso
     var c: Int = 0 //valor que soma o lado direito com o X para ser igual ao peso ou o Peso se não houver X do lado direito
     
     //variáveis contam as frutas de cada lado quando o usuário estiver montando a balança
-    var peso_lado_esquerdo: Int = 0
-    var peso_lado_direito: Int = 0
+    var weightLeftSide: Int = 0
+    var weightRightSide: Int = 0
     
     //String que contém a equação
-    var textoEquacao: String = "" 
+    var equationText: String = "" 
     
     //Booleanos usados pela balancaDados para travar a equação
-    var balanca_esquerda_travada: Bool = false
-    var balanca_direita_travada: Bool = false
+    var leftBalanceLocked: Bool = false
+    var rightBalanceLocked: Bool = false
     
     // variável que indica se tem X na bandeja ou não
     var hasX: Bool = false
     
     //Valor em que o usuário vai múltiplicar ou dividir e é gerado pelo RemoverNumeros
 //    var contador: Int = 0
-    var numerosBotao: FrutaEnum = .fruta1
+    var numbersButton: FruitEnum = .fruit1
 //    var indexNumeros: Int = 1
     
     //Numero de equações feitas na fase
-    var contadorEquacoes: Int = 0
+    var equationCount: Int = 0
     
     //Variável que vai falar se o som está Ativo ou não
     var soundIsOn: Bool = true
