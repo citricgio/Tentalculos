@@ -69,9 +69,9 @@ class  MenuScene: SKScene {
         addChild(title.node)
         
         //funções de ligadas ao GameCenter que vem do GameCenterController
-        GameCenterController.shared.autenticarGameCenter()
-        GameCenterController.shared.pontoDeAcesso()
-        GameCenterController.shared.acessBestScore()
+        GameCenterController.shared.authenticateGameCenter()
+        GameCenterController.shared.acessPoint()
+        GameCenterController.shared.accessBestScore()
         
         playSound(sound: "Menu", type: "mp3")
     }

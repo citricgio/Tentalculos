@@ -17,7 +17,7 @@ class GameCenterController {
     var points: Int = DataModel.shared.contadorEquacoes
     
     //func que autentifica o game center
-    func autenticarGameCenter() {
+    func authenticateGameCenter() {
         GKLocalPlayer.local.authenticateHandler = { viewController, error in
             if let viewController = viewController {
                 
@@ -31,7 +31,7 @@ class GameCenterController {
     }
     
     //função que configura o ponto de acesso do game center
-    func pontoDeAcesso() {
+    func acessPoint() {
         GKAccessPoint.shared.location = .topLeading
         GKAccessPoint.shared.showHighlights = true
         GKAccessPoint.shared.isActive = true
@@ -48,12 +48,12 @@ class GameCenterController {
     }
     
     //Acessa o BestScore e coloca no código
-    func acessBestScore() {
+    func accessBestScore() {
         GKLeaderboard.loadLeaderboards(IDs:["my.recurring.leaderboard.id"]) { (fetchedLBs, error) in
             if let current = fetchedLBs?.first {
 
                 current.loadPreviousOccurrence { (prevOccurrence, error) in
-                    DataModel.shared.bestPointsLabel = "\(prevOccurrence)"
+//                    DataModel.shared.bestPointsLabel = "\(prevOccurrence)"
                     // Do something with the previous occurrence
                 }
             }
