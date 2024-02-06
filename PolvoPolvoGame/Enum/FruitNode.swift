@@ -8,12 +8,12 @@
 import Foundation
 import SpriteKit
 
-struct FrutaNode {
-    let fruta: FrutaEnum
+struct FruitNode {
+    let fruit: FruitEnum
     let node: SKSpriteNode
     
-    init(fruta: FrutaEnum) {
-        self.fruta = fruta
-        self.node = SKSpriteNode(imageNamed: fruta.name())
+    init(fruit: FruitEnum) {
+        self.fruit = fruit
+        self.node = SKSpriteNode(imageNamed: fruit.name())
     }
 }

@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum OperacoesEnum {
-    case subtracao
+enum OperationsEnum {
+    case subtraction
     case divisao
     var name: String {
         switch self {

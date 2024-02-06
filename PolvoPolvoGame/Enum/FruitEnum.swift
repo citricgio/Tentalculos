@@ -9,12 +9,12 @@ import Foundation
 import SpriteKit
 
 //enum que vai falar qual o valor de cada fruta selecionada
-enum FrutaEnum: CaseIterable {
+enum FruitEnum: CaseIterable {
     case empty
-    case fruta1
-    case fruta2
-    case fruta3
-    case fruta5
+    case fruit1
+    case fruit2
+    case fruit3
+    case fruit4
     case incognita
     
     func name() -> String {
