@@ -40,7 +40,7 @@ class GameCenterController {
     //Envia um Score para os leaderboards
     func scoreToLeaderboard() {
         GKLeaderboard.submitScore(self.points, context: 0, player: GKLocalPlayer.local,
-                                  leaderboardIDs: ["my.recurring.leaderboard.000"]) { error in
+                                  leaderboardIDs: ["000"]) { error in
             if error != nil {
                 print("Error: \(error!.localizedDescription).")
             }
@@ -49,12 +49,13 @@ class GameCenterController {
     
     //Acessa o BestScore e coloca no código
     func accessBestScore() {
-        GKLeaderboard.loadLeaderboards(IDs:["my.recurring.leaderboard.000"]) { (fetchedLBs, error) in
+        GKLeaderboard.loadLeaderboards(IDs:["000"]) { (fetchedLBs, error) in
             if let current = fetchedLBs?.first {
-
-                current.loadPreviousOccurrence { (prevOccurrence, error) in
-//                    DataModel.shared.bestPointsLabel = "\(prevOccurrence)"
-                    // Do something with the previous occurrence
+                
+                current.loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime) { entry, entries, error in
+                    if let entrySafe = entry{
+                        DataModel.shared.bestPoints = entrySafe.score
+                    }
                 }
             }
         }

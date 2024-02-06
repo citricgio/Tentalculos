@@ -73,7 +73,10 @@ class  MenuScene: SKScene {
         GameCenterController.shared.accessPoint()
         GameCenterController.shared.accessBestScore()
         
+        //Som
         playSound(sound: "Menu", type: "mp3")
+        soundButton.position = CGPoint(x: frame.midX, y: frame.midY - 300)
+        addChild(soundButton)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -91,6 +94,11 @@ class  MenuScene: SKScene {
             //O que indica que quando clicar no tutorialButton vai chamar a função de ir para a cena de tutorial
             if touchedNode.name == "tutorialButton" {
                 startTutorial()
+            }
+            
+            if soundButton.name == "soundButton" {
+                soundIsOn()
+                print(DataModel.shared.soundIsOn)
             }
         }
     }
@@ -113,11 +121,12 @@ class  MenuScene: SKScene {
     func soundIsOn() {
         DataModel.shared.soundIsOn.toggle()
     }
-    func createSound(){
-        soundButton = SKSpriteNode(imageNamed: DataModel.shared.soundIsOn ? "SoundButton" : "SoundOff")
-        soundButton.position = CGPoint(x: frame.size.width / 10, y: frame.size.height / 5)
-        addChild(soundButton)
-    }
+    
+//    func createSound(){
+//        soundButton = SKSpriteNode(imageNamed: DataModel.shared.soundIsOn ? "SoundButton" : "SoundOff")
+//        soundButton.position = CGPoint(x: frame.size.width / 10, y: frame.size.height / 5)
+//        addChild(soundButton)
+//    }
     
    
 }
