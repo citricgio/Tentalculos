@@ -570,9 +570,7 @@ class GameScene: SKScene {
 
             endGame()
 
-            
         }
-        
     }
     
     
