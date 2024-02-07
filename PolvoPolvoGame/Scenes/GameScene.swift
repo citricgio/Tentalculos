@@ -130,7 +130,8 @@ class GameScene: SKScene {
         foodArrayRight.removeAll()
         DataModel.shared.leftBalanceLocked = false
         DataModel.shared.rightBalanceLocked = false
-        
+        DataModel.shared.equationCount = 0
+//MARK: arrumar variavel
         
         setupGame()
         setupSpawners()
@@ -279,7 +280,7 @@ class GameScene: SKScene {
             }
             let endGameScene = EndScene()
             self.changeTo(scene: endGameScene)
-            DataModel.shared.equationCount = 0
+//            DataModel.shared.equationCount = 0
 //            playSound(sound: "Derrota2", type: "mp3")
             
             //parte que coloca o bestScore no Leaderboards

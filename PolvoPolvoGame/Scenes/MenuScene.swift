@@ -74,8 +74,8 @@ class  MenuScene: SKScene {
         GameCenterController.shared.accessBestScore()
         
         //Som
-        playSound(sound: "Menu", type: "mp3")
-        soundButton.position = CGPoint(x: frame.midX, y: frame.midY - 300)
+            playSound(sound: "Menu", type: "mp3")
+        soundButton.position = CGPoint(x: frame.midX + 160, y: frame.midY + 320)
         addChild(soundButton)
     }
     
@@ -96,7 +96,7 @@ class  MenuScene: SKScene {
                 startTutorial()
             }
             
-            if soundButton.name == "soundButton" {
+            if touchedNode.name == "soundButton" {
                 soundIsOn()
                 print(DataModel.shared.soundIsOn)
             }

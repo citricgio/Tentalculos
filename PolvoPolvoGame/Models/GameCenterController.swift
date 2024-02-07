@@ -40,7 +40,7 @@ class GameCenterController {
     //Envia um Score para os leaderboards
     func scoreToLeaderboard() {
  //       print(self.points)
-        GKLeaderboard.loadLeaderboards(IDs:["000"]) { (fetchedLBs, error) in
+        GKLeaderboard.loadLeaderboards(IDs:["001"]) { (fetchedLBs, error) in
 //            print(self.points)
             guard let lb = fetchedLBs?.first else {
                 print(self.points)
@@ -56,9 +56,8 @@ class GameCenterController {
     
     //Acessa o BestScore e coloca no código
     func accessBestScore() {
-        GKLeaderboard.loadLeaderboards(IDs:["000"]) { (fetchedLBs, error) in
+        GKLeaderboard.loadLeaderboards(IDs:["001"]) { (fetchedLBs, error) in
             if let current = fetchedLBs?.first {
-                
                 current.loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime) { entry, entries, error in
                     if let entrySafe = entry{
                         DataModel.shared.bestPoints = entrySafe.score
