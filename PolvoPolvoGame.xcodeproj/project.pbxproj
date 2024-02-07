@@ -9,19 +9,13 @@
 /* Begin PBXBuildFile section */
 		08056D9D2B61985A000DDDEE /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9C2B61985A000DDDEE /* NextButton.swift */; };
 		08056D9F2B6AB48D000DDDEE /* SpriteButtonReduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */; };
-		08056DA12B6ADA96000DDDEE /* FrutaNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056DA02B6ADA96000DDDEE /* FrutaNode.swift */; };
 		08F589782B716FE50092D72A /* Jogo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F589772B716FE50092D72A /* Jogo.mp3 */; };
 		08F5897A2B716FF00092D72A /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F589792B716FF00092D72A /* Menu.mp3 */; };
 		08F5897C2B7170080092D72A /* Derrota.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F5897B2B7170080092D72A /* Derrota.mp3 */; };
 		08F5897E2B71701A0092D72A /* Derrota2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F5897D2B71701A0092D72A /* Derrota2.mp3 */; };
 		08F589802B7170B00092D72A /* Prato quebrando.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F5897F2B7170B00092D72A /* Prato quebrando.mp3 */; };
-		8F040E352B584FB700AB8BBB /* FrutaEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E342B584FB700AB8BBB /* FrutaEnum.swift */; };
-		8F040E372B58501400AB8BBB /* GeradorPesos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E362B58501400AB8BBB /* GeradorPesos.swift */; };
-		8F040E3A2B58505900AB8BBB /* BalancaDados.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E392B58505900AB8BBB /* BalancaDados.swift */; };
 		8F040E3E2B58514700AB8BBB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E3D2B58514700AB8BBB /* GameScene.swift */; };
 		8F040E402B58518A00AB8BBB /* OperationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E3F2B58518A00AB8BBB /* OperationButton.swift */; };
-		8F040E442B58691600AB8BBB /* Calculadora.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E432B58691600AB8BBB /* Calculadora.swift */; };
-		8F040E462B58692F00AB8BBB /* OperacoesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E452B58692F00AB8BBB /* OperacoesEnum.swift */; };
 		8F040E482B58718000AB8BBB /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E472B58718000AB8BBB /* DataModel.swift */; };
 		8FED6B4A2B55BAF100F92D4F /* PolvoPolvoGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FED6B492B55BAF100F92D4F /* PolvoPolvoGameApp.swift */; };
 		8FED6B4C2B55BAF100F92D4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FED6B4B2B55BAF100F92D4F /* ContentView.swift */; };
@@ -40,28 +34,29 @@
 		B4DFD3862B6C13BA006AF2DC /* EndData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3852B6C13BA006AF2DC /* EndData.swift */; };
 		B4DFD3882B6C32A4006AF2DC /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */; };
 		B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */; };
-		B4DFD38C2B6D56DC006AF2DC /* FontesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */; };
 		FA0C17A92B714F7E004BF668 /* BackgroundSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */; };
 		FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */; };
 		FA89DFB02B602D0100FCC114 /* SpriteButtonNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */; };
+		FAAA6EE22B72CA840007013B /* ReduceFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAA6EE12B72CA840007013B /* ReduceFood.swift */; };
+		FAD108492B72BC1E00DD3767 /* FruitEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD108452B72BC1D00DD3767 /* FruitEnum.swift */; };
+		FAD1084A2B72BC1E00DD3767 /* FontsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD108462B72BC1D00DD3767 /* FontsEnum.swift */; };
+		FAD1084B2B72BC1E00DD3767 /* FruitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD108472B72BC1D00DD3767 /* FruitNode.swift */; };
+		FAD1084C2B72BC1E00DD3767 /* OperationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD108482B72BC1D00DD3767 /* OperationEnum.swift */; };
+		FAD1084E2B72BD0200DD3767 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1084D2B72BD0200DD3767 /* Calculator.swift */; };
+		FAD108502B72BD0D00DD3767 /* DataBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1084F2B72BD0D00DD3767 /* DataBalance.swift */; };
+		FAD108522B72BD1C00DD3767 /* EquationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD108512B72BD1C00DD3767 /* EquationGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08056D9C2B61985A000DDDEE /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonReduce.swift; sourceTree = "<group>"; };
-		08056DA02B6ADA96000DDDEE /* FrutaNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutaNode.swift; sourceTree = "<group>"; };
 		08F589772B716FE50092D72A /* Jogo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jogo.mp3; sourceTree = "<group>"; };
 		08F589792B716FF00092D72A /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu.mp3; sourceTree = "<group>"; };
 		08F5897B2B7170080092D72A /* Derrota.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Derrota.mp3; sourceTree = "<group>"; };
 		08F5897D2B71701A0092D72A /* Derrota2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Derrota2.mp3; sourceTree = "<group>"; };
 		08F5897F2B7170B00092D72A /* Prato quebrando.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Prato quebrando.mp3"; sourceTree = "<group>"; };
-		8F040E342B584FB700AB8BBB /* FrutaEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutaEnum.swift; sourceTree = "<group>"; };
-		8F040E362B58501400AB8BBB /* GeradorPesos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeradorPesos.swift; sourceTree = "<group>"; };
-		8F040E392B58505900AB8BBB /* BalancaDados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancaDados.swift; sourceTree = "<group>"; };
 		8F040E3D2B58514700AB8BBB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8F040E3F2B58518A00AB8BBB /* OperationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationButton.swift; sourceTree = "<group>"; };
-		8F040E432B58691600AB8BBB /* Calculadora.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculadora.swift; sourceTree = "<group>"; };
-		8F040E452B58692F00AB8BBB /* OperacoesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperacoesEnum.swift; sourceTree = "<group>"; };
 		8F040E472B58718000AB8BBB /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		8FED6B462B55BAF100F92D4F /* PolvoPolvoGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolvoPolvoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FED6B492B55BAF100F92D4F /* PolvoPolvoGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolvoPolvoGameApp.swift; sourceTree = "<group>"; };
@@ -87,6 +82,14 @@
 		FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSound.swift; sourceTree = "<group>"; };
 		FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonOperation.swift; sourceTree = "<group>"; };
 		FA89DFAF2B602D0100FCC114 /* SpriteButtonNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonNumbers.swift; sourceTree = "<group>"; };
+		FAAA6EE12B72CA840007013B /* ReduceFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduceFood.swift; sourceTree = "<group>"; };
+		FAD108452B72BC1D00DD3767 /* FruitEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitEnum.swift; sourceTree = "<group>"; };
+		FAD108462B72BC1D00DD3767 /* FontsEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontsEnum.swift; sourceTree = "<group>"; };
+		FAD108472B72BC1D00DD3767 /* FruitNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitNode.swift; sourceTree = "<group>"; };
+		FAD108482B72BC1D00DD3767 /* OperationEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationEnum.swift; sourceTree = "<group>"; };
+		FAD1084D2B72BD0200DD3767 /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		FAD1084F2B72BD0D00DD3767 /* DataBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBalance.swift; sourceTree = "<group>"; };
+		FAD108512B72BD1C00DD3767 /* EquationGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquationGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +106,10 @@
 		8F040E332B584F8F00AB8BBB /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				8F040E342B584FB700AB8BBB /* FrutaEnum.swift */,
-				08056DA02B6ADA96000DDDEE /* FrutaNode.swift */,
-				8F040E452B58692F00AB8BBB /* OperacoesEnum.swift */,
-				B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */,
+				FAD108462B72BC1D00DD3767 /* FontsEnum.swift */,
+				FAD108452B72BC1D00DD3767 /* FruitEnum.swift */,
+				FAD108472B72BC1D00DD3767 /* FruitNode.swift */,
+				FAD108482B72BC1D00DD3767 /* OperationEnum.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -114,10 +117,10 @@
 		8F040E382B58504700AB8BBB /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				8F040E362B58501400AB8BBB /* GeradorPesos.swift */,
-				8F040E392B58505900AB8BBB /* BalancaDados.swift */,
+				FAD108512B72BD1C00DD3767 /* EquationGenerator.swift */,
+				FAD1084F2B72BD0D00DD3767 /* DataBalance.swift */,
 				8F040E3F2B58518A00AB8BBB /* OperationButton.swift */,
-				8F040E432B58691600AB8BBB /* Calculadora.swift */,
+				FAD1084D2B72BD0200DD3767 /* Calculator.swift */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				B400CB872B6AE73500C9C645 /* SKScene+.swift */,
+				FAAA6EE12B72CA840007013B /* ReduceFood.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -333,14 +337,17 @@
 				B4DFD38A2B6C3CB6006AF2DC /* WriteNode.swift in Sources */,
 				FA0C17A92B714F7E004BF668 /* BackgroundSound.swift in Sources */,
 				B4DFD3862B6C13BA006AF2DC /* EndData.swift in Sources */,
-				08056DA12B6ADA96000DDDEE /* FrutaNode.swift in Sources */,
-				8F040E462B58692F00AB8BBB /* OperacoesEnum.swift in Sources */,
-				8F040E442B58691600AB8BBB /* Calculadora.swift in Sources */,
+				FAD1084B2B72BC1E00DD3767 /* FruitNode.swift in Sources */,
+				FAD108522B72BD1C00DD3767 /* EquationGenerator.swift in Sources */,
 				8FED6B4C2B55BAF100F92D4F /* ContentView.swift in Sources */,
-				8F040E352B584FB700AB8BBB /* FrutaEnum.swift in Sources */,
+				FAD108492B72BC1E00DD3767 /* FruitEnum.swift in Sources */,
+				FAD1084E2B72BD0200DD3767 /* Calculator.swift in Sources */,
+				FAD1084C2B72BC1E00DD3767 /* OperationEnum.swift in Sources */,
 				B400CB852B6AD80F00C9C645 /* EndScene.swift in Sources */,
 				8F040E482B58718000AB8BBB /* DataModel.swift in Sources */,
 				FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */,
+				FAD108502B72BD0D00DD3767 /* DataBalance.swift in Sources */,
+				FAD1084A2B72BC1E00DD3767 /* FontsEnum.swift in Sources */,
 				B49DE6962B696665004A795D /* MenuView.swift in Sources */,
 				8FED6B4A2B55BAF100F92D4F /* PolvoPolvoGameApp.swift in Sources */,
 				FA89DFB02B602D0100FCC114 /* SpriteButtonNumbers.swift in Sources */,
@@ -348,13 +355,11 @@
 				B400CB882B6AE73500C9C645 /* SKScene+.swift in Sources */,
 				B4DFD3882B6C32A4006AF2DC /* TutorialScene.swift in Sources */,
 				08056D9F2B6AB48D000DDDEE /* SpriteButtonReduce.swift in Sources */,
-				B4DFD38C2B6D56DC006AF2DC /* FontesEnum.swift in Sources */,
-				8F040E3A2B58505900AB8BBB /* BalancaDados.swift in Sources */,
-				8F040E372B58501400AB8BBB /* GeradorPesos.swift in Sources */,
 				B400CB832B6AD80400C9C645 /* MenuScene.swift in Sources */,
 				B49DE6982B69666E004A795D /* EndView.swift in Sources */,
 				8F040E3E2B58514700AB8BBB /* GameScene.swift in Sources */,
 				B4DFD3842B6C06BB006AF2DC /* WriteButton.swift in Sources */,
+				FAAA6EE22B72CA840007013B /* ReduceFood.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,7 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 7FZ4ZHZT5J;
+				DEVELOPMENT_TEAM = ACG36J6YH2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
@@ -522,7 +527,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 7FZ4ZHZT5J;
+				DEVELOPMENT_TEAM = ACG36J6YH2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;

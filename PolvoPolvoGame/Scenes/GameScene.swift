@@ -10,24 +10,27 @@ import SwiftUI
 class GameScene: SKScene {
     
     // instância do enum, para pegar a imagem e o valor de cada fruta
-    var food: FrutaNode = FrutaNode(fruta: .fruta1)
+    var food: FruitNode = FruitNode(fruit: .fruit1)
     
     // instância de GeradorPesos para gerar uma equacão aleatória
-    var gerador: GeradorPesos = GeradorPesos()
+    var gerador: EquationGenerator = EquationGenerator()
     
     // instância de BalancaDados para adicionar e travar os itens na balança
-    var balanca: BalancaDados = BalancaDados()
+    var balanca: DataBalance = DataBalance()
     
     // instância de comida
     //var foodNode = SKSpriteNode()
     
     // arrays que armazenam a quantidade de comida em cada bandeja
-    var foodArrayLeft: [FrutaNode] = []
-    var foodArrayRight: [FrutaNode] = []
+    var foodArrayLeft: [FruitNode] = []
+    var foodArrayRight: [FruitNode] = []
     
     // contador de quantas posições a fruta adicionada vai andar
     var foodContLeft: CGFloat = 0
     var foodContRight: CGFloat = 0
+    
+    var foodNumberContLeft: CGFloat = 0
+    var foodNumberContRight: CGFloat = 0
     
     // bandejas de comida
     let foodInvisibleFrameLeft = SKSpriteNode()
@@ -37,8 +40,8 @@ class GameScene: SKScene {
     let foodTrayRight = SKSpriteNode()
     
     // variáveis que armazenam o local da posição da bandeja de quando rotaciona o braço do polvo
-    var trayPositionUpY: CGFloat = 535
-    var trayPositionDownY: CGFloat = 395
+    var trayPositionUpY: CGFloat = 610
+    var trayPositionDownY: CGFloat = 540
     
     // variáveis que indicam se tem comida na bandeja ou não
     var isInTrayLeft: Bool = false
@@ -85,7 +88,7 @@ class GameScene: SKScene {
     
     var changeOperation = OperationButton()
     
-    var calculadora = Calculadora()
+    var calculator = Calculator()
                 
     var score = 0
     var scoreLabel = SKLabelNode()
@@ -106,23 +109,23 @@ class GameScene: SKScene {
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
         
-        let food1 = setupDragLabelFood(fruta: .fruta1)
+        let food1 = setupDragLabelFood(fruit: .fruit1)
         foodRemovedArray.append(food1.node)
         
-        let food2 = setupDragLabelFood(fruta: .fruta2)
+        let food2 = setupDragLabelFood(fruit: .fruit2)
         foodRemovedArray.append(food2.node)
         
-        let food3 = setupDragLabelFood(fruta: .fruta3)
+        let food3 = setupDragLabelFood(fruit: .fruit3)
         foodRemovedArray.append(food3.node)
         
-        let food5 = setupDragLabelFood(fruta: .fruta5)
+        let food5 = setupDragLabelFood(fruit: .fruit5)
         foodRemovedArray.append(food5.node)
         
-        let incognita = setupDragLabelFood(fruta: .incognita)
+        let incognita = setupDragLabelFood(fruit: .unknown)
         foodRemovedArray.append(incognita.node)
         
-        DataModel.shared.peso_lado_direito = 0
-        DataModel.shared.peso_lado_esquerdo = 0
+        DataModel.shared.weightRightSide = 0
+        DataModel.shared.weightLeftSide = 0
         
         setupGame()
         setupSpawners()
@@ -158,293 +161,7 @@ class GameScene: SKScene {
         
     }
     
-    func reduceFood() {
-        var soma_left = 0
-        var aux_left = 0
-        var cont_left = 0
-        var deleteItemsArrayLeft : [SKSpriteNode] = []
-        
-        var soma_right = 0
-        var aux_right = 0
-        var cont_right = 0
-        var deleteItemsArrayRight : [SKSpriteNode] = []
-        // Se o botao da operacao for subtracao
-        //if operationButton.changeOperation.selectedOperation == .subtracao {
-        
-        // valor subtraído for maior que o peso da balanca, nao faz nada
-        if operationNumbersButton.changeNumber.selectedFruit.valor > DataModel.shared.peso - DataModel.shared.valorX {
-            print("Numero maior que o peso, acao negada")
-            //perder vida
-        }
-        // valor subtraído for igual ao peso da balanca, nao faz nada
-        else if operationNumbersButton.changeNumber.selectedFruit.valor == DataModel.shared.peso {
-            print("Numero igual ao peso, acao negada")
-            //perder vida
-            
-            //valor subtraído é menor que o peso da balanca
-        } else {
-            calculadora.Subtracao(valor: operationNumbersButton.changeNumber.selectedFruit.valor)
-            for (index, frutaNode) in foodArrayLeft.enumerated(){
-                print("operation: \(operationNumbersButton.changeNumber.selectedFruit.valor)")
-                print("fruta: \(frutaNode.fruta.valor)")
-                //se o valor subtraido for igual ao valor de uma fruta do array da esquerda
-                if operationNumbersButton.changeNumber.selectedFruit.valor == frutaNode.fruta.valor && foodArrayLeft[index].node.name != "incognitaAdded"{
-                    //remove a fruta
-                    frutaNode.node.removeFromParent()
-                    foodArrayLeft.remove(at: index)
-                    break
-                } else if operationNumbersButton.changeNumber.selectedFruit.valor > frutaNode.fruta.valor && foodArrayLeft[index].node.name != "incognitaAdded" {
-                    soma_left += foodArrayLeft[index].fruta.valor
-                    if soma_left < operationNumbersButton.changeNumber.selectedFruit.valor {
-                        deleteItemsArrayLeft.append(frutaNode.node)
-                        
-                    } else if soma_left == operationNumbersButton.changeNumber.selectedFruit.valor {
-                        deleteItemsArrayLeft.append(frutaNode.node)
-                        foodArrayLeft.remove(at: index)
-                        removeChildren(in: deleteItemsArrayLeft)
-                        break
-                    }
-                    
-                    else if soma_left > operationNumbersButton.changeNumber.selectedFruit.valor {
-                     
-                        removeChildren(in: deleteItemsArrayLeft)
-                        
-                        let resto = soma_left - operationNumbersButton.changeNumber.selectedFruit.valor
-                        switch resto {
-                        case 1:
-                            print("virou fruta 1")
-                            let texture = SKTexture(imageNamed: "fruit1")
-                            let action = SKAction.setTexture(texture, resize: true)
-                            foodArrayLeft[index].fruta = .fruta1
-                            foodArrayLeft[index].node.run(action)
-                        case 2:
-                            print("virou fruta 2")
-                            let texture = SKTexture(imageNamed: "fruit2")
-                            let action = SKAction.setTexture(texture, resize: true)
-                            foodArrayLeft[index].fruta = .fruta2
-                            foodArrayLeft[index].node.run(action)
-                        case 3:
-                            print("virou fruta 3")
-                            let texture = SKTexture(imageNamed: "fruit3")
-                            let action = SKAction.setTexture(texture, resize: true)
-                            foodArrayLeft[index].fruta = .fruta3
-                            foodArrayLeft[index].node.run(action)
-                        case 4:
-                            print("virou duas macas")
-                            let texture = SKTexture(imageNamed: "fruit2")
-                            let action = SKAction.setTexture(texture, resize: true)
-                            let food: FrutaNode = FrutaNode(fruta: .fruta2)
-                            foodArrayLeft[index].fruta = .fruta2
-                            foodArrayLeft[index].node.run(action)
-                            
-                            food.node.zPosition = 20
-                            food.node.position.y = foodArrayLeft[index].node.position.y
-                            food.node.name = "foodAdded"
-                            foodArrayLeft.append(food)
-                            foodContLeft += 15
-                            food.node.position.x = foodArrayLeft[index].node.position.x + 15
-                            addChild(food.node)
-                        default:
-                            print("default")
-                            calculadora.Subtracao(valor: 1)
-                            foodArrayLeft[index].fruta = .fruta1
-                            foodArrayLeft[index].node = SKSpriteNode(imageNamed: "fruit1")
-                        }
-                        break
-                    }
-                    
-                }
-                // 3º caso: se o valor subtraido for menor que o valor da fruta, remove ela e coloca outra no lugar
-                else if operationNumbersButton.changeNumber.selectedFruit.valor < frutaNode.fruta.valor && foodArrayLeft[index].node.name != "incognitaAdded" {
-                    if frutaNode.fruta.valor > aux_left {
-                        cont_left = index
-                        aux_left = frutaNode.fruta.valor
-                    }
-                    else {
-                        aux_left = aux_left - operationNumbersButton.changeNumber.selectedFruit.valor
-                    }
-                    
-                    if aux_left == frutaNode.fruta.valor && foodArrayLeft[index].node.name != "incognitaAdded"{
-                        aux_left -= operationNumbersButton.changeNumber.selectedFruit.valor
-                    }
-                    print("aux: \(aux_left)")
-                        //substitui
-                    switch aux_left {
-                    case 1:
-                        print("virou fruta 1")
-                        let texture = SKTexture(imageNamed: "fruit1")
-                        let action = SKAction.setTexture(texture, resize: true)
-                        foodArrayLeft[cont_left].fruta = .fruta1
-                        foodArrayLeft[cont_left].node.run(action)
-                    case 2:
-                        print("virou fruta 2")
-                        let texture = SKTexture(imageNamed: "fruit2")
-                        let action = SKAction.setTexture(texture, resize: true)
-                        foodArrayLeft[cont_left].fruta = .fruta2
-                        foodArrayLeft[cont_left].node.run(action)
-                    case 3:
-                        print("virou fruta 3")
-                        let texture = SKTexture(imageNamed: "fruit3")
-                        let action = SKAction.setTexture(texture, resize: true)
-                        foodArrayLeft[cont_left].fruta = .fruta3
-                        foodArrayLeft[cont_left].node.run(action)
-                    case 4:
-                        print("virou duas frutas 2")
-                        let texture = SKTexture(imageNamed: "fruit2")
-                        let action = SKAction.setTexture(texture, resize: true)
-                        let food: FrutaNode = FrutaNode(fruta: .fruta2)
-                        foodArrayLeft[cont_left].fruta = .fruta2
-                        foodArrayLeft[cont_left].node.run(action)
-                        
-                        food.node.zPosition = 20
-                        food.node.position.y = foodArrayLeft[cont_left].node.position.y
-                        food.node.name = "foodAdded"
-                        foodArrayLeft.append(food)
-                        foodContLeft += 15
-                        food.node.position.x = foodArrayLeft[cont_left].node.position.x + 15
-                        addChild(food.node)
-                    default:
-                        print("default")
-                        foodArrayLeft[cont_left].fruta = .fruta1
-                        foodArrayLeft[cont_left].node = SKSpriteNode(imageNamed: "fruit1")
-                    }
-                    break
-                }
-                
-            }
-            
-            for (index, frutaNode) in foodArrayRight.enumerated(){
-                print("operation: \(operationNumbersButton.changeNumber.selectedFruit.valor)")
-                print("fruta: \(frutaNode.fruta.valor)")
-                //se o valor subtraido for igual ao valor de uma fruta do array da esquerda
-                if operationNumbersButton.changeNumber.selectedFruit.valor == frutaNode.fruta.valor{
-                    print("entrou na remocao de uma fruta")
-                    //remove a fruta
-                    frutaNode.node.removeFromParent()
-                    foodArrayRight.remove(at: index)
-                    break
-                } else if operationNumbersButton.changeNumber.selectedFruit.valor > frutaNode.fruta.valor {
-                    soma_right += foodArrayRight[index].fruta.valor
-                    if soma_right < operationNumbersButton.changeNumber.selectedFruit.valor {
-                        deleteItemsArrayRight.append(frutaNode.node)
-                        
-                    } else if soma_right == operationNumbersButton.changeNumber.selectedFruit.valor {
-                        deleteItemsArrayRight.append(frutaNode.node)
-                        foodArrayRight.remove(at: index)
-                        removeChildren(in: deleteItemsArrayRight)
-                        break
-                    }
-                    
-                    else if soma_right > operationNumbersButton.changeNumber.selectedFruit.valor {
-                     
-                        removeChildren(in: deleteItemsArrayRight)
-                        
-                        let resto = soma_right - operationNumbersButton.changeNumber.selectedFruit.valor
-                        switch resto {
-                        case 1:
-                            print("virou fruta 1")
-                            let texture = SKTexture(imageNamed: "fruit1")
-                            let action = SKAction.setTexture(texture, resize: true)
-                            foodArrayRight[index].fruta = .fruta1
-                            foodArrayRight[index].node.run(action)
-                            print(foodArrayRight)
-                        case 2:
-                            print("virou fruta 2")
-                            let texture = SKTexture(imageNamed: "fruit2")
-                            let action = SKAction.setTexture(texture, resize: true)
-                            foodArrayRight[index].fruta = .fruta2
-                            foodArrayRight[index].node.run(action)
-                        case 3:
-                            print("virou fruta 3")
-                            let texture = SKTexture(imageNamed: "fruit3")
-                            let action = SKAction.setTexture(texture, resize: true)
-                            foodArrayRight[index].fruta = .fruta3
-                            foodArrayRight[index].node.run(action)
-                        case 4:
-                            print("virou duas macas")
-                            let texture = SKTexture(imageNamed: "fruit2")
-                            let action = SKAction.setTexture(texture, resize: true)
-                            let food: FrutaNode = FrutaNode(fruta: .fruta2)
-                            foodArrayRight[index].fruta = .fruta2
-                            foodArrayRight[index].node.run(action)
-                            
-                            food.node.zPosition = 20
-                            food.node.position.y = foodArrayRight[index].node.position.y
-                            food.node.name = "foodAdded"
-                            foodArrayRight.append(food)
-                            foodContRight += 15
-                            food.node.position.x = foodArrayRight[index].node.position.x + 15
-                            addChild(food.node)
-                        default:
-                            print("default")
-                            foodArrayRight[index].fruta = .fruta1
-                            foodArrayRight[index].node = SKSpriteNode(imageNamed: "fruit1")
-                        }
-                        break
-                    }
-                    
-                }
-                // 3º caso: se o valor subtraido for menor que o valor da fruta, remove ela e coloca outra no lugar
-                else if operationNumbersButton.changeNumber.selectedFruit.valor < frutaNode.fruta.valor{
-                    print("entrou na transformacao de uma fruta")
-                    if frutaNode.fruta.valor > aux_right {
-                        cont_right = index
-                        aux_right = frutaNode.fruta.valor
-                    }
-                    else {
-                        aux_right = aux_right - operationNumbersButton.changeNumber.selectedFruit.valor
-                    }
-                    
-                    if aux_right == frutaNode.fruta.valor{
-                        aux_right -= operationNumbersButton.changeNumber.selectedFruit.valor
-                    }
-                    print("aux: \(aux_right)")
-                        //substitui
-                    switch aux_right {
-                    case 1:
-                        print("virou fruta 1")
-                        let texture = SKTexture(imageNamed: "fruit1")
-                        let action = SKAction.setTexture(texture, resize: true)
-                        foodArrayRight[cont_right].fruta = .fruta1
-                        foodArrayRight[cont_right].node.run(action)
-                    case 2:
-                        print("virou fruta 2")
-                        let texture = SKTexture(imageNamed: "fruit2")
-                        let action = SKAction.setTexture(texture, resize: true)
-                        foodArrayRight[cont_right].fruta = .fruta2
-                        foodArrayRight[cont_right].node.run(action)
-                    case 3:
-                        print("virou fruta 3")
-                        let texture = SKTexture(imageNamed: "fruit3")
-                        let action = SKAction.setTexture(texture, resize: true)
-                        foodArrayRight[cont_right].fruta = .fruta3
-                        foodArrayRight[cont_right].node.run(action)
-                    case 4:
-                        print("virou duas frutas 2")
-                        let texture = SKTexture(imageNamed: "fruit2")
-                        let action = SKAction.setTexture(texture, resize: true)
-                        let food: FrutaNode = FrutaNode(fruta: .fruta2)
-                        foodArrayRight[cont_right].fruta = .fruta2
-                        foodArrayRight[cont_right].node.run(action)
-                        
-                        food.node.zPosition = 20
-                        food.node.position.y = foodArrayRight[cont_right].node.position.y
-                        food.node.name = "foodAdded"
-                        foodArrayRight.append(food)
-                        foodContRight += 15
-                        food.node.position.x = foodArrayRight[cont_right].node.position.x + 15
-                        addChild(food.node)
-                    default:
-                        print("default")
-                        foodArrayRight[cont_right].fruta = .fruta1
-                        foodArrayRight[cont_right].node = SKSpriteNode(imageNamed: "fruit1")
-                    }
-                    break
-                }
-                
-            }
-        }
-    }
+    
     
     
     // adicionar a label dos pontos na tela
@@ -461,11 +178,8 @@ class GameScene: SKScene {
     
     // fazer o update dos pontos
     func updateScore() {
-        DataModel.shared.contadorEquacoes += 1
-        scoreLabel.text = "Pontos: \(DataModel.shared.contadorEquacoes)"
-        //MARK:
-        livesCount = 3
-        endGame()
+        DataModel.shared.equationCount += 1
+        scoreLabel.text = "Pontos: \(DataModel.shared.equationCount)"
     }
     
     // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
@@ -571,7 +285,7 @@ class GameScene: SKScene {
     
     
     func firstCheck() {
-        if DataModel.shared.balanca_direita_travada && DataModel.shared.balanca_esquerda_travada && DataModel.shared.hasX {
+        if DataModel.shared.rightBalanceLocked && DataModel.shared.leftBalanceLocked && DataModel.shared.hasX {
             //desespawnar e mostra botao de operacoes
             print("ACERTOUUU")
             isCorrect = true
@@ -580,44 +294,47 @@ class GameScene: SKScene {
             removeChildren(in: foodRemovedArray)
             addOperationButtons()
             updateScore()
+            nextButton.clickAction = finalizeCheck
             
         } else {
             GameCenterController.shared.points = DataModel.shared.contadorEquacoes
             endGame()
 
-            
         }
-        
     }
     
     
     
     func finalizeCheck(){
-        //vitoria ou derrota
-        print("Vitoria")
+        if DataModel.shared.weight == DataModel.shared.valueX {
+            print("Vitoria")
+        }
+        else{
+            print("Derrota")
+        }
     }
     
     // função que faz as bases iniciais do jogo
     func setupGame(){
-        gerador.Gerar_Numeros_Basico() // gera uma equação aleatória
+        gerador.generateBasicEquation() // gera uma equação aleatória
     }
     
     // função que calcula o ângulo de rotação do braço do polvo (vai de -45º até 45º)
     func calculateAngle() {
-        if DataModel.shared.peso_lado_esquerdo < DataModel.shared.peso_lado_direito{
-            angle = -(.pi / 6)
+        if DataModel.shared.weightLeftSide < DataModel.shared.weightRightSide{
+            angle = -(.pi / 12)
             
-        } else if DataModel.shared.peso_lado_esquerdo == DataModel.shared.peso_lado_direito {
+        } else if DataModel.shared.weightLeftSide == DataModel.shared.weightRightSide {
             angle = 0
             
         } else {
-            angle = .pi / 6
+            angle = .pi / 12
         }
     }
     
     
     //Colocar a comida na tela
-    func setupDragLabelFood(fruta: FrutaEnum) -> FrutaNode{
+    func setupDragLabelFood(fruit: FruitEnum) -> FruitNode{
         
         // comida aparece na tela inicialmente no spawnLocation, por isso, booleanas são false
         isInTrayLeft = false
@@ -626,49 +343,49 @@ class GameScene: SKScene {
         // para cada fruta, pega o peso, o nome da imagem e coloca no spawnLocation respectivo
         
         
-        switch fruta {
-        case .fruta1:
-            let frutaNode = FrutaEnum.fruta1.toNode()
-            frutaNode.node.name = "food"
-            frutaNode.node.zPosition = 20
-            frutaNode.node.position = spawnLocation1
-            addChild(frutaNode.node)
-            return frutaNode
-        case .fruta2:
-            let frutaNode = FrutaEnum.fruta2.toNode()
-            frutaNode.node.name = "food"
-            frutaNode.node.zPosition = 20
-            frutaNode.node.position = spawnLocation2
-            addChild(frutaNode.node)
-            return frutaNode
-        case .fruta3:
-            let frutaNode = FrutaEnum.fruta3.toNode()
-            frutaNode.node.name = "food"
-            frutaNode.node.zPosition = 20
-            frutaNode.node.position = spawnLocation3
-            addChild(frutaNode.node)
-            return frutaNode
-        case .fruta5:
-            let frutaNode = FrutaEnum.fruta5.toNode()
-            frutaNode.node.name = "food"
-            frutaNode.node.zPosition = 20
-            frutaNode.node.position = spawnLocation5
-            addChild(frutaNode.node)
-            return frutaNode
-        case .incognita:
-            let frutaNode = FrutaEnum.incognita.toNode()
-            frutaNode.node.name = "incognita"
-            frutaNode.node.zPosition = 20
-            frutaNode.node.position = spawnLocationIncognita
-            addChild(frutaNode.node)
-            return frutaNode
+        switch fruit {
+        case .fruit1:
+            let fruitNode = FruitEnum.fruit1.toNode()
+            fruitNode.node.name = "food"
+            fruitNode.node.zPosition = 20
+            fruitNode.node.position = spawnLocation1
+            addChild(fruitNode.node)
+            return fruitNode
+        case .fruit2:
+            let fruitNode = FruitEnum.fruit2.toNode()
+            fruitNode.node.name = "food"
+            fruitNode.node.zPosition = 20
+            fruitNode.node.position = spawnLocation2
+            addChild(fruitNode.node)
+            return fruitNode
+        case .fruit3:
+            let fruitNode = FruitEnum.fruit3.toNode()
+            fruitNode.node.name = "food"
+            fruitNode.node.zPosition = 20
+            fruitNode.node.position = spawnLocation3
+            addChild(fruitNode.node)
+            return fruitNode
+        case .fruit5:
+            let fruitNode = FruitEnum.fruit5.toNode()
+            fruitNode.node.name = "food"
+            fruitNode.node.zPosition = 20
+            fruitNode.node.position = spawnLocation5
+            addChild(fruitNode.node)
+            return fruitNode
+        case .unknown:
+            let fruitNode = FruitEnum.unknown.toNode()
+            fruitNode.node.name = "incognita"
+            fruitNode.node.zPosition = 20
+            fruitNode.node.position = spawnLocationIncognita
+            addChild(fruitNode.node)
+            return fruitNode
         default:
-            let frutaNode = FrutaEnum.fruta1.toNode()
-            frutaNode.node.name = "food"
-            frutaNode.node.zPosition = 20
-            frutaNode.node.position = spawnLocation1
-            addChild(frutaNode.node)
-            return frutaNode
+            let fruitNode = FruitEnum.fruit1.toNode()
+            fruitNode.node.name = "food"
+            fruitNode.node.zPosition = 20
+            fruitNode.node.position = spawnLocation1
+            addChild(fruitNode.node)
+            return fruitNode
         }
     }
     
@@ -700,10 +417,10 @@ class GameScene: SKScene {
         foodTrayLeft.zPosition = 11
         
         foodInvisibleFrameLeft.size = CGSize(width: 145, height: 120)
-        foodInvisibleFrameLeft.color = .yellow
+        //foodInvisibleFrameLeft.color = .yellow
         foodInvisibleFrameLeft.position.y = octopusArm.position.y + 90
         foodInvisibleFrameLeft.position.x = 80
-        foodInvisibleFrameLeft.zPosition = 10
+        foodInvisibleFrameLeft.zPosition = 1
 
 
         foodTrayRight.size = CGSize(width: 145, height: 30)
@@ -713,10 +430,10 @@ class GameScene: SKScene {
         foodTrayRight.zPosition = 11
         
         foodInvisibleFrameRight.size = CGSize(width: 145, height: 120)
-        foodInvisibleFrameRight.color = .yellow
+        //foodInvisibleFrameRight.color = .yellow
         foodInvisibleFrameRight.position.y = octopusArm.position.y + 90
         foodInvisibleFrameRight.position.x = 340
-        foodInvisibleFrameRight.zPosition = 10
+        foodInvisibleFrameRight.zPosition = 1
         
         addChild(foodInvisibleFrameRight)
         addChild(foodTrayLeft)
@@ -764,7 +481,7 @@ class GameScene: SKScene {
         let rotateAction = SKAction.rotate(toAngle: angle, duration: 1, shortestUnitArc: true)
         octopusArm.run(rotateAction)
         
-        if DataModel.shared.peso_lado_esquerdo < DataModel.shared.peso_lado_direito{
+        if DataModel.shared.weightLeftSide < DataModel.shared.weightRightSide{
             
             let moveActionLeftTray = SKAction.moveTo(y: trayPositionUpY + 40, duration: 1)
             self.foodInvisibleFrameLeft.run(moveActionLeftTray)
@@ -778,7 +495,7 @@ class GameScene: SKScene {
             let moveActionRightPlate = SKAction.moveTo(y: trayPositionDownY, duration: 1)
             self.foodTrayRight.run(moveActionRightPlate)
             
-        } else if DataModel.shared.peso_lado_esquerdo == DataModel.shared.peso_lado_direito {
+        } else if DataModel.shared.weightLeftSide == DataModel.shared.weightRightSide {
             let moveActionLeftTray = SKAction.moveTo(y: (trayPositionUpY + trayPositionDownY) / 2  + 40, duration: 1)
             self.foodInvisibleFrameLeft.run(moveActionLeftTray)
             
@@ -808,16 +525,16 @@ class GameScene: SKScene {
     
     //função que retorna a fruta para o local de spawn
     func returnToSpawn(){
-        switch food.fruta {
-        case .fruta1:
+        switch food.fruit {
+        case .fruit1:
             removeChildren(in: [food.node])
-        case .fruta2:
+        case .fruit2:
             removeChildren(in: [food.node])
-        case .fruta3:
+        case .fruit3:
             removeChildren(in: [food.node])
-        case .fruta5:
+        case .fruit5:
             removeChildren(in: [food.node])
-        case .incognita:
+        case .unknown:
             removeChildren(in: [food.node])
         default:
             removeChildren(in: [food.node])
@@ -854,20 +571,20 @@ class GameScene: SKScene {
         if let touch = touches.first {
             //let position = touch.location(in: self)
             if spawner1.frame.contains(touch.previousLocation(in: self)){
-                food = setupDragLabelFood(fruta: .fruta1)
+                food = setupDragLabelFood(fruit: .fruit1)
             }
             else if spawner2.frame.contains(touch.previousLocation(in: self)){
-                food = setupDragLabelFood(fruta: .fruta2)
+                food = setupDragLabelFood(fruit: .fruit2)
 
             }
             else if spawner3.frame.contains(touch.previousLocation(in: self)) {
-                food = setupDragLabelFood(fruta: .fruta3)
+                food = setupDragLabelFood(fruit: .fruit3)
             }
             else if spawner5.frame.contains(touch.previousLocation(in: self)) {
-                food = setupDragLabelFood(fruta: .fruta5)
+                food = setupDragLabelFood(fruit: .fruit5)
             }
             else if spawnerIncognita.frame.contains(touch.previousLocation(in: self)) {
-                food = setupDragLabelFood(fruta: .incognita)
+                food = setupDragLabelFood(fruit: .unknown)
             }
         }
     }
@@ -885,16 +602,21 @@ class GameScene: SKScene {
     // quando solta uma fruta, e esta estiver dentro de uma bandeja, ela é adicionada no foodArray e, caso seja a bandeja da esquerda, é preciso ter um X adicionado
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if foodInvisibleFrameLeft.frame.contains(food.node.position) && food.fruta.valor + DataModel.shared.peso_lado_esquerdo <= DataModel.shared.peso { // condição que adiciona uma fruta na bandeja da esquerda desde que a fruta não seja maior que o valor máximo de cada lado da equação
+        if foodInvisibleFrameLeft.frame.contains(food.node.position) && food.fruit.value + DataModel.shared.weightLeftSide <= DataModel.shared.weight { // condição que adiciona uma fruta na bandeja da esquerda desde que a fruta não seja maior que o valor máximo de cada lado da equação
             
 
             
             if food.node.name == "food" || food.node.name == "incognita" {
-                balanca.adicionar_fruta_esquerda(fruta: food.fruta)
-                if !(DataModel.shared.balanca_esquerda_travada){ // se a bandeja não estiver travada, adiciona fruta
+                balanca.addLeftFruit(fruit: food.fruit)
+                if !(DataModel.shared.leftBalanceLocked){ // se a bandeja não estiver travada, adiciona fruta
                     if food.node.name == "incognita"{ // condição que verifica que tem incógnita na bandeja da esquerda
                         DataModel.shared.hasX = true
                         food.node.name = "incognitaAdded"
+                        food.node.anchorPoint = CGPoint(x: 0.5, y: 0.2)
+                    }
+                    else if food.fruit.value == 5 {
+                        food.node.name = "foodAdded"
+                        food.node.anchorPoint = CGPoint(x: 0.5, y: 0.2)
                     }
                     else{
                         food.node.name = "foodAdded"
@@ -904,26 +626,26 @@ class GameScene: SKScene {
                     foodContLeft += 15
                 }
                 
-                if DataModel.shared.peso_lado_esquerdo == DataModel.shared.peso{
+                if DataModel.shared.weightLeftSide == DataModel.shared.weight{
                     print("travou esquerdaa")
-                    balanca.adicionar_fruta_esquerda(fruta: food.fruta)
+                    balanca.addLeftFruit(fruit: food.fruit)
                 }
                 
             }
-        } else if foodInvisibleFrameRight.frame.contains(food.node.position) && food.fruta.valor + DataModel.shared.peso_lado_direito <= DataModel.shared.peso{ // condição que adiciona uma fruta na bandeja da direita desde que a fruta não seja maior que o valor máximo de cada lado da equação
+        } else if foodInvisibleFrameRight.frame.contains(food.node.position) && food.fruit.value + DataModel.shared.weightRightSide <= DataModel.shared.weight{ // condição que adiciona uma fruta na bandeja da direita desde que a fruta não seja maior que o valor máximo de cada lado da equação
             
             if food.node.name == "food"{
-                balanca.adicionar_fruta_direita(fruta: food.fruta)
-                if !(DataModel.shared.balanca_direita_travada){ // se a bandeja não estiver travada, adiciona fruta
+                balanca.addRightFruit(fruit: food.fruit)
+                if !(DataModel.shared.rightBalanceLocked){ // se a bandeja não estiver travada, adiciona fruta
                     food.node.name = "foodAdded"
                     isInTrayRight = true
                     foodArrayRight.append(food)
                     foodContRight += 15
                 }
                 
-                if DataModel.shared.peso_lado_direito == DataModel.shared.peso{
+                if DataModel.shared.weightRightSide == DataModel.shared.weight{
                     print("travou direita")
-                    balanca.adicionar_fruta_direita(fruta: food.fruta)
+                    balanca.addRightFruit(fruit: food.fruit)
                 }
             } 
             else {
