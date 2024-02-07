@@ -239,7 +239,7 @@ class GameScene: SKScene {
             print("oiiii \(livesCount)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
-            GameCenterController.shared.points = DataModel.shared.contadorEquacoes
+            GameCenterController.shared.points = DataModel.shared.equationCount
 
         }
         else if childNode(withName: "live2") != nil && isAlive[1] == true {
@@ -250,7 +250,7 @@ class GameScene: SKScene {
             print("oiiii \(livesCount)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
-            GameCenterController.shared.points = DataModel.shared.contadorEquacoes
+            GameCenterController.shared.points = DataModel.shared.equationCount
 
 
         }
@@ -262,15 +262,15 @@ class GameScene: SKScene {
             print("oiiii \(livesCount)")
             playSound(sound: "Prato quebrando", type: "mp3")
             endGame()
-            GameCenterController.shared.points = DataModel.shared.contadorEquacoes
+            GameCenterController.shared.points = DataModel.shared.equationCount
 
         }
         
         // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
         if livesCount == 3 {
-            GameCenterController.shared.points = DataModel.shared.contadorEquacoes
+            GameCenterController.shared.points = DataModel.shared.equationCount
 
-            if DataModel.shared.contadorEquacoes > DataModel.shared.bestPoints {
+            if DataModel.shared.equationCount > DataModel.shared.bestPoints {
                 GameCenterController.shared.scoreToLeaderboard()
             }
             let endGameScene = EndScene()
@@ -297,7 +297,7 @@ class GameScene: SKScene {
             nextButton.clickAction = finalizeCheck
             
         } else {
-            GameCenterController.shared.points = DataModel.shared.contadorEquacoes
+            GameCenterController.shared.points = DataModel.shared.equationCount
             endGame()
 
         }

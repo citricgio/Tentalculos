@@ -14,7 +14,7 @@ class GameCenterController {
     static let shared = GameCenterController()
     
     //função que instancia o points com o valor do contador de equações
-    var points: Int = DataModel.shared.contadorEquacoes
+    var points: Int = DataModel.shared.equationCount
     
     //func que autentifica o game center
     func authenticateGameCenter() {
@@ -69,6 +69,6 @@ class GameCenterController {
     }
     
     func atualizarVariavel() {
-        points = DataModel.shared.contadorEquacoes
+        points = DataModel.shared.equationCount
     }
 }

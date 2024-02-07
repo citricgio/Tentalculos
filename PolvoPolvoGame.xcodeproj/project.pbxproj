@@ -77,7 +77,6 @@
 		B4DFD3852B6C13BA006AF2DC /* EndData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndData.swift; sourceTree = "<group>"; };
 		B4DFD3872B6C32A4006AF2DC /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNode.swift; sourceTree = "<group>"; };
-		B4DFD38B2B6D56DC006AF2DC /* FontesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontesEnum.swift; sourceTree = "<group>"; };
 		B4DFD38D2B6D7AA8006AF2DC /* PolvoPolvoGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PolvoPolvoGame.entitlements; sourceTree = "<group>"; };
 		FA0C17A82B714F7E004BF668 /* BackgroundSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSound.swift; sourceTree = "<group>"; };
 		FA240ED72B6178D300AABC49 /* SpriteButtonOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonOperation.swift; sourceTree = "<group>"; };
@@ -494,7 +493,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = ACG36J6YH2;
+				DEVELOPMENT_TEAM = 7FZ4ZHZT5J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
@@ -527,7 +526,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = ACG36J6YH2;
+				DEVELOPMENT_TEAM = 7FZ4ZHZT5J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
