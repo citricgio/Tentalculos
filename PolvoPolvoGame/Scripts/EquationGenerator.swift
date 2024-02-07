@@ -58,7 +58,7 @@ class EquationGenerator {
     //monta o texto da equação Basica e Intermediária
     func assembleEquation(){
         
-        DataModel.shared.equationText = "\(DataModel.shared.b) + \(DataModel.shared.valueMultiplier)x = \(DataModel.shared.weight)"
+        DataModel.shared.equationText = "\(DataModel.shared.b) + \(DataModel.shared.valueMultiplier)? = \(DataModel.shared.weight)"
         
         print(DataModel.shared.equationText)
         
@@ -67,7 +67,7 @@ class EquationGenerator {
     //monta o texto da equação avançada
     func assembleAdvancedEquation() {
         
-        DataModel.shared.equationText = "\(DataModel.shared.b) + \(DataModel.shared.valueMultiplier)x = \(DataModel.shared.c) + \(DataModel.shared.valueMultiplier-1)x"
+        DataModel.shared.equationText = "\(DataModel.shared.b) + \(DataModel.shared.valueMultiplier)? = \(DataModel.shared.c) + \(DataModel.shared.valueMultiplier-1)?"
         
         print(DataModel.shared.equationText)
     }
