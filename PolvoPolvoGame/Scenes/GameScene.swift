@@ -58,11 +58,11 @@ class GameScene: SKScene {
     let shelf = SKSpriteNode()
 
     // localização dos spawners
-    var spawnLocationIncognita = CGPoint(x:380, y: 260)
-    var spawnLocation1 = CGPoint(x:300, y: 260)
-    var spawnLocation2 = CGPoint(x:220, y: 260)
-    var spawnLocation3 = CGPoint(x:140, y: 260)
-    var spawnLocation5 = CGPoint(x:60, y: 260)
+    var spawnLocationIncognita = CGPoint(x:355, y: 230)
+    var spawnLocation1 = CGPoint(x:290, y: 230)
+    var spawnLocation2 = CGPoint(x:215, y: 230)
+    var spawnLocation3 = CGPoint(x:140, y: 230)
+    var spawnLocation5 = CGPoint(x:65, y: 230)
     
     var foodRemovedArray: [SKSpriteNode] = []
     
@@ -195,10 +195,6 @@ class GameScene: SKScene {
         addChild(lineEquation)
         addChild(equationLabel)
     }
-    
-    
-    
-    
     
     
     
@@ -348,7 +344,8 @@ class GameScene: SKScene {
     
     // função que faz as bases iniciais do jogo
     func setupGame(){
-        gerador.generateBasicEquation() // gera uma equação aleatória
+        //gerador.generateBasicEquation() // gera uma equação aleatória
+        gerador.generateIntermidiateEquation()
     }
     
     // função que calcula o ângulo de rotação do braço do polvo (vai de -45º até 45º)
