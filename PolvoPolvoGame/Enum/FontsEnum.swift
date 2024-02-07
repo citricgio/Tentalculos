@@ -8,7 +8,7 @@
 import Foundation
 
 //um enum para padronizar o tamanho das fontes e qual fonte usar
-enum FontesEnum {
+enum FontsEnum {
     
     case buttons
     case numbers

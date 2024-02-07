@@ -11,7 +11,7 @@ import SpriteKit
 class WriteNode {
     let node: SKNode
     
-    init(name: String, fontSize: FontesEnum, text: String, fontName: FontesEnum) {
+    init(name: String, fontSize: FontsEnum, text: String, fontName: FontsEnum) {
         let textNode = SKLabelNode(fontNamed: fontName.font) //qual fonte usar utilizando o FontesEnum
         textNode.text = text //Texto que vai dentro do node, que é uma variável recebida quando o Node é chamado
         textNode.fontSize = fontSize.size //Tamanho do texto que vai dentro do node utilizando o FontesEnum

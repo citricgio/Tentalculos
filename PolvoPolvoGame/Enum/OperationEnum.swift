@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum OperacoesEnum {
-    case subtracao
-    case divisao
+enum OperationsEnum {
+    case subtraction
+    case division
     var name: String {
         switch self {
-        case .subtracao: "-"
-        case .divisao: "/"
+        case .subtraction: "-"
+        case .division: "/"
         }
     }
 }
