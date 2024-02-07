@@ -291,7 +291,7 @@ class GameScene: SKScene {
     
     
     func finalizeCheck(){
-        if DataModel.shared.peso == DataModel.shared.valorX {
+        if DataModel.shared.weight == DataModel.shared.valueX {
             print("Vitoria")
         }
         else{
@@ -306,7 +306,7 @@ class GameScene: SKScene {
     
     // função que calcula o ângulo de rotação do braço do polvo (vai de -45º até 45º)
     func calculateAngle() {
-        if DataModel.shared.peso_lado_esquerdo < DataModel.shared.peso_lado_direito{
+        if DataModel.shared.weightLeftSide < DataModel.shared.weightRightSide{
             angle = -(.pi / 12)
             
         } else if DataModel.shared.weightLeftSide == DataModel.shared.weightRightSide {
@@ -599,7 +599,7 @@ class GameScene: SKScene {
                         food.node.name = "incognitaAdded"
                         food.node.anchorPoint = CGPoint(x: 0.5, y: 0.2)
                     }
-                    else if food.fruta.valor == 5 {
+                    else if food.fruit.value == 5 {
                         food.node.name = "foodAdded"
                         food.node.anchorPoint = CGPoint(x: 0.5, y: 0.2)
                     }
