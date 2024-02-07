@@ -29,9 +29,6 @@ class GameScene: SKScene {
     var foodContLeft: CGFloat = 0
     var foodContRight: CGFloat = 0
     
-    var foodNumberContLeft: CGFloat = 0
-    var foodNumberContRight: CGFloat = 0
-    
     // bandejas de comida
     let foodInvisibleFrameLeft = SKSpriteNode()
     let foodInvisibleFrameRight = SKSpriteNode()
@@ -126,6 +123,14 @@ class GameScene: SKScene {
         
         DataModel.shared.weightRightSide = 0
         DataModel.shared.weightLeftSide = 0
+        isInTrayLeft = false
+        isInTrayRight = false
+        DataModel.shared.hasX = false
+        foodArrayLeft.removeAll()
+        foodArrayRight.removeAll()
+        DataModel.shared.leftBalanceLocked = false
+        DataModel.shared.rightBalanceLocked = false
+        
         
         setupGame()
         setupSpawners()
@@ -179,7 +184,6 @@ class GameScene: SKScene {
     // fazer o update dos pontos
     func updateScore() {
         DataModel.shared.equationCount += 1
-        scoreLabel.text = "Pontos: \(DataModel.shared.equationCount)"
     }
     
     // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
@@ -264,6 +268,7 @@ class GameScene: SKScene {
         if livesCount == 3 {
             let endGameScene = EndScene()
             self.changeTo(scene: endGameScene)
+            DataModel.shared.equationCount = 0
 //            playSound(sound: "Derrota2", type: "mp3")
         }
     }
@@ -292,10 +297,12 @@ class GameScene: SKScene {
     
     func finalizeCheck(){
         if DataModel.shared.weight == DataModel.shared.valueX {
-            print("Vitoria")
+            let GameScene = GameScene()
+            self.changeTo(scene: GameScene)
+            updateScore()
         }
         else{
-            print("Derrota")
+            endGame()
         }
     }
     
@@ -354,6 +361,7 @@ class GameScene: SKScene {
             let fruitNode = FruitEnum.fruit5.toNode()
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
+            fruitNode.node.anchorPoint = CGPoint(x: 0.5, y: 0.3)
             fruitNode.node.position = spawnLocation5
             addChild(fruitNode.node)
             return fruitNode
@@ -361,6 +369,7 @@ class GameScene: SKScene {
             let fruitNode = FruitEnum.unknown.toNode()
             fruitNode.node.name = "incognita"
             fruitNode.node.zPosition = 20
+            fruitNode.node.anchorPoint = CGPoint(x: 0.5, y: 0.25)
             fruitNode.node.position = spawnLocationIncognita
             addChild(fruitNode.node)
             return fruitNode
@@ -530,6 +539,7 @@ class GameScene: SKScene {
     // função que é chamada a cada framde do jogo e atualiza a cena
     override func update(_ currentTime: TimeInterval) {
         calculateAngle()
+        scoreLabel.text = "Pontos: \(DataModel.shared.equationCount)"
         
         // Se a comida entrar na bandeja, a posição da comida vai ser atualizada, as comidas são posicionadas lado a lado quando adicionadas mais de uma
         if isInTrayLeft {
