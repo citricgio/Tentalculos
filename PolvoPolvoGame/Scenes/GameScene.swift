@@ -463,6 +463,9 @@ class GameScene: SKScene {
     func updateScore() {
         DataModel.shared.contadorEquacoes += 1
         scoreLabel.text = "Pontos: \(DataModel.shared.contadorEquacoes)"
+        //MARK:
+        livesCount = 3
+        endGame()
     }
     
     // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
@@ -522,6 +525,8 @@ class GameScene: SKScene {
             print("oiiii \(livesCount)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
+            GameCenterController.shared.points = DataModel.shared.contadorEquacoes
+
         }
         else if childNode(withName: "live2") != nil && isAlive[1] == true {
             isAlive[1] = false
@@ -531,6 +536,8 @@ class GameScene: SKScene {
             print("oiiii \(livesCount)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
+            GameCenterController.shared.points = DataModel.shared.contadorEquacoes
+
 
         }
         else if childNode(withName: "live3") != nil && isAlive[2] == true {
@@ -541,20 +548,24 @@ class GameScene: SKScene {
             print("oiiii \(livesCount)")
             playSound(sound: "Prato quebrando", type: "mp3")
             endGame()
+            GameCenterController.shared.points = DataModel.shared.contadorEquacoes
+
         }
         
         // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
         if livesCount == 3 {
+            GameCenterController.shared.points = DataModel.shared.contadorEquacoes
+
+            if DataModel.shared.contadorEquacoes > DataModel.shared.bestPoints {
+                GameCenterController.shared.scoreToLeaderboard()
+            }
             let endGameScene = EndScene()
             self.changeTo(scene: endGameScene)
 
 //            playSound(sound: "Derrota2", type: "mp3")
             
             //parte que coloca o bestScore no Leaderboards
-            if DataModel.shared.contadorEquacoes > DataModel.shared.bestPoints {
- //               DataModel.shared.bestPoints = DataModel.shared.contadorEquacoes
-                GameCenterController.shared.scoreToLeaderboard()
-            }
+            
         }
     }
     
@@ -571,7 +582,7 @@ class GameScene: SKScene {
             updateScore()
             
         } else {
-
+            GameCenterController.shared.points = DataModel.shared.contadorEquacoes
             endGame()
 
             

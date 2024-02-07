@@ -39,10 +39,17 @@ class GameCenterController {
     
     //Envia um Score para os leaderboards
     func scoreToLeaderboard() {
-        GKLeaderboard.submitScore(self.points, context: 0, player: GKLocalPlayer.local,
-                                  leaderboardIDs: ["000"]) { error in
-            if error != nil {
-                print("Error: \(error!.localizedDescription).")
+ //       print(self.points)
+        GKLeaderboard.loadLeaderboards(IDs:["000"]) { (fetchedLBs, error) in
+//            print(self.points)
+            guard let lb = fetchedLBs?.first else {
+                print(self.points)
+                return }
+            guard let endDate = lb.startDate?.addingTimeInterval(lb.duration), endDate > Date() else { 
+                print(self.points)
+                return }
+            lb.submitScore(self.points, context: 0, player: GKLocalPlayer.local) { error in
+ //               print(self.points)
             }
         }
     }
@@ -59,5 +66,9 @@ class GameCenterController {
                 }
             }
         }
+    }
+    
+    func atualizarVariavel() {
+        points = DataModel.shared.contadorEquacoes
     }
 }
