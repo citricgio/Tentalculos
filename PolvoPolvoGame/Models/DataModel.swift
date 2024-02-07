@@ -47,6 +47,10 @@ import SwiftUI
     //Melhor score do numedo de equacoes
     var bestPoints: Int = 0
     var bestPointsLabel: String = ""
+    
+    //Contagem do numero de vidas
+    var countsLive: Int = 0
+    var isAlive: [Bool] = [true,true,true]
 }
 
 

@@ -88,6 +88,9 @@ class EndScene: SKScene {
     //função que chama a GameScene
     func restartGame() {
         // Animar botão sendo pressionado
+        DataModel.shared.equationCount = 0
+        DataModel.shared.countsLive = 0
+        DataModel.shared.isAlive = [true,true,true]
         let newScene = GameScene()
         self.changeTo(scene: newScene)
 //        playSound(sound: "Jogo", type: "mp3")
