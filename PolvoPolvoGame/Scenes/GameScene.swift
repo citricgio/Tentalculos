@@ -29,6 +29,9 @@ class GameScene: SKScene {
     var foodContLeft: CGFloat = 0
     var foodContRight: CGFloat = 0
     
+    var foodNumberContLeft: CGFloat = 0
+    var foodNumberContRight: CGFloat = 0
+    
     // bandejas de comida
     let foodInvisibleFrameLeft = SKSpriteNode()
     let foodInvisibleFrameRight = SKSpriteNode()
@@ -37,8 +40,8 @@ class GameScene: SKScene {
     let foodTrayRight = SKSpriteNode()
     
     // variáveis que armazenam o local da posição da bandeja de quando rotaciona o braço do polvo
-    var trayPositionUpY: CGFloat = 535
-    var trayPositionDownY: CGFloat = 395
+    var trayPositionUpY: CGFloat = 610
+    var trayPositionDownY: CGFloat = 540
     
     // variáveis que indicam se tem comida na bandeja ou não
     var isInTrayLeft: Bool = false
@@ -276,21 +279,24 @@ class GameScene: SKScene {
             removeChildren(in: foodRemovedArray)
             addOperationButtons()
             updateScore()
+            nextButton.clickAction = finalizeCheck
             
         } else {
 
             endGame()
 
-            
         }
-        
     }
     
     
     
     func finalizeCheck(){
-        //vitoria ou derrota
-        print("Vitoria")
+        if DataModel.shared.peso == DataModel.shared.valorX {
+            print("Vitoria")
+        }
+        else{
+            print("Derrota")
+        }
     }
     
     // função que faz as bases iniciais do jogo
@@ -300,14 +306,14 @@ class GameScene: SKScene {
     
     // função que calcula o ângulo de rotação do braço do polvo (vai de -45º até 45º)
     func calculateAngle() {
-        if DataModel.shared.weightLeftSide < DataModel.shared.weightRightSide{
-            angle = -(.pi / 6)
+        if DataModel.shared.peso_lado_esquerdo < DataModel.shared.peso_lado_direito{
+            angle = -(.pi / 12)
             
         } else if DataModel.shared.weightLeftSide == DataModel.shared.weightRightSide {
             angle = 0
             
         } else {
-            angle = .pi / 6
+            angle = .pi / 12
         }
     }
     
@@ -396,10 +402,10 @@ class GameScene: SKScene {
         foodTrayLeft.zPosition = 11
         
         foodInvisibleFrameLeft.size = CGSize(width: 145, height: 120)
-        foodInvisibleFrameLeft.color = .yellow
+        //foodInvisibleFrameLeft.color = .yellow
         foodInvisibleFrameLeft.position.y = octopusArm.position.y + 90
         foodInvisibleFrameLeft.position.x = 80
-        foodInvisibleFrameLeft.zPosition = 10
+        foodInvisibleFrameLeft.zPosition = 1
 
 
         foodTrayRight.size = CGSize(width: 145, height: 30)
@@ -409,10 +415,10 @@ class GameScene: SKScene {
         foodTrayRight.zPosition = 11
         
         foodInvisibleFrameRight.size = CGSize(width: 145, height: 120)
-        foodInvisibleFrameRight.color = .yellow
+        //foodInvisibleFrameRight.color = .yellow
         foodInvisibleFrameRight.position.y = octopusArm.position.y + 90
         foodInvisibleFrameRight.position.x = 340
-        foodInvisibleFrameRight.zPosition = 10
+        foodInvisibleFrameRight.zPosition = 1
         
         addChild(foodInvisibleFrameRight)
         addChild(foodTrayLeft)
@@ -591,6 +597,11 @@ class GameScene: SKScene {
                     if food.node.name == "incognita"{ // condição que verifica que tem incógnita na bandeja da esquerda
                         DataModel.shared.hasX = true
                         food.node.name = "incognitaAdded"
+                        food.node.anchorPoint = CGPoint(x: 0.5, y: 0.2)
+                    }
+                    else if food.fruta.valor == 5 {
+                        food.node.name = "foodAdded"
+                        food.node.anchorPoint = CGPoint(x: 0.5, y: 0.2)
                     }
                     else{
                         food.node.name = "foodAdded"
