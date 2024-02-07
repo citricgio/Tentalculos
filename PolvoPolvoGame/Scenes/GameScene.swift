@@ -100,6 +100,17 @@ class GameScene: SKScene {
     var brokenPlate = SKTexture(imageNamed: "broken-plate")
     var plate = SKTexture(imageNamed: "normal-plate")
         
+    
+ 
+    var lineEquation = SKSpriteNode(imageNamed: "line")
+    var equationLabel = SKLabelNode()
+    
+ 
+    
+//    var equationNode: EquationNode = EquationNode()
+
+    // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
+    override func didMove(to view: SKView) {
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
         
@@ -141,6 +152,7 @@ class GameScene: SKScene {
         
         addScore()
         addLives()
+        addEquation()
         
         playSound(sound: "Jogo", type: "mp3=")
         
@@ -162,6 +174,35 @@ class GameScene: SKScene {
         
     }
     
+    func addEquation() {
+        
+        lineEquation.zPosition = 20
+        lineEquation.position = CGPoint(x: size.width/2, y: 670)
+        lineEquation.size = CGSize(width: 580, height: 125)
+        
+        EquationGenerator().assembleEquation()
+        equationLabel.zPosition = 21
+        equationLabel.fontColor = .black
+        equationLabel.position = CGPoint(x: size.width/2 + 10, y: 635)
+        equationLabel.text = DataModel.shared.equationText
+        equationLabel.fontName = "Istok Web-Bold"
+        equationLabel.fontSize = 27
+
+
+        
+        addChild(lineEquation)
+        addChild(equationLabel)
+    }
+    
+    
+    func updateEquation() {
+        equationLabel.text = "? = \(DataModel.shared.valueX)"
+        equationLabel.fontColor = .systemGreen
+    }
+    
+    
+    
+    
     
     
     
@@ -171,7 +212,9 @@ class GameScene: SKScene {
         scoreLabel.fontSize = 30
         scoreLabel.fontColor = .white
         scoreLabel.zPosition = 10
-        scoreLabel.position = CGPoint(x: size.width / 2, y: 700)
+        scoreLabel.position = CGPoint(x: size.width / 2, y: 780)
+        scoreLabel.fontName = "Istok Web"
+        scoreLabel.fontSize = 24
         
         
         addChild(scoreLabel)
@@ -185,18 +228,21 @@ class GameScene: SKScene {
     // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
     func addLives() {
         live1 = SKSpriteNode(texture: plate)
-        live1.position = CGPoint(x: 150, y: 650)
+        live1.position = CGPoint(x: size.width / 2 - 63, y: 735)
         live1.zPosition = 11
         live1.name = "live1"
+        live1.size = CGSize(width: 57, height: 57)
         print("VIDA 1")
         
         addChild(live1)
         lives.append(live1)
         
         live2 = SKSpriteNode(texture: plate)
-        live2.position = CGPoint(x: 200, y: 650)
+        live2.position = CGPoint(x: size.width / 2, y: 735)
         live2.zPosition = 11
         live2.name = "live2"
+        live2.size = CGSize(width: 57, height: 57)
+
         print("VIDA 2")
         
         addChild(live2)
@@ -204,9 +250,11 @@ class GameScene: SKScene {
 
         
         live3 = SKSpriteNode(texture: plate)
-        live3.position = CGPoint(x: 250, y: 650)
+        live3.position = CGPoint(x: size.width / 2 + 63, y: 735)
         live3.zPosition = 11
         live3.name = "live3"
+        live3.size = CGSize(width: 57, height: 57)
+
         print("VIDA 3")
         
         addChild(live3)
@@ -299,12 +347,15 @@ class GameScene: SKScene {
     }
     
     
-    
     func finalizeCheck(){
         if DataModel.shared.weight == DataModel.shared.valueX {
-            let GameScene = GameScene()
-            self.changeTo(scene: GameScene)
-            updateScore()
+            updateEquation()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                let GameScene = GameScene()
+                self.changeTo(scene: GameScene)
+                self.updateScore()
+            }
+            
         }
         else{
             endGame()
