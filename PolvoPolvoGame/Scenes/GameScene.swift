@@ -106,6 +106,8 @@ class GameScene: SKScene {
     var lineEquation = SKSpriteNode(imageNamed: "line")
     var equationLabel = SKLabelNode()
     
+ 
+    
 //    var equationNode: EquationNode = EquationNode()
 
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
@@ -190,6 +192,12 @@ class GameScene: SKScene {
         
         addChild(lineEquation)
         addChild(equationLabel)
+    }
+    
+    
+    func updateEquation() {
+        equationLabel.text = "? = \(DataModel.shared.valueX)"
+        equationLabel.fontColor = .systemGreen
     }
     
     
@@ -330,12 +338,15 @@ class GameScene: SKScene {
     }
     
     
-    
     func finalizeCheck(){
         if DataModel.shared.weight == DataModel.shared.valueX {
-            let GameScene = GameScene()
-            self.changeTo(scene: GameScene)
-            updateScore()
+            updateEquation()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                let GameScene = GameScene()
+                self.changeTo(scene: GameScene)
+                self.updateScore()
+            }
+            
         }
         else{
             endGame()
