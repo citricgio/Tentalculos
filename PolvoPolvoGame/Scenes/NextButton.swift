@@ -11,66 +11,55 @@ import SpriteKit
 class NextButton: SKNode {
     
     var clickAction: () -> Void
-    var base: SKShapeNode
-    var thumb: SKShapeNode
     var text: SKLabelNode
     var textLabel: String
-    var positionButton = CGPoint(x: 210, y: 100)
+    var positionButton = CGPoint(x: 216, y: 70)
+    var node: SKSpriteNode
+
     
     init(action: @escaping () -> Void, textLabel: String) {
         clickAction = action
         
         text = SKLabelNode()
         self.textLabel = textLabel
-        text.text = textLabel
+        text.text = self.textLabel
         text.zPosition = 3
         text.fontColor = .black
         text.position = positionButton
+        text.fontSize = 28
+        text.verticalAlignmentMode = .center
+        text.fontColor = SKColor.white //Cor do botão
+        text.fontName = "IstokWeb-Bold"
         
-        base = SKShapeNode(circleOfRadius: 60)
-        base.fillColor = .black.withAlphaComponent(0.2)
-        base.lineWidth = 0
-        base.zPosition = 1
-        base.position = positionButton
+        node = SKSpriteNode(texture: SKTexture(imageNamed: "Button"))
+        node.position = positionButton
+        node.name = textLabel
+        node.setScale(1/1.08)
+        node.zPosition = 2
+
+        super.init()
 
         
-        thumb = SKShapeNode(circleOfRadius: 50)
-        thumb.fillColor = .yellow
-        thumb.lineWidth = 0
-        thumb.zPosition = 2
-        thumb.position = positionButton
-        
-        super.init()
-        
-        addChild(base)
-        addChild(thumb)
-        addChild(text)
+        self.addChild(text)
+        self.addChild(node)
+
         
         self.isUserInteractionEnabled = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        thumb.run(SKAction.scale(to: 0.7, duration: 0.5))
         print("toqueiii")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        thumb.run(SKAction.scale(to: 1, duration: 0.5))
         clickAction()
     }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        thumb.run(SKAction.scale(to: 1, duration: 0.5))
-    }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func remove(){
-        base.removeAllChildren()
-        thumb.removeAllChildren()
         text.removeAllChildren()
     }
 }
