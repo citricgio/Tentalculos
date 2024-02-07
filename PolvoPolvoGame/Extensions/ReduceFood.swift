@@ -26,12 +26,12 @@ extension GameScene {
         // valor subtraído for maior que o peso da balanca, nao faz nada
         if operationNumbersButton.changeNumber.selectedFruit.value > DataModel.shared.weight - DataModel.shared.valueX {
             print("Numero maior que o peso, acao negada")
-            //perder vida
+            endGame()
         }
         // valor subtraído for igual ao peso da balanca, nao faz nada
         else if operationNumbersButton.changeNumber.selectedFruit.value == DataModel.shared.weight {
             print("Numero igual ao peso, acao negada")
-            //perder vida
+            endGame()
             
             //valor subtraído é menor que o peso da balanca
         } else {
@@ -86,6 +86,7 @@ extension GameScene {
                             let texture = SKTexture(imageNamed: "fruit2")
                             let action = SKAction.setTexture(texture, resize: true)
                             let food: FruitNode = FruitNode(fruit: .fruit2)
+                            foodArrayLeft[index].node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                             foodArrayLeft[index].fruit = .fruit2
                             foodArrayLeft[index].node.run(action)
                             
@@ -93,8 +94,8 @@ extension GameScene {
                             food.node.position.y = foodArrayLeft[index].node.position.y
                             food.node.name = "foodAdded"
                             foodArrayLeft.append(food)
-                            foodContLeft += 15
-                            food.node.position.x = foodArrayLeft[index].node.position.x + 15
+                            foodContLeft += 30
+                            food.node.position.x = foodArrayLeft[index].node.position.x + foodContLeft
                             addChild(food.node)
                         default:
                             print("default")
@@ -145,6 +146,7 @@ extension GameScene {
                         let texture = SKTexture(imageNamed: "fruit2")
                         let action = SKAction.setTexture(texture, resize: true)
                         let food: FruitNode = FruitNode(fruit: .fruit2)
+                        foodArrayLeft[index].node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                         foodArrayLeft[cont_left].fruit = .fruit2
                         foodArrayLeft[cont_left].node.run(action)
                         
@@ -152,8 +154,8 @@ extension GameScene {
                         food.node.position.y = foodArrayLeft[cont_left].node.position.y
                         food.node.name = "foodAdded"
                         foodArrayLeft.append(food)
-                        foodContLeft += 15
-                        food.node.position.x = foodArrayLeft[cont_left].node.position.x + 15
+                        foodContLeft += 30
+                        food.node.position.x = foodArrayLeft[cont_left].node.position.x + foodContLeft
                         addChild(food.node)
                     default:
                         print("default")
@@ -217,6 +219,7 @@ extension GameScene {
                             let texture = SKTexture(imageNamed: "fruit2")
                             let action = SKAction.setTexture(texture, resize: true)
                             let food: FruitNode = FruitNode(fruit: .fruit2)
+                            foodArrayRight[index].node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                             foodArrayRight[index].fruit = .fruit2
                             foodArrayRight[index].node.run(action)
                             
@@ -224,8 +227,8 @@ extension GameScene {
                             food.node.position.y = foodArrayRight[index].node.position.y
                             food.node.name = "foodAdded"
                             foodArrayRight.append(food)
-                            foodContRight += 15
-                            food.node.position.x = foodArrayRight[index].node.position.x + 15
+                            foodContRight += 30
+                            food.node.position.x = foodArrayRight[index].node.position.x + foodContRight
                             addChild(food.node)
                         default:
                             print("default")
@@ -276,6 +279,7 @@ extension GameScene {
                         let texture = SKTexture(imageNamed: "fruit2")
                         let action = SKAction.setTexture(texture, resize: true)
                         let food: FruitNode = FruitNode(fruit: .fruit2)
+                        foodArrayRight[index].node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                         foodArrayRight[cont_right].fruit = .fruit2
                         foodArrayRight[cont_right].node.run(action)
                         
@@ -283,8 +287,8 @@ extension GameScene {
                         food.node.position.y = foodArrayRight[cont_right].node.position.y
                         food.node.name = "foodAdded"
                         foodArrayRight.append(food)
-                        foodContRight += 15
-                        food.node.position.x = foodArrayRight[cont_right].node.position.x + 15
+                        foodContRight += 30
+                        food.node.position.x = foodArrayRight[cont_right].node.position.x + foodContRight
                         addChild(food.node)
                     default:
                         print("default")
