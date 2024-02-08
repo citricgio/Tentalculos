@@ -37,8 +37,8 @@ class GameScene: SKScene {
     let foodTrayRight = SKSpriteNode()
     
     // variáveis que armazenam o local da posição da bandeja de quando rotaciona o braço do polvo
-    var trayPositionUpY: CGFloat = 553
-    var trayPositionDownY: CGFloat = 495
+    var trayPositionUpY: CGFloat = 0 //553
+    var trayPositionDownY: CGFloat = 0 //495
     
     // variáveis que indicam se tem comida na bandeja ou não
     var isInTrayLeft: Bool = false
@@ -114,7 +114,6 @@ class GameScene: SKScene {
         
         print(frame.size.width)
         print(frame.size.height)
-
         
         //let food1 = setupDragLabelFood(fruit: .fruit1)
         let food1 = setupTextLabelNumbers(fruit: .fruit1)
@@ -146,6 +145,9 @@ class GameScene: SKScene {
         DataModel.shared.leftBalanceLocked = false
         DataModel.shared.rightBalanceLocked = false
         isCorrect = false
+        
+        trayPositionUpY = frame.size.height / 1.68
+        trayPositionDownY = frame.size.height / 1.88
         
         setupGame()
         setupSpawners()
