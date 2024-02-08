@@ -218,7 +218,7 @@ class GameScene: SKScene {
     // fazer o update dos pontos
     func updateScore() {
         DataModel.shared.equationCount += 1
-        DataModel.shared.points.score += 1
+//        DataModel.shared.points.score += 1
     }
     
     // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
@@ -310,6 +310,7 @@ class GameScene: SKScene {
         // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
         if DataModel.shared.countsLive == 3 {
             if DataModel.shared.equationCount > DataModel.shared.points.score {
+                DataModel.shared.points.score = DataModel.shared.equationCount
                 Task {
                     await GameCenterController.shared.SaveData(gameplayData: DataModel.shared.points)
                 }

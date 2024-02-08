@@ -12,7 +12,7 @@ import GameKit
 //cena de quando o jogador abre o jogo
 class  MenuScene: SKScene {
     
-    var dataModel: DataModel?
+//    var dataModel: DataModel?
     
     //botões de Jogar e Tutorial
     var startButton: WriteButton = WriteButton(name: "startButton", text: "Jogar")
