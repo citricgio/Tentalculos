@@ -75,7 +75,6 @@ class  MenuScene: SKScene {
         GameCenterController.shared.loadData { data in
             DataModel.shared.points = data
         }
-        GameCenterController.shared.accessBestScore()
         
         //Som
             playSound(sound: "Menu", type: "mp3")

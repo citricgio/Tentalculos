@@ -280,7 +280,7 @@ class GameScene: SKScene {
             print("errouuuuu1")
             updateLives()
             DataModel.shared.countsLive += 1
-            print("oiiii \(DataModel.shared.countsLive = 0)")
+            print("oiiii \(DataModel.shared.countsLive)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
             GameCenterController.shared.points = DataModel.shared.equationCount
@@ -291,11 +291,10 @@ class GameScene: SKScene {
             print("errouuuuu2")
             updateLives()
             DataModel.shared.countsLive += 1
-            print("oiiii \(DataModel.shared.countsLive = 0)")
+            print("oiiii \(DataModel.shared.countsLive)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
             GameCenterController.shared.points = DataModel.shared.equationCount
-
 
         }
         else if childNode(withName: "live3") != nil && DataModel.shared.isAlive[2] == true {
@@ -303,18 +302,14 @@ class GameScene: SKScene {
             print("errouuuuu3")
             updateLives()
             DataModel.shared.countsLive += 1
-            print("oiiii \(DataModel.shared.countsLive = 0)")
+            print("oiiii \(DataModel.shared.countsLive)")
             playSound(sound: "Prato quebrando", type: "mp3")
             GameCenterController.shared.points = DataModel.shared.equationCount
 
         }
-        
         // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
         if DataModel.shared.countsLive == 3 {
-//            GameCenterController.shared.points = DataModel.shared.equationCount
-
-            if DataModel.shared.equationCount > DataModel.shared.bestPoints {
-//                GameCenterController.shared.scoreToLeaderboard()
+            if DataModel.shared.equationCount > DataModel.shared.points.score {
                 Task {
                     await GameCenterController.shared.SaveData(gameplayData: DataModel.shared.points)
                 }
@@ -348,12 +343,11 @@ class GameScene: SKScene {
     func finalizeCheck(){
         if DataModel.shared.weight == DataModel.shared.valueX {
             updateEquation()
+            updateScore()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                 let GameScene = GameScene()
                 self.changeTo(scene: GameScene)
-                self.updateScore()
             }
-            
         }
         else{
             endGame()
