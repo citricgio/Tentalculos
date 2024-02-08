@@ -11,11 +11,10 @@ import SpriteKit
 class SpriteButtonReduce: SKNode {
     
     var clickAction: () -> Void
-    var base: SKShapeNode
-    var thumb: SKShapeNode
     var text: SKLabelNode
     var textLabel: String
     var positionButton = CGPoint(x: 320, y: 240)
+    var node: SKSpriteNode
     
     init(action: @escaping () -> Void, textLabel: String) {
         clickAction = action
@@ -24,43 +23,35 @@ class SpriteButtonReduce: SKNode {
         self.textLabel = textLabel
         text.text = textLabel
         text.zPosition = 3
-        text.fontColor = .black
         text.position = positionButton
         
-        base = SKShapeNode(circleOfRadius: 60)
-        base.fillColor = .black.withAlphaComponent(0.2)
-        base.lineWidth = 0
-        base.zPosition = 1
-        base.position = positionButton
-
+        text.fontSize = 28
+        text.verticalAlignmentMode = .center
+        text.fontColor = SKColor.white //Cor do botão
+        text.fontName = "IstokWeb-Bold"
         
-        thumb = SKShapeNode(circleOfRadius: 50)
-        thumb.fillColor = .yellow
-        thumb.lineWidth = 0
-        thumb.zPosition = 2
-        thumb.position = positionButton
+        node = SKSpriteNode(texture: SKTexture(imageNamed: "button2"))
+        node.position = positionButton
+        node.setScale(1/1.08)
+        node.zPosition = 2
         
         super.init()
         
-        addChild(base)
-        addChild(thumb)
         addChild(text)
+        addChild(node)
         
-        self.isUserInteractionEnabled = true
+        isUserInteractionEnabled = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        thumb.run(SKAction.scale(to: 0.7, duration: 0.5))
         print("toqueiii")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        thumb.run(SKAction.scale(to: 1, duration: 0.5))
         clickAction()
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        thumb.run(SKAction.scale(to: 1, duration: 0.5))
     }
     
     
@@ -69,8 +60,6 @@ class SpriteButtonReduce: SKNode {
     }
     
     func remove(){
-        base.removeAllChildren()
-        thumb.removeAllChildren()
         text.removeAllChildren()
     }
 }
