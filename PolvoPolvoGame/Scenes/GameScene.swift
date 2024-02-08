@@ -101,8 +101,6 @@ class GameScene: SKScene {
     
     var brokenPlate = SKTexture(imageNamed: "broken-plate")
     var plate = SKTexture(imageNamed: "normal-plate")
-        
-    
  
     var lineEquation = SKSpriteNode(imageNamed: "line")
     var equationLabel = SKLabelNode()
@@ -113,7 +111,7 @@ class GameScene: SKScene {
 
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
-   
+        
         print(frame.size.width)
         print(frame.size.height)
 
@@ -198,8 +196,6 @@ class GameScene: SKScene {
         equationLabel.fontName = "IstokWeb-Bold"
         equationLabel.fontSize = 27
 
-
-        
         addChild(lineEquation)
         addChild(equationLabel)
     }
@@ -210,8 +206,6 @@ class GameScene: SKScene {
         equationLabel.fontColor = .systemGreen
     }
     
-    
-    
     // adicionar a label dos pontos na tela
     func addScore() {
 //        scoreLabel.text = "\(score) pts"
@@ -221,7 +215,6 @@ class GameScene: SKScene {
         scoreLabel.position = CGPoint(x: size.width / 2, y: 850)
         scoreLabel.fontName = "IstokWeb-Bold"
         scoreLabel.fontSize = 24
-        
         
         addChild(scoreLabel)
     }
@@ -290,7 +283,7 @@ class GameScene: SKScene {
             print("errouuuuu1")
             updateLives()
             DataModel.shared.countsLive += 1
-            print("oiiii \(DataModel.shared.countsLive = 0)")
+            print("oiiii \(DataModel.shared.countsLive)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
             GameCenterController.shared.points = DataModel.shared.equationCount
@@ -309,7 +302,7 @@ class GameScene: SKScene {
             print("errouuuuu2")
             updateLives()
             DataModel.shared.countsLive += 1
-            print("oiiii \(DataModel.shared.countsLive = 0)")
+            print("oiiii \(DataModel.shared.countsLive)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
             let textureSad = SKTexture(imageNamed: "sad-face")
@@ -322,26 +315,24 @@ class GameScene: SKScene {
             octopusFace.run(sequence)
             GameCenterController.shared.points = DataModel.shared.equationCount
 
-
         }
         else if childNode(withName: "live3") != nil && DataModel.shared.isAlive[2] == true {
             DataModel.shared.isAlive[2] = false
             print("errouuuuu3")
             updateLives()
             DataModel.shared.countsLive += 1
-            print("oiiii \(DataModel.shared.countsLive = 0)")
+            print("oiiii \(DataModel.shared.countsLive)")
             playSound(sound: "Prato quebrando", type: "mp3")
-            endGame()
             GameCenterController.shared.points = DataModel.shared.equationCount
 
         }
-        
         // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
         if DataModel.shared.countsLive == 3 {
-            GameCenterController.shared.points = DataModel.shared.equationCount
-
-            if DataModel.shared.equationCount > DataModel.shared.bestPoints {
-                GameCenterController.shared.scoreToLeaderboard()
+            if DataModel.shared.equationCount > DataModel.shared.points.score {
+                DataModel.shared.points.score = DataModel.shared.equationCount
+                Task {
+                    await GameCenterController.shared.SaveData(gameplayData: DataModel.shared.points)
+                }
             }
             let endGameScene = EndScene()
             self.changeTo(scene: endGameScene)
@@ -372,12 +363,11 @@ class GameScene: SKScene {
     func finalizeCheck(){
         if DataModel.shared.weight == DataModel.shared.valueX {
             updateEquation()
+            updateScore()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                 let GameScene = GameScene()
                 self.changeTo(scene: GameScene)
-                self.updateScore()
             }
-            
         }
         else{
             endGame()

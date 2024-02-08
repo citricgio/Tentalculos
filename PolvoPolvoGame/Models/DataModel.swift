@@ -44,13 +44,12 @@ import SwiftUI
     //Variável que vai falar se o som está Ativo ou não
     var soundIsOn: Bool = true
     
-    //Melhor score do numedo de equacoes
-    var bestPoints: Int = 0
-    var bestPointsLabel: String = ""
-    
     //Contagem do numero de vidas
     var countsLive: Int = 0
     var isAlive: [Bool] = [true,true,true]
+    
+    //melhor score que vem do gameCenter
+    var points: GamePlayData = GamePlayData()
 }
 
 

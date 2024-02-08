@@ -12,6 +12,8 @@ import GameKit
 //cena de quando o jogador abre o jogo
 class  MenuScene: SKScene {
     
+//    var dataModel: DataModel?
+    
     //botões de Jogar e Tutorial
     var startButton: WriteButton = WriteButton(name: "startButton", text: "Jogar")
     var tutorialButton: WriteButton = WriteButton(name: "tutorialButton", text: "Tutorial")
@@ -29,7 +31,7 @@ class  MenuScene: SKScene {
     var title: WriteNode = WriteNode(name: "title", fontSize: .appTitle, text: "Nome do Jogo", fontName: .appTitle)
     
     //instancia texto da melhor pontuação e a pontuação
-    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.bestPoints)", fontName: .points)
+    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.points.score)", fontName: .points)
     var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: .labelPoints, text: "Sua melhor pontuação", fontName: .labelPoints )
     
     override func didMove(to view: SKView) {
@@ -70,8 +72,9 @@ class  MenuScene: SKScene {
         
         //funções de ligadas ao GameCenter que vem do GameCenterController
         GameCenterController.shared.authenticateGameCenter()
-        GameCenterController.shared.accessPoint()
-        GameCenterController.shared.accessBestScore()
+        GameCenterController.shared.loadData { data in
+            DataModel.shared.points = data
+        }
         
         //Som
             playSound(sound: "Menu", type: "mp3")
