@@ -99,8 +99,6 @@ class GameScene: SKScene {
     
     var brokenPlate = SKTexture(imageNamed: "broken-plate")
     var plate = SKTexture(imageNamed: "normal-plate")
-        
-    
  
     var lineEquation = SKSpriteNode(imageNamed: "line")
     var equationLabel = SKLabelNode()
@@ -202,8 +200,6 @@ class GameScene: SKScene {
         equationLabel.text = "? = \(DataModel.shared.valueX)"
         equationLabel.fontColor = .systemGreen
     }
-    
-    
     
     // adicionar a label dos pontos na tela
     func addScore() {
@@ -309,7 +305,6 @@ class GameScene: SKScene {
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive = 0)")
             playSound(sound: "Prato quebrando", type: "mp3")
-            endGame()
             GameCenterController.shared.points = DataModel.shared.equationCount
 
         }
