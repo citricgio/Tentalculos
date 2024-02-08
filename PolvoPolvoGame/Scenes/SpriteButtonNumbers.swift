@@ -12,11 +12,10 @@ import SpriteKit
 class SpriteButtonNumbers: SKNode {
     
     var clickAction: () -> Void
-    var base: SKShapeNode
-    var thumb: SKShapeNode
     var number: SKLabelNode
     var changeNumber = OperationButton()
     var positionButton = CGPoint(x: 220, y: 240)
+    var node: SKSpriteNode
     
     init(action: @escaping () -> Void) {
         clickAction = action
@@ -25,48 +24,35 @@ class SpriteButtonNumbers: SKNode {
         // mostra no botao a selectedFruit
         number.text = "\(changeNumber.selectedFruit.value)"
         number.zPosition = 3
-        number.fontColor = .black
         number.position = positionButton
+        number.fontSize = 28
+        number.verticalAlignmentMode = .center
+        number.fontColor = SKColor.white //Cor do botão
+        number.fontName = "IstokWeb-Bold"
         
-        base = SKShapeNode(circleOfRadius: 60)
-        base.fillColor = .black.withAlphaComponent(0.2)
-        base.lineWidth = 0
-        base.zPosition = 1
-        base.position = positionButton
-
-        
-        thumb = SKShapeNode(circleOfRadius: 50)
-        thumb.fillColor = .yellow
-        thumb.lineWidth = 0
-        thumb.zPosition = 2
-        thumb.position = positionButton
+        node = SKSpriteNode(texture: SKTexture(imageNamed: "button2"))
+        node.position = positionButton
+        node.setScale(1/1.08)
+        node.zPosition = 2
 
         super.init()
+
+        self.addChild(number)
+        self.addChild(node)
         
-        addChild(base)
-        addChild(thumb)
-        addChild(number)
-        
-        self.isUserInteractionEnabled = true
-        
+        isUserInteractionEnabled = true
+                
     }
     
     //ao clicar no botao, o texto do botao troca de acordo com a funcao do changeNumero, que varia entre 1, 2, 3 e 5
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        thumb.run(SKAction.scale(to: 0.7, duration: 0.5))
         number.text = "\(changeNumber.changeNumber().value)"
         
-//        numeroFruta = mudarNumero.AumentarContador()
-//        print(numeroFruta)
+
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        thumb.run(SKAction.scale(to: 1, duration: 0.5))
         clickAction()
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        thumb.run(SKAction.scale(to: 1, duration: 0.5))
     }
     
     

@@ -7,6 +7,7 @@
 
 
 import SpriteKit
+import GameKit
 
 //cena de quando o jogador abre o jogo
 class  MenuScene: SKScene {
@@ -28,7 +29,7 @@ class  MenuScene: SKScene {
     var title: WriteNode = WriteNode(name: "title", fontSize: .appTitle, text: "Nome do Jogo", fontName: .appTitle)
     
     //instancia texto da melhor pontuação e a pontuação
-    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.equationCount)", fontName: .points)
+    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.bestPoints)", fontName: .points)
     var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: .labelPoints, text: "Sua melhor pontuação", fontName: .labelPoints )
     
     override func didMove(to view: SKView) {
@@ -55,20 +56,27 @@ class  MenuScene: SKScene {
         addChild(background)
         
         //Adiciona o texto e a maior pontuação e suas posições
-        bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + 200)
-        labelPoint.node.position = CGPoint(x: frame.midX , y: frame.midY + 240)
+        bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + 170)
+        labelPoint.node.position = CGPoint(x: frame.midX , y: frame.midY + 200)
         bPoint.node.setScale(1/1.08)
         labelPoint.node.setScale(1/1.08)
         addChild(bPoint.node)
         addChild(labelPoint.node)
         
         //Adiciona o Título
-        title.node.position = CGPoint(x: frame.midX, y: frame.midY + 300)
+        title.node.position = CGPoint(x: frame.midX, y: frame.midY + 250)
         title.node.setScale(1/1.08)
         addChild(title.node)
         
+        //funções de ligadas ao GameCenter que vem do GameCenterController
+        GameCenterController.shared.authenticateGameCenter()
+        GameCenterController.shared.accessPoint()
+        GameCenterController.shared.accessBestScore()
         
-        playSound(sound: "Menu", type: "mp3")
+        //Som
+            playSound(sound: "Menu", type: "mp3")
+        soundButton.position = CGPoint(x: frame.midX + 160, y: frame.midY + 320)
+        addChild(soundButton)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -87,12 +95,21 @@ class  MenuScene: SKScene {
             if touchedNode.name == "tutorialButton" {
                 startTutorial()
             }
+            
+            if touchedNode.name == "soundButton" {
+                soundIsOn()
+                print(DataModel.shared.soundIsOn)
+            }
         }
     }
     
     //função que chama a GameScene
     func startGame() {
         // Animar botão sendo pressionado
+        DataModel.shared.equationCount = 0
+        DataModel.shared.countsLive = 0
+        DataModel.shared.isAlive = [true,true,true]
+
         let newScene = GameScene()
         self.changeTo(scene: newScene)
         playSound(sound: "Jogo", type: "mp3")
@@ -109,9 +126,11 @@ class  MenuScene: SKScene {
         DataModel.shared.soundIsOn.toggle()
     }
     
-    func createSound(){
-        soundButton = SKSpriteNode(imageNamed: DataModel.shared.soundIsOn ? "SoundButton" : "SoundOff")
-        soundButton.position = CGPoint(x: frame.size.width / 10, y: frame.size.height / 5)
-        addChild(soundButton)
-    }
+//    func createSound(){
+//        soundButton = SKSpriteNode(imageNamed: DataModel.shared.soundIsOn ? "SoundButton" : "SoundOff")
+//        soundButton.position = CGPoint(x: frame.size.width / 10, y: frame.size.height / 5)
+//        addChild(soundButton)
+//    }
+    
+   
 }
