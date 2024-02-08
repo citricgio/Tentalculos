@@ -457,17 +457,17 @@ class GameScene: SKScene {
     // função que coloca o braço do polvo na tela
     func setupArm(){
         octopusArm.texture = SKTexture(imageNamed: "octopus-arm")
-        octopusArm.size = CGSize(width: 338, height: 80)
+        octopusArm.size = CGSize(width: frame.size.width / 1.27, height: frame.size.height / 11.65)
         octopusArm.position = CGPoint(x: frame.size.width / 2.17, y: frame.size.height / 1.95)
         octopusArm.zPosition = 5
         
         octopusBody.texture = SKTexture(imageNamed: "octopus-body")
-        octopusBody.size = CGSize(width: 165, height: 259)
+        octopusBody.size = CGSize(width: frame.size.width / 2.6, height: frame.size.height / 3.6)
         octopusBody.position = CGPoint(x: frame.size.width / 2.15, y: frame.size.height / 2.08 )
         octopusBody.zPosition = 7
         
         octopusFace.texture = SKTexture(imageNamed: "happy-face")
-        octopusFace.size = CGSize(width: 65, height: 43)
+        octopusFace.size = CGSize(width: frame.size.width / 6.6, height: frame.size.height / 21.6)
         octopusFace.position = CGPoint(x: frame.size.width / 2.17, y: frame.size.height / 1.815)
         octopusFace.zPosition = 9
         
@@ -482,29 +482,29 @@ class GameScene: SKScene {
     func setupTargets(){
 //        foodTrayLeft.color = SKColor.yellow
         
-        foodTrayLeft.size = CGSize(width: 145, height: 30)
+        foodTrayLeft.size = CGSize(width: frame.size.width / 2.96, height: frame.size.height / 31)
         foodTrayLeft.texture = SKTexture(imageNamed: "tray")
-        foodTrayLeft.position.y = octopusArm.position.y + 45
-        foodTrayLeft.position.x = 75
+        foodTrayLeft.position.y = octopusArm.position.y + frame.size.height / 20.7
+        foodTrayLeft.position.x = frame.size.width / 5.7
         foodTrayLeft.zPosition = 11
         
-        foodInvisibleFrameLeft.size = CGSize(width: 145, height: 120)
+        foodInvisibleFrameLeft.size = CGSize(width: frame.size.width / 2.96, height: frame.size.height / 7.76)
         //foodInvisibleFrameLeft.color = .yellow
-        foodInvisibleFrameLeft.position.y = octopusArm.position.y + 90
-        foodInvisibleFrameLeft.position.x = 80
+        foodInvisibleFrameLeft.position.y = octopusArm.position.y + frame.size.height / 10.3
+        foodInvisibleFrameLeft.position.x = frame.size.width / 5.37
         foodInvisibleFrameLeft.zPosition = 1
 
 
-        foodTrayRight.size = CGSize(width: 145, height: 30)
+        foodTrayRight.size = CGSize(width: frame.size.width / 2.96, height: frame.size.height / 31)
         foodTrayRight.texture = SKTexture(imageNamed: "tray")
-        foodTrayRight.position = CGPoint(x: 355, y: 200)
-        foodTrayRight.position.y = octopusArm.position.y + 45
+        foodTrayRight.position = CGPoint(x: frame.size.width / 1.21, y: frame.size.height / 4.66)
+        foodTrayRight.position.y = octopusArm.position.y + frame.size.height / 20.7
         foodTrayRight.zPosition = 11
         
-        foodInvisibleFrameRight.size = CGSize(width: 145, height: 120)
+        foodInvisibleFrameRight.size = CGSize(width: frame.size.width / 2.96, height: frame.size.height / 7.76)
         //foodInvisibleFrameRight.color = .yellow
-        foodInvisibleFrameRight.position.y = octopusArm.position.y + 90
-        foodInvisibleFrameRight.position.x = 340
+        foodInvisibleFrameRight.position.y = octopusArm.position.y + frame.size.height / 10.3
+        foodInvisibleFrameRight.position.x = frame.size.width / 1.26
         foodInvisibleFrameRight.zPosition = 1
         
         addChild(foodInvisibleFrameRight)
