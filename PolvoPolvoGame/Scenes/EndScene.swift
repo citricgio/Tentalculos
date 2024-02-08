@@ -28,6 +28,11 @@ class EndScene: SKScene {
     //instancia os tres pratos quebrados
     var brokenplates = SKSpriteNode(imageNamed: "3brokenplates")
     
+    var pointsNode: SKSpriteNode = SKSpriteNode(imageNamed: "pontos")
+    var bestPointsNode: SKSpriteNode = SKSpriteNode(imageNamed: "best-points")
+    
+
+    
     override func didMove(to view: SKView) {
         
         //Adiciona a caixa EndData
@@ -57,6 +62,11 @@ class EndScene: SKScene {
         label2.node.setScale(1/1.08)
         addChild(label1.node)
         addChild(label2.node)
+        
+        pointsNode.position = CGPoint(x: size.width / 2, y: 480)
+        addChild(pointsNode)
+        bestPointsNode.position = CGPoint(x: size.width / 2, y: 380)
+        addChild(bestPointsNode)
         
         //Adiciona os tres pratos quebrados
         brokenplates.position = CGPoint(x: frame.midX, y: frame.midY + 200)
