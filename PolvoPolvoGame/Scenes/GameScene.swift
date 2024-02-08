@@ -351,9 +351,13 @@ class GameScene: SKScene {
     
     func finalizeCheck(){
         if DataModel.shared.weight == DataModel.shared.valueX {
-            let GameScene = GameScene()
-            self.changeTo(scene: GameScene)
-            updateScore()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                let GameScene = GameScene()
+                self.changeTo(scene: GameScene)
+                self.updateScore()
+            }
+            
         }
         else{
             endGame()
@@ -362,8 +366,8 @@ class GameScene: SKScene {
     
     // função que faz as bases iniciais do jogo
     func setupGame(){
-        //gerador.generateBasicEquation() // gera uma equação aleatória
-        gerador.generateIntermidiateEquation()
+        gerador.generateBasicEquation() // gera uma equação aleatória
+//        gerador.generateIntermidiateEquation()
     }
     
     // função que calcula o ângulo de rotação do braço do polvo (vai de -45º até 45º)
