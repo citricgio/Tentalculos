@@ -189,8 +189,6 @@ class GameScene: SKScene {
         equationLabel.fontName = "Istok Web-Bold"
         equationLabel.fontSize = 27
 
-
-        
         addChild(lineEquation)
         addChild(equationLabel)
     }
@@ -211,14 +209,12 @@ class GameScene: SKScene {
         scoreLabel.fontName = "Istok Web"
         scoreLabel.fontSize = 24
         
-        
         addChild(scoreLabel)
     }
     
     // fazer o update dos pontos
     func updateScore() {
         DataModel.shared.equationCount += 1
-//        DataModel.shared.points.score += 1
     }
     
     // adicionar as vidas na tela e adiciona-las numa array com todas as vidas

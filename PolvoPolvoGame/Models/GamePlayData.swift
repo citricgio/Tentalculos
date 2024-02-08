@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+//Classe que tem os dados que vem do GameCenter
 class GamePlayData: Codable {
     var score: Int = 0
 }

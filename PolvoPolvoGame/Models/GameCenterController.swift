@@ -74,6 +74,7 @@ class GameCenterController {
 //        points = DataModel.shared.equationCount
 //    }
     
+    //Função que salva um score no GameCenter
     func SaveData(gameplayData: GamePlayData) async {
         let name = "\(UUID())"
         
@@ -88,6 +89,7 @@ class GameCenterController {
         }
     }
     
+    //Função que busca um score no gamecenter
     func loadData( completion: @escaping (GamePlayData)->Void) {
         GKLocalPlayer.local.fetchSavedGames { games, error in
             if let games = games {
@@ -106,6 +108,7 @@ class GameCenterController {
         }
     }
     
+    //função que complementa a função loadData
     func load(game: GKSavedGame, completion: (GamePlayData) -> Void) async {
         let data: Data
         do {
