@@ -11,6 +11,8 @@ import GameKit
 //Classe que tem todas as funções ligadas ao GameCenter
 class GameCenterController {
     
+    private init(){}
+    
     static let shared = GameCenterController()
     
     //função que instancia o points com o valor do contador de equações
@@ -27,6 +29,7 @@ class GameCenterController {
                 
                 return
             }
+            self.accessPoint()
         }
     }
     
@@ -38,36 +41,91 @@ class GameCenterController {
     }
     
     //Envia um Score para os leaderboards
-    func scoreToLeaderboard() {
- //       print(self.points)
-        GKLeaderboard.loadLeaderboards(IDs:["001"]) { (fetchedLBs, error) in
-//            print(self.points)
-            guard let lb = fetchedLBs?.first else {
-                print(self.points)
-                return }
-            guard let endDate = lb.startDate?.addingTimeInterval(lb.duration), endDate > Date() else { 
-                print(self.points)
-                return }
-            lb.submitScore(self.points, context: 0, player: GKLocalPlayer.local) { error in
- //               print(self.points)
+//    func scoreToLeaderboard() {
+// //       print(self.points)
+//        GKLeaderboard.loadLeaderboards(IDs:["001"]) { (fetchedLBs, error) in
+////            print(self.points)
+//            guard let lb = fetchedLBs?.first else {
+//                print(self.points)
+//                return }
+//            guard let endDate = lb.startDate?.addingTimeInterval(lb.duration), endDate > Date() else { 
+//                print(self.points)
+//                return }
+//            lb.submitScore(self.points, context: 0, player: GKLocalPlayer.local) { error in
+// //               print(self.points)
+//            }
+//        }
+//    }
+    
+    //Acessa o BestScore e coloca no código
+//    func accessBestScore() {
+//        GKLeaderboard.loadLeaderboards(IDs:["001"]) { (fetchedLBs, error) in
+//            if let current = fetchedLBs?.first {
+//                current.loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime) { entry, entries, error in
+//                    if let entrySafe = entry{
+//                        DataModel.shared.bestPoints = entrySafe.score
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    
+//    func atualizarVariavel() {
+//        points = DataModel.shared.equationCount
+//    }
+    
+    //Função que salva um score no GameCenter
+    func SaveData(gameplayData: GamePlayData) async {
+        let name = "\(UUID())"
+        
+        do {
+            let encoder = PropertyListEncoder()
+            
+            if let data = try? encoder.encode(gameplayData) {
+                try await GKLocalPlayer.local.saveGameData(data, withName: name)
             }
+        } catch {
+            print("Error ENCODER: \(error.localizedDescription)")
         }
     }
     
-    //Acessa o BestScore e coloca no código
-    func accessBestScore() {
-        GKLeaderboard.loadLeaderboards(IDs:["001"]) { (fetchedLBs, error) in
-            if let current = fetchedLBs?.first {
-                current.loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime) { entry, entries, error in
-                    if let entrySafe = entry{
-                        DataModel.shared.bestPoints = entrySafe.score
+    //Função que busca um score no gamecenter
+    func loadData( completion: @escaping (GamePlayData)->Void) {
+        GKLocalPlayer.local.fetchSavedGames { games, error in
+            if let games = games {
+                var game: GKSavedGame?
+                for currentGame in games {
+                    if game == nil || game?.modificationDate ?? Date() < currentGame.modificationDate ?? Date() {
+                        game = currentGame
+                    }
+                }
+                if let game = game {
+                    Task{
+                        await self.load(game: game, completion: completion)
                     }
                 }
             }
         }
     }
     
-    func atualizarVariavel() {
-        points = DataModel.shared.equationCount
+    //função que complementa a função loadData
+    func load(game: GKSavedGame, completion: (GamePlayData) -> Void) async {
+        let data: Data
+        do {
+            data = try await game.loadData()
+        } catch {
+            print("Error: \(error.localizedDescription).")
+            return
+        }
+        
+        let decoder = PropertyListDecoder()
+        
+        do {
+            let gameData = try decoder.decode(GamePlayData.self, from: data)
+            completion(gameData)
+        } catch {
+            print("Error DECODER: \(error.localizedDescription).")
+            return
+        }
     }
 }

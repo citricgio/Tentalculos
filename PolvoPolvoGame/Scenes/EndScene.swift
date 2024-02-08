@@ -12,7 +12,7 @@ import GameKit
 class EndScene: SKScene {
     
     //instancia a caixa com os dados do final do jogo (que está dentro da EndData)
-    var endData: EndData = EndData(points: DataModel.shared.equationCount, bPoints: 0)
+    var endData: EndData = EndData(points: DataModel.shared.equationCount, bPoints: DataModel.shared.points.score)
     
     //instancia botão de Reiniciar e Voltar para o Menu
     var restartButton: WriteButton = WriteButton(name: "restartButton", text: "Reiniciar")
