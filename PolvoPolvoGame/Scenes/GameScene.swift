@@ -37,8 +37,8 @@ class GameScene: SKScene {
     let foodTrayRight = SKSpriteNode()
     
     // variáveis que armazenam o local da posição da bandeja de quando rotaciona o braço do polvo
-    var trayPositionUpY: CGFloat = 610
-    var trayPositionDownY: CGFloat = 540
+    var trayPositionUpY: CGFloat = 553
+    var trayPositionDownY: CGFloat = 495
     
     // variáveis que indicam se tem comida na bandeja ou não
     var isInTrayLeft: Bool = false
@@ -48,6 +48,8 @@ class GameScene: SKScene {
     let octopusArm = SKSpriteNode()
     
     let octopusBody = SKSpriteNode()
+    
+    let octopusFace = SKSpriteNode()
     
     // spawners da onde saem as comidas
     let spawner1 = SKSpriteNode()
@@ -279,6 +281,14 @@ class GameScene: SKScene {
             print("oiiii \(livesCount)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
+            let textureMid = SKTexture(imageNamed: "mid-face")
+            let textureHappy = SKTexture(imageNamed: "happy-face")
+            let action1 = SKAction.setTexture(textureMid, resize: true)
+            let actionWait = SKAction.wait(forDuration: 1.5)
+            let action2 = SKAction.setTexture(textureHappy, resize: true)
+            
+            let sequence = SKAction.sequence([action1,actionWait,action2])
+            octopusFace.run(sequence)
         }
         else if childNode(withName: "live2") != nil && isAlive[1] == true {
             isAlive[1] = false
@@ -288,6 +298,14 @@ class GameScene: SKScene {
             print("oiiii \(livesCount)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
+            let textureSad = SKTexture(imageNamed: "sad-face")
+            let textureHappy = SKTexture(imageNamed: "happy-face")
+            let action1 = SKAction.setTexture(textureSad, resize: true)
+            let actionWait = SKAction.wait(forDuration: 1.5)
+            let action2 = SKAction.setTexture(textureHappy, resize: true)
+            
+            let sequence = SKAction.sequence([action1,actionWait,action2])
+            octopusFace.run(sequence)
 
         }
         else if childNode(withName: "live3") != nil && isAlive[2] == true {
@@ -351,13 +369,13 @@ class GameScene: SKScene {
     // função que calcula o ângulo de rotação do braço do polvo (vai de -45º até 45º)
     func calculateAngle() {
         if DataModel.shared.weightLeftSide < DataModel.shared.weightRightSide{
-            angle = -(.pi / 12)
+            angle = -(.pi / 15)
             
         } else if DataModel.shared.weightLeftSide == DataModel.shared.weightRightSide {
             angle = 0
             
         } else {
-            angle = .pi / 12
+            angle = .pi / 15
         }
     }
     
@@ -424,17 +442,24 @@ class GameScene: SKScene {
     func setupArm(){
         octopusArm.texture = SKTexture(imageNamed: "octopus-arm")
         octopusArm.size = CGSize(width: 338, height: 80)
-        octopusArm.position = CGPoint(x: frame.size.width / 2.25, y: frame.size.height / 1.775)
+        octopusArm.position = CGPoint(x: frame.size.width / 2.17, y: frame.size.height / 1.95)
         octopusArm.zPosition = 5
         
         octopusBody.texture = SKTexture(imageNamed: "octopus-body")
-        octopusBody.size = CGSize(width: 160, height: 259)
-        octopusBody.position = CGPoint(x: frame.size.width / 2.25, y: frame.size.height / 1.89 )
+        octopusBody.size = CGSize(width: 165, height: 259)
+        octopusBody.position = CGPoint(x: frame.size.width / 2.15, y: frame.size.height / 2.08 )
         octopusBody.zPosition = 7
+        
+        octopusFace.texture = SKTexture(imageNamed: "happy-face")
+        octopusFace.size = CGSize(width: 65, height: 43)
+        octopusFace.position = CGPoint(x: frame.size.width / 2.17, y: frame.size.height / 1.815)
+        octopusFace.zPosition = 9
         
         addChild(octopusArm)
         
         addChild(octopusBody)
+        
+        addChild(octopusFace)
     }
     
     // função que coloca as bandejas na tela
@@ -443,8 +468,8 @@ class GameScene: SKScene {
         
         foodTrayLeft.size = CGSize(width: 145, height: 30)
         foodTrayLeft.texture = SKTexture(imageNamed: "tray")
-        foodTrayLeft.position.y = octopusArm.position.y + 50
-        foodTrayLeft.position.x = 72
+        foodTrayLeft.position.y = octopusArm.position.y + 45
+        foodTrayLeft.position.x = 75
         foodTrayLeft.zPosition = 11
         
         foodInvisibleFrameLeft.size = CGSize(width: 145, height: 120)
@@ -456,8 +481,8 @@ class GameScene: SKScene {
 
         foodTrayRight.size = CGSize(width: 145, height: 30)
         foodTrayRight.texture = SKTexture(imageNamed: "tray")
-        foodTrayRight.position = CGPoint(x: 340, y: 200)
-        foodTrayRight.position.y = octopusArm.position.y + 50
+        foodTrayRight.position = CGPoint(x: 355, y: 200)
+        foodTrayRight.position.y = octopusArm.position.y + 45
         foodTrayRight.zPosition = 11
         
         foodInvisibleFrameRight.size = CGSize(width: 145, height: 120)
@@ -487,6 +512,9 @@ class GameScene: SKScene {
         spawner1.position = spawnLocation1
         spawner1.zPosition = 10
         
+        setupTextLabelNumbers(text: "1", pos_x: 290, pos_y: 230, z_pos: 30, fontSize: 27, color: .white)
+        setupTextLabelNumbers(text: "1", pos_x: 288, pos_y: 228, z_pos: 28, fontSize: 30, color: .black)
+        
         spawner2.size = CGSize(width: 55, height: 120)
         spawner2.position = spawnLocation2
         spawner2.zPosition = 10
@@ -508,6 +536,16 @@ class GameScene: SKScene {
         addChild(spawner3)
         addChild(spawner5)
         addChild(spawnerIncognita)
+    }
+    
+    func setupTextLabelNumbers(text: String, pos_x: Int, pos_y: Int, z_pos: CGFloat, fontSize: CGFloat, color: SKColor) {
+        let spawnerNumber = SKLabelNode(fontNamed: "IstokWeb-Bold")
+        spawnerNumber.text = text
+        spawnerNumber.fontSize = fontSize
+        spawnerNumber.fontColor = color
+        spawnerNumber.position = CGPoint(x: pos_x, y: pos_y)
+        spawnerNumber.zPosition = z_pos
+        addChild(spawnerNumber)
     }
     
     // função que move as bandejas de acordo com a posição do braço do polvo
