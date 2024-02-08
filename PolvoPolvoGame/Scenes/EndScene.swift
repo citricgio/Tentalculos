@@ -5,8 +5,8 @@
 //  Created by Gabriel Sabaini on 31/01/24.
 //
 
-import Foundation
 import SpriteKit
+import GameKit
 
 //cena de quando o jogador perde o jogo
 class EndScene: SKScene {
@@ -15,7 +15,7 @@ class EndScene: SKScene {
     var endData: EndData = EndData(points: DataModel.shared.equationCount, bPoints: 0)
     
     //instancia botão de Reiniciar e Voltar para o Menu
-    var reiniciarButton: WriteButton = WriteButton(name: "reiniciarButton", text: "Reiniciar")
+    var restartButton: WriteButton = WriteButton(name: "restartButton", text: "Reiniciar")
     var menuButton: WriteButton = WriteButton(name: "menuButton", text: "Menu")
     
     //instancia o background
@@ -36,9 +36,9 @@ class EndScene: SKScene {
         addChild(endData.node)
         
         //Adiciona o botão reiniciar
-        reiniciarButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 250)
-        reiniciarButton.node.setScale(1/1.08)
-        addChild(reiniciarButton.node)
+        restartButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 250)
+        restartButton.node.setScale(1/1.08)
+        addChild(restartButton.node)
         
         //Adicionar o botão menu
         menuButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 330)
@@ -72,7 +72,7 @@ class EndScene: SKScene {
             let touchedNode = atPoint(location)
             
             //O que indica que quando clicar no startButton vai chamar a função de ir para a cena de jogo
-            if touchedNode.name == "reiniciarButton" {
+            if touchedNode.name == "restartButton" {
                 restartGame()
                 playSound(sound: "Jogo", type: "mp3")
             }
@@ -88,6 +88,9 @@ class EndScene: SKScene {
     //função que chama a GameScene
     func restartGame() {
         // Animar botão sendo pressionado
+        DataModel.shared.equationCount = 0
+        DataModel.shared.countsLive = 0
+        DataModel.shared.isAlive = [true,true,true]
         let newScene = GameScene()
         self.changeTo(scene: newScene)
 //        playSound(sound: "Jogo", type: "mp3")

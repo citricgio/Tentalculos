@@ -3,7 +3,7 @@
 //
 // Created by Giovanna Micher on 19/01/24.
 //
-import Foundation
+import GameKit
 import SpriteKit
 import SwiftUI
 
@@ -101,15 +101,18 @@ class GameScene: SKScene {
     
     var brokenPlate = SKTexture(imageNamed: "broken-plate")
     var plate = SKTexture(imageNamed: "normal-plate")
+        
     
-    var isAlive: [Bool] = [true,true,true]
-    var livesCount: Int = 0
-    
+ 
     var lineEquation = SKSpriteNode(imageNamed: "line")
     var equationLabel = SKLabelNode()
     
+ 
+    
 //    var equationNode: EquationNode = EquationNode()
 
+    // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
+    override func didMove(to view: SKView) {
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
         
@@ -204,6 +207,12 @@ class GameScene: SKScene {
     }
     
     
+    func updateEquation() {
+        equationLabel.text = "? = \(DataModel.shared.valueX)"
+        equationLabel.fontColor = .systemGreen
+    }
+    
+    
     
     // adicionar a label dos pontos na tela
     func addScore() {
@@ -266,7 +275,7 @@ class GameScene: SKScene {
         // passa pelo array de vidas
         for i in 0...lives.count - 1 {
             // se a posicao daquela vida se tornar falsa porque o jogador perdeu, pega a vida que está naquela posicao e troca a imagem para brokenPlate
-            if isAlive[i] == false {
+            if DataModel.shared.isAlive[i] == false {
                 let live = lives[i]
                 live.texture = brokenPlate
 //                playSound(sound: "Prato quebrando", type: "mp3")
@@ -277,15 +286,17 @@ class GameScene: SKScene {
     
     func endGame() {
                 //pega a primeira vida e confirma se a posicao dela é verdadeira
-        if childNode(withName: "live1") != nil && isAlive[0] == true {
+        if childNode(withName: "live1") != nil && DataModel.shared.isAlive[0] == true {
             // muda a sua posicao para falso, chama a funcao updateLives() e aumenta o contador que acompanha a quantidade de vidas que o jogador tem
-            isAlive[0] = false
+            DataModel.shared.isAlive[0] = false
             print("errouuuuu1")
             updateLives()
-            livesCount += 1
-            print("oiiii \(livesCount)")
+            DataModel.shared.countsLive += 1
+            print("oiiii \(DataModel.shared.countsLive = 0)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
+            GameCenterController.shared.points = DataModel.shared.equationCount
+
             let textureMid = SKTexture(imageNamed: "mid-face")
             let textureHappy = SKTexture(imageNamed: "happy-face")
             let action1 = SKAction.setTexture(textureMid, resize: true)
@@ -295,12 +306,12 @@ class GameScene: SKScene {
             let sequence = SKAction.sequence([action1,actionWait,action2])
             octopusFace.run(sequence)
         }
-        else if childNode(withName: "live2") != nil && isAlive[1] == true {
-            isAlive[1] = false
+        else if childNode(withName: "live2") != nil && DataModel.shared.isAlive[1] == true {
+            DataModel.shared.isAlive[1] = false
             print("errouuuuu2")
             updateLives()
-            livesCount += 1
-            print("oiiii \(livesCount)")
+            DataModel.shared.countsLive += 1
+            print("oiiii \(DataModel.shared.countsLive = 0)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
             let textureSad = SKTexture(imageNamed: "sad-face")
@@ -311,24 +322,31 @@ class GameScene: SKScene {
             
             let sequence = SKAction.sequence([action1,actionWait,action2])
             octopusFace.run(sequence)
+            GameCenterController.shared.points = DataModel.shared.equationCount
+
 
         }
-        else if childNode(withName: "live3") != nil && isAlive[2] == true {
-            isAlive[2] = false
+        else if childNode(withName: "live3") != nil && DataModel.shared.isAlive[2] == true {
+            DataModel.shared.isAlive[2] = false
             print("errouuuuu3")
             updateLives()
-            livesCount += 1
-            print("oiiii \(livesCount)")
+            DataModel.shared.countsLive += 1
+            print("oiiii \(DataModel.shared.countsLive = 0)")
             playSound(sound: "Prato quebrando", type: "mp3")
             endGame()
+            GameCenterController.shared.points = DataModel.shared.equationCount
+
         }
         
         // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
-        if livesCount == 3 {
+        if DataModel.shared.countsLive == 3 {
+            GameCenterController.shared.points = DataModel.shared.equationCount
+
+            if DataModel.shared.equationCount > DataModel.shared.bestPoints {
+                GameCenterController.shared.scoreToLeaderboard()
+            }
             let endGameScene = EndScene()
             self.changeTo(scene: endGameScene)
-            DataModel.shared.equationCount = 0
-//            playSound(sound: "Derrota2", type: "mp3")
         }
     }
     
@@ -346,19 +364,22 @@ class GameScene: SKScene {
             nextButton.clickAction = finalizeCheck
             
         } else {
-
+            GameCenterController.shared.points = DataModel.shared.equationCount
             endGame()
 
         }
     }
     
     
-    
     func finalizeCheck(){
         if DataModel.shared.weight == DataModel.shared.valueX {
-            let GameScene = GameScene()
-            self.changeTo(scene: GameScene)
-            updateScore()
+            updateEquation()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                let GameScene = GameScene()
+                self.changeTo(scene: GameScene)
+                self.updateScore()
+            }
+            
         }
         else{
             endGame()
@@ -800,5 +821,4 @@ class GameScene: SKScene {
             
         }
     }
-    
 }
