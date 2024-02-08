@@ -55,14 +55,14 @@ class GameScene: SKScene {
     let spawner3 = SKSpriteNode()
     let spawner5 = SKSpriteNode()
     let spawnerIncognita = SKSpriteNode()
+    let shelf = SKSpriteNode()
 
-    
     // localização dos spawners
-    var spawnLocationIncognita = CGPoint(x:380, y: 260)
-    var spawnLocation1 = CGPoint(x:300, y: 260)
-    var spawnLocation2 = CGPoint(x:220, y: 260)
-    var spawnLocation3 = CGPoint(x:140, y: 260)
-    var spawnLocation5 = CGPoint(x:60, y: 260)
+    var spawnLocationIncognita = CGPoint(x:355, y: 230)
+    var spawnLocation1 = CGPoint(x:290, y: 230)
+    var spawnLocation2 = CGPoint(x:215, y: 230)
+    var spawnLocation3 = CGPoint(x:140, y: 230)
+    var spawnLocation5 = CGPoint(x:65, y: 230)
     
     var foodRemovedArray: [SKSpriteNode] = []
     
@@ -112,6 +112,10 @@ class GameScene: SKScene {
 
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
+        
+        print(frame.size.width)
+        print(frame.size.height)
+
         
         let food1 = setupDragLabelFood(fruit: .fruit1)
         foodRemovedArray.append(food1.node)
@@ -198,6 +202,8 @@ class GameScene: SKScene {
         equationLabel.text = "? = \(DataModel.shared.valueX)"
         equationLabel.fontColor = .systemGreen
     }
+    
+    
     
     // adicionar a label dos pontos na tela
     func addScore() {
@@ -490,27 +496,31 @@ class GameScene: SKScene {
     
     // função que coloca os spawners na tela
     func setupSpawners(){
-        spawner1.color = SKColor.red
+        
+        shelf.texture = SKTexture(imageNamed: "shelf1")
+        shelf.size = CGSize(width: 530, height: 460)
+        shelf.position = CGPoint(x: frame.size.width / 2, y: 0)
+        shelf.anchorPoint = CGPoint(x: 0.5, y: 0.2)
+        shelf.zPosition = 1
+        
+        addChild(shelf)
+        
         spawner1.size = CGSize(width: 55, height: 120)
         spawner1.position = spawnLocation1
         spawner1.zPosition = 10
         
-        spawner2.color = SKColor.blue
         spawner2.size = CGSize(width: 55, height: 120)
         spawner2.position = spawnLocation2
         spawner2.zPosition = 10
         
-        spawner3.color = SKColor.green
         spawner3.size = CGSize(width: 55, height: 120)
         spawner3.position = spawnLocation3
         spawner3.zPosition = 10
         
-        spawner5.color = SKColor.yellow
         spawner5.size = CGSize(width: 55, height: 120)
         spawner5.position = spawnLocation5
         spawner5.zPosition = 10
         
-        spawnerIncognita.color = SKColor.orange
         spawnerIncognita.size = CGSize(width: 55, height: 120)
         spawnerIncognita.position = spawnLocationIncognita
         spawnerIncognita.zPosition = 10
