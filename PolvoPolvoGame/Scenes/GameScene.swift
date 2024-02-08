@@ -37,8 +37,8 @@ class GameScene: SKScene {
     let foodTrayRight = SKSpriteNode()
     
     // variáveis que armazenam o local da posição da bandeja de quando rotaciona o braço do polvo
-    var trayPositionUpY: CGFloat = 610
-    var trayPositionDownY: CGFloat = 540
+    var trayPositionUpY: CGFloat = 553
+    var trayPositionDownY: CGFloat = 495
     
     // variáveis que indicam se tem comida na bandeja ou não
     var isInTrayLeft: Bool = false
@@ -48,6 +48,8 @@ class GameScene: SKScene {
     let octopusArm = SKSpriteNode()
     
     let octopusBody = SKSpriteNode()
+    
+    let octopusFace = SKSpriteNode()
     
     // spawners da onde saem as comidas
     let spawner1 = SKSpriteNode()
@@ -111,27 +113,30 @@ class GameScene: SKScene {
 
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
-    // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
-    override func didMove(to view: SKView) {
-        
+   
         print(frame.size.width)
         print(frame.size.height)
 
         
-        let food1 = setupDragLabelFood(fruit: .fruit1)
-        foodRemovedArray.append(food1.node)
+        //let food1 = setupDragLabelFood(fruit: .fruit1)
+        let food1 = setupTextLabelNumbers(fruit: .fruit1)
+        foodRemovedArray.append(food1)
         
-        let food2 = setupDragLabelFood(fruit: .fruit2)
-        foodRemovedArray.append(food2.node)
+        //let food2 = setupDragLabelFood(fruit: .fruit2)
+        let food2 = setupTextLabelNumbers(fruit: .fruit2)
+        foodRemovedArray.append(food2)
         
-        let food3 = setupDragLabelFood(fruit: .fruit3)
-        foodRemovedArray.append(food3.node)
+        //let food3 = setupDragLabelFood(fruit: .fruit3)
+        let food3 = setupTextLabelNumbers(fruit: .fruit3)
+        foodRemovedArray.append(food3)
         
-        let food5 = setupDragLabelFood(fruit: .fruit5)
-        foodRemovedArray.append(food5.node)
+        //let food5 = setupDragLabelFood(fruit: .fruit5)
+        let food5 = setupTextLabelNumbers(fruit: .fruit5)
+        foodRemovedArray.append(food5)
         
-        let incognita = setupDragLabelFood(fruit: .unknown)
-        foodRemovedArray.append(incognita.node)
+        //let incognita = setupDragLabelFood(fruit: .unknown)
+        let incognita = setupTextLabelNumbers(fruit: .unknown)
+        foodRemovedArray.append(incognita)
         
         DataModel.shared.weightRightSide = 0
         DataModel.shared.weightLeftSide = 0
@@ -142,6 +147,7 @@ class GameScene: SKScene {
         foodArrayRight.removeAll()
         DataModel.shared.leftBalanceLocked = false
         DataModel.shared.rightBalanceLocked = false
+        isCorrect = false
         
         setupGame()
         setupSpawners()
@@ -164,8 +170,8 @@ class GameScene: SKScene {
     
     func addOperationButtons() {
         operationNumbersButton = SpriteButtonNumbers(){
-           //print("ola")
         }
+        
         addChild(operationNumbersButton)
         
         irButton = SpriteButtonReduce(action: reduceFood, textLabel: "Ir")
@@ -181,15 +187,15 @@ class GameScene: SKScene {
     func addEquation() {
         
         lineEquation.zPosition = 20
-        lineEquation.position = CGPoint(x: size.width/2, y: 670)
+        lineEquation.position = CGPoint(x: size.width/2, y: 720)
         lineEquation.size = CGSize(width: 580, height: 125)
         
         EquationGenerator().assembleEquation()
         equationLabel.zPosition = 21
         equationLabel.fontColor = .black
-        equationLabel.position = CGPoint(x: size.width/2 + 10, y: 635)
+        equationLabel.position = CGPoint(x: size.width/2 + 10, y: 685)
         equationLabel.text = DataModel.shared.equationText
-        equationLabel.fontName = "Istok Web-Bold"
+        equationLabel.fontName = "IstokWeb-Bold"
         equationLabel.fontSize = 27
 
 
@@ -208,12 +214,12 @@ class GameScene: SKScene {
     
     // adicionar a label dos pontos na tela
     func addScore() {
-        scoreLabel.text = "Pontos: \(score)"
+//        scoreLabel.text = "\(score) pts"
         scoreLabel.fontSize = 30
         scoreLabel.fontColor = .white
         scoreLabel.zPosition = 10
-        scoreLabel.position = CGPoint(x: size.width / 2, y: 780)
-        scoreLabel.fontName = "Istok Web"
+        scoreLabel.position = CGPoint(x: size.width / 2, y: 850)
+        scoreLabel.fontName = "IstokWeb-Bold"
         scoreLabel.fontSize = 24
         
         
@@ -228,7 +234,7 @@ class GameScene: SKScene {
     // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
     func addLives() {
         live1 = SKSpriteNode(texture: plate)
-        live1.position = CGPoint(x: size.width / 2 - 63, y: 735)
+        live1.position = CGPoint(x: size.width / 2 - 63, y: 790)
         live1.zPosition = 11
         live1.name = "live1"
         live1.size = CGSize(width: 57, height: 57)
@@ -238,7 +244,7 @@ class GameScene: SKScene {
         lives.append(live1)
         
         live2 = SKSpriteNode(texture: plate)
-        live2.position = CGPoint(x: size.width / 2, y: 735)
+        live2.position = CGPoint(x: size.width / 2, y: 790)
         live2.zPosition = 11
         live2.name = "live2"
         live2.size = CGSize(width: 57, height: 57)
@@ -250,7 +256,7 @@ class GameScene: SKScene {
 
         
         live3 = SKSpriteNode(texture: plate)
-        live3.position = CGPoint(x: size.width / 2 + 63, y: 735)
+        live3.position = CGPoint(x: size.width / 2 + 63, y: 790)
         live3.zPosition = 11
         live3.name = "live3"
         live3.size = CGSize(width: 57, height: 57)
@@ -289,6 +295,14 @@ class GameScene: SKScene {
             playSound(sound: "Jogo", type: "mp3")
             GameCenterController.shared.points = DataModel.shared.equationCount
 
+            let textureMid = SKTexture(imageNamed: "mid-face")
+            let textureHappy = SKTexture(imageNamed: "happy-face")
+            let action1 = SKAction.setTexture(textureMid, resize: true)
+            let actionWait = SKAction.wait(forDuration: 1.5)
+            let action2 = SKAction.setTexture(textureHappy, resize: true)
+            
+            let sequence = SKAction.sequence([action1,actionWait,action2])
+            octopusFace.run(sequence)
         }
         else if childNode(withName: "live2") != nil && DataModel.shared.isAlive[1] == true {
             DataModel.shared.isAlive[1] = false
@@ -298,6 +312,14 @@ class GameScene: SKScene {
             print("oiiii \(DataModel.shared.countsLive = 0)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
+            let textureSad = SKTexture(imageNamed: "sad-face")
+            let textureHappy = SKTexture(imageNamed: "happy-face")
+            let action1 = SKAction.setTexture(textureSad, resize: true)
+            let actionWait = SKAction.wait(forDuration: 1.5)
+            let action2 = SKAction.setTexture(textureHappy, resize: true)
+            
+            let sequence = SKAction.sequence([action1,actionWait,action2])
+            octopusFace.run(sequence)
             GameCenterController.shared.points = DataModel.shared.equationCount
 
 
@@ -364,20 +386,20 @@ class GameScene: SKScene {
     
     // função que faz as bases iniciais do jogo
     func setupGame(){
-        //gerador.generateBasicEquation() // gera uma equação aleatória
-        gerador.generateIntermidiateEquation()
+        gerador.generateBasicEquation() // gera uma equação aleatória
+//        gerador.generateIntermidiateEquation()
     }
     
     // função que calcula o ângulo de rotação do braço do polvo (vai de -45º até 45º)
     func calculateAngle() {
         if DataModel.shared.weightLeftSide < DataModel.shared.weightRightSide{
-            angle = -(.pi / 12)
+            angle = -(.pi / 15)
             
         } else if DataModel.shared.weightLeftSide == DataModel.shared.weightRightSide {
             angle = 0
             
         } else {
-            angle = .pi / 12
+            angle = .pi / 15
         }
     }
     
@@ -444,17 +466,24 @@ class GameScene: SKScene {
     func setupArm(){
         octopusArm.texture = SKTexture(imageNamed: "octopus-arm")
         octopusArm.size = CGSize(width: 338, height: 80)
-        octopusArm.position = CGPoint(x: frame.size.width / 2.25, y: frame.size.height / 1.775)
+        octopusArm.position = CGPoint(x: frame.size.width / 2.17, y: frame.size.height / 1.95)
         octopusArm.zPosition = 5
         
         octopusBody.texture = SKTexture(imageNamed: "octopus-body")
-        octopusBody.size = CGSize(width: 160, height: 259)
-        octopusBody.position = CGPoint(x: frame.size.width / 2.25, y: frame.size.height / 1.89 )
+        octopusBody.size = CGSize(width: 165, height: 259)
+        octopusBody.position = CGPoint(x: frame.size.width / 2.15, y: frame.size.height / 2.08 )
         octopusBody.zPosition = 7
+        
+        octopusFace.texture = SKTexture(imageNamed: "happy-face")
+        octopusFace.size = CGSize(width: 65, height: 43)
+        octopusFace.position = CGPoint(x: frame.size.width / 2.17, y: frame.size.height / 1.815)
+        octopusFace.zPosition = 9
         
         addChild(octopusArm)
         
         addChild(octopusBody)
+        
+        addChild(octopusFace)
     }
     
     // função que coloca as bandejas na tela
@@ -463,8 +492,8 @@ class GameScene: SKScene {
         
         foodTrayLeft.size = CGSize(width: 145, height: 30)
         foodTrayLeft.texture = SKTexture(imageNamed: "tray")
-        foodTrayLeft.position.y = octopusArm.position.y + 50
-        foodTrayLeft.position.x = 72
+        foodTrayLeft.position.y = octopusArm.position.y + 45
+        foodTrayLeft.position.x = 75
         foodTrayLeft.zPosition = 11
         
         foodInvisibleFrameLeft.size = CGSize(width: 145, height: 120)
@@ -476,8 +505,8 @@ class GameScene: SKScene {
 
         foodTrayRight.size = CGSize(width: 145, height: 30)
         foodTrayRight.texture = SKTexture(imageNamed: "tray")
-        foodTrayRight.position = CGPoint(x: 340, y: 200)
-        foodTrayRight.position.y = octopusArm.position.y + 50
+        foodTrayRight.position = CGPoint(x: 355, y: 200)
+        foodTrayRight.position.y = octopusArm.position.y + 45
         foodTrayRight.zPosition = 11
         
         foodInvisibleFrameRight.size = CGSize(width: 145, height: 120)
@@ -506,7 +535,7 @@ class GameScene: SKScene {
         spawner1.size = CGSize(width: 55, height: 120)
         spawner1.position = spawnLocation1
         spawner1.zPosition = 10
-        
+                
         spawner2.size = CGSize(width: 55, height: 120)
         spawner2.position = spawnLocation2
         spawner2.zPosition = 10
@@ -528,6 +557,56 @@ class GameScene: SKScene {
         addChild(spawner3)
         addChild(spawner5)
         addChild(spawnerIncognita)
+    }
+    
+    func setupTextLabelNumbers(fruit: FruitEnum) -> SKSpriteNode {
+        switch fruit {
+        case .fruit1:
+            let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number1"))
+            fruitNode.name = "food"
+            fruitNode.zPosition = 20
+            fruitNode.position = spawnLocation1
+            addChild(fruitNode)
+            return fruitNode
+        case .fruit2:
+            let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number2"))
+            fruitNode.name = "food"
+            fruitNode.zPosition = 20
+            fruitNode.position = spawnLocation2
+            addChild(fruitNode)
+            return fruitNode
+        case .fruit3:
+            let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number3"))
+            fruitNode.name = "food"
+            fruitNode.zPosition = 20
+            fruitNode.position = spawnLocation3
+            addChild(fruitNode)
+            return fruitNode
+        case .fruit5:
+            let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number5"))
+            fruitNode.name = "food"
+            fruitNode.zPosition = 20
+            fruitNode.anchorPoint = CGPoint(x: 0.5, y: 0.3)
+            fruitNode.position = spawnLocation5
+            addChild(fruitNode)
+            return fruitNode
+        case .unknown:
+            let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "incognita"))
+            fruitNode.name = "food"
+            fruitNode.zPosition = 20
+            fruitNode.anchorPoint = CGPoint(x: 0.5, y: 0.25)
+            fruitNode.position = spawnLocationIncognita
+            addChild(fruitNode)
+            return fruitNode
+        default:
+            let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number1"))
+            fruitNode.name = "food"
+            fruitNode.zPosition = 20
+            fruitNode.anchorPoint = CGPoint(x: 0.5, y: 0.3)
+            fruitNode.position = spawnLocation1
+            addChild(fruitNode)
+            return fruitNode
+        }
     }
     
     // função que move as bandejas de acordo com a posição do braço do polvo
@@ -600,7 +679,7 @@ class GameScene: SKScene {
     // função que é chamada a cada framde do jogo e atualiza a cena
     override func update(_ currentTime: TimeInterval) {
         calculateAngle()
-        scoreLabel.text = "Pontos: \(DataModel.shared.equationCount)"
+        scoreLabel.text = "\(DataModel.shared.equationCount) pts"
         
         // Se a comida entrar na bandeja, a posição da comida vai ser atualizada, as comidas são posicionadas lado a lado quando adicionadas mais de uma
         if isInTrayLeft {
@@ -624,24 +703,27 @@ class GameScene: SKScene {
     
     // quando ocorre o toque, spawna uma fruta e coloca ela na tela
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            //let position = touch.location(in: self)
-            if spawner1.frame.contains(touch.previousLocation(in: self)){
-                food = setupDragLabelFood(fruit: .fruit1)
+        if let touch = touches.first{
+            if isCorrect == false{
+                //let position = touch.location(in: self)
+                if spawner1.frame.contains(touch.previousLocation(in: self)){
+                    food = setupDragLabelFood(fruit: .fruit1)
+                }
+                else if spawner2.frame.contains(touch.previousLocation(in: self)){
+                    food = setupDragLabelFood(fruit: .fruit2)
+                    
+                }
+                else if spawner3.frame.contains(touch.previousLocation(in: self)) {
+                    food = setupDragLabelFood(fruit: .fruit3)
+                }
+                else if spawner5.frame.contains(touch.previousLocation(in: self)) {
+                    food = setupDragLabelFood(fruit: .fruit5)
+                }
+                else if spawnerIncognita.frame.contains(touch.previousLocation(in: self)) {
+                    food = setupDragLabelFood(fruit: .unknown)
+                }
             }
-            else if spawner2.frame.contains(touch.previousLocation(in: self)){
-                food = setupDragLabelFood(fruit: .fruit2)
-
-            }
-            else if spawner3.frame.contains(touch.previousLocation(in: self)) {
-                food = setupDragLabelFood(fruit: .fruit3)
-            }
-            else if spawner5.frame.contains(touch.previousLocation(in: self)) {
-                food = setupDragLabelFood(fruit: .fruit5)
-            }
-            else if spawnerIncognita.frame.contains(touch.previousLocation(in: self)) {
-                food = setupDragLabelFood(fruit: .unknown)
-            }
+            
         }
     }
     
