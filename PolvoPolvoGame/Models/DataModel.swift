@@ -51,6 +51,8 @@ import SwiftUI
     //Contagem do numero de vidas
     var countsLive: Int = 0
     var isAlive: [Bool] = [true,true,true]
+    
+    var points: GamePlayData = GamePlayData()
 }
 
 

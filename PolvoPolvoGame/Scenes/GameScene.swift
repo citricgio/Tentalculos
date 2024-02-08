@@ -109,8 +109,7 @@ class GameScene: SKScene {
     
 //    var equationNode: EquationNode = EquationNode()
 
-    // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
-    override func didMove(to view: SKView) {
+
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
         
@@ -200,12 +199,6 @@ class GameScene: SKScene {
         equationLabel.fontColor = .systemGreen
     }
     
-    
-    
-    
-    
-    
-    
     // adicionar a label dos pontos na tela
     func addScore() {
         scoreLabel.text = "Pontos: \(score)"
@@ -223,6 +216,7 @@ class GameScene: SKScene {
     // fazer o update dos pontos
     func updateScore() {
         DataModel.shared.equationCount += 1
+        DataModel.shared.points.score += 1
     }
     
     // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
@@ -316,10 +310,13 @@ class GameScene: SKScene {
         
         // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
         if DataModel.shared.countsLive == 3 {
-            GameCenterController.shared.points = DataModel.shared.equationCount
+//            GameCenterController.shared.points = DataModel.shared.equationCount
 
             if DataModel.shared.equationCount > DataModel.shared.bestPoints {
-                GameCenterController.shared.scoreToLeaderboard()
+//                GameCenterController.shared.scoreToLeaderboard()
+                Task {
+                    await GameCenterController.shared.SaveData(gameplayData: DataModel.shared.points)
+                }
             }
             let endGameScene = EndScene()
             self.changeTo(scene: endGameScene)
