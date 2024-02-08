@@ -90,7 +90,7 @@ class  MenuScene: SKScene {
         //Som
             playSound(sound: "Menu", type: "mp3")
         soundButton.position = CGPoint(x: frame.midX + 160, y: frame.midY + 320)
-        addChild(soundButton)
+       // addChild(soundButton)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
