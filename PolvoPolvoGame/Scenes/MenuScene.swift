@@ -34,6 +34,9 @@ class  MenuScene: SKScene {
     var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.points.score)", fontName: .points)
     var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: .labelPoints, text: "Sua melhor pontuação", fontName: .labelPoints )
     
+    var logoName: SKSpriteNode = SKSpriteNode(imageNamed: "logo")
+    var crown: SKSpriteNode = SKSpriteNode(imageNamed: "crown")
+    
     override func didMove(to view: SKView) {
         
         //Adiciona o botão de Jogar e sua Posição
@@ -44,8 +47,12 @@ class  MenuScene: SKScene {
         //Adiciona o botão de Tutorial e sua posição
         tutorialButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 250)
         tutorialButton.node.setScale(1/1.08)
-        addChild(tutorialButton.node)
+//        addChild(tutorialButton.node)
         
+        
+        logoName.position = CGPoint(x: size.width / 2, y: 750)
+        logoName.size = CGSize(width: 380, height: 254)
+        addChild(logoName)
         //Adiciona o polvo e sua posição
         octopus.size = CGSize(width: 330, height: 253)
         octopus.position = CGPoint(x: frame.midX, y: frame.size.height / 1.89 )
@@ -60,16 +67,20 @@ class  MenuScene: SKScene {
         //Adiciona o texto e a maior pontuação e suas posições
         bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + 170)
         labelPoint.node.position = CGPoint(x: frame.midX , y: frame.midY + 200)
-        bPoint.node.setScale(1/1.08)
+        bPoint.node.setScale(1.5)
         labelPoint.node.setScale(1/1.08)
         addChild(bPoint.node)
-        addChild(labelPoint.node)
+//        addChild(labelPoint.node)
+        
+        crown.position = CGPoint(x: frame.midX + 15 , y: frame.midY + 200)
+        addChild(crown)
         
         //Adiciona o Título
-        title.node.position = CGPoint(x: frame.midX, y: frame.midY + 250)
+        title.node.position = CGPoint(x: frame.midX, y: frame.midY + 230)
         title.node.setScale(1/1.08)
-        addChild(title.node)
+//        addChild(title.node)
         
+
         //funções de ligadas ao GameCenter que vem do GameCenterController
         GameCenterController.shared.authenticateGameCenter()
         GameCenterController.shared.loadData { data in
