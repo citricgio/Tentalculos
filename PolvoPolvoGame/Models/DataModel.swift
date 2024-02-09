@@ -24,7 +24,7 @@ import SwiftUI
     var weightRightSide: Int = 0
     
     //String que contém a equação
-    var equationText: String = "" 
+    var equationText: String = ""
     
     //Booleanos usados pela balancaDados para travar a equação
     var leftBalanceLocked: Bool = false
@@ -34,9 +34,9 @@ import SwiftUI
     var hasX: Bool = false
     
     //Valor em que o usuário vai múltiplicar ou dividir e é gerado pelo RemoverNumeros
-//    var contador: Int = 0
+    //    var contador: Int = 0
     var numbersButton: FruitEnum = .fruit1
-//    var indexNumeros: Int = 1
+    //    var indexNumeros: Int = 1
     
     //Numero de equações feitas na fase
     var equationCount: Int = 0
@@ -52,6 +52,9 @@ import SwiftUI
     var points: GamePlayData = GamePlayData()
     
     var difficultyCounter: Int = 0
+    
+    var addedSoundMenu: Bool = false
+    
 }
 
 
