@@ -116,23 +116,18 @@ class GameScene: SKScene {
         print(frame.size.width)
         print(frame.size.height)
         
-        //let food1 = setupDragLabelFood(fruit: .fruit1)
         let food1 = setupTextLabelNumbers(fruit: .fruit1)
         foodRemovedArray.append(food1)
         
-        //let food2 = setupDragLabelFood(fruit: .fruit2)
         let food2 = setupTextLabelNumbers(fruit: .fruit2)
         foodRemovedArray.append(food2)
         
-        //let food3 = setupDragLabelFood(fruit: .fruit3)
         let food3 = setupTextLabelNumbers(fruit: .fruit3)
         foodRemovedArray.append(food3)
         
-        //let food5 = setupDragLabelFood(fruit: .fruit5)
         let food5 = setupTextLabelNumbers(fruit: .fruit5)
         foodRemovedArray.append(food5)
         
-        //let incognita = setupDragLabelFood(fruit: .unknown)
         let incognita = setupTextLabelNumbers(fruit: .unknown)
         foodRemovedArray.append(incognita)
         
@@ -159,6 +154,8 @@ class GameScene: SKScene {
         addChild(nextButton)
         
         restartButton = RestartButton(action: restartFood)
+        restartButton.position = CGPoint(x: frame.size.width / 1.102, y: frame.size.height / 1.179)
+
         addChild(restartButton)
         
         background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
@@ -193,13 +190,13 @@ class GameScene: SKScene {
     func addEquation() {
         
         lineEquation.zPosition = 20
-        lineEquation.position = CGPoint(x: size.width/2, y: 720)
-        lineEquation.size = CGSize(width: 580, height: 125)
+        lineEquation.position = CGPoint(x: size.width/2, y: frame.size.height / 1.295)
+        lineEquation.size = CGSize(width: frame.size.width / 0.74, height: frame.size.height / 7.45)
         
         EquationGenerator().assembleEquation()
         equationLabel.zPosition = 21
         equationLabel.fontColor = .black
-        equationLabel.position = CGPoint(x: size.width/2 + 10, y: 685)
+        equationLabel.position = CGPoint(x: size.width/2 + frame.size.width / 43, y: frame.size.height / 1.36)
         equationLabel.text = DataModel.shared.equationText
         equationLabel.fontName = "IstokWeb-Bold"
         equationLabel.fontSize = 27
@@ -216,11 +213,10 @@ class GameScene: SKScene {
     
     // adicionar a label dos pontos na tela
     func addScore() {
-//        scoreLabel.text = "\(score) pts"
         scoreLabel.fontSize = 30
         scoreLabel.fontColor = .white
         scoreLabel.zPosition = 10
-        scoreLabel.position = CGPoint(x: size.width / 2, y: 850)
+        scoreLabel.position = CGPoint(x: size.width / 2, y: frame.size.height / 1.105)
         scoreLabel.fontName = "IstokWeb-Bold"
         scoreLabel.fontSize = 24
         
@@ -236,10 +232,10 @@ class GameScene: SKScene {
     func addLives() {
         
         live1 = SKSpriteNode(texture: plate)
-        live1.position = CGPoint(x: size.width / 2 - 63, y: 790)
+        live1.position = CGPoint(x: size.width / 2 - frame.size.width / 6.82, y: frame.size.height / 1.179)
         live1.zPosition = 11
         live1.name = "live1"
-        live1.size = CGSize(width: 57, height: 57)
+        live1.size = CGSize(width: frame.size.width / 7.54, height: frame.size.height / 16.35)
         print("VIDA 1")
         
         if DataModel.shared.isAlive[0] == false {
@@ -253,10 +249,10 @@ class GameScene: SKScene {
         }
         
         live2 = SKSpriteNode(texture: plate)
-        live2.position = CGPoint(x: size.width / 2, y: 790)
+        live2.position = CGPoint(x: size.width / 2, y: frame.size.height / 1.179)
         live2.zPosition = 11
         live2.name = "live2"
-        live2.size = CGSize(width: 57, height: 57)
+        live2.size = CGSize(width: frame.size.width / 7.54, height: frame.size.height / 16.35)
 
         print("VIDA 2")
         
@@ -273,10 +269,10 @@ class GameScene: SKScene {
 
         
         live3 = SKSpriteNode(texture: plate)
-        live3.position = CGPoint(x: size.width / 2 + 63, y: 790)
+        live3.position = CGPoint(x: size.width / 2 + frame.size.width / 6.82, y: frame.size.height / 1.179)
         live3.zPosition = 11
         live3.name = "live3"
-        live3.size = CGSize(width: 57, height: 57)
+        live3.size = CGSize(width: frame.size.width / 7.54, height: frame.size.height / 16.35)
 
         print("VIDA 3")
         
@@ -451,6 +447,9 @@ class GameScene: SKScene {
     }
     
     func restartFood() {
+        DataModel.shared.leftBalanceLocked = false
+        DataModel.shared.rightBalanceLocked = false
+        DataModel.shared.hasX = false
         for food in foodArrayLeft {
             food.node.removeFromParent()
         }
@@ -463,9 +462,6 @@ class GameScene: SKScene {
         foodArrayRight.removeAll()
         DataModel.shared.weightLeftSide = 0
         DataModel.shared.weightRightSide = 0
-        DataModel.shared.leftBalanceLocked = false
-        DataModel.shared.rightBalanceLocked = false
-        DataModel.shared.hasX = false
 
         
     }
@@ -591,7 +587,7 @@ class GameScene: SKScene {
     func setupSpawners(){
         
         shelf.texture = SKTexture(imageNamed: "shelf1")
-        shelf.size = CGSize(width: 530, height: 460)
+        shelf.size = CGSize(width: frame.size.width / 0.811, height: frame.size.height / 2.026)
         shelf.position = CGPoint(x: frame.size.width / 2, y: 0)
         shelf.anchorPoint = CGPoint(x: 0.5, y: 0.2)
         shelf.zPosition = 1

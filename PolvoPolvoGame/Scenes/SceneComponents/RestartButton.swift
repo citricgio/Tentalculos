@@ -11,7 +11,6 @@ import SpriteKit
 class RestartButton: SKNode {
     
     var clickAction: () -> Void
-    var positionButton = CGPoint(x: 340, y: 400)
     var node: SKSpriteNode
 
     
@@ -19,8 +18,7 @@ class RestartButton: SKNode {
         clickAction = action
         
         
-        node = SKSpriteNode(texture: SKTexture(imageNamed: "Button"))
-        node.position = positionButton
+        node = SKSpriteNode(texture: SKTexture(imageNamed: "restart"))
         node.setScale(1/1.08)
         node.zPosition = 40
 
