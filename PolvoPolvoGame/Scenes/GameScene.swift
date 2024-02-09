@@ -75,6 +75,8 @@ class GameScene: SKScene {
     
     var nextButton: NextButton = NextButton(action: {}, textLabel: "Próximo")
     
+    var restartButton: RestartButton = RestartButton(action: {})
+
     var operationButton: SpriteButtonOperation = SpriteButtonOperation(action: {})
     
     var operationNumbersButton: SpriteButtonNumbers = SpriteButtonNumbers(action: {})
@@ -104,7 +106,6 @@ class GameScene: SKScene {
  
     var lineEquation = SKSpriteNode(imageNamed: "line")
     var equationLabel = SKLabelNode()
-    
  
     
 //    var equationNode: EquationNode = EquationNode()
@@ -157,6 +158,9 @@ class GameScene: SKScene {
         nextButton = NextButton(action: isCorrect ? finalizeCheck : firstCheck, textLabel: isCorrect ? "Finalizar" : "Próximo")
         addChild(nextButton)
         
+        restartButton = RestartButton(action: restartFood)
+        addChild(restartButton)
+        
         background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
         addChild(background)
         
@@ -204,7 +208,7 @@ class GameScene: SKScene {
     
     
     func updateEquation() {
-        equationLabel.text = "? = \(DataModel.shared.valueX)"
+        equationLabel.text = "X = \(DataModel.shared.valueX)"
         equationLabel.fontColor = .systemGreen
     }
     
@@ -228,6 +232,7 @@ class GameScene: SKScene {
     
     // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
     func addLives() {
+        
         live1 = SKSpriteNode(texture: plate)
         live1.position = CGPoint(x: size.width / 2 - 63, y: 790)
         live1.zPosition = 11
@@ -235,8 +240,15 @@ class GameScene: SKScene {
         live1.size = CGSize(width: 57, height: 57)
         print("VIDA 1")
         
-        addChild(live1)
-        lives.append(live1)
+        if DataModel.shared.isAlive[0] == false {
+            live1.texture = brokenPlate
+            addChild(live1)
+            lives.append(live1)
+        }
+        else {
+            addChild(live1)
+            lives.append(live1)
+        }
         
         live2 = SKSpriteNode(texture: plate)
         live2.position = CGPoint(x: size.width / 2, y: 790)
@@ -246,8 +258,16 @@ class GameScene: SKScene {
 
         print("VIDA 2")
         
-        addChild(live2)
-        lives.append(live2)
+        if DataModel.shared.isAlive[1] == false {
+            live2.texture = brokenPlate
+            addChild(live2)
+            lives.append(live2)
+        }
+        else {
+            addChild(live2)
+            lives.append(live2)
+        }
+
 
         
         live3 = SKSpriteNode(texture: plate)
@@ -258,8 +278,15 @@ class GameScene: SKScene {
 
         print("VIDA 3")
         
-        addChild(live3)
-        lives.append(live3)
+        if DataModel.shared.isAlive[2] == false {
+            live3.texture = brokenPlate
+            addChild(live3)
+            lives.append(live3)
+        }
+        else {
+            addChild(live3)
+            lives.append(live3)
+        }
 
     }
     
@@ -275,6 +302,17 @@ class GameScene: SKScene {
 
             }
         }
+    }
+    
+    func setupParabens() {
+        let node = SKSpriteNode()
+        node.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        let parabens = SKTexture(imageNamed: "parabens")
+        let action1 = SKAction.setTexture(parabens, resize: true)
+        let fade = SKAction.fadeOut(withDuration: 1)
+        
+        let sequence = SKAction.sequence([action1,fade])
+        node.run(sequence)
     }
     
     func endGame() {
@@ -350,6 +388,7 @@ class GameScene: SKScene {
             addOperationButtons()
             updateScore()
             nextButton.clickAction = finalizeCheck
+            setupParabens()
             
         } else {
             endGame()
@@ -360,6 +399,7 @@ class GameScene: SKScene {
     
     func finalizeCheck(){
         if DataModel.shared.weight == DataModel.shared.valueX {
+            DataModel.shared.difficultyCounter += 1
             updateEquation()
             updateScore()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
@@ -374,9 +414,15 @@ class GameScene: SKScene {
     
     // função que faz as bases iniciais do jogo
     func setupGame(){
-        gerador.generateBasicEquation() // gera uma equação aleatória
-//        gerador.generateIntermidiateEquation()
+        if DataModel.shared.difficultyCounter <= 3{
+            print("contador: \(DataModel.shared.difficultyCounter)")
+            gerador.generateBasicEquation() // gera uma equação aleatória
+        }
+        else {
+            gerador.generateIntermidiateEquation()
+        }
     }
+
     
     // função que calcula o ângulo de rotação do braço do polvo (vai de -45º até 45º)
     func calculateAngle() {
@@ -391,6 +437,25 @@ class GameScene: SKScene {
         }
     }
     
+    func restartFood() {
+        for food in foodArrayLeft {
+            food.node.removeFromParent()
+        }
+        for food in foodArrayRight {
+            food.node.removeFromParent()
+        }
+        foodContLeft = 0
+        foodContRight = 0
+        foodArrayLeft.removeAll()
+        foodArrayRight.removeAll()
+        DataModel.shared.weightLeftSide = 0
+        DataModel.shared.weightRightSide = 0
+        DataModel.shared.leftBalanceLocked = false
+        DataModel.shared.rightBalanceLocked = false
+        DataModel.shared.hasX = false
+
+        
+    }
     
     //Colocar a comida na tela
     func setupDragLabelFood(fruit: FruitEnum) -> FruitNode{
@@ -453,17 +518,17 @@ class GameScene: SKScene {
     // função que coloca o braço do polvo na tela
     func setupArm(){
         octopusArm.texture = SKTexture(imageNamed: "octopus-arm")
-        octopusArm.size = CGSize(width: 338, height: 80)
+        octopusArm.size = CGSize(width: frame.size.width / 1.27, height: frame.size.height / 11.65)
         octopusArm.position = CGPoint(x: frame.size.width / 2.17, y: frame.size.height / 1.95)
         octopusArm.zPosition = 5
         
         octopusBody.texture = SKTexture(imageNamed: "octopus-body")
-        octopusBody.size = CGSize(width: 165, height: 259)
+        octopusBody.size = CGSize(width: frame.size.width / 2.6, height: frame.size.height / 3.6)
         octopusBody.position = CGPoint(x: frame.size.width / 2.15, y: frame.size.height / 2.08 )
         octopusBody.zPosition = 7
         
         octopusFace.texture = SKTexture(imageNamed: "happy-face")
-        octopusFace.size = CGSize(width: 65, height: 43)
+        octopusFace.size = CGSize(width: frame.size.width / 6.6, height: frame.size.height / 21.6)
         octopusFace.position = CGPoint(x: frame.size.width / 2.17, y: frame.size.height / 1.815)
         octopusFace.zPosition = 9
         
@@ -478,29 +543,29 @@ class GameScene: SKScene {
     func setupTargets(){
 //        foodTrayLeft.color = SKColor.yellow
         
-        foodTrayLeft.size = CGSize(width: 145, height: 30)
+        foodTrayLeft.size = CGSize(width: frame.size.width / 2.96, height: frame.size.height / 31)
         foodTrayLeft.texture = SKTexture(imageNamed: "tray")
-        foodTrayLeft.position.y = octopusArm.position.y + 45
-        foodTrayLeft.position.x = 75
+        foodTrayLeft.position.y = octopusArm.position.y + frame.size.height / 20.7
+        foodTrayLeft.position.x = frame.size.width / 5.7
         foodTrayLeft.zPosition = 11
         
-        foodInvisibleFrameLeft.size = CGSize(width: 145, height: 120)
+        foodInvisibleFrameLeft.size = CGSize(width: frame.size.width / 2.96, height: frame.size.height / 7.76)
         //foodInvisibleFrameLeft.color = .yellow
-        foodInvisibleFrameLeft.position.y = octopusArm.position.y + 90
-        foodInvisibleFrameLeft.position.x = 80
+        foodInvisibleFrameLeft.position.y = octopusArm.position.y + frame.size.height / 10.3
+        foodInvisibleFrameLeft.position.x = frame.size.width / 5.37
         foodInvisibleFrameLeft.zPosition = 1
 
 
-        foodTrayRight.size = CGSize(width: 145, height: 30)
+        foodTrayRight.size = CGSize(width: frame.size.width / 2.96, height: frame.size.height / 31)
         foodTrayRight.texture = SKTexture(imageNamed: "tray")
-        foodTrayRight.position = CGPoint(x: 355, y: 200)
-        foodTrayRight.position.y = octopusArm.position.y + 45
+        foodTrayRight.position = CGPoint(x: frame.size.width / 1.21, y: frame.size.height / 4.66)
+        foodTrayRight.position.y = octopusArm.position.y + frame.size.height / 20.7
         foodTrayRight.zPosition = 11
         
-        foodInvisibleFrameRight.size = CGSize(width: 145, height: 120)
+        foodInvisibleFrameRight.size = CGSize(width: frame.size.width / 2.96, height: frame.size.height / 7.76)
         //foodInvisibleFrameRight.color = .yellow
-        foodInvisibleFrameRight.position.y = octopusArm.position.y + 90
-        foodInvisibleFrameRight.position.x = 340
+        foodInvisibleFrameRight.position.y = octopusArm.position.y + frame.size.height / 10.3
+        foodInvisibleFrameRight.position.x = frame.size.width / 1.26
         foodInvisibleFrameRight.zPosition = 1
         
         addChild(foodInvisibleFrameRight)
@@ -668,6 +733,13 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         calculateAngle()
         scoreLabel.text = "\(DataModel.shared.equationCount) pts"
+        
+        if operationButton.changeOperation.selectedOperation == .subtraction {
+            irButton.clickAction = reduceFood
+        }
+        else{
+            irButton.clickAction = divideFood
+        }
         
         // Se a comida entrar na bandeja, a posição da comida vai ser atualizada, as comidas são posicionadas lado a lado quando adicionadas mais de uma
         if isInTrayLeft {

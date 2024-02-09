@@ -50,6 +50,8 @@ import SwiftUI
     
     //melhor score que vem do gameCenter
     var points: GamePlayData = GamePlayData()
+    
+    var difficultyCounter: Int = 0
 }
 
 

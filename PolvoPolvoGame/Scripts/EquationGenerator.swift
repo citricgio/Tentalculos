@@ -30,7 +30,8 @@ class EquationGenerator {
     //Gera uma equação um pouco mais complexa com um valor multiplicando a variável
     func generateIntermidiateEquation(){
         DataModel.shared.valueX = Int.random(in: 1..<maxValue) //randomizador do valor de X
-        DataModel.shared.valueMultiplier = Int.random(in: 1...2) //randomizador do valor que multiplica X
+        //DataModel.shared.valueMultiplier = Int.random(in: 1...2) //randomizador do valor que multiplica X
+        DataModel.shared.valueMultiplier = 2
         DataModel.shared.weight = Int.random(in: (DataModel.shared.valueMultiplier*DataModel.shared.valueX + 1)..<(2*maxValue)) //randomizador do valor de cada lado da equação
         
         DataModel.shared.b = DataModel.shared.weight-(DataModel.shared.valueX*DataModel.shared.valueMultiplier) //calcula o valor que soma a variável na equação
@@ -58,7 +59,12 @@ class EquationGenerator {
     //monta o texto da equação Basica e Intermediária
     func assembleEquation(){
         
-        DataModel.shared.equationText = "\(DataModel.shared.b) + \(DataModel.shared.valueMultiplier)? = \(DataModel.shared.weight)"
+        if DataModel.shared.valueMultiplier == 1{
+            DataModel.shared.equationText = "\(DataModel.shared.b) + x = \(DataModel.shared.weight)"
+        }
+        else{
+            DataModel.shared.equationText = "\(DataModel.shared.b) + \(DataModel.shared.valueMultiplier)x = \(DataModel.shared.weight)"
+        }
         
         print(DataModel.shared.equationText)
         
