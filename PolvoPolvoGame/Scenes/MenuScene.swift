@@ -37,7 +37,12 @@ class  MenuScene: SKScene {
     var logoName: SKSpriteNode = SKSpriteNode(imageNamed: "logo")
     var crown: SKSpriteNode = SKSpriteNode(imageNamed: "crown")
     
+    var gameSound: SKAudioNode = SKAudioNode()
+    
     override func didMove(to view: SKView) {
+        
+        gameSound = SKAudioNode(fileNamed: "Menu")
+        addChild(gameSound)
         
         //Adiciona o botão de Jogar e sua Posição
         startButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 150)
@@ -66,20 +71,11 @@ class  MenuScene: SKScene {
         
         //Adiciona o texto e a maior pontuação e suas posições
         bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + 170)
-        labelPoint.node.position = CGPoint(x: frame.midX , y: frame.midY + 200)
         bPoint.node.setScale(1.5)
-        labelPoint.node.setScale(1/1.08)
         addChild(bPoint.node)
-//        addChild(labelPoint.node)
         
         crown.position = CGPoint(x: frame.midX + 15 , y: frame.midY + 200)
         addChild(crown)
-        
-        //Adiciona o Título
-        title.node.position = CGPoint(x: frame.midX, y: frame.midY + 230)
-        title.node.setScale(1/1.08)
-//        addChild(title.node)
-        
 
         //funções de ligadas ao GameCenter que vem do GameCenterController
         GameCenterController.shared.authenticateGameCenter()
@@ -88,9 +84,24 @@ class  MenuScene: SKScene {
         }
         
         //Som
-            playSound(sound: "Menu", type: "mp3")
         soundButton.position = CGPoint(x: frame.midX + 160, y: frame.midY + 320)
-       // addChild(soundButton)
+        soundButton.name = "soundButton"
+       addChild(soundButton)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        if DataModel.shared.soundIsOn {
+            let texture = SKTexture(imageNamed: "SoundButton")
+            let action = SKAction.setTexture(texture)
+            gameSound.run(SKAction.play())
+            soundButton.run(action)
+        }
+        else {
+            let texture = SKTexture(imageNamed: "SoundOffButton")
+            let action = SKAction.setTexture(texture)
+            gameSound.run(SKAction.stop())
+            soundButton.run(action)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -126,25 +137,20 @@ class  MenuScene: SKScene {
 
         let newScene = GameScene()
         self.changeTo(scene: newScene)
-        playSound(sound: "Jogo", type: "mp3")
     }
     
     //função que Chama a TutorialScene
     func startTutorial() {
         let newScene = EndScene()
         self.changeTo(scene: newScene)
-        playSound(sound: "Jogo", type: "mp3")
     }
-    //TODO: adicionar o botão de som, fazer funcionar e mudar ele
+
     func soundIsOn() {
         DataModel.shared.soundIsOn.toggle()
+        print("som: \(DataModel.shared.soundIsOn)")
     }
     
-//    func createSound(){
-//        soundButton = SKSpriteNode(imageNamed: DataModel.shared.soundIsOn ? "SoundButton" : "SoundOff")
-//        soundButton.position = CGPoint(x: frame.size.width / 10, y: frame.size.height / 5)
-//        addChild(soundButton)
-//    }
+
     
    
 }
