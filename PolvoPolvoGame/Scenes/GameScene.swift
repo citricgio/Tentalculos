@@ -58,13 +58,6 @@ class GameScene: SKScene {
     let spawner5 = SKSpriteNode()
     let spawnerIncognita = SKSpriteNode()
     let shelf = SKSpriteNode()
-
-    // localização dos spawners
-    var spawnLocationIncognita = CGPoint(x:355, y: 230)
-    var spawnLocation1 = CGPoint(x:290, y: 230)
-    var spawnLocation2 = CGPoint(x:215, y: 230)
-    var spawnLocation3 = CGPoint(x:140, y: 230)
-    var spawnLocation5 = CGPoint(x:65, y: 230)
     
     var foodRemovedArray: [SKSpriteNode] = []
     
@@ -384,7 +377,11 @@ class GameScene: SKScene {
             addOperationButtons()
             updateScore()
             nextButton.clickAction = finalizeCheck
+            
+            //arrumar
             setupParabens()
+            removeChildren(in: [restartButton])
+
             
         } else {
             endGame()
@@ -468,21 +465,21 @@ class GameScene: SKScene {
             let fruitNode = FruitEnum.fruit1.toNode()
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
-            fruitNode.node.position = spawnLocation1
+            fruitNode.node.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
             addChild(fruitNode.node)
             return fruitNode
         case .fruit2:
             let fruitNode = FruitEnum.fruit2.toNode()
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
-            fruitNode.node.position = spawnLocation2
+            fruitNode.node.position = CGPoint(x:frame.size.width / 2, y: frame.size.height / 4.052)
             addChild(fruitNode.node)
             return fruitNode
         case .fruit3:
             let fruitNode = FruitEnum.fruit3.toNode()
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
-            fruitNode.node.position = spawnLocation3
+            fruitNode.node.position = CGPoint(x:frame.size.width / 3.07, y: frame.size.height / 4.05)
             addChild(fruitNode.node)
             return fruitNode
         case .fruit5:
@@ -490,7 +487,7 @@ class GameScene: SKScene {
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
             fruitNode.node.anchorPoint = CGPoint(x: 0.5, y: 0.3)
-            fruitNode.node.position = spawnLocation5
+            fruitNode.node.position = CGPoint(x:frame.size.width / 6.61, y: frame.size.height / 4.052)
             addChild(fruitNode.node)
             return fruitNode
         case .unknown:
@@ -498,14 +495,14 @@ class GameScene: SKScene {
             fruitNode.node.name = "incognita"
             fruitNode.node.zPosition = 20
             fruitNode.node.anchorPoint = CGPoint(x: 0.5, y: 0.25)
-            fruitNode.node.position = spawnLocationIncognita
+            fruitNode.node.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
             addChild(fruitNode.node)
             return fruitNode
         default:
             let fruitNode = FruitEnum.fruit1.toNode()
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
-            fruitNode.node.position = spawnLocation1
+            fruitNode.node.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
             addChild(fruitNode.node)
             return fruitNode
         }
@@ -582,23 +579,23 @@ class GameScene: SKScene {
         addChild(shelf)
         
         spawner1.size = CGSize(width: 55, height: 120)
-        spawner1.position = spawnLocation1
+        spawner1.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
         spawner1.zPosition = 10
                 
         spawner2.size = CGSize(width: 55, height: 120)
-        spawner2.position = spawnLocation2
+        spawner2.position = CGPoint(x:frame.size.width / 2, y: frame.size.height / 4.052)
         spawner2.zPosition = 10
         
         spawner3.size = CGSize(width: 55, height: 120)
-        spawner3.position = spawnLocation3
+        spawner3.position = CGPoint(x:frame.size.width / 3.07, y: frame.size.height / 4.05)
         spawner3.zPosition = 10
         
         spawner5.size = CGSize(width: 55, height: 120)
-        spawner5.position = spawnLocation5
+        spawner5.position = CGPoint(x:frame.size.width / 6.61, y: frame.size.height / 4.052)
         spawner5.zPosition = 10
         
         spawnerIncognita.size = CGSize(width: 55, height: 120)
-        spawnerIncognita.position = spawnLocationIncognita
+        spawnerIncognita.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
         spawnerIncognita.zPosition = 10
         
         addChild(spawner1)
@@ -614,21 +611,21 @@ class GameScene: SKScene {
             let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number1"))
             fruitNode.name = "food"
             fruitNode.zPosition = 20
-            fruitNode.position = spawnLocation1
+            fruitNode.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
             addChild(fruitNode)
             return fruitNode
         case .fruit2:
             let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number2"))
             fruitNode.name = "food"
             fruitNode.zPosition = 20
-            fruitNode.position = spawnLocation2
+            fruitNode.position = CGPoint(x:frame.size.width / 2, y: frame.size.height / 4.052)
             addChild(fruitNode)
             return fruitNode
         case .fruit3:
             let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number3"))
             fruitNode.name = "food"
             fruitNode.zPosition = 20
-            fruitNode.position = spawnLocation3
+            fruitNode.position = CGPoint(x:frame.size.width / 3.07, y: frame.size.height / 4.05)
             addChild(fruitNode)
             return fruitNode
         case .fruit5:
@@ -636,7 +633,7 @@ class GameScene: SKScene {
             fruitNode.name = "food"
             fruitNode.zPosition = 20
             fruitNode.anchorPoint = CGPoint(x: 0.5, y: 0.3)
-            fruitNode.position = spawnLocation5
+            fruitNode.position = CGPoint(x:frame.size.width / 6.61, y: frame.size.height / 4.052)
             addChild(fruitNode)
             return fruitNode
         case .unknown:
@@ -644,7 +641,7 @@ class GameScene: SKScene {
             fruitNode.name = "food"
             fruitNode.zPosition = 20
             fruitNode.anchorPoint = CGPoint(x: 0.5, y: 0.25)
-            fruitNode.position = spawnLocationIncognita
+            fruitNode.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
             addChild(fruitNode)
             return fruitNode
         default:
@@ -652,7 +649,7 @@ class GameScene: SKScene {
             fruitNode.name = "food"
             fruitNode.zPosition = 20
             fruitNode.anchorPoint = CGPoint(x: 0.5, y: 0.3)
-            fruitNode.position = spawnLocation1
+            fruitNode.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
             addChild(fruitNode)
             return fruitNode
         }
@@ -817,7 +814,7 @@ class GameScene: SKScene {
                     }
                     isInTrayLeft = true
                     foodArrayLeft.append(food)
-                    foodContLeft += 15
+                    foodContLeft += frame.size.width / 28.66
                 }
                 
                 if DataModel.shared.weightLeftSide == DataModel.shared.weight{
@@ -834,7 +831,7 @@ class GameScene: SKScene {
                     food.node.name = "foodAdded"
                     isInTrayRight = true
                     foodArrayRight.append(food)
-                    foodContRight += 15
+                    foodContRight += frame.size.width / 28.66
                 }
                 
                 if DataModel.shared.weightRightSide == DataModel.shared.weight{
@@ -845,7 +842,7 @@ class GameScene: SKScene {
             else {
                 if !(isInTrayLeft && isInTrayRight){
                     if (food.node.name == "incognita") {
-                        food.node.position = spawnLocationIncognita
+                        food.node.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
                         foodRemovedArray.append(food.node)
                     }
                     else if (food.node.name == "food"){
@@ -861,7 +858,7 @@ class GameScene: SKScene {
         else {
             if !(isInTrayLeft && isInTrayRight){
                 if (food.node.name == "incognita") {
-                    food.node.position = spawnLocationIncognita
+                    food.node.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
                     foodRemovedArray.append(food.node)
                 }
                 else if (food.node.name == "food"){

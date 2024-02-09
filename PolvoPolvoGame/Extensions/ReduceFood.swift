@@ -94,7 +94,7 @@ extension GameScene {
                             food.node.position.y = foodArrayLeft[index].node.position.y
                             food.node.name = "foodAdded"
                             foodArrayLeft.append(food)
-                            foodContLeft += 30
+                            foodContLeft += frame.size.width / 28.66
                             food.node.position.x = foodArrayLeft[index].node.position.x + foodContLeft
                             addChild(food.node)
                         default:
@@ -154,7 +154,7 @@ extension GameScene {
                         food.node.position.y = foodArrayLeft[cont_left].node.position.y
                         food.node.name = "foodAdded"
                         foodArrayLeft.append(food)
-                        foodContLeft += 30
+                        foodContLeft += frame.size.width / 14.33
                         food.node.position.x = foodArrayLeft[cont_left].node.position.x + foodContLeft
                         addChild(food.node)
                     default:
@@ -386,7 +386,7 @@ extension GameScene {
                             food.node.position.y = foodArrayLeft[index].node.position.y
                             food.node.name = "foodAdded"
                             foodArrayLeft.append(food)
-                            foodContLeft += 30
+                            foodContLeft += frame.size.width / 28.66
                             food.node.position.x = foodArrayLeft[index].node.position.x + foodContLeft
                             addChild(food.node)
                         default:
@@ -446,7 +446,7 @@ extension GameScene {
                         food.node.position.y = foodArrayLeft[cont_left].node.position.y
                         food.node.name = "foodAdded"
                         foodArrayLeft.append(food)
-                        foodContLeft += 30
+                        foodContLeft += frame.size.width / 28.66
                         food.node.position.x = foodArrayLeft[cont_left].node.position.x + foodContLeft
                         addChild(food.node)
                     default:
