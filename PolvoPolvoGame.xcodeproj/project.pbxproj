@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08056D9D2B61985A000DDDEE /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9C2B61985A000DDDEE /* NextButton.swift */; };
 		08056D9F2B6AB48D000DDDEE /* SpriteButtonReduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */; };
+		0879DCD82B7696FD0000E738 /* RestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0879DCD72B7696FD0000E738 /* RestartButton.swift */; };
 		08F589782B716FE50092D72A /* Jogo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F589772B716FE50092D72A /* Jogo.mp3 */; };
 		08F5897A2B716FF00092D72A /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F589792B716FF00092D72A /* Menu.mp3 */; };
 		08F5897C2B7170080092D72A /* Derrota.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F5897B2B7170080092D72A /* Derrota.mp3 */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		08056D9C2B61985A000DDDEE /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonReduce.swift; sourceTree = "<group>"; };
+		0879DCD72B7696FD0000E738 /* RestartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartButton.swift; sourceTree = "<group>"; };
 		08F589772B716FE50092D72A /* Jogo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jogo.mp3; sourceTree = "<group>"; };
 		08F589792B716FF00092D72A /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu.mp3; sourceTree = "<group>"; };
 		08F5897B2B7170080092D72A /* Derrota.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Derrota.mp3; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				B4DFD3832B6C06BB006AF2DC /* WriteButton.swift */,
 				B4DFD3852B6C13BA006AF2DC /* EndData.swift */,
+				0879DCD72B7696FD0000E738 /* RestartButton.swift */,
 				B4DFD3892B6C3CB6006AF2DC /* WriteNode.swift */,
 			);
 			path = SceneComponents;
@@ -345,6 +348,7 @@
 				FAD108492B72BC1E00DD3767 /* FruitEnum.swift in Sources */,
 				FAD1084E2B72BD0200DD3767 /* Calculator.swift in Sources */,
 				FAD1084C2B72BC1E00DD3767 /* OperationEnum.swift in Sources */,
+				0879DCD82B7696FD0000E738 /* RestartButton.swift in Sources */,
 				B400CB852B6AD80F00C9C645 /* EndScene.swift in Sources */,
 				8F040E482B58718000AB8BBB /* DataModel.swift in Sources */,
 				FA240ED82B6178D300AABC49 /* SpriteButtonOperation.swift in Sources */,

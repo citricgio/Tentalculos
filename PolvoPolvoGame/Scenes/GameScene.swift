@@ -75,6 +75,8 @@ class GameScene: SKScene {
     
     var nextButton: NextButton = NextButton(action: {}, textLabel: "Próximo")
     
+    var restartButton: RestartButton = RestartButton(action: {})
+
     var operationButton: SpriteButtonOperation = SpriteButtonOperation(action: {})
     
     var operationNumbersButton: SpriteButtonNumbers = SpriteButtonNumbers(action: {})
@@ -104,7 +106,6 @@ class GameScene: SKScene {
  
     var lineEquation = SKSpriteNode(imageNamed: "line")
     var equationLabel = SKLabelNode()
-    
  
     
 //    var equationNode: EquationNode = EquationNode()
@@ -157,6 +158,9 @@ class GameScene: SKScene {
         nextButton = NextButton(action: isCorrect ? finalizeCheck : firstCheck, textLabel: isCorrect ? "Finalizar" : "Próximo")
         addChild(nextButton)
         
+        restartButton = RestartButton(action: restartFood)
+        addChild(restartButton)
+        
         background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
         addChild(background)
         
@@ -204,7 +208,7 @@ class GameScene: SKScene {
     
     
     func updateEquation() {
-        equationLabel.text = "? = \(DataModel.shared.valueX)"
+        equationLabel.text = "X = \(DataModel.shared.valueX)"
         equationLabel.fontColor = .systemGreen
     }
     
@@ -228,6 +232,7 @@ class GameScene: SKScene {
     
     // adicionar as vidas na tela e adiciona-las numa array com todas as vidas
     func addLives() {
+        
         live1 = SKSpriteNode(texture: plate)
         live1.position = CGPoint(x: size.width / 2 - 63, y: 790)
         live1.zPosition = 11
@@ -235,8 +240,15 @@ class GameScene: SKScene {
         live1.size = CGSize(width: 57, height: 57)
         print("VIDA 1")
         
-        addChild(live1)
-        lives.append(live1)
+        if DataModel.shared.isAlive[0] == false {
+            live1.texture = brokenPlate
+            addChild(live1)
+            lives.append(live1)
+        }
+        else {
+            addChild(live1)
+            lives.append(live1)
+        }
         
         live2 = SKSpriteNode(texture: plate)
         live2.position = CGPoint(x: size.width / 2, y: 790)
@@ -246,8 +258,16 @@ class GameScene: SKScene {
 
         print("VIDA 2")
         
-        addChild(live2)
-        lives.append(live2)
+        if DataModel.shared.isAlive[1] == false {
+            live2.texture = brokenPlate
+            addChild(live2)
+            lives.append(live2)
+        }
+        else {
+            addChild(live2)
+            lives.append(live2)
+        }
+
 
         
         live3 = SKSpriteNode(texture: plate)
@@ -258,8 +278,15 @@ class GameScene: SKScene {
 
         print("VIDA 3")
         
-        addChild(live3)
-        lives.append(live3)
+        if DataModel.shared.isAlive[2] == false {
+            live3.texture = brokenPlate
+            addChild(live3)
+            lives.append(live3)
+        }
+        else {
+            addChild(live3)
+            lives.append(live3)
+        }
 
     }
     
@@ -275,6 +302,17 @@ class GameScene: SKScene {
 
             }
         }
+    }
+    
+    func setupParabens() {
+        let node = SKSpriteNode()
+        node.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        let parabens = SKTexture(imageNamed: "parabens")
+        let action1 = SKAction.setTexture(parabens, resize: true)
+        let fade = SKAction.fadeOut(withDuration: 1)
+        
+        let sequence = SKAction.sequence([action1,fade])
+        node.run(sequence)
     }
     
     func endGame() {
@@ -353,6 +391,7 @@ class GameScene: SKScene {
             addOperationButtons()
             updateScore()
             nextButton.clickAction = finalizeCheck
+            setupParabens()
             
         } else {
             GameCenterController.shared.points = DataModel.shared.equationCount
@@ -364,6 +403,7 @@ class GameScene: SKScene {
     
     func finalizeCheck(){
         if DataModel.shared.weight == DataModel.shared.valueX {
+            DataModel.shared.difficultyCounter += 1
             updateEquation()
             updateScore()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
@@ -378,9 +418,15 @@ class GameScene: SKScene {
     
     // função que faz as bases iniciais do jogo
     func setupGame(){
-        gerador.generateBasicEquation() // gera uma equação aleatória
-//        gerador.generateIntermidiateEquation()
+        if DataModel.shared.difficultyCounter <= 3{
+            print("contador: \(DataModel.shared.difficultyCounter)")
+            gerador.generateBasicEquation() // gera uma equação aleatória
+        }
+        else {
+            gerador.generateIntermidiateEquation()
+        }
     }
+
     
     // função que calcula o ângulo de rotação do braço do polvo (vai de -45º até 45º)
     func calculateAngle() {
@@ -395,6 +441,25 @@ class GameScene: SKScene {
         }
     }
     
+    func restartFood() {
+        for food in foodArrayLeft {
+            food.node.removeFromParent()
+        }
+        for food in foodArrayRight {
+            food.node.removeFromParent()
+        }
+        foodContLeft = 0
+        foodContRight = 0
+        foodArrayLeft.removeAll()
+        foodArrayRight.removeAll()
+        DataModel.shared.weightLeftSide = 0
+        DataModel.shared.weightRightSide = 0
+        DataModel.shared.leftBalanceLocked = false
+        DataModel.shared.rightBalanceLocked = false
+        DataModel.shared.hasX = false
+
+        
+    }
     
     //Colocar a comida na tela
     func setupDragLabelFood(fruit: FruitEnum) -> FruitNode{
@@ -672,6 +737,13 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         calculateAngle()
         scoreLabel.text = "\(DataModel.shared.equationCount) pts"
+        
+        if operationButton.changeOperation.selectedOperation == .subtraction {
+            irButton.clickAction = reduceFood
+        }
+        else{
+            irButton.clickAction = divideFood
+        }
         
         // Se a comida entrar na bandeja, a posição da comida vai ser atualizada, as comidas são posicionadas lado a lado quando adicionadas mais de uma
         if isInTrayLeft {
