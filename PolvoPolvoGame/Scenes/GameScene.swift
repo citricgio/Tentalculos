@@ -165,7 +165,9 @@ class GameScene: SKScene {
         addLives()
         addEquation()
         
-        playSound(sound: "Jogo", type: "mp3=")
+        if DataModel.shared.soundIsOn {
+            playSound(sound: "Jogo", type: "mp3")
+        }
         
     }
     
@@ -294,7 +296,6 @@ class GameScene: SKScene {
             if DataModel.shared.isAlive[i] == false {
                 let live = lives[i]
                 live.texture = brokenPlate
-//                playSound(sound: "Prato quebrando", type: "mp3")
 
             }
         }
@@ -320,8 +321,12 @@ class GameScene: SKScene {
             updateLives()
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive)")
-            playSound(sound: "Prato quebrando", type: "mp3")
-            playSound(sound: "Jogo", type: "mp3")
+            
+            if DataModel.shared.soundIsOn {
+                playSound(sound: "Prato quebrando", type: "mp3")
+                playSound(sound: "Jogo", type: "mp3")
+            }
+
 
             let textureMid = SKTexture(imageNamed: "mid-face")
             let textureHappy = SKTexture(imageNamed: "happy-face")
@@ -338,8 +343,12 @@ class GameScene: SKScene {
             updateLives()
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive)")
-            playSound(sound: "Prato quebrando", type: "mp3")
-            playSound(sound: "Jogo", type: "mp3")
+            
+            if DataModel.shared.soundIsOn {
+                playSound(sound: "Prato quebrando", type: "mp3")
+                playSound(sound: "Jogo", type: "mp3")
+            }
+            
             let textureSad = SKTexture(imageNamed: "sad-face")
             let textureHappy = SKTexture(imageNamed: "happy-face")
             let action1 = SKAction.setTexture(textureSad, resize: true)
@@ -356,7 +365,11 @@ class GameScene: SKScene {
             updateLives()
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive)")
-            playSound(sound: "Prato quebrando", type: "mp3")
+            
+            if DataModel.shared.soundIsOn {
+                playSound(sound: "Prato quebrando", type: "mp3")
+
+            }
 
         }
         // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
