@@ -288,7 +288,6 @@ class GameScene: SKScene {
             print("oiiii \(DataModel.shared.countsLive)")
             playSound(sound: "Prato quebrando", type: "mp3")
             playSound(sound: "Jogo", type: "mp3")
-            GameCenterController.shared.points = DataModel.shared.equationCount
 
             let textureMid = SKTexture(imageNamed: "mid-face")
             let textureHappy = SKTexture(imageNamed: "happy-face")
@@ -315,7 +314,6 @@ class GameScene: SKScene {
             
             let sequence = SKAction.sequence([action1,actionWait,action2])
             octopusFace.run(sequence)
-            GameCenterController.shared.points = DataModel.shared.equationCount
 
         }
         else if childNode(withName: "live3") != nil && DataModel.shared.isAlive[2] == true {
@@ -325,7 +323,6 @@ class GameScene: SKScene {
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive)")
             playSound(sound: "Prato quebrando", type: "mp3")
-            GameCenterController.shared.points = DataModel.shared.equationCount
 
         }
         // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
@@ -355,7 +352,6 @@ class GameScene: SKScene {
             nextButton.clickAction = finalizeCheck
             
         } else {
-            GameCenterController.shared.points = DataModel.shared.equationCount
             endGame()
 
         }
