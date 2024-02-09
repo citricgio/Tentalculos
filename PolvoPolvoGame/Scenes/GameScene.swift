@@ -154,6 +154,8 @@ class GameScene: SKScene {
         addChild(nextButton)
         
         restartButton = RestartButton(action: restartFood)
+        restartButton.position = CGPoint(x: frame.size.width / 1.102, y: frame.size.height / 1.179)
+
         addChild(restartButton)
         
         background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
