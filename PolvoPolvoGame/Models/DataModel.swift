@@ -51,7 +51,11 @@ import SwiftUI
     //melhor score que vem do gameCenter
     var points: GamePlayData = GamePlayData()
     
+    //contador que determina a dificuldade da
     var difficultyCounter: Int = 0
+    
+    //variável que indica se a música está ligada ou desligada
+    var isMusicOn: Bool = true
 }
 
 
