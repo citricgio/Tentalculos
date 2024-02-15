@@ -144,6 +144,9 @@ class GameScene: SKScene {
         setupTargets()
         
         nextButton = NextButton(action: isCorrect ? finalizeCheck : firstCheck, textLabel: isCorrect ? "Finalizar" : "Próximo")
+        nextButton.text.position = CGPoint(x: frame.midX, y: frame.size.height / 13.31)
+        nextButton.node.position = CGPoint(x: frame.midX, y: frame.size.height / 13.31)
+
         addChild(nextButton)
         
         restartButton = RestartButton(action: restartFood)
@@ -167,15 +170,20 @@ class GameScene: SKScene {
     func addOperationButtons() {
         operationNumbersButton = SpriteButtonNumbers(){
         }
-        
+        operationNumbersButton.number.position = CGPoint(x: frame.midX, y: frame.size.height / 4.96)
+        operationNumbersButton.node.position = CGPoint(x: frame.midX, y: frame.size.height / 4.96)
         addChild(operationNumbersButton)
         
         irButton = SpriteButtonReduce(action: reduceFood, textLabel: "Ir")
+        irButton.text.position = CGPoint(x: frame.midX + frame.size.width / 3.9, y: frame.size.height / 4.96)
+        irButton.node.position = CGPoint(x: frame.midX + frame.size.width / 3.9, y: frame.size.height / 4.96)
         addChild(irButton)
     
         operationButton = SpriteButtonOperation() {
             //print("cliquei")
         }
+        operationButton.number.position = CGPoint(x: frame.midX - 90, y: frame.size.height / 4.96)
+        operationButton.node.position = CGPoint(x: frame.midX - 90, y: frame.size.height / 4.96)
         addChild(operationButton)
         
     }
@@ -316,7 +324,7 @@ class GameScene: SKScene {
             print("oiiii \(DataModel.shared.countsLive)")
             
             if DataModel.shared.soundIsOn {
-                playSound(sound: "Prato quebrando", type: "mp3")
+                playSound(sound: "Prato", type: "mp3")
                 playSound(sound: "Jogo", type: "mp3")
             }
 
@@ -338,7 +346,7 @@ class GameScene: SKScene {
             print("oiiii \(DataModel.shared.countsLive)")
             
             if DataModel.shared.soundIsOn {
-                playSound(sound: "Prato quebrando", type: "mp3")
+                playSound(sound: "Prato", type: "mp3")
                 playSound(sound: "Jogo", type: "mp3")
             }
             
@@ -360,7 +368,7 @@ class GameScene: SKScene {
             print("oiiii \(DataModel.shared.countsLive)")
             
             if DataModel.shared.soundIsOn {
-                playSound(sound: "Prato quebrando", type: "mp3")
+                playSound(sound: "Prato", type: "mp3")
 
             }
 
@@ -390,6 +398,12 @@ class GameScene: SKScene {
             addOperationButtons()
             updateScore()
             nextButton.clickAction = finalizeCheck
+            
+            let shelfTexture = SKTexture(imageNamed: "shelf2")
+            let action1 = SKAction.setTexture(shelfTexture, resize: true)
+            shelf.position.y = CGFloat(frame.size.height / 42.2)
+            
+            shelf.run(action1)
             
             //arrumar
             setupParabens()
@@ -588,26 +602,26 @@ class GameScene: SKScene {
         shelf.position = CGPoint(x: frame.size.width / 2, y: 0)
         shelf.anchorPoint = CGPoint(x: 0.5, y: 0.2)
         shelf.zPosition = 1
-        
+      
         addChild(shelf)
         
-        spawner1.size = CGSize(width: 55, height: 120)
+        spawner1.size = CGSize(width: frame.size.width / 7.81, height: frame.size.height / 7.76)
         spawner1.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
         spawner1.zPosition = 10
                 
-        spawner2.size = CGSize(width: 55, height: 120)
+        spawner2.size = CGSize(width: frame.size.width / 7.81, height: frame.size.height / 7.76)
         spawner2.position = CGPoint(x:frame.size.width / 2, y: frame.size.height / 4.052)
         spawner2.zPosition = 10
         
-        spawner3.size = CGSize(width: 55, height: 120)
+        spawner3.size = CGSize(width: frame.size.width / 7.81, height: frame.size.height / 7.76)
         spawner3.position = CGPoint(x:frame.size.width / 3.07, y: frame.size.height / 4.05)
         spawner3.zPosition = 10
         
-        spawner5.size = CGSize(width: 55, height: 120)
+        spawner5.size = CGSize(width: frame.size.width / 7.81, height: frame.size.height / 7.76)
         spawner5.position = CGPoint(x:frame.size.width / 6.61, y: frame.size.height / 4.052)
         spawner5.zPosition = 10
         
-        spawnerIncognita.size = CGSize(width: 55, height: 120)
+        spawnerIncognita.size = CGSize(width: frame.size.width / 7.81, height: frame.size.height / 7.76)
         spawnerIncognita.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
         spawnerIncognita.zPosition = 10
         

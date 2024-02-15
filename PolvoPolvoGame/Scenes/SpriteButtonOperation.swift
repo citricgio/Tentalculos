@@ -17,7 +17,6 @@ class SpriteButtonOperation: SKNode {
     var changeOperation = OperationButton()
     var positionButton = CGPoint(x: 100, y: 240)
     var node: SKSpriteNode
-
     
     init(action: @escaping () -> Void) {
         clickAction = action
@@ -26,7 +25,6 @@ class SpriteButtonOperation: SKNode {
         // mostra no botao a selectedOperation
         number.text = "\(changeOperation.selectedOperation.name)"
         number.zPosition = 3
-        number.position = positionButton
         
         number.fontSize = 28
         number.verticalAlignmentMode = .center
