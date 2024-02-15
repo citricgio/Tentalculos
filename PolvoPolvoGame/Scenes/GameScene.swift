@@ -749,11 +749,11 @@ class GameScene: SKScene {
         
         // Se a comida entrar na bandeja, a posição da comida vai ser atualizada, as comidas são posicionadas lado a lado quando adicionadas mais de uma
         if isInTrayLeft {
-            food.node.position.x = (foodTrayLeft.position.x - 60) + foodContLeft
+            food.node.position.x = (foodTrayLeft.position.x - 80) + foodContLeft
             rotate(angleRotation: angle)
             
         } else if isInTrayRight {
-            food.node.position.x = (foodTrayRight.position.x - 60) + foodContRight
+            food.node.position.x = (foodTrayRight.position.x - 80) + foodContRight
             rotate(angleRotation: angle)
         }
         
@@ -827,7 +827,7 @@ class GameScene: SKScene {
                     }
                     isInTrayLeft = true
                     foodArrayLeft.append(food)
-                    foodContLeft += frame.size.width / 28.66
+                    foodContLeft += frame.size.width / 13.03
                 }
                 
                 if DataModel.shared.weightLeftSide == DataModel.shared.weight{
@@ -844,7 +844,7 @@ class GameScene: SKScene {
                     food.node.name = "foodAdded"
                     isInTrayRight = true
                     foodArrayRight.append(food)
-                    foodContRight += frame.size.width / 28.66
+                    foodContRight += frame.size.width / 13.03
                 }
                 
                 if DataModel.shared.weightRightSide == DataModel.shared.weight{
