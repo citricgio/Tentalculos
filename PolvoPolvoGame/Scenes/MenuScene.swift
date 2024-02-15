@@ -52,7 +52,7 @@ class  MenuScene: SKScene {
         //Adiciona o botão de Tutorial e sua posição
         tutorialButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 250)
         tutorialButton.node.setScale(1/1.08)
-//        addChild(tutorialButton.node)
+        addChild(tutorialButton.node)
         
         
         logoName.position = CGPoint(x: size.width / 2, y: 750)
