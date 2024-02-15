@@ -10,7 +10,7 @@
 		08056D9D2B61985A000DDDEE /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9C2B61985A000DDDEE /* NextButton.swift */; };
 		08056D9F2B6AB48D000DDDEE /* SpriteButtonReduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */; };
 		0879DCD82B7696FD0000E738 /* RestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0879DCD72B7696FD0000E738 /* RestartButton.swift */; };
-		08BD8FF62B7E79D7005D7E79 /* Silencio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08BD8FF52B7E79D7005D7E79 /* Silencio.mp3 */; };
+		08BD8FF82B7E7AC4005D7E79 /* Silencio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08BD8FF72B7E7AC4005D7E79 /* Silencio.mp3 */; };
 		08F589782B716FE50092D72A /* Jogo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F589772B716FE50092D72A /* Jogo.mp3 */; };
 		08F5897A2B716FF00092D72A /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F589792B716FF00092D72A /* Menu.mp3 */; };
 		08F5897C2B7170080092D72A /* Derrota.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F5897B2B7170080092D72A /* Derrota.mp3 */; };
@@ -54,7 +54,7 @@
 		08056D9C2B61985A000DDDEE /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonReduce.swift; sourceTree = "<group>"; };
 		0879DCD72B7696FD0000E738 /* RestartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartButton.swift; sourceTree = "<group>"; };
-		08BD8FF52B7E79D7005D7E79 /* Silencio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Silencio.mp3; sourceTree = "<group>"; };
+		08BD8FF72B7E7AC4005D7E79 /* Silencio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Silencio.mp3; sourceTree = "<group>"; };
 		08F589772B716FE50092D72A /* Jogo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jogo.mp3; sourceTree = "<group>"; };
 		08F589792B716FF00092D72A /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu.mp3; sourceTree = "<group>"; };
 		08F5897B2B7170080092D72A /* Derrota.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Derrota.mp3; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 		FA0C17AA2B715287004BF668 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				08BD8FF52B7E79D7005D7E79 /* Silencio.mp3 */,
+				08BD8FF72B7E7AC4005D7E79 /* Silencio.mp3 */,
 				08F589772B716FE50092D72A /* Jogo.mp3 */,
 				08F589792B716FF00092D72A /* Menu.mp3 */,
 				08F5897B2B7170080092D72A /* Derrota.mp3 */,
@@ -322,7 +322,7 @@
 			files = (
 				8FED6B512B55BAF200F92D4F /* Preview Assets.xcassets in Resources */,
 				B494608D2B697497004CB1FD /* IstokWeb-Bold.ttf in Resources */,
-				08BD8FF62B7E79D7005D7E79 /* Silencio.mp3 in Resources */,
+				08BD8FF82B7E7AC4005D7E79 /* Silencio.mp3 in Resources */,
 				08F5897C2B7170080092D72A /* Derrota.mp3 in Resources */,
 				8FED6B4E2B55BAF200F92D4F /* Assets.xcassets in Resources */,
 				08F589802B7170B00092D72A /* Prato quebrando.mp3 in Resources */,
