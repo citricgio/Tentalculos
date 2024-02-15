@@ -32,7 +32,7 @@ struct TutorialView: View {
                     .rotationEffect(.degrees(90))
                 
             })
-            .offset(x: 176, y: 318)
+            .offset(x: 190, y: 318)
             if index >= 1 {
                 Button(action: {
                     if index < 24 {
@@ -44,7 +44,7 @@ struct TutorialView: View {
                         .frame(width: 60, height: 46)
                         .rotationEffect(.degrees(270))
                 })
-                .offset(x: -176, y: 318)
+                .offset(x: -190, y: 318)
                 
             }
         }
