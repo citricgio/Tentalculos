@@ -156,8 +156,10 @@ class  MenuScene: SKScene {
     
     //função que Chama a TutorialScene
     func startTutorial() {
-        let newScene = EndScene()
-        self.changeTo(scene: newScene)
+        DataModel.shared.tutorial.toggle()
+        if DataModel.shared.soundIsOn {
+            playSound(sound: "Jogo", type: "mp3")
+        }
     }
 
     func soundIsOn() {

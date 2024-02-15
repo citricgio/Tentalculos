@@ -10,6 +10,7 @@ import SpriteKit
 struct ContentView: View {
      
 
+    
   var scene: MenuScene {
     let scene: MenuScene = MenuScene()
 //    playSound(sound: "Menu", type: "mp3")
@@ -19,8 +20,12 @@ struct ContentView: View {
   }
    
     var body: some View {
+        if DataModel.shared.tutorial {
+            TutorialView()
+        } else {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
+        }
     }
 }
 #Preview {
