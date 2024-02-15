@@ -49,32 +49,32 @@ class  MenuScene: SKScene {
         addChild(gameSound)
         
         //Adiciona o botão de Jogar e sua Posição
-        startButton.node.position = CGPoint(x: frame.midX, y: 270)
+        startButton.node.position = CGPoint(x: frame.midX, y: frame.size.height / 3.45)
         startButton.node.setScale(1/1.08)
         addChild(startButton.node)
         
         //Adiciona o botão de Tutorial e sua posição
-        tutorialButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 270)
+        tutorialButton.node.position = CGPoint(x: frame.midX, y: frame.midY - frame.size.height / 3.45)
         tutorialButton.node.setScale(1/1.08)
         addChild(tutorialButton.node)
         
         
-        logoName.position = CGPoint(x: size.width / 2, y: 820)
-        logoName.size = CGSize(width: 450, height: 285)
+        logoName.position = CGPoint(x: size.width / 2, y: frame.size.height / 1.136)
+        logoName.size = CGSize(width: frame.size.width / 0.95, height: frame.size.height / 3.27)
         addChild(logoName)
         //Adiciona o polvo e sua posição
-        octopus.size = CGSize(width: 330, height: 253)
-        octopus.position = CGPoint(x: frame.midX - 20, y: 460 )
+        octopus.size = CGSize(width: frame.size.width / 1.30, height: frame.size.height / 3.68)
+        octopus.position = CGPoint(x: frame.midX - frame.size.width / 21.5, y: frame.size.height / 2.02 )
         octopus.setScale(1/1.08)
         addChild(octopus)
         
-        trayLeft.size = CGSize(width: 150, height: 25)
-        trayLeft.position = CGPoint(x: frame.size.width / 5.7, y: 530)
+        trayLeft.size = CGSize(width: frame.size.width / 2.86, height: frame.size.height / 37.28)
+        trayLeft.position = CGPoint(x: frame.size.width / 5.7, y: frame.size.height / 1.75)
         trayLeft.zPosition = 40
         addChild(trayLeft)
         
-        trayRight.size = CGSize(width: 150, height: 25)
-        trayRight.position = CGPoint(x: 347, y: 530)
+        trayRight.size = CGSize(width: frame.size.width / 2.86, height: frame.size.height / 37.28)
+        trayRight.position = CGPoint(x: frame.size.width / 1.23, y: frame.size.height / 1.75)
         trayRight.zPosition = 40
         addChild(trayRight)
         
@@ -84,11 +84,11 @@ class  MenuScene: SKScene {
         addChild(background)
         
         //Adiciona o texto e a maior pontuação e suas posições
-        bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + 168)
+        bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + frame.size.height / 5.54)
         bPoint.node.setScale(1.5)
         addChild(bPoint.node)
         
-        crown.position = CGPoint(x: frame.midX + 15 , y: frame.midY + 195)
+        crown.position = CGPoint(x: frame.midX + frame.size.width / 28.66 , y: frame.midY + frame.size.height / 4.77)
         addChild(crown)
 
         //funções de ligadas ao GameCenter que vem do GameCenterController
@@ -98,9 +98,9 @@ class  MenuScene: SKScene {
         }
         
         //Som
-        soundButton.position = CGPoint(x: frame.midX + 175, y: frame.midY + 400)
+        soundButton.position = CGPoint(x: frame.midX + frame.size.width / 2.45, y: frame.midY + frame.size.height / 2.33)
         soundButton.name = "soundButton"
-        soundButton.size = CGSize(width: 60, height: 60)
+        soundButton.size = CGSize(width: frame.size.width / 7.16, height: frame.size.height / 15.5)
        addChild(soundButton)
     }
     
