@@ -27,6 +27,7 @@
 		B400CB832B6AD80400C9C645 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400CB822B6AD80400C9C645 /* MenuScene.swift */; };
 		B400CB852B6AD80F00C9C645 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400CB842B6AD80F00C9C645 /* EndScene.swift */; };
 		B400CB882B6AE73500C9C645 /* SKScene+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400CB872B6AE73500C9C645 /* SKScene+.swift */; };
+		B40B4EA32B7E821600618A4E /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B4EA22B7E821600618A4E /* TutorialView.swift */; };
 		B43675952B715256007B7615 /* GameCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43675942B715256007B7615 /* GameCenterController.swift */; };
 		B494608D2B697497004CB1FD /* IstokWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B494608B2B697497004CB1FD /* IstokWeb-Bold.ttf */; };
 		B494608E2B697497004CB1FD /* IstokWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B494608C2B697497004CB1FD /* IstokWeb-Regular.ttf */; };
@@ -72,6 +73,7 @@
 		B400CB822B6AD80400C9C645 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		B400CB842B6AD80F00C9C645 /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
 		B400CB872B6AE73500C9C645 /* SKScene+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKScene+.swift"; sourceTree = "<group>"; };
+		B40B4EA22B7E821600618A4E /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		B43675942B715256007B7615 /* GameCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterController.swift; sourceTree = "<group>"; };
 		B49460892B6973B1004CB1FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B494608B2B697497004CB1FD /* IstokWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Bold.ttf"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				B400CB7F2B6AB30D00C9C645 /* Components */,
 				8FED6B4B2B55BAF100F92D4F /* ContentView.swift */,
 				B49DE6952B696665004A795D /* MenuView.swift */,
+				B40B4EA22B7E821600618A4E /* TutorialView.swift */,
 				B49DE6972B69666E004A795D /* EndView.swift */,
 			);
 			path = Views;
@@ -368,6 +371,7 @@
 				B400CB832B6AD80400C9C645 /* MenuScene.swift in Sources */,
 				B49DE6982B69666E004A795D /* EndView.swift in Sources */,
 				8F040E3E2B58514700AB8BBB /* GameScene.swift in Sources */,
+				B40B4EA32B7E821600618A4E /* TutorialView.swift in Sources */,
 				B4DFD3842B6C06BB006AF2DC /* WriteButton.swift in Sources */,
 				FAAA6EE22B72CA840007013B /* ReduceFood.swift in Sources */,
 				B4A35A392B75483E00A7CE62 /* GamePlayData.swift in Sources */,
@@ -505,7 +509,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 543L4H35A3;
+				DEVELOPMENT_TEAM = ACG36J6YH2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
@@ -521,7 +525,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos.Micher;
+				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -538,7 +542,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 543L4H35A3;
+				DEVELOPMENT_TEAM = ACG36J6YH2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
@@ -554,7 +558,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos.Micher;
+				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
