@@ -158,7 +158,8 @@ class  MenuScene: SKScene {
     func startTutorial() {
         DataModel.shared.tutorial.toggle()
         if DataModel.shared.soundIsOn {
-            playSound(sound: "Jogo", type: "mp3")
+            let action = SKAction.playSoundFileNamed("Jogo", waitForCompletion: true)
+            run(action)
         }
     }
 
