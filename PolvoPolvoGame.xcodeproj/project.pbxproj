@@ -10,6 +10,7 @@
 		08056D9D2B61985A000DDDEE /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9C2B61985A000DDDEE /* NextButton.swift */; };
 		08056D9F2B6AB48D000DDDEE /* SpriteButtonReduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */; };
 		0879DCD82B7696FD0000E738 /* RestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0879DCD72B7696FD0000E738 /* RestartButton.swift */; };
+		08BD8FF62B7E79D7005D7E79 /* Silencio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08BD8FF52B7E79D7005D7E79 /* Silencio.mp3 */; };
 		08F589782B716FE50092D72A /* Jogo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F589772B716FE50092D72A /* Jogo.mp3 */; };
 		08F5897A2B716FF00092D72A /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F589792B716FF00092D72A /* Menu.mp3 */; };
 		08F5897C2B7170080092D72A /* Derrota.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08F5897B2B7170080092D72A /* Derrota.mp3 */; };
@@ -18,7 +19,6 @@
 		8F040E3E2B58514700AB8BBB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E3D2B58514700AB8BBB /* GameScene.swift */; };
 		8F040E402B58518A00AB8BBB /* OperationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E3F2B58518A00AB8BBB /* OperationButton.swift */; };
 		8F040E482B58718000AB8BBB /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F040E472B58718000AB8BBB /* DataModel.swift */; };
-		8F577F9C2B76C74900661AA2 /* Silencio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8F577F9B2B76C74900661AA2 /* Silencio.mp3 */; };
 		8FED6B4A2B55BAF100F92D4F /* PolvoPolvoGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FED6B492B55BAF100F92D4F /* PolvoPolvoGameApp.swift */; };
 		8FED6B4C2B55BAF100F92D4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FED6B4B2B55BAF100F92D4F /* ContentView.swift */; };
 		8FED6B4E2B55BAF200F92D4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FED6B4D2B55BAF200F92D4F /* Assets.xcassets */; };
@@ -54,6 +54,7 @@
 		08056D9C2B61985A000DDDEE /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		08056D9E2B6AB48D000DDDEE /* SpriteButtonReduce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteButtonReduce.swift; sourceTree = "<group>"; };
 		0879DCD72B7696FD0000E738 /* RestartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartButton.swift; sourceTree = "<group>"; };
+		08BD8FF52B7E79D7005D7E79 /* Silencio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Silencio.mp3; sourceTree = "<group>"; };
 		08F589772B716FE50092D72A /* Jogo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jogo.mp3; sourceTree = "<group>"; };
 		08F589792B716FF00092D72A /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu.mp3; sourceTree = "<group>"; };
 		08F5897B2B7170080092D72A /* Derrota.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Derrota.mp3; sourceTree = "<group>"; };
@@ -62,7 +63,6 @@
 		8F040E3D2B58514700AB8BBB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8F040E3F2B58518A00AB8BBB /* OperationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationButton.swift; sourceTree = "<group>"; };
 		8F040E472B58718000AB8BBB /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		8F577F9B2B76C74900661AA2 /* Silencio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Silencio.mp3; path = ../../../../../Downloads/Silencio.mp3; sourceTree = "<group>"; };
 		8FED6B462B55BAF100F92D4F /* PolvoPolvoGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolvoPolvoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FED6B492B55BAF100F92D4F /* PolvoPolvoGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolvoPolvoGameApp.swift; sourceTree = "<group>"; };
 		8FED6B4B2B55BAF100F92D4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 		FA0C17AA2B715287004BF668 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				8F577F9B2B76C74900661AA2 /* Silencio.mp3 */,
+				08BD8FF52B7E79D7005D7E79 /* Silencio.mp3 */,
 				08F589772B716FE50092D72A /* Jogo.mp3 */,
 				08F589792B716FF00092D72A /* Menu.mp3 */,
 				08F5897B2B7170080092D72A /* Derrota.mp3 */,
@@ -322,13 +322,13 @@
 			files = (
 				8FED6B512B55BAF200F92D4F /* Preview Assets.xcassets in Resources */,
 				B494608D2B697497004CB1FD /* IstokWeb-Bold.ttf in Resources */,
+				08BD8FF62B7E79D7005D7E79 /* Silencio.mp3 in Resources */,
 				08F5897C2B7170080092D72A /* Derrota.mp3 in Resources */,
 				8FED6B4E2B55BAF200F92D4F /* Assets.xcassets in Resources */,
 				08F589802B7170B00092D72A /* Prato quebrando.mp3 in Resources */,
 				B494608E2B697497004CB1FD /* IstokWeb-Regular.ttf in Resources */,
 				08F589782B716FE50092D72A /* Jogo.mp3 in Resources */,
 				08F5897A2B716FF00092D72A /* Menu.mp3 in Resources */,
-				8F577F9C2B76C74900661AA2 /* Silencio.mp3 in Resources */,
 				08F5897E2B71701A0092D72A /* Derrota2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,7 +521,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos;
+				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos.Micher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -554,7 +554,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos;
+				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos.Micher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
