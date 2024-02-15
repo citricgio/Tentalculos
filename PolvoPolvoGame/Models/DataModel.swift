@@ -54,6 +54,9 @@ import SwiftUI
     //contador que determina a dificuldade da
     var difficultyCounter: Int = 0
     
+    //Bool que chama o tutorial
+    var tutorial: Bool = false
+    
 }
 
 
