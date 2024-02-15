@@ -73,7 +73,9 @@ class EndScene: SKScene {
         brokenplates.setScale(1/1.08)
         addChild(brokenplates)
         
-        playSound(sound: "Derrota2", type: "mp3")
+        if DataModel.shared.soundIsOn {
+            playSound(sound: "Derrota2", type: "mp3")
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -84,13 +86,18 @@ class EndScene: SKScene {
             //O que indica que quando clicar no startButton vai chamar a função de ir para a cena de jogo
             if touchedNode.name == "restartButton" {
                 restartGame()
-                playSound(sound: "Jogo", type: "mp3")
+                
+                if DataModel.shared.soundIsOn {
+                    playSound(sound: "Jogo", type: "mp3")
+                }
             }
             
             //O que indica que quando clicar no tutorialButton vai chamar a função de ir para a cena de tutorial
             if touchedNode.name == "menuButton" {
+                if DataModel.shared.soundIsOn {
+                    playSound(sound: "Silencio", type: "mp3")
+                }
                 backMenu()
-                playSound(sound: "Menu", type: "mp3")
             }
         }
     }
@@ -103,7 +110,6 @@ class EndScene: SKScene {
         DataModel.shared.isAlive = [true,true,true]
         let newScene = GameScene()
         self.changeTo(scene: newScene)
-//        playSound(sound: "Jogo", type: "mp3")
 
     }
     
@@ -111,7 +117,6 @@ class EndScene: SKScene {
     func backMenu() {
         let newScene = MenuScene()
         self.changeTo(scene: newScene)
-//        playSound(sound: "Menu", type: "mp3")
     }
     
     //TODO: Botão de som

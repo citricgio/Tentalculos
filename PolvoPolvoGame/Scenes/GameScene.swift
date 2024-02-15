@@ -58,13 +58,6 @@ class GameScene: SKScene {
     let spawner5 = SKSpriteNode()
     let spawnerIncognita = SKSpriteNode()
     let shelf = SKSpriteNode()
-
-    // localização dos spawners
-    var spawnLocationIncognita = CGPoint(x:355, y: 230)
-    var spawnLocation1 = CGPoint(x:290, y: 230)
-    var spawnLocation2 = CGPoint(x:215, y: 230)
-    var spawnLocation3 = CGPoint(x:140, y: 230)
-    var spawnLocation5 = CGPoint(x:65, y: 230)
     
     var foodRemovedArray: [SKSpriteNode] = []
     
@@ -116,23 +109,18 @@ class GameScene: SKScene {
         print(frame.size.width)
         print(frame.size.height)
         
-        //let food1 = setupDragLabelFood(fruit: .fruit1)
         let food1 = setupTextLabelNumbers(fruit: .fruit1)
         foodRemovedArray.append(food1)
         
-        //let food2 = setupDragLabelFood(fruit: .fruit2)
         let food2 = setupTextLabelNumbers(fruit: .fruit2)
         foodRemovedArray.append(food2)
         
-        //let food3 = setupDragLabelFood(fruit: .fruit3)
         let food3 = setupTextLabelNumbers(fruit: .fruit3)
         foodRemovedArray.append(food3)
         
-        //let food5 = setupDragLabelFood(fruit: .fruit5)
         let food5 = setupTextLabelNumbers(fruit: .fruit5)
         foodRemovedArray.append(food5)
         
-        //let incognita = setupDragLabelFood(fruit: .unknown)
         let incognita = setupTextLabelNumbers(fruit: .unknown)
         foodRemovedArray.append(incognita)
         
@@ -156,9 +144,14 @@ class GameScene: SKScene {
         setupTargets()
         
         nextButton = NextButton(action: isCorrect ? finalizeCheck : firstCheck, textLabel: isCorrect ? "Finalizar" : "Próximo")
+        nextButton.text.position = CGPoint(x: frame.midX, y: frame.size.height / 13.31)
+        nextButton.node.position = CGPoint(x: frame.midX, y: frame.size.height / 13.31)
+
         addChild(nextButton)
         
         restartButton = RestartButton(action: restartFood)
+        restartButton.position = CGPoint(x: frame.size.width / 1.102, y: frame.size.height / 1.179)
+
         addChild(restartButton)
         
         background.position = CGPoint(x: frame.size.width / 2 , y: frame.size.height / 2)
@@ -168,22 +161,29 @@ class GameScene: SKScene {
         addLives()
         addEquation()
         
-        playSound(sound: "Jogo", type: "mp3=")
+        if DataModel.shared.soundIsOn {
+            playSound(sound: "Jogo", type: "mp3")
+        }
         
     }
     
     func addOperationButtons() {
         operationNumbersButton = SpriteButtonNumbers(){
         }
-        
+        operationNumbersButton.number.position = CGPoint(x: frame.midX, y: frame.size.height / 4.96)
+        operationNumbersButton.node.position = CGPoint(x: frame.midX, y: frame.size.height / 4.96)
         addChild(operationNumbersButton)
         
         irButton = SpriteButtonReduce(action: reduceFood, textLabel: "Ir")
+        irButton.text.position = CGPoint(x: frame.midX + frame.size.width / 3.9, y: frame.size.height / 4.96)
+        irButton.node.position = CGPoint(x: frame.midX + frame.size.width / 3.9, y: frame.size.height / 4.96)
         addChild(irButton)
     
         operationButton = SpriteButtonOperation() {
             //print("cliquei")
         }
+        operationButton.number.position = CGPoint(x: frame.midX - 90, y: frame.size.height / 4.96)
+        operationButton.node.position = CGPoint(x: frame.midX - 90, y: frame.size.height / 4.96)
         addChild(operationButton)
         
     }
@@ -191,13 +191,13 @@ class GameScene: SKScene {
     func addEquation() {
         
         lineEquation.zPosition = 20
-        lineEquation.position = CGPoint(x: size.width/2, y: 720)
-        lineEquation.size = CGSize(width: 580, height: 125)
+        lineEquation.position = CGPoint(x: size.width/2, y: frame.size.height / 1.295)
+        lineEquation.size = CGSize(width: frame.size.width / 0.74, height: frame.size.height / 7.45)
         
         EquationGenerator().assembleEquation()
         equationLabel.zPosition = 21
         equationLabel.fontColor = .black
-        equationLabel.position = CGPoint(x: size.width/2 + 10, y: 685)
+        equationLabel.position = CGPoint(x: size.width/2 + frame.size.width / 43, y: frame.size.height / 1.36)
         equationLabel.text = DataModel.shared.equationText
         equationLabel.fontName = "IstokWeb-Bold"
         equationLabel.fontSize = 27
@@ -214,11 +214,10 @@ class GameScene: SKScene {
     
     // adicionar a label dos pontos na tela
     func addScore() {
-//        scoreLabel.text = "\(score) pts"
         scoreLabel.fontSize = 30
         scoreLabel.fontColor = .white
         scoreLabel.zPosition = 10
-        scoreLabel.position = CGPoint(x: size.width / 2, y: 850)
+        scoreLabel.position = CGPoint(x: size.width / 2, y: frame.size.height / 1.105)
         scoreLabel.fontName = "IstokWeb-Bold"
         scoreLabel.fontSize = 24
         
@@ -234,10 +233,10 @@ class GameScene: SKScene {
     func addLives() {
         
         live1 = SKSpriteNode(texture: plate)
-        live1.position = CGPoint(x: size.width / 2 - 63, y: 790)
+        live1.position = CGPoint(x: size.width / 2 - frame.size.width / 6.82, y: frame.size.height / 1.179)
         live1.zPosition = 11
         live1.name = "live1"
-        live1.size = CGSize(width: 57, height: 57)
+        live1.size = CGSize(width: frame.size.width / 7.54, height: frame.size.height / 16.35)
         print("VIDA 1")
         
         if DataModel.shared.isAlive[0] == false {
@@ -251,10 +250,10 @@ class GameScene: SKScene {
         }
         
         live2 = SKSpriteNode(texture: plate)
-        live2.position = CGPoint(x: size.width / 2, y: 790)
+        live2.position = CGPoint(x: size.width / 2, y: frame.size.height / 1.179)
         live2.zPosition = 11
         live2.name = "live2"
-        live2.size = CGSize(width: 57, height: 57)
+        live2.size = CGSize(width: frame.size.width / 7.54, height: frame.size.height / 16.35)
 
         print("VIDA 2")
         
@@ -271,10 +270,10 @@ class GameScene: SKScene {
 
         
         live3 = SKSpriteNode(texture: plate)
-        live3.position = CGPoint(x: size.width / 2 + 63, y: 790)
+        live3.position = CGPoint(x: size.width / 2 + frame.size.width / 6.82, y: frame.size.height / 1.179)
         live3.zPosition = 11
         live3.name = "live3"
-        live3.size = CGSize(width: 57, height: 57)
+        live3.size = CGSize(width: frame.size.width / 7.54, height: frame.size.height / 16.35)
 
         print("VIDA 3")
         
@@ -298,7 +297,6 @@ class GameScene: SKScene {
             if DataModel.shared.isAlive[i] == false {
                 let live = lives[i]
                 live.texture = brokenPlate
-//                playSound(sound: "Prato quebrando", type: "mp3")
 
             }
         }
@@ -324,8 +322,12 @@ class GameScene: SKScene {
             updateLives()
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive)")
-            playSound(sound: "Prato quebrando", type: "mp3")
-            playSound(sound: "Jogo", type: "mp3")
+            
+            if DataModel.shared.soundIsOn {
+                playSound(sound: "Prato", type: "mp3")
+                playSound(sound: "Jogo", type: "mp3")
+            }
+
 
             let textureMid = SKTexture(imageNamed: "mid-face")
             let textureHappy = SKTexture(imageNamed: "happy-face")
@@ -342,8 +344,12 @@ class GameScene: SKScene {
             updateLives()
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive)")
-            playSound(sound: "Prato quebrando", type: "mp3")
-            playSound(sound: "Jogo", type: "mp3")
+            
+            if DataModel.shared.soundIsOn {
+                playSound(sound: "Prato", type: "mp3")
+                playSound(sound: "Jogo", type: "mp3")
+            }
+            
             let textureSad = SKTexture(imageNamed: "sad-face")
             let textureHappy = SKTexture(imageNamed: "happy-face")
             let action1 = SKAction.setTexture(textureSad, resize: true)
@@ -360,7 +366,11 @@ class GameScene: SKScene {
             updateLives()
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive)")
-            playSound(sound: "Prato quebrando", type: "mp3")
+            
+            if DataModel.shared.soundIsOn {
+                playSound(sound: "Prato", type: "mp3")
+
+            }
 
         }
         // se o contador de vidas chegar a 3, muda para a tela final de perder o jogo
@@ -388,7 +398,17 @@ class GameScene: SKScene {
             addOperationButtons()
             updateScore()
             nextButton.clickAction = finalizeCheck
+            
+            let shelfTexture = SKTexture(imageNamed: "shelf2")
+            let action1 = SKAction.setTexture(shelfTexture, resize: true)
+            shelf.position.y = CGFloat(frame.size.height / 42.2)
+            
+            shelf.run(action1)
+            
+            //arrumar
             setupParabens()
+            removeChildren(in: [restartButton])
+
             
         } else {
             endGame()
@@ -438,6 +458,9 @@ class GameScene: SKScene {
     }
     
     func restartFood() {
+        DataModel.shared.leftBalanceLocked = false
+        DataModel.shared.rightBalanceLocked = false
+        DataModel.shared.hasX = false
         for food in foodArrayLeft {
             food.node.removeFromParent()
         }
@@ -450,9 +473,6 @@ class GameScene: SKScene {
         foodArrayRight.removeAll()
         DataModel.shared.weightLeftSide = 0
         DataModel.shared.weightRightSide = 0
-        DataModel.shared.leftBalanceLocked = false
-        DataModel.shared.rightBalanceLocked = false
-        DataModel.shared.hasX = false
 
         
     }
@@ -472,21 +492,21 @@ class GameScene: SKScene {
             let fruitNode = FruitEnum.fruit1.toNode()
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
-            fruitNode.node.position = spawnLocation1
+            fruitNode.node.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
             addChild(fruitNode.node)
             return fruitNode
         case .fruit2:
             let fruitNode = FruitEnum.fruit2.toNode()
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
-            fruitNode.node.position = spawnLocation2
+            fruitNode.node.position = CGPoint(x:frame.size.width / 2, y: frame.size.height / 4.052)
             addChild(fruitNode.node)
             return fruitNode
         case .fruit3:
             let fruitNode = FruitEnum.fruit3.toNode()
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
-            fruitNode.node.position = spawnLocation3
+            fruitNode.node.position = CGPoint(x:frame.size.width / 3.07, y: frame.size.height / 4.05)
             addChild(fruitNode.node)
             return fruitNode
         case .fruit5:
@@ -494,7 +514,7 @@ class GameScene: SKScene {
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
             fruitNode.node.anchorPoint = CGPoint(x: 0.5, y: 0.3)
-            fruitNode.node.position = spawnLocation5
+            fruitNode.node.position = CGPoint(x:frame.size.width / 6.61, y: frame.size.height / 4.052)
             addChild(fruitNode.node)
             return fruitNode
         case .unknown:
@@ -502,14 +522,14 @@ class GameScene: SKScene {
             fruitNode.node.name = "incognita"
             fruitNode.node.zPosition = 20
             fruitNode.node.anchorPoint = CGPoint(x: 0.5, y: 0.25)
-            fruitNode.node.position = spawnLocationIncognita
+            fruitNode.node.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
             addChild(fruitNode.node)
             return fruitNode
         default:
             let fruitNode = FruitEnum.fruit1.toNode()
             fruitNode.node.name = "food"
             fruitNode.node.zPosition = 20
-            fruitNode.node.position = spawnLocation1
+            fruitNode.node.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
             addChild(fruitNode.node)
             return fruitNode
         }
@@ -578,31 +598,31 @@ class GameScene: SKScene {
     func setupSpawners(){
         
         shelf.texture = SKTexture(imageNamed: "shelf1")
-        shelf.size = CGSize(width: 530, height: 460)
+        shelf.size = CGSize(width: frame.size.width / 0.811, height: frame.size.height / 2.026)
         shelf.position = CGPoint(x: frame.size.width / 2, y: 0)
         shelf.anchorPoint = CGPoint(x: 0.5, y: 0.2)
         shelf.zPosition = 1
-        
+      
         addChild(shelf)
         
-        spawner1.size = CGSize(width: 55, height: 120)
-        spawner1.position = spawnLocation1
+        spawner1.size = CGSize(width: frame.size.width / 7.81, height: frame.size.height / 7.76)
+        spawner1.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
         spawner1.zPosition = 10
                 
-        spawner2.size = CGSize(width: 55, height: 120)
-        spawner2.position = spawnLocation2
+        spawner2.size = CGSize(width: frame.size.width / 7.81, height: frame.size.height / 7.76)
+        spawner2.position = CGPoint(x:frame.size.width / 2, y: frame.size.height / 4.052)
         spawner2.zPosition = 10
         
-        spawner3.size = CGSize(width: 55, height: 120)
-        spawner3.position = spawnLocation3
+        spawner3.size = CGSize(width: frame.size.width / 7.81, height: frame.size.height / 7.76)
+        spawner3.position = CGPoint(x:frame.size.width / 3.07, y: frame.size.height / 4.05)
         spawner3.zPosition = 10
         
-        spawner5.size = CGSize(width: 55, height: 120)
-        spawner5.position = spawnLocation5
+        spawner5.size = CGSize(width: frame.size.width / 7.81, height: frame.size.height / 7.76)
+        spawner5.position = CGPoint(x:frame.size.width / 6.61, y: frame.size.height / 4.052)
         spawner5.zPosition = 10
         
-        spawnerIncognita.size = CGSize(width: 55, height: 120)
-        spawnerIncognita.position = spawnLocationIncognita
+        spawnerIncognita.size = CGSize(width: frame.size.width / 7.81, height: frame.size.height / 7.76)
+        spawnerIncognita.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
         spawnerIncognita.zPosition = 10
         
         addChild(spawner1)
@@ -618,21 +638,21 @@ class GameScene: SKScene {
             let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number1"))
             fruitNode.name = "food"
             fruitNode.zPosition = 20
-            fruitNode.position = spawnLocation1
+            fruitNode.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
             addChild(fruitNode)
             return fruitNode
         case .fruit2:
             let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number2"))
             fruitNode.name = "food"
             fruitNode.zPosition = 20
-            fruitNode.position = spawnLocation2
+            fruitNode.position = CGPoint(x:frame.size.width / 2, y: frame.size.height / 4.052)
             addChild(fruitNode)
             return fruitNode
         case .fruit3:
             let fruitNode = SKSpriteNode(texture: SKTexture(imageNamed: "number3"))
             fruitNode.name = "food"
             fruitNode.zPosition = 20
-            fruitNode.position = spawnLocation3
+            fruitNode.position = CGPoint(x:frame.size.width / 3.07, y: frame.size.height / 4.05)
             addChild(fruitNode)
             return fruitNode
         case .fruit5:
@@ -640,7 +660,7 @@ class GameScene: SKScene {
             fruitNode.name = "food"
             fruitNode.zPosition = 20
             fruitNode.anchorPoint = CGPoint(x: 0.5, y: 0.3)
-            fruitNode.position = spawnLocation5
+            fruitNode.position = CGPoint(x:frame.size.width / 6.61, y: frame.size.height / 4.052)
             addChild(fruitNode)
             return fruitNode
         case .unknown:
@@ -648,7 +668,7 @@ class GameScene: SKScene {
             fruitNode.name = "food"
             fruitNode.zPosition = 20
             fruitNode.anchorPoint = CGPoint(x: 0.5, y: 0.25)
-            fruitNode.position = spawnLocationIncognita
+            fruitNode.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
             addChild(fruitNode)
             return fruitNode
         default:
@@ -656,7 +676,7 @@ class GameScene: SKScene {
             fruitNode.name = "food"
             fruitNode.zPosition = 20
             fruitNode.anchorPoint = CGPoint(x: 0.5, y: 0.3)
-            fruitNode.position = spawnLocation1
+            fruitNode.position = CGPoint(x:frame.size.width / 1.482, y: frame.size.height / 4.052)
             addChild(fruitNode)
             return fruitNode
         }
@@ -743,11 +763,11 @@ class GameScene: SKScene {
         
         // Se a comida entrar na bandeja, a posição da comida vai ser atualizada, as comidas são posicionadas lado a lado quando adicionadas mais de uma
         if isInTrayLeft {
-            food.node.position.x = (foodTrayLeft.position.x - 60) + foodContLeft
+            food.node.position.x = (foodTrayLeft.position.x - 80) + foodContLeft
             rotate(angleRotation: angle)
             
         } else if isInTrayRight {
-            food.node.position.x = (foodTrayRight.position.x - 60) + foodContRight
+            food.node.position.x = (foodTrayRight.position.x - 80) + foodContRight
             rotate(angleRotation: angle)
         }
         
@@ -821,7 +841,7 @@ class GameScene: SKScene {
                     }
                     isInTrayLeft = true
                     foodArrayLeft.append(food)
-                    foodContLeft += 15
+                    foodContLeft += frame.size.width / 13.03
                 }
                 
                 if DataModel.shared.weightLeftSide == DataModel.shared.weight{
@@ -838,7 +858,7 @@ class GameScene: SKScene {
                     food.node.name = "foodAdded"
                     isInTrayRight = true
                     foodArrayRight.append(food)
-                    foodContRight += 15
+                    foodContRight += frame.size.width / 13.03
                 }
                 
                 if DataModel.shared.weightRightSide == DataModel.shared.weight{
@@ -849,7 +869,7 @@ class GameScene: SKScene {
             else {
                 if !(isInTrayLeft && isInTrayRight){
                     if (food.node.name == "incognita") {
-                        food.node.position = spawnLocationIncognita
+                        food.node.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
                         foodRemovedArray.append(food.node)
                     }
                     else if (food.node.name == "food"){
@@ -865,7 +885,7 @@ class GameScene: SKScene {
         else {
             if !(isInTrayLeft && isInTrayRight){
                 if (food.node.name == "incognita") {
-                    food.node.position = spawnLocationIncognita
+                    food.node.position = CGPoint(x:frame.size.width / 1.21, y: frame.size.height / 4.052)
                     foodRemovedArray.append(food.node)
                 }
                 else if (food.node.name == "food"){

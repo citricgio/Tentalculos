@@ -21,6 +21,10 @@ class  MenuScene: SKScene {
     //Instancia Sprite do polvo
     var octopus: SKSpriteNode = SKSpriteNode(imageNamed: "octopus-full")
     
+    var trayLeft: SKSpriteNode = SKSpriteNode(imageNamed: "tray")
+    var trayRight: SKSpriteNode = SKSpriteNode(imageNamed: "tray")
+
+    
     //instancia background
     var background = SKSpriteNode(imageNamed: "background")
     
@@ -37,27 +41,42 @@ class  MenuScene: SKScene {
     var logoName: SKSpriteNode = SKSpriteNode(imageNamed: "logo")
     var crown: SKSpriteNode = SKSpriteNode(imageNamed: "crown")
     
+    var gameSound: SKAudioNode = SKAudioNode()
+    
     override func didMove(to view: SKView) {
         
+        gameSound = SKAudioNode(fileNamed: "Menu")
+        addChild(gameSound)
+        
         //Adiciona o botão de Jogar e sua Posição
-        startButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 150)
+        startButton.node.position = CGPoint(x: frame.midX, y: frame.size.height / 3.45)
         startButton.node.setScale(1/1.08)
         addChild(startButton.node)
         
         //Adiciona o botão de Tutorial e sua posição
-        tutorialButton.node.position = CGPoint(x: frame.midX, y: frame.midY - 250)
+        tutorialButton.node.position = CGPoint(x: frame.midX, y: frame.midY - frame.size.height / 3.45)
         tutorialButton.node.setScale(1/1.08)
-//        addChild(tutorialButton.node)
+        addChild(tutorialButton.node)
         
         
-        logoName.position = CGPoint(x: size.width / 2, y: 750)
-        logoName.size = CGSize(width: 380, height: 254)
+        logoName.position = CGPoint(x: size.width / 2, y: frame.size.height / 1.136)
+        logoName.size = CGSize(width: frame.size.width / 0.95, height: frame.size.height / 3.27)
         addChild(logoName)
         //Adiciona o polvo e sua posição
-        octopus.size = CGSize(width: 330, height: 253)
-        octopus.position = CGPoint(x: frame.midX, y: frame.size.height / 1.89 )
+        octopus.size = CGSize(width: frame.size.width / 1.30, height: frame.size.height / 3.68)
+        octopus.position = CGPoint(x: frame.midX - frame.size.width / 21.5, y: frame.size.height / 2.02 )
         octopus.setScale(1/1.08)
         addChild(octopus)
+        
+        trayLeft.size = CGSize(width: frame.size.width / 2.86, height: frame.size.height / 37.28)
+        trayLeft.position = CGPoint(x: frame.size.width / 5.7, y: frame.size.height / 1.75)
+        trayLeft.zPosition = 40
+        addChild(trayLeft)
+        
+        trayRight.size = CGSize(width: frame.size.width / 2.86, height: frame.size.height / 37.28)
+        trayRight.position = CGPoint(x: frame.size.width / 1.23, y: frame.size.height / 1.75)
+        trayRight.zPosition = 40
+        addChild(trayRight)
         
         //Adiciona o Background e sua posição
         background.zPosition = CGFloat(-10)
@@ -65,21 +84,12 @@ class  MenuScene: SKScene {
         addChild(background)
         
         //Adiciona o texto e a maior pontuação e suas posições
-        bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + 170)
-        labelPoint.node.position = CGPoint(x: frame.midX , y: frame.midY + 200)
+        bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + frame.size.height / 5.54)
         bPoint.node.setScale(1.5)
-        labelPoint.node.setScale(1/1.08)
         addChild(bPoint.node)
-//        addChild(labelPoint.node)
         
-        crown.position = CGPoint(x: frame.midX + 15 , y: frame.midY + 200)
+        crown.position = CGPoint(x: frame.midX + frame.size.width / 28.66 , y: frame.midY + frame.size.height / 4.77)
         addChild(crown)
-        
-        //Adiciona o Título
-        title.node.position = CGPoint(x: frame.midX, y: frame.midY + 230)
-        title.node.setScale(1/1.08)
-//        addChild(title.node)
-        
 
         //funções de ligadas ao GameCenter que vem do GameCenterController
         GameCenterController.shared.authenticateGameCenter()
@@ -88,9 +98,25 @@ class  MenuScene: SKScene {
         }
         
         //Som
-            playSound(sound: "Menu", type: "mp3")
-        soundButton.position = CGPoint(x: frame.midX + 160, y: frame.midY + 320)
-       // addChild(soundButton)
+        soundButton.position = CGPoint(x: frame.midX + frame.size.width / 2.45, y: frame.midY + frame.size.height / 2.33)
+        soundButton.name = "soundButton"
+        soundButton.size = CGSize(width: frame.size.width / 7.16, height: frame.size.height / 15.5)
+       addChild(soundButton)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        if DataModel.shared.soundIsOn {
+            let texture = SKTexture(imageNamed: "SoundButton")
+            let action = SKAction.setTexture(texture)
+            gameSound.run(SKAction.play())
+            soundButton.run(action)
+        }
+        else {
+            let texture = SKTexture(imageNamed: "SoundOffButton")
+            let action = SKAction.setTexture(texture)
+            gameSound.run(SKAction.stop())
+            soundButton.run(action)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -126,25 +152,22 @@ class  MenuScene: SKScene {
 
         let newScene = GameScene()
         self.changeTo(scene: newScene)
-        playSound(sound: "Jogo", type: "mp3")
     }
     
     //função que Chama a TutorialScene
     func startTutorial() {
-        let newScene = EndScene()
-        self.changeTo(scene: newScene)
-        playSound(sound: "Jogo", type: "mp3")
+        DataModel.shared.tutorial.toggle()
+        if DataModel.shared.soundIsOn {
+            playSound(sound: "Jogo", type: "mp3")
+        }
     }
-    //TODO: adicionar o botão de som, fazer funcionar e mudar ele
+
     func soundIsOn() {
         DataModel.shared.soundIsOn.toggle()
+        print("som: \(DataModel.shared.soundIsOn)")
     }
     
-//    func createSound(){
-//        soundButton = SKSpriteNode(imageNamed: DataModel.shared.soundIsOn ? "SoundButton" : "SoundOff")
-//        soundButton.position = CGPoint(x: frame.size.width / 10, y: frame.size.height / 5)
-//        addChild(soundButton)
-//    }
+
     
    
 }

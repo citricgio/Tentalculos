@@ -14,7 +14,6 @@ class SpriteButtonNumbers: SKNode {
     var clickAction: () -> Void
     var number: SKLabelNode
     var changeNumber = OperationButton()
-    var positionButton = CGPoint(x: 220, y: 240)
     var node: SKSpriteNode
     
     init(action: @escaping () -> Void) {
@@ -24,14 +23,12 @@ class SpriteButtonNumbers: SKNode {
         // mostra no botao a selectedFruit
         number.text = "\(changeNumber.selectedFruit.value)"
         number.zPosition = 3
-        number.position = positionButton
         number.fontSize = 28
         number.verticalAlignmentMode = .center
         number.fontColor = SKColor.white //Cor do botão
         number.fontName = "IstokWeb-Bold"
         
         node = SKSpriteNode(texture: SKTexture(imageNamed: "button2"))
-        node.position = positionButton
         node.setScale(1/1.08)
         node.zPosition = 2
 
