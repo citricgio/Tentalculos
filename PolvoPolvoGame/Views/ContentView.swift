@@ -25,6 +25,7 @@ struct ContentView: View {
         } else {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
+                .statusBarHidden(true)
         }
     }
 }

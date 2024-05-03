@@ -107,6 +107,7 @@ class GameScene: SKScene {
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
     override func didMove(to view: SKView) {
         
+        
         print(frame.size.width)
         print(frame.size.height)
         
