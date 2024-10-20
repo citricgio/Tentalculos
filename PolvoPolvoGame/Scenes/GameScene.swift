@@ -70,6 +70,8 @@ class GameScene: SKScene {
     var nextButton: NextButton = NextButton(action: {}, textLabel: "Próximo")
     
     var restartButton: RestartButton = RestartButton(action: {})
+    
+    var settingsButton: SettingsButton = SettingsButton(action: {})
 
     var operationButton: SpriteButtonOperation = SpriteButtonOperation(action: {})
     
@@ -145,11 +147,17 @@ class GameScene: SKScene {
         setupArm()
         setupTargets()
         
-        nextButton = NextButton(action: isCorrect ? finalizeCheck : firstCheck, textLabel: isCorrect ? "Finalizar" : "Próximo")
-        nextButton.text.position = CGPoint(x: frame.midX, y: frame.size.height / 13.31)
+        nextButton = NextButton(action: isCorrect ? finalizeCheck : firstCheck, textLabel: isCorrect ? "Concluir" : "Próximo")
+        nextButton.text.position = CGPoint(x: frame.midX - 4, y: frame.size.height / 13.31)
         nextButton.node.position = CGPoint(x: frame.midX, y: frame.size.height / 13.31)
 
         addChild(nextButton)
+        
+        settingsButton = SettingsButton(action: openSettings)
+        settingsButton.setScale(0.9)
+        settingsButton.position = CGPoint(x: frame.size.width / 1.102, y: frame.size.height / 1.08)
+        
+        addChild(settingsButton)
         
         restartButton = RestartButton(action: restartFood)
         restartButton.position = CGPoint(x: frame.size.width / 1.102, y: frame.size.height / 1.179)
@@ -172,20 +180,20 @@ class GameScene: SKScene {
     func addOperationButtons() {
         operationNumbersButton = SpriteButtonNumbers(){
         }
-        operationNumbersButton.number.position = CGPoint(x: frame.midX, y: frame.size.height / 3.88)
-        operationNumbersButton.node.position = CGPoint(x: frame.midX, y: frame.size.height / 3.88)
+        operationNumbersButton.number.position = CGPoint(x: frame.midX - 1, y: frame.size.height / 4.7)
+        operationNumbersButton.node.position = CGPoint(x: frame.midX, y: frame.size.height / 4.6)
         addChild(operationNumbersButton)
         
         irButton = SpriteButtonReduce(action: reduceFood, textLabel: "Ir")
-        irButton.text.position = CGPoint(x: frame.midX + 100, y: frame.size.height / 3.88)
-        irButton.node.position = CGPoint(x: frame.midX + 100, y: frame.size.height / 3.88)
+        irButton.text.position = CGPoint(x: frame.midX + 100, y: frame.size.height / 4.6)
+        irButton.node.position = CGPoint(x: frame.midX + 100, y: frame.size.height / 4.6)
         addChild(irButton)
     
         operationButton = SpriteButtonOperation() {
             //print("cliquei")
         }
-        operationButton.number.position = CGPoint(x: frame.midX - 90, y: frame.size.height / 3.88)
-        operationButton.node.position = CGPoint(x: frame.midX - 90, y: frame.size.height / 3.88)
+        operationButton.number.position = CGPoint(x: frame.midX - 92, y: frame.size.height / 4.9)
+        operationButton.node.position = CGPoint(x: frame.midX - 90, y: frame.size.height / 4.6)
         addChild(operationButton)
         
     }
@@ -328,7 +336,6 @@ class GameScene: SKScene {
             if DataModel.shared.soundIsOn {
                 let action = SKAction.playSoundFileNamed("Prato", waitForCompletion: true)
                 run(action)
-                //playSound(sound: "Jogo", type: "mp3")
             }
 
 
@@ -351,7 +358,6 @@ class GameScene: SKScene {
             if DataModel.shared.soundIsOn {
                 let action = SKAction.playSoundFileNamed("Prato", waitForCompletion: true)
                 run(action)
-                //playSound(sound: "Jogo", type: "mp3")
             }
             
             let textureSad = SKTexture(imageNamed: "sad-face")
@@ -396,7 +402,7 @@ class GameScene: SKScene {
             //desespawnar e mostra botao de operacoes
             print("ACERTOUUU")
             isCorrect = true
-            nextButton.text.text = "Finalizar"
+            nextButton.text.text = "Concluir"
             removeChildren(in: [spawner1, spawner2, spawner3, spawner5, spawnerIncognita])
             removeChildren(in: foodRemovedArray)
             addOperationButtons()
@@ -405,7 +411,11 @@ class GameScene: SKScene {
             
             let shelfTexture = SKTexture(imageNamed: "shelf2")
             let action1 = SKAction.setTexture(shelfTexture, resize: true)
-            shelf.position.y = CGFloat(50)
+            
+            shelf.setScale(0.87)
+            shelf.position = CGPoint(x: frame.midX, y: frame.minY + frame.size.height / 16)
+
+            //shelf.position.y = CGFloat(50)
             
             shelf.run(action1)
             
@@ -459,6 +469,10 @@ class GameScene: SKScene {
         } else {
             angle = .pi / 15
         }
+    }
+    
+    func openSettings() {
+        print("abri settings")
     }
     
     func restartFood() {
