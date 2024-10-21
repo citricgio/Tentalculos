@@ -20,7 +20,7 @@ class RestartButton: SKNode {
         
         node = SKSpriteNode(texture: SKTexture(imageNamed: "restart"))
         node.setScale(1/1.08)
-        node.zPosition = 40
+        node.zPosition = 20
 
         super.init()
 

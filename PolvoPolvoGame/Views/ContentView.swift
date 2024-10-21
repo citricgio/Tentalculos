@@ -13,7 +13,6 @@ struct ContentView: View {
     
   var scene: MenuScene {
     let scene: MenuScene = MenuScene()
-//    playSound(sound: "Menu", type: "mp3")
     scene.scaleMode = .resizeFill
     return scene
       
