@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TutorialView: View {
     
-    @State var tutorialImages: [String] = ["tutorial1","tutorial2","tutorial3","tutorial4","tutorial5","tutorial6","tutorial7","tutorial8","tutorial9","tutorial10","tutorial11","tutorial12","tutorial13","tutorial14","tutorial15","tutorial16","tutorial17","tutorial18","tutorial19","tutorial20","tutorial21","tutorial22","tutorial23","tutorial24","tutorial25",]
+    @State var tutorialImages: [String] = ["tutorial1","tutorial2","tutorial3","tutorial4","tutorial5","tutorial6","tutorial7","tutorial8","tutorial9","tutorial10","tutorial11","tutorial12","tutorial13","tutorial14","tutorial15","tutorial16","tutorial17","tutorial18","tutorial19","tutorial20"]
     
     @State var index: Int = 0
     
@@ -20,31 +20,29 @@ struct TutorialView: View {
                 .scaledToFill()
                 .padding(.bottom, 25)
             Button(action: {
-                if index < 24 {
+                if index < 19 {
                     index += 1
-                } else if index == 24{
+                } else if index == 19{
                     DataModel.shared.tutorial.toggle()
                 }
             }, label: {
-                Image("setacima")
+                Image("seta-direita")
                     .resizable()
-                    .frame(width: 60, height: 46)
-                    .rotationEffect(.degrees(90))
+                    .frame(width: 43, height: 60)
                 
             })
-            .offset(x: 190, y: 318)
+            .offset(x: 175, y: (index >= 7 && index <= 12) ? 370 : (index == 13 || index == 14) ? 280 : index >= 14 ? 130 : 318)
             if index >= 1 {
                 Button(action: {
                     if index < 24 {
                         index -= 1
                     }
                 }, label: {
-                    Image("setacima")
+                    Image("seta-esquerda")
                         .resizable()
-                        .frame(width: 60, height: 46)
-                        .rotationEffect(.degrees(270))
+                        .frame(width: 43, height: 60)
                 })
-                .offset(x: -190, y: 318)
+                .offset(x: -175, y: (index >= 7 && index <= 12) ? 370 : (index == 13 || index == 14) ? 280 : index >= 14 ? 130 : 318)
                 
             }
         }

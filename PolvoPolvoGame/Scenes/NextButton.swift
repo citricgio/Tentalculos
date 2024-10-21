@@ -13,7 +13,6 @@ class NextButton: SKNode {
     var clickAction: () -> Void
     var text: SKLabelNode
     var textLabel: String
-    //var positionButton = CGPoint(x: frame.size.width / 1.95, y: frame.size.height / 13.31)
     var node: SKSpriteNode
 
     

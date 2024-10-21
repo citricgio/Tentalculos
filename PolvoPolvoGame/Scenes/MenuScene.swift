@@ -10,7 +10,7 @@ import SpriteKit
 import GameKit
 
 //cena de quando o jogador abre o jogo
-class  MenuScene: SKScene {
+class MenuScene: SKScene {
     
 //    var dataModel: DataModel?
     
@@ -127,8 +127,6 @@ class  MenuScene: SKScene {
             //O que indica que quando clicar no startButton vai chamar a função de ir para a cena de jogo
             if touchedNode.name == "startButton" {
                 startGame()
-//                playSound(sound: "Jogo", type: "mp3")
-
             }
             
             //O que indica que quando clicar no tutorialButton vai chamar a função de ir para a cena de tutorial
@@ -162,13 +160,10 @@ class  MenuScene: SKScene {
             run(action)
         }
     }
-
+    
     func soundIsOn() {
         DataModel.shared.soundIsOn.toggle()
         print("som: \(DataModel.shared.soundIsOn)")
     }
-    
 
-    
-   
 }
