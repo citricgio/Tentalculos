@@ -505,7 +505,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 543L4H35A3;
+				DEVELOPMENT_TEAM = ACG36J6YH2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
@@ -521,7 +521,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos.Micher;
+				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -538,7 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PolvoPolvoGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 543L4H35A3;
+				DEVELOPMENT_TEAM = ACG36J6YH2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolvoPolvoGame/Info.plist;
@@ -554,7 +554,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos.Micher;
+				PRODUCT_BUNDLE_IDENTIFIER = br.academy.Tentalculos.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
