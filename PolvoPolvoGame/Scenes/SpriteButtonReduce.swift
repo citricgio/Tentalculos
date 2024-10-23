@@ -13,7 +13,6 @@ class SpriteButtonReduce: SKNode {
     var clickAction: () -> Void
     var text: SKLabelNode
     var textLabel: String
-    var positionButton = CGPoint(x: 320, y: 240)
     var node: SKSpriteNode
     
     init(action: @escaping () -> Void, textLabel: String) {
@@ -23,15 +22,13 @@ class SpriteButtonReduce: SKNode {
         self.textLabel = textLabel
         text.text = textLabel
         text.zPosition = 3
-        text.position = positionButton
         
         text.fontSize = 28
         text.verticalAlignmentMode = .center
         text.fontColor = SKColor.white //Cor do botão
         text.fontName = "IstokWeb-Bold"
         
-        node = SKSpriteNode(texture: SKTexture(imageNamed: "button2"))
-        node.position = positionButton
+        node = SKSpriteNode(texture: SKTexture(imageNamed: "button3"))
         node.setScale(1/1.08)
         node.zPosition = 2
         

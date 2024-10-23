@@ -17,9 +17,11 @@ class WriteButton {
     init(name: String, text: String) {
         let textNode = SKLabelNode(fontNamed: "IstokWeb-Bold") //qual fonte usar
         textNode.text = text //Texto que vai dentro do botão, que é uma variável recebida quando o Node é chamado
-        textNode.fontSize = 28 //Tamanho do texto que vai dentro do botão
+        textNode.fontSize = 27 //Tamanho do texto que vai dentro do botão
         textNode.fontColor = SKColor.white //Cor do botão
         textNode.verticalAlignmentMode = .center //o alinhamento do texto dentro do Node
+        textNode.horizontalAlignmentMode = .center
+        textNode.position = CGPoint(x: -6, y: textNode.text == "Jogar" ? -2 : 0)
         textNode.name = name //recebe o nome do Node, que é recebido quando o Node é chamado
         
         node = SKSpriteNode(imageNamed: "Button")

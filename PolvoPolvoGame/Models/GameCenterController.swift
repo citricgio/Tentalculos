@@ -37,6 +37,19 @@ class GameCenterController {
         GKAccessPoint.shared.isActive = true
     }
     
+//    func reportScore(score: Int64) {
+//        let 
+//        let scoreReporter = GKScore(leaderboardIdentifier: "SEU_LEADERBOARD_ID") // Substitua pelo ID do leaderboard
+//        scoreReporter.value = score
+//        GKScore.report([scoreReporter]) { error in
+//            if let error = error {
+//                print("Erro ao reportar pontuação: \(error.localizedDescription)")
+//            } else {
+//                print("Pontuação reportada com sucesso!")
+//            }
+//        }
+//    }
+    
     //Função que salva um score no GameCenter
     func SaveData(gameplayData: GamePlayData) async {
         let name = "\(UUID())"
