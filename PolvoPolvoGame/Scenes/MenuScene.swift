@@ -35,7 +35,7 @@ class MenuScene: SKScene {
     var title: WriteNode = WriteNode(name: "title", fontSize: .appTitle, text: "Nome do Jogo", fontName: .appTitle)
     
     //instancia texto da melhor pontuação e a pontuação
-    var bPoint: WriteNode = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.points.score)", fontName: .points)
+    var bPoint: WriteNode?
     var labelPoint: WriteNode = WriteNode(name: "labelPoint", fontSize: .labelPoints, text: "Sua melhor pontuação", fontName: .labelPoints )
     
     var logoName: SKSpriteNode = SKSpriteNode(imageNamed: "logo")
@@ -45,8 +45,19 @@ class MenuScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        gameSound = SKAudioNode(fileNamed: "Menu")
-        addChild(gameSound)
+        //funções de ligadas ao GameCenter que vem do GameCenterController
+        GameCenterController.shared.authenticateGameCenter()
+        GameCenterController.shared.loadData { data in
+            DataModel.shared.points = data
+//            print("carregou game center")
+        }
+        
+        DataModel.shared.audioPlayer?.stop()
+        DataModel.shared.playSound(sound: "Menu")
+        
+        if !DataModel.shared.isSoundActivated{
+            DataModel.shared.audioPlayer?.volume = 0
+        }
         
         //Adiciona o botão de Jogar e sua Posição
         startButton.node.position = CGPoint(x: frame.midX, y: frame.size.height / 3.45)
@@ -84,17 +95,14 @@ class MenuScene: SKScene {
         addChild(background)
         
         //Adiciona o texto e a maior pontuação e suas posições
-        bPoint.node.position = CGPoint(x: frame.midX  , y: frame.midY + frame.size.height / 5.54)
-        bPoint.node.setScale(1.5)
-        addChild(bPoint.node)
-        
-        crown.position = CGPoint(x: frame.midX + frame.size.width / 28.66 , y: frame.midY + frame.size.height / 4.77)
-        addChild(crown)
-
-        //funções de ligadas ao GameCenter que vem do GameCenterController
-        GameCenterController.shared.authenticateGameCenter()
-        GameCenterController.shared.loadData { data in
-            DataModel.shared.points = data
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [self] in
+            bPoint = WriteNode(name: "bPoint", fontSize: .points, text: "\(DataModel.shared.points.score)", fontName: .points)
+            bPoint!.node.position = CGPoint(x: frame.midX  , y: frame.midY + frame.size.height / 5.54)
+            bPoint!.node.setScale(1.5)
+            addChild(bPoint!.node)
+            
+            crown.position = CGPoint(x: frame.midX + frame.size.width / 28.66 , y: frame.midY + frame.size.height / 4.77)
+            addChild(crown)
         }
         
         //Som
@@ -105,7 +113,7 @@ class MenuScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if DataModel.shared.soundIsOn {
+        if DataModel.shared.isSoundActivated {
             let texture = SKTexture(imageNamed: "SoundButton")
             let action = SKAction.setTexture(texture)
             gameSound.run(SKAction.play())
@@ -127,7 +135,13 @@ class MenuScene: SKScene {
             //O que indica que quando clicar no startButton vai chamar a função de ir para a cena de jogo
             if touchedNode.name == "startButton" {
                 startGame()
-                playSound(sound: "Jogo", type: "mp3")
+                DataModel.shared.audioPlayer?.stop()
+                DataModel.shared.playSound(sound: "Jogo")
+                
+                if !DataModel.shared.isSoundActivated{
+                    DataModel.shared.audioPlayer?.volume = 0
+                }
+                
             }
             
             //O que indica que quando clicar no tutorialButton vai chamar a função de ir para a cena de tutorial
@@ -136,8 +150,7 @@ class MenuScene: SKScene {
             }
             
             if touchedNode.name == "soundButton" {
-                soundIsOn()
-                print(DataModel.shared.soundIsOn)
+                DataModel.shared.soundIsOn()
             }
         }
     }
@@ -156,15 +169,10 @@ class MenuScene: SKScene {
     //função que Chama a TutorialScene
     func startTutorial() {
         DataModel.shared.tutorial.toggle()
-        if DataModel.shared.soundIsOn {
-            let action = SKAction.playSoundFileNamed("Jogo", waitForCompletion: true)
-            run(action)
+        if DataModel.shared.isSoundActivated {
+            DataModel.shared.audioPlayer?.stop()
+            DataModel.shared.playSound(sound: "Jogo")
         }
-    }
-    
-    func soundIsOn() {
-        DataModel.shared.soundIsOn.toggle()
-        print("som: \(DataModel.shared.soundIsOn)")
     }
 
 }
