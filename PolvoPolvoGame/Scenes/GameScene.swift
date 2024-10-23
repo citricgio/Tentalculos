@@ -106,7 +106,7 @@ class GameScene: SKScene {
     var popupNode: SKShapeNode!
     
     var gameSound: SKAudioNode = SKAudioNode()
-    
+        
     let soundButton = SKSpriteNode(imageNamed: "SoundButton")
         
     // função que carrega as coisas na tela (quando a cena do sprite kit é movida para a tela)
@@ -332,7 +332,7 @@ class GameScene: SKScene {
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive)")
             
-            if DataModel.shared.soundIsOn {
+            if DataModel.shared.isSoundActivated {
                 let action = SKAction.playSoundFileNamed("Prato", waitForCompletion: true)
                 run(action)
             }
@@ -354,7 +354,7 @@ class GameScene: SKScene {
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive)")
             
-            if DataModel.shared.soundIsOn {
+            if DataModel.shared.isSoundActivated {
                 let action = SKAction.playSoundFileNamed("Prato", waitForCompletion: true)
                 run(action)
             }
@@ -376,7 +376,7 @@ class GameScene: SKScene {
             DataModel.shared.countsLive += 1
             print("oiiii \(DataModel.shared.countsLive)")
             
-            if DataModel.shared.soundIsOn {
+            if DataModel.shared.isSoundActivated {
                 let action = SKAction.playSoundFileNamed("Prato", waitForCompletion: true)
                 run(action)
             }
@@ -825,7 +825,7 @@ class GameScene: SKScene {
     // função que é chamada a cada framde do jogo e atualiza a cena
     override func update(_ currentTime: TimeInterval) {
         
-        if DataModel.shared.soundIsOn {
+        if DataModel.shared.isSoundActivated {
             let texture = SKTexture(imageNamed: "SoundButton")
             let action = SKAction.setTexture(texture)
             gameSound.run(SKAction.play())
@@ -868,11 +868,6 @@ class GameScene: SKScene {
         
     }
     
-    func soundIsOn() {
-        DataModel.shared.soundIsOn.toggle()
-        print("som: \(DataModel.shared.soundIsOn)")
-    }
-    
     // quando ocorre o toque, spawna uma fruta e coloca ela na tela
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first{
@@ -881,8 +876,7 @@ class GameScene: SKScene {
             let touchedNode = self.atPoint(location)
             
             if touchedNode.name == "soundButton" {
-                soundIsOn()
-                print(DataModel.shared.soundIsOn)
+                DataModel.shared.soundIsOn()
             }
             
             // Handle button tap
@@ -901,8 +895,8 @@ class GameScene: SKScene {
             }
             
             if touchedNode.name == "menuButton" {
-                if DataModel.shared.soundIsOn {
-                    playSound(sound: "Silencio", type: "mp3")
+                if DataModel.shared.isSoundActivated {
+                    DataModel.shared.audioPlayer?.stop()
                 }
                 backMenu()
             }

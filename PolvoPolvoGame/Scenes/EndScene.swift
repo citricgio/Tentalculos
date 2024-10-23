@@ -73,8 +73,10 @@ class EndScene: SKScene {
         brokenplates.setScale(1/1.08)
         addChild(brokenplates)
         
-        if DataModel.shared.soundIsOn {
-            playSound(sound: "Derrota2", type: "mp3")
+        if DataModel.shared.isSoundActivated {
+            DataModel.shared.audioPlayer?.stop()
+            DataModel.shared.playSound(sound: "Derrota2")
+            
         }
     }
     
@@ -87,15 +89,16 @@ class EndScene: SKScene {
             if touchedNode.name == "restartButton" {
                 restartGame()
                 
-                if DataModel.shared.soundIsOn {
-                    playSound(sound: "Jogo", type: "mp3")
+                if DataModel.shared.isSoundActivated {
+                    DataModel.shared.audioPlayer?.stop()
+                    DataModel.shared.playSound(sound: "Jogo")
                 }
             }
             
             //O que indica que quando clicar no tutorialButton vai chamar a função de ir para a cena de tutorial
             if touchedNode.name == "menuButton" {
-                if DataModel.shared.soundIsOn {
-                    playSound(sound: "Silencio", type: "mp3")
+                if DataModel.shared.isSoundActivated {
+                    DataModel.shared.audioPlayer?.stop()
                 }
                 backMenu()
             }
